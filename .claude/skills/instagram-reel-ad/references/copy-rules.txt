@@ -1,0 +1,14 @@
+# Machine-readable copy rules for scripts/check_copy.py (BetaalBuddy, stand 2026-10-11).
+# Format: <python regex> || <reason>. Case-insensitive. Lines starting with # are ignored.
+# Keep in sync with references/brand-betaalbuddy.md §3 and the BetaalBuddy changelog.
+\bgratis\b || Geen gratis periode in het huidige betaalmodel
+proefperiode|proeftijd|probeer\s+(het\s+)?gratis|\bdagen\s+gratis || Geen proefperiode sinds 5 okt 2026
+whats\s*app|telegram|\bsignal\b || WhatsApp, Telegram en Signal zijn niet beschikbaar
+scan\w*\s+(je|jouw|al je)\s+(inbox|mail)|inbox\s+scan|koppel\w*\s+(je\s+)?(gmail|mailbox|inbox)|labelt\s+(al\s+)?je\s+(e-?)?mails || Oude versie: het product werkt nu met doorsturen
+\bgmail\b|\boutlook\b|netflix|postnl|klarna|riverty|\bin3\b|tikkie|\bdhl\b|\bing\b|rabobank|abn\s?amro || Merknaam van een ander bedrijf; gebruik een generieke afzender
+vanaf\s*€|€\s?\d+[,.]\d{2}\s*(p/?m|per\s+maand|/\s?maand)|\b(2,99|3,49|4,99)\b || Prijs in een ad: Basic heeft geen herinneringen, dus misleidend
+geld[- ]terug(garantie)? || "30 dagen geld terug" is nog niet bevestigd
+buddy\s+betaalt|betaalt\s+(het\s+)?voor\s+je || Buddy herinnert; de gebruiker betaalt zelf
+€\s?40\b|veertig\s+euro || Wettelijk minimum incassokosten na een 14-dagenbrief: formuleer met "kan" of "zo", niet als zekerheid
+\b\d[\d.]*\s*(gebruikers|klanten|buddies)\b || Geen gebruikersaantallen (weglijst HOMEPAGE-COPY §14)
+betaallink\s+(uit|in)\s+je\s+herinnering || Nog te bevestigen: bevatten herinneringsmails de betaallink?

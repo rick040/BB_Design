@@ -1,0 +1,31 @@
+{
+  "name": "betaalbuddy-ig-ad",
+  "version": "1.0.0",
+  "private": true,
+  "description": "BetaalBuddy Instagram ad animation, built with Remotion",
+  "scripts": {
+    "dev": "remotion studio",
+    "render": "remotion render BB-Ad-Reel out/BB-Ad-Reel.mp4",
+    "render:feed": "remotion render BB-Ad-Feed out/BB-Ad-Feed.mp4",
+    "render:countdown": "remotion render BB-Countdown-Reel out/BB-Countdown-Reel.mp4",
+    "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed",
+    "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
+    "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "4.0.534",
+    "@remotion/fonts": "4.0.534",
+    "@remotion/transitions": "4.0.534",
+    "@remotion/zod-types": "4.0.534",
+    "react": "19.1.1",
+    "react-dom": "19.1.1",
+    "remotion": "4.0.534",
+    "zod": "4.5.4"
+  },
+  "devDependencies": {
+    "@types/react": "19.1.12",
+    "typescript": "5.9.2"
+  }
+}
