@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 386 103.88">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #2459fd;
+      }
+
+      .cls-3 {
+        opacity: .4;
+      }
+
+      .cls-4 {
+        font-family: SpaceGrotesk-Medium, 'Space Grotesk';
+        font-size: 36.53px;
+        font-variation-settings: 'wght' 500;
+        font-weight: 500;
+      }
+
+      .cls-4, .cls-5 {
+        fill: #013bff;
+      }
+
+      .cls-6 {
+        letter-spacing: -.07em;
+      }
+
+      .cls-7 {
+        letter-spacing: -.06em;
+      }
+
+      .cls-8 {
+        letter-spacing: -.08em;
+      }
+
+      .cls-9 {
+        letter-spacing: -.08em;
+      }
+    </style>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer_1">
+    <g class="cls-3">
+      <path class="cls-1" d="M51.94,102.89C23.85,102.89.99,80.04.99,51.94S23.85.99,51.94.99h282.12c28.09,0,50.95,22.86,50.95,50.95s-22.86,50.95-50.95,50.95H51.94Z"/>
+      <path class="cls-5" d="M334.06,1.98c27.55,0,49.96,22.41,49.96,49.96s-22.41,49.96-49.96,49.96H51.94C24.39,101.9,1.98,79.49,1.98,51.94S24.39,1.98,51.94,1.98h282.12M334.06,0H51.94C23.25,0,0,23.25,0,51.94h0c0,28.69,23.25,51.94,51.94,51.94h282.12c28.69,0,51.94-23.25,51.94-51.94h0c0-28.69-23.25-51.94-51.94-51.94h0Z"/>
+    </g>
+    <rect class="cls-2" x="14.61" y="17.05" width="69.41" height="69.41" rx="34.7" ry="34.7"/>
+    <g>
+      <rect class="cls-1" x="30.42" y="50.93" width="31.47" height="2.42" rx="1.21" ry="1.21"/>
+      <g>
+        <path class="cls-1" d="M68.11,54.43l-14.01,10.56c-.48.36-1.25.35-1.71-.01l-.14-.11c-.47-.37-.46-.96.02-1.32l14.01-10.56c.48-.36,1.25-.35,1.71.01l.14.11c.47.37.46.96-.02,1.32Z"/>
+        <path class="cls-1" d="M68.11,49.85l-14.01-10.56c-.48-.36-1.25-.35-1.71.01l-.14.11c-.47.37-.46.96.02,1.32l14.01,10.56c.48.36,1.25.35,1.71-.01l.14-.11c.47-.37.46-.96-.02-1.32Z"/>
+      </g>
+    </g>
+    <text class="cls-4" transform="translate(105.11 64.73)"><tspan class="cls-6" x="0" y="0">a</tspan><tspan class="cls-8" x="18.45" y="0">c</tspan><tspan class="cls-7" x="37.22" y="0">ti</tspan><tspan class="cls-9" x="58.92" y="0">v</tspan><tspan class="cls-7" x="75.98" y="0">eer buddy</tspan></text>
+  </g>
+</svg>
