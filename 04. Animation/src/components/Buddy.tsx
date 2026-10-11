@@ -24,8 +24,16 @@ export type BuddyProps = {
   look?: { x: number; y: number };
   /** 1 = neutral, < 1 squashed, > 1 stretched (volume preserving). */
   squash?: number;
+  /**
+   * Optional SVG drawn over the eyes (e.g. <SleepMask />), in the mascot's
+   * own viewBox units (465 × 506) and clipped to the body outline, so it
+   * squashes and stretches with Buddy. Leave empty for the plain mascot.
+   */
+  accessory?: React.ReactNode;
   style?: React.CSSProperties;
 };
+
+export const BUDDY_VIEWBOX = { width: VB_W, height: VB_H, eyes: EYES } as const;
 
 export const Buddy: React.FC<BuddyProps> = ({
   size,
@@ -34,12 +42,14 @@ export const Buddy: React.FC<BuddyProps> = ({
   blink = 1,
   look = { x: 0, y: 0 },
   squash = 1,
+  accessory,
   style,
 }) => {
   const sx = 1 / Math.sqrt(squash);
   const sy = squash;
   const lx = look.x * 16;
   const ly = look.y * 14;
+  const clipId = `buddy-clip-${React.useId().replace(/[^a-zA-Z0-9_-]/g, "")}`;
 
   return (
     <div style={{ width: size, height: size * BUDDY_RATIO, ...style }}>
@@ -67,6 +77,16 @@ export const Buddy: React.FC<BuddyProps> = ({
             <circle cx={e.hx} cy={e.hy} r={17.58} fill={body} />
           </g>
         ))}
+        {accessory ? (
+          <>
+            <defs>
+              <clipPath id={clipId}>
+                <path d={BODY} />
+              </clipPath>
+            </defs>
+            <g clipPath={`url(#${clipId})`}>{accessory}</g>
+          </>
+        ) : null}
       </svg>
       </div>
     </div>
