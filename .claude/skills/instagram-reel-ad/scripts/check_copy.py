@@ -36,6 +36,8 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("files", nargs="+")
     ap.add_argument("--rules", default=DEFAULT_RULES)
+    ap.add_argument("--lengths", action="store_true",
+                    help="also print the character count of every non-empty line (Ads Manager: primary text ≤125, headline ≤40)")
     args = ap.parse_args()
 
     rules = load_rules(args.rules)
@@ -60,6 +62,12 @@ def main() -> int:
                         print(f"{path}:{n}: '{m.group(0)}' -> {reason}{tag}")
                         print(f"    {line.strip()[:160]}")
                         hits += 1
+    if args.lengths:
+        for path in args.files:
+            print(f"\nLengtes in {path}:")
+            for line in open(path, encoding="utf-8"):
+                if line.strip():
+                    print(f"  {len(line.strip()):4d}  {line.strip()[:90]}")
     if hits == 0:
         print("Geen treffers.")
         return 0

@@ -2,15 +2,20 @@
 """Build an ElevenLabs paste block (with <break> tags) from voice-over lines and
 the second each line should start, and warn where lines will overlap.
 
-Input: a text file (or stdin with "-"), one line per sentence group:
-    0.0 | Moet een app echt al je mail lezen?
-    3.1 | Buddy niet.
+Input: a text file (or stdin with "-"), one line per sentence group, with an
+optional third column describing the visual beat (from timeline.py):
+    0.0 | Moet een app echt al je mail lezen? | Kop en venster op frame 0; rood op 1,47 s
+    3.1 | Buddy niet. | Wipe 2,80 tot 3,20 s, Buddy op 3,07 s
     4.0 | Hij kijkt niet in je mailbox.
 Start times come from timeline.py (the visual beat each line belongs to,
 plus 0 to 0.4 s).
 
 Usage:
     vo_timing.py lines.txt --total 13.6 [--rate 5.0] [--pause 0.3]
+
+--rate is the assumed speaking speed and must match the ElevenLabs Speed
+setting, because break tags are absolute: 5.0 ≈ Speed 1.0 (default ad pace),
+4.5 ≈ Speed 0.9 (calmer), 5.5 ≈ Speed 1.1 (snappier).
 
 Estimates: Dutch ad read is ~5 syllables/s, plus ~0.3 s natural pause after
 . ? ! and ~0.2 s per comma or colon. These are estimates: the visual beats
@@ -49,8 +54,9 @@ def main() -> int:
         raw = raw.strip()
         if not raw or raw.startswith("#"):
             continue
-        start_s, _, text = raw.partition("|")
-        rows.append((float(start_s.strip().replace(",", ".")), text.strip()))
+        cols = [c.strip() for c in raw.split("|")]
+        visual = cols[2] if len(cols) > 2 else ""
+        rows.append((float(cols[0].replace(",", ".")), cols[1], visual))
     rows.sort(key=lambda r: r[0])
     if not rows:
         print("Geen regels gevonden.")
@@ -58,7 +64,7 @@ def main() -> int:
 
     parts, table, warnings = [], [], []
     cursor = 0.0  # when the voice is free again (end of previous line + natural pause)
-    for i, (target, text) in enumerate(rows):
+    for i, (target, text, visual) in enumerate(rows):
         if re.search(r"\d", text):
             warnings.append(f"Regel {i + 1} bevat cijfers: schrijf getallen en bedragen uit voor een goede uitspraak.")
         gap = target - cursor
@@ -81,7 +87,7 @@ def main() -> int:
         ends_sentence = text.rstrip()[-1:] in ".?!"
         cursor = end + (args.pause if ends_sentence else 0.1)
         parts.append(text)
-        table.append((target, actual, end, syllables(text), text))
+        table.append((target, actual, end, syllables(text), text, visual))
 
     final_end = table[-1][2]
     if final_end > args.total - 0.3:
@@ -96,11 +102,20 @@ def main() -> int:
     print()
     print("| Doel (s) | Geschat start (s) | Geschat eind (s) | Lettergrepen | Zin |")
     print("|---|---|---|---|---|")
-    for target, actual, end, syl, text in table:
+    for target, actual, end, syl, text, _ in table:
         print(f"| {target:.1f} | {actual:.1f} | {end:.1f} | {syl} | {text} |")
+    print()
+    print("CUE-TABEL VOOR DE OPLEVERING:")
+    print()
+    print("| Start (s) | Zin | Beeld (frame-exact) |")
+    print("|---|---|---|")
+    for target, actual, end, syl, text, visual in table:
+        print(f"| {actual:.1f} | {text} | {visual or '…'} |".replace(".", ",", 1))
     words = sum(len(t[4].split()) for t in table)
     print()
+    speed = args.rate / 5.0
     print(f"Geschatte mp3-lengte: ~{final_end:.1f} s ({words} woorden, {args.rate} lettergrepen/s). Video: {args.total:.1f} s.")
+    print(f"ElevenLabs Speed passend bij deze rate: ~{speed:.2f} (breaks zijn absoluut; een andere Speed verschuift alle latere zinnen).")
     for w in warnings:
         print(f"WAARSCHUWING: {w}")
     return 1 if warnings else 0

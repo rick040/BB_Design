@@ -10,13 +10,17 @@ Examples:
   timeline.py --scenes 3.2,5.4,3.2,3.4 --events "1:58=Aanmaning,2:32=Buddy landt"
   timeline.py --scenes 3.2,5.4,3.2,3.4 --beats-from "1=src/x/scenes/HookScene.tsx,2=src/x/scenes/MainScene.tsx"
 
---events      scene:frame[=label], scenes counted from 1.
+--events      scene:frame[=label], scenes counted from 1. Labels cannot contain commas.
 --beats-from  scene=file pairs. Reads beat constants from scene files:
               - the preferred convention, an exported object per scene:
                   export const HOOK_T = { flag: 44, seen: 52, seenStagger: 4 };
                 (keys ending in Len, Stagger, Dur or Duration are durations and are skipped);
               - scalars named T_* (e.g. `const T_LAND = 32;`, `const T_HOP = T_LAND + 8;`);
               - number arrays named ARRIVALS / HOPS / T_* (e.g. `const ARRIVALS = [20, 40, 60];`).
+              Also reads when on-screen text starts: <Headline ... delay={..} stagger={..}>
+              and <Subline ... delay={..}> (expressions may use the beat constants).
+              A headline is complete at about delay + (words - 1) * stagger + 8 frames.
+              Beats before frame 0 (items that are "already there" on frame 0) are skipped.
 All beats are printed sorted by time.
 """
 import argparse
@@ -57,6 +61,10 @@ DURATION_KEY = re.compile(r"(Len|Stagger|Dur|Duration)$")
 ARRAY = re.compile(r"^\s*(?:export\s+)?const\s+(ARRIVALS|HOPS|T_[A-Z0-9_]+)\s*=\s*\[([^\]]*)\]", re.M)
 
 
+TEXT_TAG = re.compile(r"<(Headline|Subline)\b(.*?)/>", re.S)
+PROP = re.compile(r"\b(delay|stagger)=\{([^}]*)\}")
+
+
 def beats_from_file(path: str):
     text = open(path, encoding="utf-8").read()
     env, out = {}, []
@@ -91,6 +99,25 @@ def beats_from_file(path: str):
                 continue
             env[name] = v
             out.append((name, v))
+    # Object members are also usable in JSX expressions as OBJ.key
+    obj_env = {}
+    for m in OBJECT.finditer(text):
+        for e in OBJ_ENTRY.finditer(m.group(2)):
+            try:
+                obj_env[f"{m.group(1)}_{e.group(1)}"] = int(round(safe_eval(e.group(2), {**env, **obj_env})))
+            except (ValueError, SyntaxError):
+                pass
+    for i, m in enumerate(TEXT_TAG.finditer(text)):
+        props = dict(PROP.findall(m.group(2)))
+        if "delay" not in props:
+            continue
+        expr = re.sub(r"\b([A-Z][A-Z0-9_]*_T)\.([A-Za-z_]\w*)", r"\1_\2", props["delay"])
+        try:
+            d = int(round(safe_eval(expr, {**env, **obj_env})))
+        except (ValueError, SyntaxError):
+            continue
+        extra = f" (stagger {props['stagger'].strip()})" if "stagger" in props else ""
+        out.append((f"{m.group(1)} start{extra}", d))
     return out
 
 
@@ -135,6 +162,8 @@ def main() -> None:
         if not 1 <= scene <= len(lengths):
             raise SystemExit(f"Scene {scene} out of range 1..{len(lengths)}")
         for name, frame in beats_from_file(path.strip()):
+            if frame < 0:
+                continue  # already on screen at the scene start
             beats.append((starts[scene - 1] + frame, name, scene, frame))
 
     if beats:

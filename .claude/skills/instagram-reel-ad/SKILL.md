@@ -13,14 +13,25 @@ Deze skill legt de werkwijze vast waarmee de concepten in `04. Animation` gemaak
 4. **Voice-overscript voor ElevenLabs**: een plakklaar blok plus een cue-tabel met frame-exacte beeldmomenten.
 5. **Instagram-caption** plus primaire tekst, kop en knop voor Ads Manager.
 
-Werk de stappen in volgorde af. Elke stap leunt op de vorige: de voice-over hangt aan de gemeten frames uit stap 3, en de caption aan de claims uit het concept. In deze tekst staat `$SK` voor de basismap van deze skill en `$P` voor `<repo>/04. Animation`.
+In deze tekst staat `$SK` voor de basismap van deze skill en `$P` voor `<repo>/04. Animation`.
+
+## Eerst: wat wordt er gevraagd?
+
+| Verzoek | Doe | Lees minimaal |
+|---|---|---|
+| **Nieuwe ad** (met idee, of "bedenk er een") | Stap 1 tot en met 7, in volgorde: de voice-over hangt aan de gemeten frames uit stap 3 | Alles hieronder |
+| **Alleen voice-over en/of caption** bij een bestaand concept | Stap 4, 5, 6 en de korte oplevering onderaan | `references/voiceover-and-caption.md`, brand §2 en §3, de changelog en het CONCEPT-bestand van dat concept |
+| **Alleen een concept of brainstorm** | Stap 1, en bied aan om het te bouwen | Brand-bestand, alle CONCEPT-bestanden |
+| **Bestaand concept aanpassen** | Stap 2, 3 en 7 voor wat verandert (voice-over opnieuw timen als beats verschuiven) | Playbook, het CONCEPT-bestand en de code van dat concept |
+
+**Waar de concepten staan:** concept 1 staat in de root van `src/` (`src/schema.ts`, `src/Ad.tsx`, `src/scenes/`). Elk later concept heeft een eigen map `src/<slug>/`, bijvoorbeeld `src/countdown/` en `src/privacy/`. Welk concept waar staat, zie je in `src/Root.tsx` (één Folder per concept).
 
 ## Voordat je begint
 
 - **Repo.** Werk in `rick040/BB_Design`, map `04. Animation`. Daar staat het Remotion-project met gedeelde merkcomponenten en de bestaande concepten als voorbeeld. Ontbreekt de repo, voeg hem toe of clone hem. Ontbreekt `node_modules`, draai `npm install` in `$P`.
 - **Omgeving.** Renderen vraagt Node 18+ en een headless Chrome. Dat werkt in Claude Code, lokaal of in de cloud. Kun je niet renderen, zoals in een gewone chat zonder shell? Lever dan code, concept, voice-over en caption, reken de beeldtijden uit met `timeline.py`, en zeg eerlijk dat de MP4 lokaal gerenderd moet worden met `npm run render:<slug>`.
 - **Merk en product.** Lees `references/brand-betaalbuddy.md`. Daar staan de kleuren, fonts, Buddy, de assets, de producttaal, de privacyfeiten en de copyregels.
-- **Changelog.** Lees de actuele stand in de BetaalBuddy-changelog in Drive, via de changelog-skill als die er is. Het product verandert snel: een proefperiode, WhatsApp, prijzen en pakketten zijn al eens veranderd. Botst de changelog met het referentiebestand, dan wint de changelog. Noem de afwijking in je antwoord, zodat het referentiebestand bijgewerkt kan worden.
+- **Changelog.** Lees de actuele stand in de BetaalBuddy-changelog in Drive, via de changelog-skill als die er is. Het product verandert snel: een proefperiode, WhatsApp, prijzen en pakketten zijn al eens veranderd. Botst de changelog met het referentiebestand over een **productfeit**, dan wint de changelog. Noem de afwijking in je antwoord, zodat het referentiebestand bijgewerkt kan worden. Wat er gebouwd is, zie je aan git en de CONCEPT-bestanden; de changelog loopt daar soms op achter.
 - **Bestaande concepten.** Lees alle `$P/CONCEPT*.md`-bestanden. Daar staat per concept de invalshoek, het visuele systeem, wat Buddy doet, het einde en de overgangen. Dit is de enige actuele lijst van wat er al gemaakt is.
 - **Ander merk?** De skill is gebouwd op BetaalBuddy. Vraag bij een ander merk om de merkbestanden en de producttaal, en maak eerst een eigen `references/brand-<merk>.md` voordat je bouwt.
 
@@ -90,10 +101,16 @@ python3 "$SK/scripts/timeline.py" --scenes <s1,s2,...> --transition 0.4 --beats-
 Schrijf daarna per beat een korte, spreekbare Nederlandse zin. Zet ze als `start | zin` in een tekstbestand, en laat het script het plakblok, de breaks en de waarschuwingen maken:
 
 ```bash
-python3 "$SK/scripts/vo_timing.py" vo.txt --total <lengte in s>
+python3 "$SK/scripts/vo_timing.py" vo.txt --total <lengte in s> [--rate 5.0]
 ```
 
-Los alle waarschuwingen op (overlap, cijfers, te laat einde). Lever het plakblok, de cue-tabel en de doellengte van de mp3 op. Zeg eerlijk wat exact is: de beeldmomenten zijn gemeten, de spreektijden zijn een schatting.
+- **De derde kolom** van `vo.txt` (`start | zin | beeld`) wordt de kolom "Beeld" in de cue-tabel die het script klaarzet.
+- **`--rate` hoort bij een ElevenLabs Speed.** 5.0 is Speed 1.0 (normaal), 4.5 is Speed 0.9 (rustiger), 5.5 is Speed 1.1. De breaks zijn absoluut, dus noem altijd de Speed die bij het blok hoort.
+- **"Rustiger"** betekent minder woorden (~25 tot 30 per 15 s), `--rate 4.5` en Speed 0.9.
+
+Los alle waarschuwingen op (overlap, cijfers, te laat einde). Lever het plakblok, de cue-tabel, de doellengte van de mp3 en de Speed op. Zeg eerlijk wat exact is: de beeldmomenten zijn gemeten, de spreektijden zijn een schatting.
+
+Hergebruik geen voice-overzinnen van andere concepten. Alleen "Activeer Buddy." en de merknaam mogen terugkomen.
 
 ## Stap 5 · Caption en Ads Manager
 
@@ -104,12 +121,14 @@ Volg het format in `references/voiceover-and-caption.md`:
 - "link in bio" en 5 hashtags;
 - daarnaast primaire tekst, kop en knop voor de betaalde versie.
 
-Elke claim moet kloppen met het product; let bij privacy-invalshoeken op de retentie in §2 van het referentiebestand.
+Elke claim moet kloppen met het product; let bij privacy-invalshoeken op de retentie in §2 van het referentiebestand. Primaire tekst is maximaal 125 tekens, de kop maximaal 40.
 
 ## Stap 6 · Copycheck
 
 ```bash
 python3 "$SK/scripts/check_copy.py" "$P/src/<slug>/schema.ts" "$P/CONCEPT-N.md"
+# losse teksten (voice-over, caption, Ads Manager) in .txt-bestanden, met tekenlengtes:
+python3 "$SK/scripts/check_copy.py" vo.txt caption.txt ads.txt --lengths
 ```
 
 De copycheck zoekt naar verboden claims: gratis, proefperiode, WhatsApp, inbox scannen, prijzen, andermans merknamen, "bewaart niets" en gedachtestreepjes. Een treffer is niet automatisch fout; de "€40"-regel mag bijvoorbeeld met "kan". Beoordeel elke treffer. De sectie Copyregels in het CONCEPT-bestand staat tussen `copycheck:off` en `copycheck:on`, zodat die opsomming geen ruis geeft.
@@ -130,6 +149,9 @@ De copycheck zoekt naar verboden claims: gratis, proefperiode, WhatsApp, inbox s
 
 ## Gedeeltelijke verzoeken
 
-- **Alleen voice-over of caption bij een bestaand concept:** lees de timings uit het schema, haal de beats op met `timeline.py --beats-from` (of `--events` als een scène geen beat-object heeft), en maak het blok met `vo_timing.py`. Er hoeft niets gebouwd te worden.
+- **Alleen voice-over of caption bij een bestaand concept:**
+  - lees de timings uit het schema en haal de beats op met `timeline.py --beats-from`; die leest ook wanneer koppen en subregels verschijnen. Gebruik `--events` voor wat daar niet in staat;
+  - maak het blok met `vo_timing.py` en draai de copycheck met `--lengths`;
+  - er hoeft niets gebouwd te worden. Zet de nieuwe voice-over en caption wel in het CONCEPT-bestand van dat concept (als variant naast de oude), commit en push, zodat ze later terug te vinden zijn.
 - **Alleen een concept of brainstorm:** stap 1, en bied aan om het te bouwen.
 - **Een bestaand concept aanpassen:** werk in die conceptmap. Render, controleer en lever opnieuw op zoals hierboven, maar alleen voor wat veranderd is.

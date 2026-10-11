@@ -32,11 +32,21 @@
 
 **Opleveren (in deze volgorde):**
 - **Paste-blok:** één alinea, zonder regeleindes (een regeleinde geeft extra pauze), in een codeblok.
-- **Cue-tabel:** `| Start (s) | Zin | Beeld (frame-exact) |`.
+- **Cue-tabel:** `| Start (s) | Zin | Beeld (frame-exact) |`. `vo_timing.py` maakt hem, als je in `vo.txt` een derde kolom met het beeld zet.
 - **Doellengte van de mp3**, en wat te doen bij afwijking: speed 1.05 tot 1.1, breaks korter of langer, of per zin genereren en op de cue-tijden zetten.
 - **Onder de video zetten:** mp3 in `public/`, bestandsnaam in de prop `music`, `musicVolume` op 1. Muziek en voice-over tegelijk kan nog niet; bied een aparte voiceover-prop aan als dat nodig is.
 
-**Voorbeeld (concept 2, 14.0 s):**
+**Tempo:**
+
+| Gevoel | Woorden per ~14 s | `--rate` | ElevenLabs Speed |
+|---|---|---|---|
+| Rustig | 25 tot 30 | 4.5 | 0.9 |
+| Normaal (reclame) | 30 tot 36 | 5.0 | 1.0 |
+| Snel | 34 tot 40 | 5.5 | 1.1 |
+
+Breaks zijn absoluut. Genereer je op een andere Speed dan de rate waarmee je rekende, dan schuiven alle latere zinnen. Noem daarom altijd de Speed bij het blok.
+
+**Voorbeeld (concept 2, 14.0 s). Ter illustratie van het format; neem de zinnen niet over in een ander concept:**
 ```
 Heb jij die rekening al betaald? <break time="0.3s" /> Stuur hem door. Buddy telt af. Zeven dagen vooraf: een seintje. Twee dagen vooraf: nog een. Betaald. Zonder stress. <break time="0.5s" /> Zeven. Twee. Betaald. Activeer Buddy.
 ```
