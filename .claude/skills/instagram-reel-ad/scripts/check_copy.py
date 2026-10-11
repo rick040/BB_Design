@@ -3,6 +3,10 @@
 the BetaalBuddy copy rules. A hit is a prompt to look, not an automatic error:
 judge each one (e.g. "€40" is fine when phrased as "kan uitlopen op").
 
+Lines between a "copycheck:off" and a "copycheck:on" marker (in any comment
+syntax, e.g. <!-- copycheck:off -->) are skipped, so a "Copyregels" section that
+lists the banned words does not produce noise.
+
 Usage: check_copy.py <file> [<file> ...] [--rules path/to/copy-rules.txt]
 Exit code: 0 = no hits, 1 = hits to review.
 """
@@ -38,7 +42,16 @@ def main() -> int:
     hits = 0
     for path in args.files:
         with open(path, encoding="utf-8") as fh:
+            skipping = False
             for n, line in enumerate(fh, start=1):
+                if "copycheck:off" in line:
+                    skipping = True
+                    continue
+                if "copycheck:on" in line:
+                    skipping = False
+                    continue
+                if skipping:
+                    continue
                 for rx, reason in rules:
                     for m in rx.finditer(line):
                         before = line[: m.start()]

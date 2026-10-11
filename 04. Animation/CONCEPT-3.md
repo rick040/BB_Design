@@ -50,6 +50,7 @@
 
 ---
 
+<!-- copycheck:off -->
 ## Copyregels
 Volgens `brand-betaalbuddy.md` §3 en de changelog (stand 11 oktober 2026): geen "gratis" of proefperiode, geen WhatsApp, Telegram of Signal, geen "scant je inbox", geen prijs, geen logo's of namen van andere merken. Het toestemmingsvenster is generiek: geen mailprovider, geen logo.
 
@@ -64,6 +65,7 @@ Productclaims in deze ad en waar ze op rusten:
 - Komt er ooit een optionele mailboxkoppeling, dan klopt deze ad niet meer.
 
 ---
+<!-- copycheck:on -->
 
 ## Voice-over (ElevenLabs, Multilingual v2)
 

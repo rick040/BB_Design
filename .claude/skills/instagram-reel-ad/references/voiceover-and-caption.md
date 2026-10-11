@@ -5,21 +5,30 @@
 **Model:** ElevenLabs **Multilingual v2** (ook Flash/Turbo v2.5). Daar werkt `<break time="0.4s" />` voor pauzes tot 3 s. Eleven v3 ondersteunt geen break-tags; zeg dat erbij als de gebruiker v3 noemt.
 
 **Werkwijze:**
-1. **Meet de beelden.** Haal de scène-timings uit het schema en de beat-frames uit de constanten bovenin de scènes. Reken ze om naar globale seconden:
+1. **Meet de beelden.** Haal de scène-timings uit het schema en lees de beats direct uit de scènes:
    ```bash
-   python3 scripts/timeline.py --scenes 3.2,5.4,3.2,3.4 --transition 0.4 --events "1:58,2:8,2:32,2:44"
+   python3 "$SK/scripts/timeline.py" --scenes 3.2,3.4,4.6,3.6 --transition 0.4 \
+     --beats-from "1=$P/src/privacy/scenes/HookScene.tsx,2=$P/src/privacy/scenes/BlindScene.tsx,3=...,4=..."
    ```
-   (`--events scène:frame`, met scènes vanaf 1.) Dit is exact: het rekent op dezelfde manier als `TransitionSeries`.
-2. **Schrijf per beat één korte zin.** Spreektempo-schatting voor Nederlands in een reclametempo:
-   - ~5 lettergrepen per seconde;
-   - plus ~0.3 s natuurlijke pauze na elke punt of vraagteken;
-   - een komma of dubbele punt is ~0.2 s.
+   Heeft een scène geen beat-object, gebruik dan `--events "scène:frame=label"`. De uitkomst is exact: het script rekent op dezelfde manier als `TransitionSeries`.
+2. **Schrijf per beat één korte zin** en zet hem op de tijd van zijn beat (+0 tot 0,4 s) in een bestand `vo.txt`:
+   ```
+   0.0 | Moet een app echt al je mail lezen?
+   3.1 | Buddy niet.
+   4.0 | Hij kijkt niet in je mailbox.
+   ```
+   Een zin die het beeld aankondigt voordat het er is, voelt verkeerd. Een video van 14 s draagt ~30 tot 38 woorden. Minder is beter; laat de beelden ademen. Hergebruik koppen waar het kan: stem en beeld die hetzelfde zeggen, versterken elkaar.
+3. **Laat het script het blok maken:**
+   ```bash
+   python3 "$SK/scripts/vo_timing.py" vo.txt --total 13.6
+   ```
+   Het script telt lettergrepen (~5 per seconde), rekent de pauzes (0,3 s na een zin, 0,2 s per komma) en zet de breaks precies goed. Het waarschuwt bij:
+   - overlap: een zin start later dan zijn beat;
+   - cijfers;
+   - een einde dat minder dan 0,3 s voor het eind van de video ligt.
 
-   Begroting: een video van 14 s draagt ~30 tot 38 woorden. Minder is beter; laat de beelden ademen.
-3. **Laat elke zin 0 tot 0.4 s ná zijn beeldmoment starten.** Een zin die het beeld aankondigt voordat het er is, voelt verkeerd. De laatste zin eindigt ≥ 0.3 s voor het einde.
-4. **Zet extra breaks waar het gat groter is dan de natuurlijke pauze.** Break = gewenste start − (vorige eind + 0.3 s).
-5. **Schrijf getallen en bedragen uit** ("veertig euro", "zeven", "twee") voor een betrouwbare uitspraak. "Buddy" mag zo blijven staan.
-6. **Hergebruik koppen waar het kan.** Stem en beeld die hetzelfde zeggen, versterken elkaar. Waar het beeld al uitlegt, mag de stem aanvullen.
+   Los elke waarschuwing op door in te korten of de start te verschuiven, en draai het script opnieuw.
+4. **Schrijf getallen en bedragen uit** ("veertig euro", "zeven", "twee") voor een betrouwbare uitspraak. "Buddy" mag zo blijven staan.
 
 **Opleveren (in deze volgorde):**
 - **Paste-blok:** één alinea, zonder regeleindes (een regeleinde geeft extra pauze), in een codeblok.

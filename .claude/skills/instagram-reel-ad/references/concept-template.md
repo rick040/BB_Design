@@ -17,13 +17,16 @@ Schrijf in het Nederlands. Houd het scanbaar: kopjes, korte bullets en tabellen.
 | Geluid | Werkt zonder geluid. Voice-over en caption staan onderaan |
 
 ### Hoe dit verschilt van de eerdere concepten
-| | Concept 1 | Concept 2 | **Dit concept** |
-|---|---|---|---|
-| Invalshoek | Overzicht | Timing | … |
-| Visueel systeem | UI-gedreven | Typografisch (reuzengetal) | … |
-| Rol van Buddy | Slikt de rekening | Rijdt mee op het aftellen | … |
-| Einde | Belofte | Uitkomst "Betaald." | … |
-| Overgangen | iris, slide | clock-wipe, slide | … |
+Eén kolom per bestaand concept (haal de waarden uit hun CONCEPT-bestanden) plus dit concept. Verschil op minstens vier van de zes rijen met elk bestaand concept.
+
+| | Concept 1 | Concept 2 | … | **Dit concept** |
+|---|---|---|---|---|
+| Invalshoek | | | | |
+| Visueel systeem | | | | |
+| Rol van Buddy | | | | |
+| Einde | | | | |
+| Slotbeeld (CTA) | | | | |
+| Overgangen | | | | |
 
 ---
 
@@ -41,8 +44,10 @@ Schrijf in het Nederlands. Houd het scanbaar: kopjes, korte bullets en tabellen.
 
 ---
 
+<!-- copycheck:off -->
 ## Copyregels
 <verwijs naar de regels; noem aannames die nog bevestigd moeten worden>
+<!-- copycheck:on -->
 
 ## Voice-over (ElevenLabs, Multilingual v2)
 <paste-blok + cue-tabel + doellengte>
@@ -51,4 +56,7 @@ Schrijf in het Nederlands. Houd het scanbaar: kopjes, korte bullets en tabellen.
 <caption in codeblok>
 
 **Advertentie (Ads Manager):** primaire tekst "…" · Kop "…" · Knop "Aanmelden".
+
+## Open controles
+<instappagina voor CTA en link in bio, claims die nog bevestigd moeten worden>
 ```

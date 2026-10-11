@@ -55,12 +55,14 @@
 
 ---
 
+<!-- copycheck:off -->
 ## Copy rules for this ad (from the changelog)
 - No **"gratis" / "probeer gratis" / trial**. The new pricing model has no free period.
 - No **WhatsApp / Telegram / Signal**. They are not available yet.
 - No **"scant je inbox" / Gmail connection**. The product now works by forwarding.
 - No **price** in the ad by default. Basic has no reminders, so "vanaf €2,99" next to a reminder promise would mislead.
 - No third-party logos (Gmail, Netflix). Generic senders only.
+<!-- copycheck:on -->
 
 ## Instagram safe zones
 The key copy sits between ~14% from the top and ~20% from the bottom of the 9:16 frame, so the profile header and the Meta CTA bar do not cover it. In Remotion Studio, turn on `showSafeZones` to see the guides. They are never visible in an export unless you leave the toggle on.

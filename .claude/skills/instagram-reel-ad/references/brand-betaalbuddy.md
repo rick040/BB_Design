@@ -6,7 +6,7 @@ Stand van 11 oktober 2026. Check de BetaalBuddy-changelog in Drive voor wijzigin
 1. Merk (kleuren, fonts, Buddy, assets)
 2. Product: wat waar is
 3. Copyregels: wat niet mag en waarom
-4. Gemaakte concepten en nog ongebruikte invalshoeken
+4. Invalshoeken (en waar je ziet wat al gemaakt is)
 
 ---
 
@@ -50,7 +50,7 @@ Ritme: wissel blauwe en lichte scènes af. Een lichte scène voelt als "probleem
   - telefoon-mockups (Asset 31, Mockup3);
   - kalender (Mockup2, datevector);
   - stapels meldingen (Stack1 tot 3).
-- `03. Mockups/`: bestaande statische ads en stories, handig als stijlreferentie.
+- `03. Mockups/`: bestaande statische ads en stories. Gebruik ze **alleen als stijlreferentie, niet voor tekst**: ze bevatten verouderde claims, zoals "probeer gratis" (Ad1 tot Ad3), "Buddy scant en labelt al je emails" (Story3) en WhatsApp-meldingen (Story2 en Story5).
 - Alles is als React/SVG nagebouwd in `04. Animation/src/components`. Bouw nieuwe elementen op dezelfde manier na, zodat de tekst bewerkbaar blijft.
 
 ### Toon
@@ -68,6 +68,28 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 - **Pakketten:** Basic, Standard en Premium. **Basic heeft geen agenda en geen herinneringen.** Premium noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
 - **Kanalen niet beschikbaar:** WhatsApp, Telegram en Signal.
 
+### Privacy en gegevens (belangrijk voor een privacy-invalshoek)
+- **Geen koppeling.** Buddy krijgt alleen wat jij doorstuurt; er is geen koppeling met je mailbox.
+- **Retentie.** Gegevens van een rekening blijven bewaard tot **14 dagen na de vervaldatum**, daarna worden ze verwijderd. Claim dus **niet** "Buddy bewaart niets" of "wordt direct verwijderd".
+- **Links** in mails zijn ondertekend en **60 dagen** geldig.
+- **Adressen:**
+  - `start@` om te beginnen;
+  - `vul-in+<id>@` om ontbrekende gegevens aan te vullen;
+  - `gegevens@` om je gegevens in te zien;
+  - `stop@` om te stoppen of alles te laten verwijderen.
+- **Bron:** de docs-site, zie de changelog van 10 september 2026.
+
+### Instappagina's per invalshoek
+Er zijn zes landingspagina's, elk rond één invalshoek:
+- achteraf betalen;
+- net op jezelf wonen;
+- aanmaning en incassokosten;
+- privacy zonder mailboxkoppeling;
+- verkeersboetes;
+- zorgnota's.
+
+Ze staan in het EmailTool-project onder `landingspaginas/`. Waar ze live komen te staan, is nog niet besloten. Noem in je oplevering welke pagina het best bij de ad past, als open punt voor de link in bio en de CTA. Let op: volgens de changelog noemen die pagina's nog prijzen en "30 dagen geld terug"; ook dat is een open punt.
+
 ## 3. Copyregels
 
 | Niet zeggen | Waarom |
@@ -79,6 +101,8 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 | "30 dagen geld terug" | Staat nog open in de changelog; niet gebruiken tot het bevestigd is |
 | Logo's of namen van andere merken (Gmail, Netflix, PostNL, Klarna…) | Merkrecht; gebruik generieke afzenders |
 | Buddy "betaalt voor je" | Buddy herinnert; jij betaalt |
+| "Buddy bewaart niets", "wordt direct verwijderd" | Gegevens blijven tot 14 dagen na de vervaldatum (§2) |
+| Gedachtestreepjes (—) in copy | Huisstijl; gebruik een punt, komma of dubbele punt |
 | Gebruikersaantallen, quotes, testimonials | Staat op de weglijst van HOMEPAGE-COPY §14 |
 
 **Wel toegestaan, mits precies geformuleerd:**
@@ -93,19 +117,18 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 
 `references/copy-rules.txt` is de machineleesbare versie van deze tabel voor `scripts/check_copy.py`.
 
-## 4. Gemaakte concepten en nog ongebruikte invalshoeken
+## 4. Invalshoeken
 
-| # | Concept | Invalshoek | Visueel systeem | Overgangen |
-|---|---|---|---|---|
-| 1 | "Stuur door. Buddy onthoudt." (`BB-Ad-*`) | Overzicht: volle inbox, aanmaning +€40 | UI-gedreven (inbox, mailkaart, chips, meldingen); Buddy "slikt" de rekening | iris, slide |
-| 2 | "7 · 2 · Betaald." (`BB-Countdown-*`) | Timing: "heb ik dat betaald?", aftellen | Typografisch: reuzengetal rolt van 7 naar 2, Buddy staat erop; vinkje en stempel | clock-wipe, slide |
+**Wat al gemaakt is, staat in de CONCEPT-bestanden** (`04. Animation/CONCEPT*.md`), elk met een vergelijkingstabel: invalshoek, visueel systeem, rol van Buddy, einde, slotbeeld en overgangen. Lees die altijd. Deze lijst houdt bewust niet bij wat al gemaakt is, zodat hij niet veroudert.
 
-**Ongebruikte invalshoeken** (uit de landingspagina's en de Meta-strategie):
-- **Privacy:** "Buddy leest alleen wat jij doorstuurt" (geen mailbox-koppeling).
+Invalshoeken uit de landingspagina's en de Meta-strategie (sla over wat al in een CONCEPT-bestand staat):
+- **Overzicht:** een volle inbox, een aanmaning.
+- **Timing:** "heb ik dat betaald?", aftellen naar de vervaldatum.
+- **Privacy:** "Buddy leest alleen wat jij doorstuurt", geen mailboxkoppeling.
 - **Mental load:** "Je hoofd is geen agenda."
 - **Net op jezelf wonen:** de eerste eigen rekeningen.
 - **Kosten eerst:** één vergeten rekening kan uitlopen op €40 incassokosten.
 - **Achteraf betalen:** zonder merknamen.
 - **Zorgnota's:** van tandarts en fysio.
 - **Wekelijks overzicht:** rust op maandagochtend.
-- **Verkeersboetes:** alleen digitale boetes; de WAHV-volgorde klopt alleen zoals op de landingspagina.
+- **Verkeersboetes:** alleen digitale boetes, en alleen met de WAHV-volgorde zoals op de landingspagina.

@@ -5,7 +5,7 @@
 2. Gedeelde componenten en helpers (API)
 3. Een nieuw concept toevoegen, stap voor stap
 4. Layout, safe zones en timing
-5. Bekende fouten (lees dit vóór je stills bekijkt)
+5. Bekende fouten (lees dit vóór je stills bekijkt) + 5b. Regressiecheck voor gedeelde code
 6. Renderen en controleren
 
 ---
@@ -18,8 +18,11 @@ src/index.ts            registerRoot
 src/Root.tsx            alle composities, per concept in een <Folder>
 src/theme.ts            brand-tokens, fonts (loadFont uit public/fonts)
 src/schema.ts + Ad.tsx + scenes/       concept 1 "Stuur door. Buddy onthoudt."
-src/countdown/                          concept 2 "7 · 2 · Betaald."  ← beste sjabloon
+src/countdown/                          concept 2 "7 · 2 · Betaald."
   schema.ts  CountdownAd.tsx  scenes/{HookScene,CountdownScene,PaidScene,CtaScene}.tsx
+src/privacy/                            concept 3 "Jij kiest wat Buddy ziet."  ← beste sjabloon
+  schema.ts  PrivacyAd.tsx  scenes/{Hook,Blind,Read,Cta}Scene.tsx  components/ (concept-eigen onderdelen)
+                                        beats als geëxporteerde objecten (HOOK_T, …), eigen overgang focusPull
 src/components/         gedeelde merkonderdelen
 src/lib/                anim.ts, layout.ts, palette.tsx
 public/fonts/           SpaceGrotesk-Variable.woff2, Geist-Variable.woff2 (+ OFL)
@@ -31,11 +34,12 @@ Gepinde versies: remotion, @remotion/* 4.0.534; zod 4.5.4 (moet bij deze Remotio
 
 ## 2. Gedeelde componenten en helpers
 
-Alle onderdelen lezen hun kleuren uit `usePalette()`. Zet ze dus binnen `<PaletteProvider colors={props.colors}>`.
+Alle onderdelen lezen hun kleuren uit `usePalette()`. Zet ze dus binnen `<PaletteProvider colors={props.colors}>`. `colors` heeft het type `PaletteColors` uit `src/lib/palette.tsx`: precies `blue, light, softBlue, bodyOnBlue, alert`, elk als `zColor()` in het schema.
 
 | Component | Props | Notities |
 |---|---|---|
-| `Buddy` | `size, body, eye, blink=1, look={x,y}, squash=1, style` | `BUDDY_RATIO` = hoogte/breedte (~1.09). `squash` < 1 plat, > 1 uitgerekt (volume-behoudend, oorsprong onderkant). Positioneer via `style` (left/top van de voeten: `top = voetenY - size*BUDDY_RATIO`). |
+| `Buddy` | `size, body, eye, blink=1, look={x,y}, squash=1, accessory?, style` | `BUDDY_RATIO` = hoogte/breedte (~1.09). `squash` < 1 plat, > 1 uitgerekt (volume-behoudend, oorsprong onderkant). Positioneer via `style` (left/top van de voeten: `top = voetenY - size*BUDDY_RATIO`). `accessory` = SVG in Buddy's eigen viewBox (`BUDDY_VIEWBOX`, 465×506), geknipt op zijn silhouet. |
+| `SleepMask` | `lift 0..1, color, lineColor` | Slaapmasker als `accessory` van Buddy (concept 3); 0 = over de ogen, 1 = omhoog geschoven |
 | `AppIcon` | `size, circle=true, circleColor` | BetaalBuddy-app-icoon |
 | `Notification` | `text, time, icon: "new"\|"warning"\|"alert", title="BetaalBuddy", width=900, style` | `NOTIFICATION_W/H` = 900×156 |
 | `StatusIcon` | `kind, size` | SVG in plaats van emoji (emoji renderen verschillend per machine) |
@@ -59,6 +63,8 @@ Alle onderdelen lezen hun kleuren uit `usePalette()`. Zet ze dus binnen `<Palett
 - `shake(frame, start, length, amp)` geeft `{x,y,r}`;
 - `blinkScale(frame, [frames])`: een knipper van 6 frames.
 
+`src/lib/focusPull.tsx`: `focusPull({blur})` is een eigen CSS-overgang (oude scène wazig weg, nieuwe scherp erin). Het is het voorbeeld voor een eigen `TransitionPresentation`.
+
 `src/lib/layout.ts`: `useLayout()` geeft `tall`, `safeTop` (250/80), `safeBottom` (330/80), `headlineSize` (104/84), `sublineSize`, `stageScale` (1/0.78), `stageCenterY` en `sidePadding`.
 
 ## 3. Een nieuw concept toevoegen
@@ -70,9 +76,18 @@ Alle onderdelen lezen hun kleuren uit `usePalette()`. Zet ze dus binnen `<Palett
    - Het defaults-object plus de helpers `<naam>Frames(timing)` en `<naam>Total(timing)`. Het totaal is de som van de scènes min (aantal overgangen × transition).
    - Gebruik geen `.step()` op getallen; dat geeft afrondingsfouten in zod.
 3. **Ad-component.** Bouw die met `PaletteProvider`, `TransitionSeries` (springTiming damping 200), een optionele `<Audio>` voor `music` en `SafeZones`. Importeer `"../theme"` zodat de fonts laden.
-   - Beschikbare overgangen: `fade, slide, wipe, flip, clockWipe, iris, none`. Er zijn er meer in `node_modules/@remotion/transitions/dist/presentations/`; render een nieuwe overgang eerst als still.
-   - `iris` en `clockWipe` hebben `{width, height}` uit `useVideoConfig()` nodig.
-4. **Scènes.** Zet de timing-constanten bovenaan (scène-lokale frames, bijvoorbeeld `const T_LAND = 32`), zodat ze later makkelijk te tunen en te meten zijn voor de voice-over. Teken in `<Stage>`.
+   - **Veilige (CSS) overgangen:** `fade, slide, wipe, flip, clockWipe, iris, pushCut, none`. `iris` en `clockWipe` hebben `{width, height}` uit `useVideoConfig()` nodig.
+   - **Vermijd de WebGL- en canvas-overgangen:** blur-slide, book-flip, cross-zoom, crosswarp, dissolve, dreamy-zoom, film-burn, linear-blur, ripple, swap, zoom-blur en zoom-in-out. Die zijn riskant in headless renders en wijken af per machine.
+   - **Eigen overgang:** schrijf een `TransitionPresentation` (component met `presentationDirection`, `presentationProgress` en `passedProps`) met alleen CSS (opacity, transform, filter). Kopieer `src/lib/focusPull.tsx`.
+4. **Scènes.** Zet de beats bovenaan elke scène in één geëxporteerd object met scène-lokale frames, met per beat een korte uitleg in commentaar:
+   ```ts
+   export const HOOK_T = {
+     fan: 6,        // mails waaieren uit
+     flag: 44,      // "Al je e-mails lezen" wordt rood
+     seenStagger: 4,// duur: eindigt op Stagger/Len/Dur, wordt overgeslagen
+   };
+   ```
+   `timeline.py --beats-from` leest dit direct uit voor de cue-tabel en de lijst met frames om te renderen. Losse `const T_X = 32` en arrays `ARRIVALS`/`HOPS` werken ook (concept 1 en 2). Teken in `<Stage>`.
 5. **Root.tsx.** Voeg een `<Folder name="Concept-N-<Naam>">` toe; foldernamen mogen alleen a-z, A-Z, 0-9 en `-` bevatten. Zet er twee `<Composition>`s in (Reel 1080×1920 en Feed 1080×1350), met `schema`, `defaultProps`, `calculateMetadata` (duur uit timing) en `fps={30}`.
 6. **package.json.** Voeg `render:<slug>`, `render:<slug>:feed` en `still:<slug>` toe, en breid `render:all` uit.
 7. **Typecheck.** `npx tsc --noEmit`.
@@ -89,7 +104,7 @@ Blijvende wijzigingen horen in de defaults van het schema. Beide formaten delen 
 
 ## 5. Bekende fouten (allemaal echt voorgekomen)
 
-1. **Frame 0 is leeg** (alleen achtergrond). Zet de kop met een negatieve delay neer en laat items "al aangekomen" zijn (negatieve arrival-frames).
+1. **Frame 0 is leeg**, of toont maar een paar woorden van de kop. Zet de kop neer met delay ≈ −(woorden − 2) × stagger, of houd de hook-kop op ≤ 7 woorden. Laat de items "al aangekomen" zijn (negatieve arrival-frames).
 2. **Buddy springt door de kop heen.** Verlaag de boog of verplaats de rustpositie (zie §4).
 3. **Rollende of bewegende items tekenen over koppen of meldingen heen.** Controleer de z-volgorde en de clipping (`overflow: hidden` op lijsten).
 4. **Een nieuw item in een stapel komt van onder door een ouder item heen.** Laat het van boven op zijn plek ploppen (kleine negatieve offset en schaal 0.85 naar 1), met `zIndex` oplopend per item.
@@ -99,6 +114,18 @@ Blijvende wijzigingen horen in de defaults van het schema. Beide formaten delen 
 8. **Lelijke regelafbreking** ("agenda. 7 / en 2 dagen"). Gebruik `\n` in de tekst.
 9. **Emoji in de UI** renderen niet overal. Gebruik `StatusIcon` of eigen SVG.
 10. **Kleurafwijking** van het merkblauw door full range (`yuvj420p`). Dat lost `setColorSpace("bt709")` in de config op; laat die staan.
+11. **Slotbeeld lijkt op een vorig concept.** Concept 2 én 3 eindigen met Buddy bovenop de CTA-knop. Bedenk voor een nieuw concept een ander slotbeeld.
+12. **Een WebGL-overgang** rendert zwart of anders in de cloud. Gebruik CSS-overgangen (§3).
+
+## 5b. Regressiecheck voor gedeelde code
+
+Pas je iets aan in `src/components` of `src/lib`, dan kan een bestaand concept ongemerkt veranderen. Werk zo:
+1. **Opt-in.** Maak de wijziging opt-in: een nieuwe optionele prop, met als default het oude gedrag.
+2. **Vóór de wijziging** render je 2 frames van elke bestaande compositie in één aanroep:
+   ```bash
+   NODE_PATH="$P/node_modules" node "$SK/scripts/render_stills.cjs" "$P" BB-Ad-Reel,BB-Countdown-Reel,BB-Privacy-Reel /tmp/before 120,360
+   ```
+3. **Na de wijziging** doe je hetzelfde naar `/tmp/after`, en draai je `python3 "$SK/scripts/compare_stills.py" /tmp/before /tmp/after`. Verwacht resultaat: alles IDENTIEK.
 
 ## 6. Renderen en controleren
 
@@ -110,12 +137,13 @@ Blijvende wijzigingen horen in de defaults van het schema. Beide formaten delen 
   ```
 - `scripts/render_stills.cjs` zoekt deze browser zelf, of gebruikt `REMOTION_BROWSER`.
 
-**Stills (snel, één bundle):**
+**Stills (snel, één bundle; meerdere composities komma-gescheiden):**
 ```bash
-NODE_PATH="$P/node_modules" node "$SK/scripts/render_stills.cjs" "$P" BB-X-Reel /tmp/stills 0,20,45,...
-python3 "$SK/scripts/contact_sheet.py" /tmp/stills BB-X-Reel /tmp/sheet.png 5 340
+NODE_PATH="$P/node_modules" node "$SK/scripts/render_stills.cjs" "$P" BB-X-Reel,BB-X-Feed /tmp/stills 0,20,45,...
+python3 "$SK/scripts/contact_sheet.py" /tmp/stills BB-X-Reel /tmp/reel.png 5 340
+python3 "$SK/scripts/contact_sheet.py" /tmp/stills BB-X-Feed /tmp/feed.png 5 340
 ```
-Bekijk de sheet. Werk met uitsneden (PIL `crop`) als je een detail wilt controleren.
+Render ~20 tot 25 frames per formaat. Bekijk de sheets en werk met uitsneden (PIL `crop`) als je een detail wilt controleren. De contact sheet pakt alleen framebestanden (`<id>-<frame>.png`), dus covers in dezelfde map storen niet. Een melding "Detected differing memory amounts" is in de cloud onschuldig.
 
 **MP4:**
 ```bash
@@ -124,6 +152,7 @@ ffprobe -v error -show_entries stream=codec_name,width,height,pix_fmt,color_spac
 # verwacht: h264,1080,1920,yuv420p,bt709,<frames>  <duur>
 ffmpeg -v error -i out/BB-X-Reel.mp4 -vf "select=eq(n\,120)" -vframes 1 /tmp/f120.png   # beweging checken uit de echte MP4
 npx remotion still BB-X-Reel out/BB-X-Reel-cover.png --frame=<sterkste hookframe> $B
+# voeg pas daarna "still:<slug>" met dat frame toe aan package.json
 ```
 
 **Studio** (alleen nodig als de gebruiker het wil zien, of om te checken dat hij start): `npx remotion studio --no-open --port=3123`, dan `curl localhost:3123`.
