@@ -11,6 +11,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
+**New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
+
 ## 1 · Install (once)
 
 You need [Node.js](https://nodejs.org) 18 or newer.

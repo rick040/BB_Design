@@ -1,0 +1,23 @@
+{
+  "skill_name": "instagram-reel-ad",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Bedenk een nieuwe Instagram reel ad voor BetaalBuddy, iets met privacy want mensen zijn bang dat we hun hele mailbox lezen. Maak hem helemaal af, met voice-over en caption.",
+      "expected_output": "CONCEPT-3.md with a privacy angle that differs from concepts 1 and 2; new src/<slug>/ with schema, Ad component and scenes; BB-<Naam>-Reel and -Feed registered in a Concept-3 folder; typecheck passes; two MP4s (h264, yuv420p, bt709) plus cover in renders/; ElevenLabs paste block with break tags plus a cue table using timeline.py times; caption with link in bio and 5 hashtags; Ads Manager primary text, headline and Aanmelden button; no banned claims.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "ik heb een idee: buddy als een soort brievenbus die alle rekeningen opvangt die door de deur vallen, en dan sorteert op vervaldatum. kan je dat als animatie maken voor insta?",
+      "expected_output": "Takes the user's mailbox idea, sharpens it into a concept and builds it (not just a yes or no). Notes honestly that Buddy works by forwarding mail, not physical post, and adapts the metaphor (e.g. forwarded bills dropping in). Full deliverables as in eval 1.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "Schrijf alleen een nieuwe voice-over en caption voor concept 1 (Stuur door. Buddy onthoudt.), de reel zelf blijft zoals hij is. Liever wat rustiger tempo.",
+      "expected_output": "No new composition or code changes. Reads concept 1 timings from src/schema.ts and beat frames from src/scenes, uses timeline.py, writes a calmer (fewer words) ElevenLabs block with break tags plus a cue table aligned to the measured beats, and a caption plus Ads Manager copy that respects the copy rules.",
+      "files": []
+    }
+  ]
+}
