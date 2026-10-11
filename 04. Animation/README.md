@@ -1,14 +1,15 @@
-# BetaalBuddy · Instagram ad (Remotion)
+# BetaalBuddy · Instagram ads (Remotion)
 
-An editable animated ad, built in [Remotion](https://www.remotion.dev) (React → MP4).
-The concept and storyboard are in [`CONCEPT.md`](./CONCEPT.md).
+Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Two concepts, each in two formats:
 
-| Composition | Size | Use |
-|---|---|---|
-| `BB-Ad-Reel` | 1080 × 1920 (9:16) | Reels + Stories |
-| `BB-Ad-Feed` | 1080 × 1350 (4:5) | Feed |
+| Concept | Composition | Size | Use | Length |
+|---|---|---|---|---|
+| 1 · "Stuur door. Buddy onthoudt." ([`CONCEPT.md`](./CONCEPT.md)) | `BB-Ad-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 14.8 s |
+| | `BB-Ad-Feed` | 1080 × 1350 (4:5) | Feed | 14.8 s |
+| 2 · "7 · 2 · Betaald." ([`CONCEPT-2.md`](./CONCEPT-2.md)) | `BB-Countdown-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 14.0 s |
+| | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 
-Both are 14.8 s at 30 fps by default. Finished preview renders are in [`renders/`](./renders).
+All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
 ## 1 · Install (once)
 
@@ -25,7 +26,7 @@ npm install
 npm run dev
 ```
 
-The Studio opens in your browser. Pick **BB-Ad-Reel** or **BB-Ad-Feed** on the left, then use the **Props** panel on the right to change things live:
+The Studio opens in your browser. Pick a composition on the left (they are grouped per concept), then use the **Props** panel on the right to change things live:
 
 - **Text:** every headline, subline, button label, mail sender, chip and notification. Put `\n` in a headline or subline to force a line break.
 - **Colors:** blue, light background, soft blue, body text on blue, and the alert red.
@@ -35,7 +36,7 @@ The Studio opens in your browser. Pick **BB-Ad-Reel** or **BB-Ad-Feed** on the l
 
 Edits in the Props panel are **live**, and they are used when you click **Render** in the Studio. So edit → preview → render works directly.
 
-To make an edit **permanent** (and apply it to both formats at once), change the default in `src/schema.ts` (`defaultAdProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
+To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`) or `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
 
@@ -44,10 +45,13 @@ From the Studio: click **Render** in the top right, choose MP4 (H.264), and pres
 From the terminal:
 
 ```bash
-npm run render        # → out/BB-Ad-Reel.mp4  (9:16)
-npm run render:feed   # → out/BB-Ad-Feed.mp4  (4:5)
-npm run render:all    # both
-npm run still         # → out/cover.png  (frame for a cover image)
+npm run render                 # concept 1 → out/BB-Ad-Reel.mp4         (9:16)
+npm run render:feed            # concept 1 → out/BB-Ad-Feed.mp4         (4:5)
+npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
+npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
+npm run render:all             # all four
+npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
+npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -56,12 +60,14 @@ Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagra
 
 ```
 src/
-  Root.tsx            the two compositions (9:16 + 4:5)
-  Ad.tsx              scene order + transitions
-  schema.ts           ALL editable props + defaults  ← start here for copy changes
+  Root.tsx            all compositions, grouped per concept (9:16 + 4:5 each)
+  Ad.tsx              concept 1: scene order + transitions
+  schema.ts           concept 1: ALL editable props + defaults  ← start here for copy changes
+  scenes/             concept 1: Hook · Buddy · Forward · Remind · CTA
+  countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   theme.ts            brand colors + fonts
-  scenes/             1 Hook · 2 Buddy · 3 Forward · 4 Remind · 5 CTA
-  components/         Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark, …
+  components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
+                      BillCard, RollingNumber, Checkmark, …
   lib/                animation helpers, layout per format, palette
 public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
 ```

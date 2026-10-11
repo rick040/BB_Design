@@ -7,8 +7,11 @@
     "dev": "remotion studio",
     "render": "remotion render BB-Ad-Reel out/BB-Ad-Reel.mp4",
     "render:feed": "remotion render BB-Ad-Feed out/BB-Ad-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed",
-    "still": "remotion still BB-Ad-Reel out/cover.png --frame=130",
+    "render:countdown": "remotion render BB-Countdown-Reel out/BB-Countdown-Reel.mp4",
+    "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed",
+    "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
+    "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
