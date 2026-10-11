@@ -28,7 +28,7 @@ const MAILS = [
 // frame 0 so the opening frame (and the Reel cover) is never empty.
 const ARRIVALS = [-30, -20, 6, 13, 19, 24, 28, 32, 35, 38, 41, 43, 45];
 const ROW_H = 118;
-const SLAM = 58;
+const T_SLAM = 58;
 
 const avatarTint = ["#e8edf2", "#dfe6ff", "#e8edf2", "#cfdbff"];
 
@@ -47,9 +47,9 @@ export const HookScene: React.FC<{ props: AdProps["hook"] }> = ({ props }) => {
   );
   const counting = frame >= countFrom && frame < countTo;
   const badgeBump = counting ? 1 + 0.08 * Math.abs(Math.sin(frame * 0.9)) : 1;
-  const slam = pop(frame, fps, SLAM, { damping: 12, stiffness: 220, mass: 0.6 });
-  const s = shake(frame, SLAM + 3, 14, 16);
-  const dim = interpolate(frame, [SLAM, SLAM + 8], [0, 1], clamp);
+  const slam = pop(frame, fps, T_SLAM, { damping: 12, stiffness: 220, mass: 0.6 });
+  const s = shake(frame, T_SLAM + 3, 14, 16);
+  const dim = interpolate(frame, [T_SLAM, T_SLAM + 8], [0, 1], clamp);
 
   return (
     <SceneBg color={p.light}>
@@ -195,7 +195,7 @@ export const HookScene: React.FC<{ props: AdProps["hook"] }> = ({ props }) => {
           </div>
 
           {/* "Laatste aanmaning" card (02. Elements/Asset 33) slams on top */}
-          {frame >= SLAM - 1 ? (
+          {frame >= T_SLAM - 1 ? (
             <div
               style={{
                 position: "absolute",
@@ -260,7 +260,7 @@ export const HookScene: React.FC<{ props: AdProps["hook"] }> = ({ props }) => {
                   display: "flex",
                   alignItems: "center",
                   boxShadow: "0 12px 30px rgba(255, 60, 100, 0.45)",
-                  transform: `scale(${pop(frame, fps, SLAM + 6, springs.bouncy)}) rotate(6deg)`,
+                  transform: `scale(${pop(frame, fps, T_SLAM + 6, springs.bouncy)}) rotate(6deg)`,
                 }}
               >
                 {props.warningBadge}

@@ -12,3 +12,6 @@ buddy\s+betaalt|betaalt\s+(het\s+)?voor\s+je || Buddy herinnert; de gebruiker be
 €\s?40\b|veertig\s+euro || Wettelijk minimum incassokosten na een 14-dagenbrief: formuleer met "kan" of "zo", niet als zekerheid
 \b\d[\d.]*\s*(gebruikers|klanten|buddies)\b || Geen gebruikersaantallen (weglijst HOMEPAGE-COPY §14)
 betaallink\s+(uit|in)\s+je\s+herinnering || Nog te bevestigen: bevatten herinneringsmails de betaallink?
+bewaart\s+(niets|niks|geen)|slaat\s+(niets|niks)\s+op|verwijdert\s+(alles\s+)?(direct|meteen)|wordt\s+(direct|meteen)\s+verwijderd || Retentie: gegevens blijven tot 14 dagen na de vervaldatum; claim niet dat er niets bewaard wordt
+leest\s+(al\s+)?je\s+(hele\s+)?(mailbox|inbox)\b(?!.*\bniet\b) || Buddy leest nooit je mailbox; check dat de zin over een ander gaat of ontkend is
+— || Geen gedachtestreepjes (huisstijl); gebruik een punt, komma of dubbele punt

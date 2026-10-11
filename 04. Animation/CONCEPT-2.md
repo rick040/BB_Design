@@ -53,8 +53,10 @@ Zo heb je voor de A/B-test twee echt verschillende invalshoeken (*overzicht* teg
 
 ---
 
+<!-- copycheck:off -->
 ## Copyregels (zelfde als concept 1, uit de changelog)
 Geen "gratis" of proefperiode, geen WhatsApp, Telegram of Signal, geen "scant je inbox", geen prijs, geen logo's van andere merken. Herinneringen = mail op T-7 en T-2, plus de agenda (ICS).
+<!-- copycheck:on -->
 
 ## Voice-over (ElevenLabs, Multilingual v2)
 

@@ -5,19 +5,59 @@
       "id": 1,
       "prompt": "Bedenk een nieuwe Instagram reel ad voor BetaalBuddy, iets met privacy want mensen zijn bang dat we hun hele mailbox lezen. Maak hem helemaal af, met voice-over en caption.",
       "expected_output": "CONCEPT-3.md with a privacy angle that differs from concepts 1 and 2; new src/<slug>/ with schema, Ad component and scenes; BB-<Naam>-Reel and -Feed registered in a Concept-3 folder; typecheck passes; two MP4s (h264, yuv420p, bt709) plus cover in renders/; ElevenLabs paste block with break tags plus a cue table using timeline.py times; caption with link in bio and 5 hashtags; Ads Manager primary text, headline and Aanmelden button; no banned claims.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "CONCEPT-N.md bestaat met storyboard, voice-over en caption",
+        "Twee nieuwe composities (Reel en Feed) in een Concept-N-folder",
+        "Typecheck slaagt",
+        "Twee MP4's in renders/ (h264, yuv420p, bt709)",
+        "Lengte tussen 12 en 16 s",
+        "Cover-PNG voor het nieuwe concept in renders/",
+        "Voice-overblok met break-tags, één alinea",
+        "Cue-tabel aanwezig",
+        "Caption met link in bio en 5 hashtags incl. #betaalbuddy",
+        "Ads Manager-tekst met knop Aanmelden",
+        "Copycheck: geen niet-ontkende treffers in de advertentiecopy",
+        "Bestaande concepten renderen pixel-identiek (compare_stills)",
+        "Werk gecommit",
+        "Frame 0 is niet leeg en toont de kop"
+      ]
     },
     {
       "id": 2,
       "prompt": "ik heb een idee: buddy als een soort brievenbus die alle rekeningen opvangt die door de deur vallen, en dan sorteert op vervaldatum. kan je dat als animatie maken voor insta?",
       "expected_output": "Takes the user's mailbox idea, sharpens it into a concept and builds it (not just a yes or no). Notes honestly that Buddy works by forwarding mail, not physical post, and adapts the metaphor (e.g. forwarded bills dropping in). Full deliverables as in eval 1.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "CONCEPT-N.md bestaat met storyboard, voice-over en caption",
+        "Twee nieuwe composities (Reel en Feed) in een Concept-N-folder",
+        "Typecheck slaagt",
+        "Twee MP4's in renders/ (h264, yuv420p, bt709)",
+        "Lengte tussen 12 en 16 s",
+        "Cover-PNG voor het nieuwe concept in renders/",
+        "Voice-overblok met break-tags, één alinea",
+        "Cue-tabel aanwezig",
+        "Caption met link in bio en 5 hashtags incl. #betaalbuddy",
+        "Ads Manager-tekst met knop Aanmelden",
+        "Copycheck: geen niet-ontkende treffers in de advertentiecopy",
+        "Bestaande concepten renderen pixel-identiek (compare_stills)",
+        "Werk gecommit",
+        "Frame 0 is niet leeg en toont de kop"
+      ]
     },
     {
       "id": 3,
       "prompt": "Schrijf alleen een nieuwe voice-over en caption voor concept 1 (Stuur door. Buddy onthoudt.), de reel zelf blijft zoals hij is. Liever wat rustiger tempo.",
       "expected_output": "No new composition or code changes. Reads concept 1 timings from src/schema.ts and beat frames from src/scenes, uses timeline.py, writes a calmer (fewer words) ElevenLabs block with break tags plus a cue table aligned to the measured beats, and a caption plus Ads Manager copy that respects the copy rules.",
-      "files": []
+      "files": [],
+      "assertions": [
+        "Geen wijzigingen in de repo (git status schoon)",
+        "Beats gemeten met timeline.py",
+        "Paste-blok gemaakt met vo_timing.py zonder openstaande waarschuwingen",
+        "Minder woorden dan de huidige voice-over van concept 1 (rustiger tempo)",
+        "Cue-tabel met frame-exacte beelden",
+        "Caption en Ads Manager-tekst volgen de copyregels"
+      ]
     }
   ]
 }

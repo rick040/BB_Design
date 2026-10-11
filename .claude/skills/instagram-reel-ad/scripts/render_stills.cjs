@@ -2,7 +2,11 @@
 // than calling `remotion still` per frame).
 //
 // Usage:
-//   NODE_PATH="<project>/node_modules" node render_stills.cjs <projectDir> <compositionId> <outDir> <f1,f2,...>
+//   NODE_PATH="<project>/node_modules" node render_stills.cjs <projectDir> <compId[,compId2,...]> <outDir> <f1,f2,...>
+// Several composition ids (comma separated) share one bundle, e.g. Reel and Feed,
+// or every existing composition for a regression check (compare_stills.py).
+// Frames beyond a composition's length are clamped to its last frame.
+// The "Detected differing memory amounts" warning in cloud containers is harmless.
 //
 // Browser: uses $REMOTION_BROWSER, else a preinstalled headless Chromium under
 // /opt/pw-browsers (cloud sessions), else lets Remotion download its own.
@@ -24,9 +28,9 @@ const findBrowser = () => {
 };
 
 (async () => {
-  const [projectDir, compId, outDir, framesArg] = process.argv.slice(2);
-  if (!projectDir || !compId || !outDir || !framesArg) {
-    console.error("Usage: node render_stills.cjs <projectDir> <compositionId> <outDir> <f1,f2,...>");
+  const [projectDir, compArg, outDir, framesArg] = process.argv.slice(2);
+  if (!projectDir || !compArg || !outDir || !framesArg) {
+    console.error("Usage: node render_stills.cjs <projectDir> <compId[,compId2]> <outDir> <f1,f2,...>");
     process.exit(2);
   }
   const browserExecutable = findBrowser();
@@ -36,17 +40,19 @@ const findBrowser = () => {
     publicDir: path.join(projectDir, "public"),
     rootDir: projectDir,
   });
-  const composition = await selectComposition({ serveUrl, id: compId, browserExecutable });
-  console.log(`${compId}: ${composition.width}x${composition.height}, ${composition.durationInFrames} frames @ ${composition.fps} fps`);
-  const frames = framesArg
-    .split(",")
-    .map((s) => Number(s.trim()))
-    .filter((n) => Number.isFinite(n))
-    .map((n) => Math.min(Math.max(0, n), composition.durationInFrames - 1));
-  for (const f of frames) {
-    const output = path.join(outDir, `${compId}-${String(f).padStart(4, "0")}.png`);
-    await renderStill({ serveUrl, composition, frame: f, output, browserExecutable, imageFormat: "png" });
-    console.log("rendered", output);
+  for (const compId of compArg.split(",").map((c) => c.trim()).filter(Boolean)) {
+    const composition = await selectComposition({ serveUrl, id: compId, browserExecutable });
+    console.log(`${compId}: ${composition.width}x${composition.height}, ${composition.durationInFrames} frames @ ${composition.fps} fps`);
+    const frames = framesArg
+      .split(",")
+      .map((s) => Number(s.trim()))
+      .filter((n) => Number.isFinite(n))
+      .map((n) => Math.min(Math.max(0, n), composition.durationInFrames - 1));
+    for (const f of frames) {
+      const output = path.join(outDir, `${compId}-${String(f).padStart(4, "0")}.png`);
+      await renderStill({ serveUrl, composition, frame: f, output, browserExecutable, imageFormat: "png" });
+      console.log("rendered", output);
+    }
   }
 })().catch((e) => {
   console.error(e);

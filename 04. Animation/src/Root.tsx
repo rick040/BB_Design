@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { PrivacyAd } from "./privacy/PrivacyAd";
+import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -16,6 +18,10 @@ const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
 
 const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props }) => ({
   durationInFrames: countdownTotal(props.timing),
+});
+
+const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
+  durationInFrames: privacyTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -66,6 +72,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultCountdownProps}
         calculateMetadata={countdownMetadata}
         durationInFrames={countdownTotal(defaultCountdownProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 3 · "Jij kiest wat Buddy ziet." (CONCEPT-3.md) */}
+    <Folder name="Concept-3-Privacy">
+      <Composition
+        id="BB-Privacy-Reel"
+        component={PrivacyAd}
+        schema={privacySchema}
+        defaultProps={defaultPrivacyProps}
+        calculateMetadata={privacyMetadata}
+        durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Privacy-Feed"
+        component={PrivacyAd}
+        schema={privacySchema}
+        defaultProps={defaultPrivacyProps}
+        calculateMetadata={privacyMetadata}
+        durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
