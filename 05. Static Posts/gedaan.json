@@ -169,5 +169,59 @@
     "idee": "Doorstuurscherm naar jouwcode, dat is het",
     "datum": "2026-10-14",
     "bestand": "BB-Post-R14-doorsturen.png"
+  },
+  {
+    "nr": "R05",
+    "slug": "keukentafel",
+    "kop": "In elk huis is er een rekening van niemand.",
+    "hoek": "H8 relaties",
+    "idee": "Twee huisgenoten, heb jij de energie betaald, ik dacht jij",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R05-keukentafel.png"
+  },
+  {
+    "nr": "R20",
+    "slug": "naambordje",
+    "kop": "Nieuw adres.",
+    "hoek": "H1 levensmoment",
+    "idee": "Naamstickertje bij de bel, straks eerste aanslag gemeente",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R20-naambordje.png"
+  },
+  {
+    "nr": "R31",
+    "slug": "buddy-gokt-niet",
+    "kop": "Buddy gokt niet.",
+    "hoek": "Vertrouwen",
+    "idee": "Formulier met bedrag en vervaldatum vraagteken, Buddy vraagt het je",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R31-buddy-gokt-niet.png"
+  },
+  {
+    "nr": "R36",
+    "slug": "lockscreen-straks",
+    "kop": "Allemaal gelezen. Allemaal straks.",
+    "hoek": "H2/H3",
+    "idee": "Vergrendelscherm vol straks-meldingen",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R36-lockscreen-straks.png"
+  },
+  {
+    "nr": "R25",
+    "slug": "later-meme",
+    "kop": "Ik bij het afrekenen. Ik, later.",
+    "hoek": "H4/H7 meme",
+    "idee": "Twee panelen Buddy, betaal ik later wel",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R25-later-meme.png"
+  },
+  {
+    "nr": "R39",
+    "slug": "bingo",
+    "kop": "Volwassen-worden-bingo.",
+    "hoek": "H7 humor",
+    "idee": "Bingokaart volwassen worden",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R39-bingo.png"
   }
 ]

@@ -290,3 +290,89 @@ Aanmelden via de link in bio.
 ```
 Alt: Een doorstuurscherm naar jouwcode@in.betaalbuddy.nl met onderwerp Fwd: Factuur Energieleverancier en een knop Verstuur. Tekst: Factuur binnen? Doorsturen. Dat is het.
 Let op: voorbeelden zijn generiek. Retargeting; spiegelpaar met #29.
+
+
+## Batch 4 (minimaal, zonder geel; uit Ricks lijst)
+
+> Link in bio gaat naar betaalbuddy.nl/probeer-betaalbuddy/.
+
+## R05 · In elk huis is er een rekening van niemand (lijst #5)
+```
+In elk huis met huisgenoten is er een rekening van niemand. 🏠
+
+Stuur de factuur naar Buddy, dan staat hij in jouw agenda. Tag je huisgenoot.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#huisgenoten #studentenhuis #rekeningen #relatable #betaalbuddy
+```
+Alt: Twee chatbubbels: "Heb jij de energie betaald?" en "Ik dacht jij." Twee Buddy's eronder, een met een telefoon, de ander kijkt weg.
+Let op: de bron (AFM Gen Z 2025: 23% huurt, 10% kamer) staat niet in de caption; voeg hem alleen toe na controle.
+
+## R20 · Nieuw adres. (lijst #20)
+```
+Gemeentelijke belastingen staan op geen enkele verhuischecklist die je vrienden je sturen. 📬
+
+Als de aanslag komt: doorsturen naar Buddy.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#opjezelfwonen #verhuizen #eerstehuis #rekeningen #betaalbuddy
+```
+Alt: Een deurbelpaneel met een nieuw naamstickertje en Buddy ernaast. Tekst: Nieuw adres. Straks ook: je eerste aanslag van de gemeente.
+
+## R31 · Buddy gokt niet. (lijst #31)
+```
+Liever een vraag dan een verkeerde datum in je agenda. 🙋
+
+Kan Buddy je factuur niet goed lezen? Dan gokt hij niet. Hij vraagt het jou.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#rekeningen #eerlijk #geldzaken #overzicht #betaalbuddy
+```
+Alt: Een formulier met Bedrag: ? en Vervaldatum: ? en Buddy die schuin kijkt. Tekst: Buddy gokt niet. Kan hij je factuur niet goed lezen? Dan vraagt hij het jou.
+
+## R36 · Allemaal gelezen. Allemaal 'straks'. (lijst #36)
+```
+Lezen is niet onthouden. 📱
+
+Stuur door en Buddy onthoudt.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#rekeningen #straks #mentaleload #relatable #betaalbuddy
+```
+Alt: Vier meldingen van generieke afzenders, allemaal "Gelezen · straks". Tekst: Allemaal gelezen. Allemaal 'straks'.
+
+## R25 · Ik bij het afrekenen / ik later (lijst #25)
+```
+Later is een prima moment. Als je weet wanneer later is. 😅
+
+Stuur je betaalmails door. Buddy weet wanneer.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#achterafbetalen #meme #relatable #rekeningen #betaalbuddy
+```
+Alt: Twee panelen. Links: "Ik bij het afrekenen: 'Betaal ik later wel.'" met een rechtopstaande Buddy. Rechts: "Ik, later:" met een scheve Buddy die naar een stapel betaalverzoeken kijkt.
+Spiegelpaar met #9.
+
+## R39 · Volwassen-worden-bingo (lijst #39)
+```
+Bingo betekent hier dat je volwassen bent. Gefeliciteerd. 🎉
+
+Hoeveel heb jij? Stuur naar je groepsapp.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#volwassenworden #bingo #relatable #rekeningen #betaalbuddy
+```
+Alt: Een bingokaart van 3 bij 3 met situaties als "Eerste aanslag van de gemeente" en "Jaarfactuur vergeten". In het midden staat Buddy.
+Alleen organisch (deelformat). De lijst noemt een 4x4-kaart; dit is een 3x3 voor leesbaarheid.

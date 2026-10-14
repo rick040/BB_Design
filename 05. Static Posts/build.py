@@ -416,6 +416,97 @@ def pR14():
 <div class="sub" style="top:890px;left:90px;right:auto;text-align:left;font-size:50px;color:{C['blue']}">Dat is het.</div>""")
 
 
+# ---------- batch 4: minimaal, zonder geel ----------
+def _bubble(txt, bg, col, side, w=640):
+    br = "40px 40px 40px 12px" if side == "l" else "40px 40px 12px 40px"
+    al = "flex-start" if side == "l" else "flex-end"
+    return (f'<div style="display:flex;justify-content:{al}"><div style="max-width:{w}px;background:{bg};color:{col};border-radius:{br};padding:32px 44px;'
+            f'font-family:Geist,sans-serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.2">{txt}</div></div>')
+
+
+def pR05():
+    phone = (f'<svg width="70" height="110" viewBox="0 0 70 110" style="display:block"><rect x="4" y="4" width="62" height="102" rx="14" fill="{C["blue"]}"/>'
+             f'<rect x="12" y="14" width="46" height="70" rx="6" fill="{C["blueSoft"]}"/></svg>')
+    return page("dark", f"""
+<h1 style="font-size:76px">In elk huis is er<br>een rekening van niemand.</h1>
+<div class="abs" style="left:90px;right:90px;top:430px;display:flex;flex-direction:column;gap:34px">
+  {_bubble("Heb jij de energie betaald?", "#fff", C["ink"], "l")}
+  {_bubble("Ik dacht jij.", C["blueSoft"], C["blue"], "r", 420)}</div>
+<div class="abs" style="left:150px;top:830px">{buddy(190, look=(0.4, 0))}</div>
+<div class="abs" style="left:330px;top:850px;transform:rotate(-10deg)">{phone}</div>
+<div class="abs" style="left:740px;top:850px">{buddy(190, body=C["blueSoft"], blink=0.4, look=(-0.8, 0.6))}</div>""")
+
+
+def pR20():
+    panel = (f'<div class="abs" style="left:350px;top:400px;width:380px;height:520px;border-radius:44px;background:{C["blueSoft"]}"></div>'
+             f'<div class="abs" style="left:450px;top:470px;width:180px;height:180px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center">'
+             f'<div style="width:110px;height:110px;border-radius:50%;background:{C["blue"]}"></div></div>'
+             f'<div class="abs" style="left:410px;top:730px;width:260px;height:110px;border-radius:14px;background:#fff;padding:26px 24px;transform:rotate(-1.5deg)">'
+             f'<div style="height:14px;width:150px;border-radius:7px;background:{C["blue"]};margin-bottom:16px"></div>'
+             f'<div style="height:12px;width:90px;border-radius:6px;background:{C["grey"]}"></div></div>')
+    return page("light", f"""
+<h1>Nieuw adres.</h1>
+{panel}
+<div class="abs" style="left:740px;top:790px">{buddy(150, body=C["blue"], eye="#fff", look=(-0.8, 0))}</div>
+<div class="sub" style="top:980px;font-size:42px;color:{C['blue']}">Straks ook: je eerste aanslag<br>van de gemeente.</div>""")
+
+
+def pR31():
+    def field(label):
+        return (f'<div style="height:96px;border-radius:20px;background:{C["grey"]};display:flex;align-items:center;justify-content:space-between;padding:0 30px;'
+                f'font-family:Geist,sans-serif;font-size:36px;font-weight:500;color:{C["ink"]}"><span>{label}</span>'
+                f'<span style="font-size:52px;color:{C["blue"]};font-weight:600">?</span></div>')
+    return page("dark", f"""
+<h1>Buddy gokt niet.</h1>
+<div class="abs card" style="left:90px;right:350px;top:430px;border-radius:36px;padding:44px 40px;display:flex;flex-direction:column;gap:26px;width:640px">
+  {field("Bedrag")}{field("Vervaldatum")}</div>
+<div class="abs" style="left:780px;top:560px">{buddy(200, look=(-0.9, 0.2), style="transform:rotate(6deg)")}</div>
+<div class="sub" style="top:870px;font-size:42px">Kan hij je factuur niet goed lezen?<br>Dan vraagt hij het jou.</div>""")
+
+
+def pR36():
+    names = [("bolt", "Energieleverancier"), ("heart", "Zorgverzekeraar"), ("home", "Verhuurder"), ("doc", "Gemeente")]
+    cards = "".join(f'<div class="card bill" style="height:104px;border-radius:52px;padding-left:20px">{glyph(g, 66)}<div class="bt"><b style="font-size:32px">{n}</b>'
+                    f'<span style="font-size:24px">Gelezen &middot; straks</span></div></div>' for g, n in names)
+    return page("light", f"""
+<h1 class="s">Allemaal gelezen.<br>Allemaal &lsquo;straks&rsquo;.</h1>
+<div class="abs" style="left:90px;right:90px;top:430px;display:flex;flex-direction:column;gap:18px">{cards}</div>
+<div class="abs" style="left:465px;top:960px">{buddy(150, body=C["blue"], eye="#fff")}</div>""")
+
+
+def pR25():
+    def panel(x, bg, label, inner):
+        return (f'<div class="abs" style="left:{x}px;top:190px;width:460px;height:700px;border-radius:44px;background:{bg}">'
+                f'<div style="padding:40px 36px 0;font-family:Geist,sans-serif;font-size:32px;font-weight:500;color:{C["ink"]};letter-spacing:-0.01em">{label}</div>{inner}</div>')
+    left = (f'<div style="padding:30px 36px 0;font-size:56px;font-weight:500;letter-spacing:-0.05em;line-height:1.05;color:{C["blue"]}">&lsquo;Betaal ik later wel.&rsquo;</div>'
+            f'<div class="abs" style="left:110px;top:380px">{buddy(240, body=C["blue"], eye="#fff", look=(0, -0.3))}</div>')
+    stack = "".join(f'<div style="height:58px;border-radius:14px;background:#fff;margin:0 {10 + i * 8}px 10px;font-family:Geist,sans-serif;font-size:24px;font-weight:500;color:{C["ink"]};'
+                    f'display:flex;align-items:center;padding:0 18px">Webshop &middot; betaalverzoek</div>' for i in range(3))
+    right = (f'<div style="padding:26px 24px 0">{stack}</div>'
+             f'<div class="abs" style="left:110px;top:400px">{buddy(240, body=C["blue"], eye="#fff", look=(-0.9, -0.6), style="transform:rotate(10deg)")}</div>')
+    return page("dark", f"""
+{panel(70, "#fff", "Ik bij het afrekenen:", left)}
+{panel(550, C["blueSoft"], "Ik, later:", right)}
+<div class="sub" style="top:960px;font-size:42px">Later is een prima moment.<br>Als je weet wanneer later is.</div>""")
+
+
+def pR39():
+    cells = ["Zelf zorgverzekering afgesloten", "Eerste aanslag van de gemeente", "Huisgenoot betaalt het betaalverzoek niet",
+             "Mail van de verhuurder gemist", None, "&lsquo;Ik betaal het vanavond&rsquo; (niet gedaan)",
+             "Jaarfactuur vergeten", "Ouders: &lsquo;Heb je dat al betaald?&rsquo;", "Nieuw adres, nieuwe rekeningen"]
+    out = ""
+    for c in cells:
+        if c is None:
+            out += f'<div style="background:{C["blue"]};border-radius:30px;display:flex;align-items:center;justify-content:center">{buddy(130)}</div>'
+        else:
+            out += (f'<div style="background:#fff;border:2px solid {C["blueSoft"]};border-radius:30px;display:flex;align-items:center;justify-content:center;text-align:center;'
+                    f'padding:18px 22px;font-family:Geist,sans-serif;font-size:29px;font-weight:500;line-height:1.2;color:{C["ink"]};letter-spacing:-0.01em">{c}</div>')
+    return page("light", f"""
+<h1 style="font-size:74px;top:100px">Volwassen-worden-bingo.</h1>
+<div class="sub" style="top:215px;font-size:42px;color:{C['blue']}">Hoeveel heb jij?</div>
+<div class="abs" style="left:100px;right:100px;top:330px;height:760px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:20px">{out}</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -424,6 +515,8 @@ POSTS = [
     ("R18", "laptop-dicht", pR18), ("R26", "lijstje-later", pR26), ("R32", "welke-vergeet-jij", pR32),
     ("R37", "jij-betaalt", pR37), ("R41", "huisgenoot-vanavond", pR41), ("R35", "te-veel-tabbladen", pR35),
     ("R28", "geen-app-erbij", pR28), ("R06", "zondag-ouders", pR06), ("R14", "doorsturen", pR14),
+    ("R05", "keukentafel", pR05), ("R20", "naambordje", pR20), ("R31", "buddy-gokt-niet", pR31),
+    ("R36", "lockscreen-straks", pR36), ("R25", "later-meme", pR25), ("R39", "bingo", pR39),
 ]
 
 
