@@ -111,7 +111,7 @@ Ze staan in het EmailTool-project onder `landingspaginas/`. Waar ze live komen t
 
 **Nog te bevestigen** (benoem dit als open controle als je het gebruikt):
 - dat herinneringsmails de betaallink bevatten;
-- welke instappagina de CTA en "link in bio" krijgen. `/probeer-betaalbuddy-gratis/` botst met het model zonder gratis periode.
+- ~~welke instappagina de CTA en "link in bio" krijgen~~: sinds 14 okt 2026 `betaalbuddy.nl/probeer-betaalbuddy/` (de oude `/probeer-betaalbuddy-gratis/` botste met het model zonder gratis periode).
 
 **Generieke afzenders:** Zorgverzekeraar, Energieleverancier, Telefoonprovider, Gemeente, Verhuurder, Sportschool, Webshop, Pakketdienst, Incassobureau, Bank.
 

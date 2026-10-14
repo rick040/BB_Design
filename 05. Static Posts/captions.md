@@ -94,7 +94,7 @@ Link in bio 👆
 Alt: Twee herinneringen van Buddy: een rekening vervalt over 7 dagen en over 2 dagen.
 
 ## Open controles
-- De CTA-chip "Ontmoet je buddy" en "link in bio" wijzen naar de instappagina. Bevestig welke pagina dat wordt (`/probeer-betaalbuddy-gratis/` botst met het model zonder gratis periode).
+- "Link in bio" gaat naar betaalbuddy.nl/probeer-betaalbuddy/ (bevestigd door Rick op 14 okt 2026). De chip "Ontmoet je buddy" in de beelden is alleen een label.
 - Alle afzenders en bedragen zijn voorbeelden (generieke afzenders, geen merken).
 - Post 03: de €40-claim staat als "kan oplopen" met de veertiendagenbrief erbij. Laat de bron op de landingspagina staan.
 - Posts zijn ontworpen voor feed (4:5). Houd de belangrijkste tekst tussen x 90 en 990, dan blijft ook de 3:4-uitsnede in het profielraster leesbaar.

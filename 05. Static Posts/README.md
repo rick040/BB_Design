@@ -8,3 +8,5 @@ Statische Instagram-posts voor BetaalBuddy in 1080×1350 (4:5).
 - `captions.md`: captions, alt-tekst en open controles per post.
 
 Merk, fonts en Buddy komen uit `04. Animation` (zelfde paden en kleuren). Skill: `.claude/skills/instagram-static-post`.
+
+- `gedaan.json` en `registry.py`: register van gemaakte posts. `python3 registry.py check ...` voorkomt dubbele ideeën, `add` legt een nieuwe post vast.
