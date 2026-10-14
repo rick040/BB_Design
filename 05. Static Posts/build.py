@@ -237,10 +237,117 @@ def pR01():
 <div class="sub" style="top:1070px">Stuur je eerste factuur door.<br>Buddy zet de datum in je agenda.</div>''')
 
 
+def _key(color, rot):
+    return (f'<g transform="rotate({rot} 450 150)"><circle cx="450" cy="210" r="56" fill="{color}"/>'
+            f'<circle cx="450" cy="210" r="20" fill="{{bg}}"/><rect x="434" y="262" width="32" height="190" rx="12" fill="{color}"/>'
+            f'<rect x="462" y="380" width="44" height="26" rx="8" fill="{color}"/><rect x="462" y="418" width="30" height="24" rx="8" fill="{color}"/></g>')
+
+
+def pR02():
+    keys = _key(C["blueSoft"], -30) + _key(C["yellow"], 30) + _key(C["blue"], 0)
+    keys = keys.replace("{bg}", C["light"])
+    svg = (f'<svg viewBox="0 0 900 500" width="900" height="500" style="display:block"><circle cx="450" cy="96" r="74" fill="none" '
+           f'stroke="{C["ink"]}" stroke-width="16"/>{keys}</svg>')
+    return page("light", f"""
+<h1>Sleutels: binnen.</h1>
+<div class="abs" style="left:90px;top:330px">{svg}</div>
+<div class="sub" style="top:880px;font-size:46px;color:{C['blue']}">Verhuurder, energieleverancier,<br>gemeente, zorgverzekeraar:<br><b style="font-weight:600">komen nog.</b></div>""")
+
+
+def pR04():
+    def note(x, y, w, rot, color, lines=2, text=""):
+        bars = "".join(f'<rect x="{x + 18}" y="{y + 22 + i * 22}" width="{w - 50 - i * 14}" height="8" rx="4" fill="#111114" opacity=".18"/>' for i in range(lines))
+        return (f'<g transform="rotate({rot} {x + w / 2} {y + w / 2})"><rect x="{x}" y="{y}" width="{w}" height="{w}" rx="6" fill="{color}"/>{bars}{text}</g>')
+    big = (f'<g transform="rotate(-4 450 300)"><rect x="300" y="220" width="300" height="260" rx="8" fill="{C["yellow"]}"/>'
+           f'<text x="450" y="378" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="50" fill="{C["ink"]}" letter-spacing="-2">BETALEN!!!</text></g>')
+    svg = (f'<svg viewBox="0 0 900 640" width="900" height="640" style="display:block">'
+           f'<rect x="90" y="30" width="720" height="460" rx="30" fill="#0128c4"/><rect x="118" y="58" width="664" height="404" rx="14" fill="{C["blue"]}"/>'
+           f'<path d="M20 490h860l-50 76c-6 10-14 14-26 14H96c-12 0-20-4-26-14z" fill="{C["blueSoft"]}"/><rect x="380" y="494" width="140" height="14" rx="7" fill="#fff"/>'
+           + note(50, 70, 110, -9, "#fff") + note(740, 60, 110, 8, C["blueSoft"]) + note(30, 230, 120, 6, C["yellow"], 3)
+           + note(750, 250, 120, -7, "#fff", 3) + note(60, 390, 110, -5, C["blueSoft"]) + note(730, 380, 110, 9, C["yellow"])
+           + big + '</svg>')
+    return page("light", f"""
+<h1>Betalen. Wat?<br>Wanneer?</h1>
+<div class="abs" style="left:90px;top:440px">{svg}</div>
+<div class="sub" style="top:1100px">Geen idee meer.</div>""")
+
+
+def pR18():
+    dk = "#0128c4"
+    svg = f"""
+<svg viewBox="0 0 900 640" width="900" height="640" style="display:block">
+  <circle cx="180" cy="110" r="70" fill="{C['yellow']}"/><circle cx="210" cy="90" r="64" fill="{C['blue']}"/>
+  <rect x="0" y="470" width="900" height="30" fill="{dk}"/><rect x="0" y="500" width="900" height="140" fill="{dk}"/>
+  <rect x="60" y="414" width="470" height="30" rx="10" fill="#fff"/><rect x="60" y="444" width="470" height="14" rx="7" fill="{C['blueSoft']}"/>
+  <rect x="80" y="456" width="20" height="14" fill="#fff"/><rect x="490" y="456" width="20" height="14" fill="#fff"/>
+  <rect x="640" y="30" width="14" height="40" fill="{C['blueSoft']}"/><circle cx="647" cy="30" r="12" fill="{C['blueSoft']}"/>
+  <path d="M600 90 h94 l50 40 -34 40 -18 -14 v300 h-104 v-300 l-18 14 -34 -40z" fill="{C['yellow']}"/>
+  <rect x="632" y="90" width="30" height="40" fill="{C['blue']}" opacity=".0"/>
+  <path d="M647 94 v380" stroke="#e5b414" stroke-width="5"/>
+  <circle cx="640" cy="260" r="7" fill="#e5b414"/><circle cx="640" cy="310" r="7" fill="#e5b414"/>
+</svg>"""
+    return page("dark", f"""
+<h1 class="s">Werkdag klaar.<br>Hoofd ook.</h1>
+<div class="abs" style="left:90px;top:410px">{svg}</div>
+<div class="abs" style="left:250px;top:642px">{buddy(170, look=(-0.4, 0.2), blink=0.55)}</div>
+<div class="sub" style="top:1060px;font-size:40px">Buddy onthoudt je betaaldata.<br>Jij hoeft het niet.</div>""")
+
+
+def pR26():
+    items = ["tandarts betalen&nbsp;<i>(later)</i>", "gemeente&nbsp;<i>(later)</i>", "energie&nbsp;<i>(later later)</i>", "die webshop&nbsp;<i>(wanneer was dat??)</i>"]
+    lines = "".join(f'<div style="height:104px;border-bottom:3px solid {C["blueSoft"]};display:flex;align-items:flex-end;padding-bottom:14px;'
+                    f'font-size:42px;font-weight:500;letter-spacing:-0.03em;white-space:nowrap;color:{C["ink"]}"><span style="color:{C["blue"]};margin-right:20px">&#9744;</span>{t}</div>'
+                    for t in items)
+    holes = "".join(f'<div class="abs" style="left:-18px;top:{50 + i * 100}px;width:36px;height:36px;border-radius:50%;background:{C["light"]};border:3px solid {C["blueSoft"]}"></div>' for i in range(5))
+    check = (f'<div class="abs" style="left:700px;top:900px;width:120px;height:120px;border-radius:50%;background:{C["blue"]};display:flex;align-items:center;justify-content:center;'
+             f'border:8px solid {C["light"]}"><svg width="64" height="64" viewBox="0 0 64 64"><path d="M14 34l13 13 24-28" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>')
+    return page("light", f"""
+<h1 class="s">Mijn lijstje<br>'doe ik later'.</h1>
+<div class="abs card" style="left:120px;right:140px;top:470px;height:520px;border-radius:30px;padding:36px 60px 0 70px;transform:rotate(-1.6deg)">{holes}{lines}</div>
+<div class="abs" style="left:770px;top:945px">{buddy(190, body=C["blue"], eye="#fff", look=(-0.6, 0.1))}</div>
+{check.replace('left:700px;top:900px', 'left:700px;top:935px')}""")
+
+
+def pR32():
+    def opt(letter, txt):
+        return (f'<div class="card" style="width:420px;height:200px;border-radius:40px;display:flex;align-items:center;gap:26px;padding:0 30px;background:#fff">'
+                f'<div style="width:100px;height:100px;border-radius:50%;background:{C["blue"]};color:#fff;font-size:58px;font-weight:600;display:flex;align-items:center;'
+                f'justify-content:center;flex-shrink:0">{letter}</div><div style="font-size:40px;font-weight:600;color:{C["ink"]};letter-spacing:-0.02em;line-height:1.1">{txt}</div></div>')
+    grid = (f'<div class="abs" style="left:90px;right:90px;top:440px;display:grid;grid-template-columns:420px 420px;gap:30px;justify-content:center">'
+            + opt("A", "Zorgnota") + opt("B", "Gemeente") + opt("C", "Achteraf<br>betalen") + opt("D", "Die jaar&shy;factuur") + '</div>')
+    return page("dark", f"""
+<h1 class="s">Welke vergeet jij altijd?</h1>
+{grid}
+<div class="abs" style="left:120px;top:930px">{buddy(200, look=(0.7, -0.5))}</div>
+<div class="abs" style="left:380px;top:980px;right:90px;font-size:46px;font-weight:500;letter-spacing:-0.04em;line-height:1.1;color:#fff">Zet je letter<br>in de reacties.</div>""")
+
+
+def pR12():
+    dk = "#0128c4"
+    svg = f"""
+<svg viewBox="0 0 900 640" width="900" height="640" style="display:block">
+  <rect x="0" y="500" width="900" height="140" fill="{dk}"/>
+  <rect x="470" y="130" width="400" height="270" rx="20" fill="{C['blueSoft']}"/><rect x="490" y="150" width="360" height="230" rx="10" fill="#0a1f8f"/>
+  <path d="M440 400h460l-30 80c-3 8-9 12-18 12H488c-9 0-15-4-18-12z" fill="{C['blueText']}"/><rect x="620" y="404" width="100" height="10" rx="5" fill="#fff"/>
+  <path d="M110 395 C 60 300 90 170 190 150 C 270 135 330 215 290 330" fill="none" stroke="{C['yellow']}" stroke-width="22" stroke-linecap="round"/>
+  <rect x="150" y="330" width="40" height="34" rx="8" fill="#e5b414"/>
+  <g transform="rotate(-6 200 420)"><rect x="70" y="360" width="260" height="160" rx="22" fill="#fff"/><rect x="70" y="360" width="260" height="38" rx="22" fill="{C['blueSoft']}"/>
+  <circle cx="140" cy="450" r="30" fill="{C['grey']}"/><rect x="190" y="436" width="110" height="12" rx="6" fill="{C['grey']}"/><rect x="190" y="460" width="76" height="12" rx="6" fill="{C['grey']}"/></g>
+</svg>"""
+    return page("dark", f"""
+<h1>Eerste vaste baan.</h1>
+<div class="abs" style="left:90px;top:400px">{svg}</div>
+<div class="abs" style="left:420px;top:790px">{buddy(150, look=(0.5, 0.3), blink=0.7)}</div>
+<div class="sub" style="top:1060px;font-size:42px">Eerste eigen rekeningen.<br>Gefeliciteerd, echt.</div>"""
+    )
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
     ("R01", "eerste-nacht", pR01),
+    ("R02", "sleutels-binnen", pR02), ("R04", "post-it-laptop", pR04), ("R12", "badge-eerste-baan", pR12),
+    ("R18", "laptop-dicht", pR18), ("R26", "lijstje-later", pR26), ("R32", "welke-vergeet-jij", pR32),
 ]
 
 

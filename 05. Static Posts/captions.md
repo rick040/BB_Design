@@ -116,3 +116,93 @@ Link in bio 👆
 ```
 Alt: Platte illustratie van een lege kamer met een matras op de vloer, verhuisdozen, een telefoon aan de lader en Buddy die op de matras zit, onder de tekst "Eerste nacht in je eigen huis. Morgen begint de post."
 Bron: CBS (gemiddeld 23,8 jaar uit huis, 2024) staat bewust niet op het beeld en niet in de caption.
+
+
+## Batch 2 (uit Ricks lijst van 43; R01 staat hierboven)
+
+> Fotoideeën zijn als vlakke illustratie gemaakt (geen fotografie beschikbaar). Link in bio gaat naar betaalbuddy.nl/probeer-betaalbuddy/.
+
+## R02 · Sleutels: binnen. (lijst #2)
+```
+De eerste maand op jezelf is vooral: mails van afzenders die je nog nooit hebt gehad. 🔑
+
+Zet ze meteen in je agenda met Betaalbuddy.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#opjezelfwonen #eerstehuis #sleutels #rekeningen #betaalbuddy
+```
+Alt: Een sleutelbos met drie sleutels. Tekst: Sleutels: binnen. Verhuurder, energieleverancier, gemeente, zorgverzekeraar: komen nog.
+
+## R04 · Betalen. Wat? Wanneer? (lijst #4)
+```
+De post-it weet dat het belangrijk is. Verder niks. 📝
+
+Buddy weet wel het bedrag en de datum.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#postit #mentaleload #rekeningen #geldzaken #betaalbuddy
+```
+Alt: Een laptop vol post-its, een grote gele met BETALEN!!! en verder niets. Tekst: Betalen. Wat? Wanneer? Geen idee meer.
+
+## R12 · Eerste vaste baan. (lijst #12)
+```
+Volwassen worden komt in twee delen: het salaris en de facturen. 💼
+
+Begin goed: stuur je eerste factuur door naar Buddy.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#eerstebaan #volwassenworden #rekeningen #geldzaken #betaalbuddy
+```
+Alt: Een keycord met een lege badge op een bureau naast een nieuwe laptop, Buddy ernaast. Tekst: Eerste vaste baan. Eerste eigen rekeningen. Gefeliciteerd, echt.
+Bron-notitie: de CBS-cijfers uit de lijst (25,3 jaar uit huis) staan bewust niet in de caption.
+
+## R18 · Werkdag klaar. Hoofd ook. (lijst #18)
+```
+Het zijn niet de grote dingen. Het is het 'o ja, moet ik nog doen' om 22:00. 🌙
+
+Geef het aan Buddy. Buddy onthoudt je betaaldata, jij hoeft het niet.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#mentaleload #werkdagklaar #rekeningen #rust #betaalbuddy
+```
+Alt: Een dichte laptop op een bureau met Buddy erop, een gele jas en een maan. Tekst: Werkdag klaar. Hoofd ook.
+
+## R26 · Mijn lijstje 'doe ik later' (lijst #26)
+```
+Iedereen heeft dit lijstje. Sommigen weten alleen nog waar het is. 😅
+
+Maak er een agenda van.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#doeiklater #uitstelgedrag #rekeningen #relatable #betaalbuddy
+```
+Alt: Een notitieblok met vier regels: tandarts betalen (later), gemeente (later), energie (later later), die webshop (wanneer was dat??). Buddy heeft een vinkje.
+
+## R32 · Welke vergeet jij altijd? (lijst #32)
+```
+Welke vergeet jij altijd? Eerlijk zijn, niemand oordeelt. 👇
+
+A. Zorgnota
+B. Gemeente
+C. Achteraf betalen
+D. Die jaarfactuur
+
+Zet je letter in de reacties.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#rekeningen #poll #volwassenworden #geldzaken #betaalbuddy
+```
+Alt: Vier keuzes: A Zorgnota, B Gemeente, C Achteraf betalen, D Die jaarfactuur. Buddy kijkt ernaar. Tekst: Welke vergeet jij altijd? Zet je letter in de reacties.
+Alleen organisch gebruiken (reacties zijn data over de grootste pijn).

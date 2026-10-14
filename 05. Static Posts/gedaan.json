@@ -61,5 +61,59 @@
     "idee": "lege kamer matras op de vloer en dozen",
     "datum": "2026-10-14",
     "bestand": "BB-Post-R01-eerste-nacht.png"
+  },
+  {
+    "nr": "R02",
+    "slug": "sleutels-binnen",
+    "kop": "Sleutels: binnen.",
+    "hoek": "H1 levensmoment",
+    "idee": "Sleutelbos, daarna verhuurder energie gemeente zorgverzekeraar komen nog",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R02-sleutels-binnen.png"
+  },
+  {
+    "nr": "R04",
+    "slug": "post-it-laptop",
+    "kop": "Betalen. Wat? Wanneer?",
+    "hoek": "H2 mentale belasting",
+    "idee": "Laptop vol post-its, een met BETALEN zonder info",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R04-post-it-laptop.png"
+  },
+  {
+    "nr": "R12",
+    "slug": "badge-eerste-baan",
+    "kop": "Eerste vaste baan.",
+    "hoek": "H1 levensmoment",
+    "idee": "Keycord met lege badge op bureau naast nieuwe laptop",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R12-badge-eerste-baan.png"
+  },
+  {
+    "nr": "R18",
+    "slug": "laptop-dicht",
+    "kop": "Werkdag klaar. Hoofd ook.",
+    "hoek": "H2 mentale belasting",
+    "idee": "Laptop dicht, jas aan, Buddy onthoudt betaaldata",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R18-laptop-dicht.png"
+  },
+  {
+    "nr": "R26",
+    "slug": "lijstje-later",
+    "kop": "Mijn lijstje doe ik later.",
+    "hoek": "H7 humor",
+    "idee": "Notitieblok met later-later lijstje en Buddy met vinkje",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R26-lijstje-later.png"
+  },
+  {
+    "nr": "R32",
+    "slug": "welke-vergeet-jij",
+    "kop": "Welke vergeet jij altijd?",
+    "hoek": "H7 interactie",
+    "idee": "Vier knoppen A tot D, reageer met je letter",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R32-welke-vergeet-jij.png"
   }
 ]
