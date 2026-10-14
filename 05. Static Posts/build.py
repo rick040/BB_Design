@@ -507,6 +507,137 @@ def pR39():
 <div class="abs" style="left:100px;right:100px;top:330px;height:760px;display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);gap:20px">{out}</div>""")
 
 
+# ---------- carrousels (meerdere slides per post) ----------
+# Een postfunctie mag een lijst met HTML-strings teruggeven; dan wordt elke slide een eigen PNG (-s1, -s2, ...).
+def pageC(theme, body, i, n, last=False, bg=None):
+    dark = theme == "dark"
+    on, off = ("#fff", "rgba(255,255,255,.35)") if dark else (C["blue"], C["blueSoft"])
+    dots = "".join(f'<div style="width:{40 if k == i else 14}px;height:14px;border-radius:7px;background:{on if k == i else off}"></div>' for k in range(1, n + 1))
+    bgs = f'background:{bg};' if bg else ""
+    betaal = C["blueSoft"]
+    buddy_c = "#fff" if dark else C["blue"]
+    chip = (f'<div class="chip">{app_icon(58, circle=False)}<span>Ontmoet je<br>buddy {arrow(26)}</span></div>' if last else
+            f'<div style="font-family:Geist,sans-serif;font-size:28px;font-weight:500;color:{on if dark else C["blue"]};opacity:.8;display:flex;align-items:center;gap:10px">Swipe {arrow(30, "#fff" if dark else C["blue"])}</div>')
+    foot = (f'<div class="foot"><div class="wm"><span style="color:{betaal}">betaal</span><span style="color:{buddy_c}">buddy</span></div>{chip}</div>')
+    return (f'<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>post</title><style>{CSS}</style></head>'
+            f'<body><div class="post {theme}" style="{bgs}"><div class="abs" style="left:0;right:0;top:52px;display:flex;justify-content:center;gap:12px">{dots}</div>'
+            f'{body}{foot}</div></body></html>')
+
+
+def _t(txt, size=96, top=150, color=None, extra=""):
+    col = f"color:{color};" if color else ""
+    return (f'<div class="abs" style="left:70px;right:70px;top:{top}px;text-align:center;font-weight:500;font-size:{size}px;line-height:1.02;'
+            f'letter-spacing:-0.06em;{col}{extra}">{txt}</div>')
+
+
+def _s(txt, top, size=42, color=None):
+    col = f"color:{color};" if color else ""
+    return f'<div class="abs" style="left:90px;right:90px;top:{top}px;text-align:center;font-size:{size}px;line-height:1.2;letter-spacing:-0.02em;{col}">{txt}</div>'
+
+
+def pR22():
+    bg = "#e8eeff"
+    n = 7
+    def card(num, title, top, h=330):
+        return (f'<div class="abs" style="left:90px;right:90px;top:{top}px;height:{h}px;border-radius:48px;background:{C["blue"]};color:#fff;display:flex;align-items:center;gap:44px;padding:0 56px">'
+                f'<div style="font-size:150px;font-weight:500;letter-spacing:-0.06em;line-height:1">{num}</div>'
+                f'<div style="font-size:60px;font-weight:500;letter-spacing:-0.04em;line-height:1.08">{title}</div></div>')
+    sl = []
+    sl.append(pageC("light", _t("Net op jezelf?<br>Deze 9 rekeningen<br>komen eraan.", 96, 150, C["blue"]) + f'<div class="abs" style="left:380px;top:640px">{buddy(320, body=C["blue"], eye="#fff")}</div>'
+                    + _s("Bewaar deze.", 1070, 44, C["blue"]), 1, n, bg=bg))
+    pairs = [[(1, "Huur"), (2, "Energie")], [(3, "Water"), (4, "Internet en tv")], [(5, "Zorgverzekering<br><span style='font-size:38px;font-weight:400;opacity:.8'>vanaf 18 jaar zelf</span>"), (6, "Telefoon")],
+             [(7, "Gemeentelijke belastingen"), (8, "Waterschaps&shy;belasting")]]
+    for k, pr in enumerate(pairs, start=2):
+        sl.append(pageC("light", card(pr[0][0], pr[0][1], 305) + card(pr[1][0], pr[1][1], 685), k, n, bg=bg))
+    sl.append(pageC("light", card(9, "Inboedel- en aansprakelijkheids&shy;verzekering", 330, 460) + f'<div class="abs" style="left:700px;top:880px">{buddy(180, body=C["blue"], eye="#fff", look=(-0.5, 0))}</div>', 6, n, bg=bg))
+    sl.append(pageC("light", _t("Elke factuur die per mail komt: doorsturen.", 92, 160, C["blue"]) + f'<div class="abs" style="left:380px;top:640px">{buddy(320, body=C["blue"], eye="#fff")}</div>'
+                    + _s("Buddy zet de datum in je agenda.", 1060, 44, C["blue"]), 7, n, last=True, bg=bg))
+    return sl
+
+
+def pR29():
+    n = 5
+    def step(num, lines, i, size=68, last=False, bx=100):
+        return pageC("light", f'<div class="abs" style="left:0;right:0;top:170px;text-align:center;font-size:440px;font-weight:500;letter-spacing:-0.08em;line-height:1;color:{C["blue"]}">{num}</div>'
+                     + _t(lines, size, 700, C["blue"], "font-weight:500;") + f'<div class="abs" style="left:{bx}px;top:1010px">{buddy(120, body=C["blue"], eye="#fff", look=(0.8, 0))}</div>', i, n, last=last)
+    return [
+        pageC("light", _t("Betaalbuddy<br>in 4 stappen.", 120, 200, C["blue"]) + f'<div class="abs" style="left:370px;top:620px">{buddy(340, body=C["blue"], eye="#fff")}</div>'
+              + _s("Geen app. Geen account om in te loggen.<br>Geen bankkoppeling.", 1050, 36, "#6b7fc9"), 1, n),
+        step(1, "Factuur in je mail.", 2, 84, bx=100),
+        step(2, "Doorsturen naar<br><span style='font-size:50px'>jouwcode@in.betaalbuddy.nl</span>", 3, 76, bx=300),
+        step(3, "Buddy leest bedrag en vervaldatum en zet het in je agenda.", 4, 56, bx=500),
+        step(4, "Mail 7 dagen en 2 dagen vooraf. Betalen doe je zelf.", 5, 56, last=True, bx=700),
+    ]
+
+
+def pR15():
+    n = 3
+    cal = (f'<div class="abs card" style="left:90px;right:90px;top:430px;height:300px;border-radius:44px;display:flex;align-items:center;gap:40px;padding:0 50px;font-family:Geist,sans-serif">'
+           f'<div style="width:150px;height:170px;border-radius:26px;background:{C["blue"]};color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center">'
+           f'<div style="font-size:32px;font-weight:500;opacity:.8">nov</div><div style="font-size:80px;font-weight:600;line-height:1">20</div></div>'
+           f'<div><div style="font-size:48px;font-weight:600;color:{C["ink"]};letter-spacing:-0.02em">Zorgverzekeraar &middot; betalen</div><div style="font-size:30px;color:{C["greyText"]};margin-top:10px">Agenda</div></div></div>')
+    def mail(days):
+        return (f'<div class="abs card" style="left:90px;right:90px;top:430px;height:300px;border-radius:44px;display:flex;align-items:center;gap:36px;padding:0 50px;font-family:Geist,sans-serif">'
+                f'{app_icon(120)}<div><div style="font-size:46px;font-weight:600;color:{C["ink"]};letter-spacing:-0.02em">Herinnering: over {days} dagen</div>'
+                f'<div style="font-size:30px;color:{C["greyText"]};margin-top:10px">Zorgverzekeraar &middot; vervalt {"20 nov" }</div></div></div>')
+    return [
+        pageC("dark", _t("Zo ziet het eruit.", 100, 170) + cal + _s("Zorgverzekeraar &middot; betalen", 800, 1, "transparent") + _t("In je agenda.", 70, 820, C["blueText"]) + f'<div class="abs" style="left:440px;top:960px">{buddy(150)}</div>', 1, n),
+        pageC("dark", _t("7 dagen vooraf:<br>een mail.", 100, 150) + mail(7) + f'<div class="abs" style="left:440px;top:900px">{buddy(150, look=(0, 0.3))}</div>', 2, n),
+        pageC("dark", _t("2 dagen vooraf:<br>nog één.", 100, 150) + mail(2) + _t("Betalen doe je zelf.", 56, 820, C["blueText"]) + f'<div class="abs" style="left:440px;top:930px">{buddy(150)}</div>', 3, n, last=True),
+    ]
+
+
+def pR30():
+    n = 6
+    def mock(inner, h=380):
+        return f'<div class="abs card" style="left:90px;right:90px;top:600px;height:{h}px;border-radius:40px;padding:44px 50px;font-family:Geist,sans-serif">{inner}</div>' + f'<div class="abs" style="left:465px;top:1000px">{buddy(140)}</div>'
+    def tag(k):
+        return f'<div class="abs" style="left:0;right:0;top:130px;display:flex;justify-content:center"><div class="pill out" style="height:62px;font-size:28px">Stap {k}</div></div>'
+    row = lambda t, on=False: (f'<div style="height:76px;border-radius:18px;display:flex;align-items:center;padding:0 24px;font-size:34px;font-weight:{600 if on else 500};'
+                               f'background:{C["blueSoft"] if on else "transparent"};color:{C["blue"] if on else C["ink"]}">{t}</div>')
+    chip = lambda t: f'<div style="padding:14px 26px;border-radius:30px;background:{C["grey"]};font-size:30px;font-weight:500;color:{C["ink"]}">{t}</div>'
+    return [
+        pageC("dark", _t("Nooit meer handmatig doorsturen.", 104, 170) + _s("Zo stel je het één keer in.", 640, 46, C["blueText"]) + f'<div class="abs" style="left:380px;top:780px">{buddy(320)}</div>', 1, n),
+        pageC("dark", tag(1) + _t("Open de instellingen van je mail en zoek &lsquo;filters&rsquo; of &lsquo;regels&rsquo;.", 64, 230) + mock(row("Algemeen") + row("Filters en regels", True) + row("Account"), 330), 2, n),
+        pageC("dark", tag(2) + _t("Maak een regel: afzender is je energie&shy;leverancier, zorg&shy;verzekeraar of verhuurder.", 60, 230)
+              + mock('<div style="font-size:28px;color:' + C["greyText"] + ';margin-bottom:18px">Afzender is</div><div style="display:flex;flex-wrap:wrap;gap:16px">'
+                     + chip("Energieleverancier") + chip("Zorgverzekeraar") + chip("Verhuurder") + '</div>', 300), 3, n),
+        pageC("dark", tag(3) + _t("Actie: doorsturen naar jouwcode@in.betaalbuddy.nl.", 64, 230)
+              + mock('<div style="font-size:28px;color:' + C["greyText"] + ';margin-bottom:14px">Doorsturen naar</div><div style="font-size:42px;font-weight:600;color:' + C["ink"] + ';letter-spacing:-0.02em">jouwcode@in.betaalbuddy.nl</div>', 240), 4, n),
+        pageC("dark", tag(4) + _t("Opslaan. Klaar.", 110, 250) + f'<div class="abs" style="left:0;right:0;top:620px;display:flex;justify-content:center"><div class="pill solid" style="height:110px;padding:0 90px;font-size:44px">Opslaan</div></div>'
+              + f'<div class="abs" style="left:440px;top:820px">{buddy(200)}</div>', 5, n),
+        pageC("dark", _t("Lukt het niet bij jouw mailprovider?", 88, 190) + _s("Doorsturen met de hand werkt ook.", 540, 52, "#fff") + f'<div class="abs" style="left:380px;top:780px">{buddy(320)}</div>', 6, n, last=True),
+    ]
+
+
+def pR24():
+    n = 6
+    xs = [150, 400, 650, 900]
+    def route(cur, y=466):
+        out = f'<div class="abs" style="left:150px;width:750px;top:{y}px;height:10px;border-radius:5px;background:rgba(255,255,255,.35)"></div>'
+        if cur:
+            out += f'<div class="abs" style="left:150px;width:{xs[cur - 1] - 150}px;top:{y}px;height:10px;border-radius:5px;background:#fff"></div>'
+        for k, x in enumerate(xs, start=1):
+            done = cur and k <= cur
+            rr = 34 if k == cur else 24
+            out += (f'<div class="abs" style="left:{x - rr}px;top:{y + 5 - rr}px;width:{2 * rr}px;height:{2 * rr}px;border-radius:50%;background:{"#fff" if done else C["blue"]};'
+                    f'border:8px solid {"#fff" if done else "rgba(255,255,255,.55)"}"></div>')
+        bx = xs[max(cur, 1) - 1] - 60
+        out += f'<div class="abs" style="left:{bx}px;top:{y - 196}px">{buddy(120)}</div>'
+        return out
+    def stop(k, label, txt, size=64):
+        return pageC("dark", route(k, 560) + f'<div class="abs" style="left:90px;right:90px;top:720px;text-align:center"><div style="font-family:Geist,sans-serif;font-size:36px;font-weight:600;color:{C["blueText"]};margin-bottom:22px">{label}</div>'
+                     f'<div style="font-size:{size}px;font-weight:500;letter-spacing:-0.045em;line-height:1.08">{txt}</div></div>', k + 1, n)
+    return [
+        pageC("dark", _t("Wat gebeurt er als een factuur blijft liggen?", 100, 150) + route(0, 800) + _s("De route.", 960, 46, C["blueText"]), 1, n),
+        stop(1, "Halte 1", "De vervaldatum gaat voorbij."),
+        stop(2, "Halte 2", "Herinnering of aanmaning."),
+        stop(3, "Halte 3", "De veertiendagenbrief. Je krijgt nog 14 dagen zonder extra kosten.", 58),
+        stop(4, "Halte 4", "Incassokosten. Bij kleine bedragen kan dat uitlopen op minimaal &euro;40.", 58),
+        pageC("dark", route(1, 520) + _t("Uitstappen kan<br>bij halte 1.", 96, 690) + _s("Buddy mailt je 7 en 2 dagen vooraf.", 960, 46, C["blueText"]), 6, n, last=True),
+    ]
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -517,6 +648,8 @@ POSTS = [
     ("R28", "geen-app-erbij", pR28), ("R06", "zondag-ouders", pR06), ("R14", "doorsturen", pR14),
     ("R05", "keukentafel", pR05), ("R20", "naambordje", pR20), ("R31", "buddy-gokt-niet", pR31),
     ("R36", "lockscreen-straks", pR36), ("R25", "later-meme", pR25), ("R39", "bingo", pR39),
+    ("R22", "negen-rekeningen", pR22), ("R29", "vier-stappen", pR29), ("R15", "staat-in-agenda", pR15),
+    ("R30", "een-keer-instellen", pR30), ("R24", "metrolijn-incasso", pR24),
 ]
 
 
@@ -530,14 +663,18 @@ def main():
         for num, slug, fn in POSTS:
             if want and num not in want:
                 continue
-            f = SRC / f"{num}-{slug}.html"
-            f.write_text(fn(), encoding="utf-8")
-            pg.goto(f.as_uri())
-            pg.evaluate("document.fonts.ready")
-            pg.wait_for_timeout(250)
-            png = OUT / f"BB-Post-{num}-{slug}.png"
-            pg.screenshot(path=str(png), clip={"x": 0, "y": 0, "width": W, "height": H})
-            print("ok", png.name)
+            res = fn()
+            slides = res if isinstance(res, list) else [res]
+            for k, html in enumerate(slides, start=1):
+                sfx = f"-s{k}" if isinstance(res, list) else ""
+                f = SRC / f"{num}-{slug}{sfx}.html"
+                f.write_text(html, encoding="utf-8")
+                pg.goto(f.as_uri())
+                pg.evaluate("document.fonts.ready")
+                pg.wait_for_timeout(250)
+                png = OUT / f"BB-Post-{num}-{slug}{sfx}.png"
+                pg.screenshot(path=str(png), clip={"x": 0, "y": 0, "width": W, "height": H})
+                print("ok", png.name)
         br.close()
 
 

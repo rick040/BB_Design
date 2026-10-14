@@ -223,5 +223,50 @@
     "idee": "Bingokaart volwassen worden",
     "datum": "2026-10-14",
     "bestand": "BB-Post-R39-bingo.png"
+  },
+  {
+    "nr": "R22",
+    "slug": "negen-rekeningen",
+    "kop": "Net op jezelf? Deze 9 rekeningen komen eraan.",
+    "hoek": "H1 levensmoment carrousel",
+    "idee": "Negen rekeningen checklist",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R22-negen-rekeningen.png"
+  },
+  {
+    "nr": "R29",
+    "slug": "vier-stappen",
+    "kop": "Betaalbuddy in 4 stappen.",
+    "hoek": "H6 productdemo carrousel",
+    "idee": "Vier stappen doorsturen agenda mail",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R29-vier-stappen.png"
+  },
+  {
+    "nr": "R15",
+    "slug": "staat-in-agenda",
+    "kop": "Het staat in je agenda.",
+    "hoek": "H6 productdemo carrousel",
+    "idee": "Agenda en twee herinneringen 7 en 2 dagen",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R15-staat-in-agenda.png"
+  },
+  {
+    "nr": "R30",
+    "slug": "een-keer-instellen",
+    "kop": "Nooit meer handmatig doorsturen.",
+    "hoek": "H6 productdemo carrousel",
+    "idee": "Doorstuurregel een keer instellen",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R30-een-keer-instellen.png"
+  },
+  {
+    "nr": "R24",
+    "slug": "metrolijn-incasso",
+    "kop": "Wat gebeurt er als een factuur blijft liggen?",
+    "hoek": "H3 kosten carrousel",
+    "idee": "Metrolijn van factuur tot incasso",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R24-metrolijn-incasso.png"
   }
 ]

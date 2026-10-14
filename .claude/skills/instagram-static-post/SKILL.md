@@ -23,3 +23,12 @@ Zelfde merk, producttaal en copyregels als `instagram-reel-ad`. Lees eerst `../i
 
 ## Automatisch draaien (scheduled task)
 De dagelijkse taak leest de ideeënlijst (Google Sheet in Drive-map "BetaalBuddy Statische Posts", kolommen: Nr, Status, Hoek, Idee, Notities of eisen, Gemaakt op, Bestandsnaam, Link naar afbeelding, Caption), pakt de eerste rij met Status `todo` die niet in `gedaan.json` staat, maakt die post, commit de PNG naar de branch `claude/static-posts-batch-1` en zet de link in de sheet als dat mag. Staat een idee er al in `gedaan.json` (of lijkt de kop te veel op een eerdere), sla het dan over en meld het.
+
+## Carrousels
+`build.py` ondersteunt carrousels. Een postfunctie geeft dan een lijst met HTML-strings terug (gebruik `pageC(theme, body, i, n, last=False, bg=None)` per slide; de voortgangsbolletjes, "Swipe" en de CTA-chip op de laatste slide zitten erin). Elke slide wordt een eigen PNG: `BB-Post-R22-slug-s1.png`, `-s2.png`, enzovoort. Voorbeelden: `pR22` (checklist), `pR24` (metrolijn), `pR29` en `pR30` (stappen). Slide 1 is de haak, de laatste slide heeft de CTA. Maak per carrousel één caption en alt-tekst per slide.
+
+## Stijl van de laatste batches
+Rustig en minimaal: weinig elementen, vooral tekst en Buddy, blauw, lichtblauw, wit en zwart. Geen geel, tenzij Rick erom vraagt.
+
+## Nummering
+Ideeën uit Ricks lijst van 43 krijgen in het register het voorvoegsel R (R01, R22), ook in bestandsnamen.
