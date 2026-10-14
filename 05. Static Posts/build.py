@@ -202,9 +202,45 @@ def p06():
 <div class="sub" style="top:1000px">Jij betaalt. Buddy herinnert.</div>''')
 
 
+def pR01():
+    """Illustratieve vertaling van fotoidee R01: lege kamer, matras op de vloer, dozen, telefoon aan de lader."""
+    room = f'''<svg class="abs" style="left:90px;top:400px" width="900" height="620" viewBox="0 0 900 620">
+  <rect width="900" height="620" rx="48" fill="#e8eeff"/>
+  <path d="M0 470H900V572a48 48 0 0 1-48 48H48A48 48 0 0 1 0 572Z" fill="#cdd8ff"/>
+  <rect x="70" y="70" width="210" height="250" rx="22" fill="#0026a8"/>
+  <rect x="70" y="70" width="210" height="250" rx="22" fill="none" stroke="#fff" stroke-width="12"/>
+  <path d="M175 70V320M70 195H280" stroke="#fff" stroke-width="8"/>
+  <circle cx="225" cy="130" r="26" fill="#ffce31"/>
+  <rect x="150" y="390" width="470" height="96" rx="22" fill="#013bff"/>
+  <rect x="150" y="372" width="470" height="44" rx="20" fill="#b6c7ff"/>
+  <rect x="168" y="352" width="120" height="48" rx="22" fill="#fff"/>
+  <rect x="640" y="330" width="200" height="150" rx="14" fill="#b6c7ff"/>
+  <rect x="640" y="330" width="200" height="30" rx="14" fill="#99b1ff"/>
+  <rect x="725" y="330" width="30" height="150" fill="#fff" opacity=".75"/>
+  <rect x="670" y="205" width="150" height="125" rx="12" fill="#99b1ff"/>
+  <rect x="670" y="205" width="150" height="26" rx="12" fill="#7d9bff"/>
+  <rect x="733" y="205" width="24" height="125" fill="#fff" opacity=".75"/>
+  <rect x="690" y="500" width="150" height="14" rx="7" fill="#ffce31" opacity="0"/>
+  <rect x="520" y="500" width="150" height="100" rx="12" fill="#ffce31"/>
+  <rect x="520" y="500" width="150" height="24" rx="12" fill="#f0bb10"/>
+  <circle cx="595" cy="560" r="28" fill="#fff" opacity=".85"/>
+  <rect x="40" y="436" width="34" height="46" rx="8" fill="#fff"/><rect x="50" y="446" width="5" height="12" rx="2" fill="#111114"/><rect x="60" y="446" width="5" height="12" rx="2" fill="#111114"/>
+  <path d="M57 482V520Q57 548 90 548H110" fill="none" stroke="#111114" stroke-width="5" stroke-linecap="round"/>
+  <rect x="108" y="522" width="104" height="58" rx="12" fill="#111114"/>
+  <rect x="116" y="530" width="88" height="42" rx="7" fill="#b6c7ff"/>
+  <rect x="124" y="544" width="40" height="5" rx="2.5" fill="#fff"/><rect x="124" y="555" width="26" height="5" rx="2.5" fill="#fff"/>
+</svg>'''
+    return page("light", f'''
+<h1 style="font-size:82px">Eerste nacht<br>in je eigen huis.<br>Morgen begint de post.</h1>
+{room}
+<div class="abs" style="left:455px;top:553px">{buddy(210, body=C["blue"], eye="#fff", blink=0.45, look=(0.6, 0.3))}</div>
+<div class="sub" style="top:1070px">Stuur je eerste factuur door.<br>Buddy zet de datum in je agenda.</div>''')
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
+    ("R01", "eerste-nacht", pR01),
 ]
 
 

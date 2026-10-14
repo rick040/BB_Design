@@ -98,3 +98,21 @@ Alt: Twee herinneringen van Buddy: een rekening vervalt over 7 dagen en over 2 d
 - Alle afzenders en bedragen zijn voorbeelden (generieke afzenders, geen merken).
 - Post 03: de €40-claim staat als "kan oplopen" met de veertiendagenbrief erbij. Laat de bron op de landingspagina staan.
 - Posts zijn ontworpen voor feed (4:5). Houd de belangrijkste tekst tussen x 90 en 990, dan blijft ook de 3:4-uitsnede in het profielraster leesbaar.
+
+## R01 · Eerste nacht in je eigen huis (lijst #1, illustratieve vertaling van een fotoidee)
+```
+Niemand zegt het je: na de sleutels komen de rekeningen. 🏠
+
+De eerste maand op jezelf zit vol afzenders die je nog nooit hebt gehad.
+
+✉️ Stuur je eerste factuur door naar je eigen Betaalbuddy-adres
+📅 Buddy zet bedrag en datum in je agenda
+⏰ Mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#opjezelfwonen #eerstehuis #verhuizen #rekeningen #betaalbuddy
+```
+Alt: Platte illustratie van een lege kamer met een matras op de vloer, verhuisdozen, een telefoon aan de lader en Buddy die op de matras zit, onder de tekst "Eerste nacht in je eigen huis. Morgen begint de post."
+Bron: CBS (gemiddeld 23,8 jaar uit huis, 2024) staat bewust niet op het beeld en niet in de caption.
