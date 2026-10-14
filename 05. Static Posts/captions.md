@@ -206,3 +206,87 @@ Link in bio 👆
 ```
 Alt: Vier keuzes: A Zorgnota, B Gemeente, C Achteraf betalen, D Die jaarfactuur. Buddy kijkt ernaar. Tekst: Welke vergeet jij altijd? Zet je letter in de reacties.
 Alleen organisch gebruiken (reacties zijn data over de grootste pijn).
+
+
+## Batch 3 (minimaal, zonder geel; uit Ricks lijst)
+
+> Rustige posts: weinig elementen, geen geel. Link in bio gaat naar betaalbuddy.nl/probeer-betaalbuddy/.
+
+## R37 · Jij betaalt. Buddy onthoudt. (lijst #37)
+```
+We willen niet bij je geld. Alleen bij je deadlines. 🤍
+
+Buddy heeft geen toegang tot je bank en betaalt nooit voor je. Jij betaalt, Buddy onthoudt.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#rekeningen #privacy #geldzaken #overzicht #betaalbuddy
+```
+Alt: Een witte Buddy op een blauwe achtergrond. Tekst: Jij betaalt. Buddy onthoudt. Geen toegang tot je bank. Buddy betaalt nooit voor je.
+
+## R41 · Stuur dit naar je huisgenoot (lijst #41)
+```
+Je weet precies wie. 😅
+
+Stuur dit naar je huisgenoot die altijd zegt: 'Ik betaal het vanavond.'
+
+Doorsturen. Ja, net als je facturen.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#huisgenoten #studentenleven #rekeningen #relatable #betaalbuddy
+```
+Alt: Tekst: Stuur dit naar je huisgenoot die altijd zegt: 'Ik betaal het vanavond.' Een blauwe Buddy met een papieren vliegtuigje.
+Alleen organisch (deelformat).
+
+## R35 · Je hoofd heeft te veel tabbladen open (lijst #35)
+```
+Alles wat je moet onthouden, neemt ruimte in. 🧠
+
+Sluit er een paar. Geef je betaaldata aan Buddy.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#mentaleload #tabbladen #rekeningen #geldzaken #betaalbuddy
+```
+Alt: Een browserbalk met vijf tabbladen: Huur, Zorg, Gemeente, Webshop, Energie. Buddy kijkt omhoog. Tekst: Je hoofd heeft te veel tabbladen open. Sluit er een paar.
+
+## R28 · Geen app erbij (lijst #28)
+```
+Nog een app installeren, inloggen, wachtwoord vergeten. Hoeft niet. 📱
+
+Doorsturen naar je eigen adres. Je mail is genoeg.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#geenapp #rekeningen #geldzaken #simpel #betaalbuddy
+```
+Alt: Een telefoon met veel app-vlakken en de melding "Opslag bijna vol". Tekst: Geen app erbij. Je mail is genoeg.
+
+## R06 · Bij elk bezoek, dezelfde vraag (lijst #6)
+```
+Je ouders bedoelen het goed. Het antwoord 'eh, ik denk het' iets minder. 😅
+
+Zo heb je het antwoord klaar: stuur de factuur door, dan staat hij in je agenda.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#ouders #volwassenworden #rekeningen #relatable #betaalbuddy
+```
+Alt: Twee chatbubbels. Vraag: Heb je dat al betaald? Antwoord: Ja. Staat in mijn agenda. Buddy kijkt mee.
+
+## R14 · Factuur binnen? Doorsturen. (lijst #14)
+```
+Geen app, geen account, geen bankkoppeling. Je stuurt de mail door naar je eigen Betaalbuddy-adres. ✉️
+
+Aanmelden via de link in bio.
+
+#rekeningen #doorsturen #geldzaken #simpel #betaalbuddy
+```
+Alt: Een doorstuurscherm naar jouwcode@in.betaalbuddy.nl met onderwerp Fwd: Factuur Energieleverancier en een knop Verstuur. Tekst: Factuur binnen? Doorsturen. Dat is het.
+Let op: voorbeelden zijn generiek. Retargeting; spiegelpaar met #29.

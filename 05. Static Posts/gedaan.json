@@ -115,5 +115,59 @@
     "idee": "Vier knoppen A tot D, reageer met je letter",
     "datum": "2026-10-14",
     "bestand": "BB-Post-R32-welke-vergeet-jij.png"
+  },
+  {
+    "nr": "R37",
+    "slug": "jij-betaalt",
+    "kop": "Jij betaalt. Buddy onthoudt.",
+    "hoek": "Vertrouwen",
+    "idee": "Typografisch twee regels, Buddy met agenda",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R37-jij-betaalt.png"
+  },
+  {
+    "nr": "R41",
+    "slug": "huisgenoot-vanavond",
+    "kop": "Stuur dit naar je huisgenoot.",
+    "hoek": "H7/H8 delen",
+    "idee": "Typografisch, Buddy met papieren vliegtuigje",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R41-huisgenoot-vanavond.png"
+  },
+  {
+    "nr": "R35",
+    "slug": "te-veel-tabbladen",
+    "kop": "Je hoofd heeft te veel tabbladen open.",
+    "hoek": "H2 mentale belasting",
+    "idee": "Browserbalk vol tabbladen, Buddy sluit er een",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R35-te-veel-tabbladen.png"
+  },
+  {
+    "nr": "R28",
+    "slug": "geen-app-erbij",
+    "kop": "Geen app erbij.",
+    "hoek": "H5 privacy geen app",
+    "idee": "Telefoon vol app-vlakken, opslag bijna vol, Buddy met mailicoon",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R28-geen-app-erbij.png"
+  },
+  {
+    "nr": "R06",
+    "slug": "zondag-ouders",
+    "kop": "Heb je dat al betaald?",
+    "hoek": "H8 relaties",
+    "idee": "Ouders vragen elke keer, antwoord ja staat in mijn agenda",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R06-zondag-ouders.png"
+  },
+  {
+    "nr": "R14",
+    "slug": "doorsturen",
+    "kop": "Factuur binnen? Doorsturen.",
+    "hoek": "H6 productdemo",
+    "idee": "Doorstuurscherm naar jouwcode, dat is het",
+    "datum": "2026-10-14",
+    "bestand": "BB-Post-R14-doorsturen.png"
   }
 ]

@@ -342,12 +342,88 @@ def pR12():
     )
 
 
+# ---------- batch 3: minimaal, zonder geel ----------
+def pR37():
+    return page("dark", f"""
+<h1 style="top:150px">Jij betaalt.<br>Buddy onthoudt.</h1>
+<div class="abs" style="left:380px;top:600px">{buddy(320)}</div>
+<div class="sub" style="top:1030px;font-size:36px">Geen toegang tot je bank.<br>Buddy betaalt nooit voor je.</div>""")
+
+
+def pR41():
+    plane = (f'<svg width="150" height="150" viewBox="0 0 150 150" style="display:block"><path d="M10 70 140 14 100 136 70 92z" fill="{C["blue"]}"/>'
+             f'<path d="M70 92 140 14 52 80z" fill="{C["blueMid"]}"/><path d="M70 92 74 128 90 108z" fill="{C["blueSoft"]}"/></svg>')
+    return page("light", f"""
+<h1 style="font-size:60px;top:130px;letter-spacing:-0.04em">Stuur dit naar je huisgenoot<br>die altijd zegt:</h1>
+<div class="abs" style="left:70px;right:70px;top:420px;text-align:center;font-size:128px;font-weight:500;letter-spacing:-0.06em;line-height:1.0;color:{C['blue']}">&lsquo;Ik betaal het vanavond.&rsquo;</div>
+<div class="abs" style="left:300px;top:880px">{buddy(190, body=C["blue"], eye="#fff", look=(0.6, -0.3))}</div>
+<div class="abs" style="left:520px;top:850px;transform:rotate(-8deg)">{plane}</div>""")
+
+
+def pR35():
+    names = ["Huur", "Zorg&hellip;", "Gemeente", "Webshop", "Energie"]
+    tabs = "".join(f'<div style="flex:1;height:84px;background:{"#fff" if i == 2 else "#e6ecff"};border-radius:18px 18px 0 0;display:flex;align-items:center;'
+                   f'justify-content:space-between;padding:0 12px;font-family:Geist,sans-serif;font-size:23px;font-weight:500;color:{C["ink"]}"><span>{n}</span>'
+                   f'<span style="color:{C["greyText"]};font-size:20px">&#10005;</span></div>' for i, n in enumerate(names))
+    return page("dark", f"""
+<h1 class="s">Je hoofd heeft te veel tabbladen open.</h1>
+<div class="abs" style="left:70px;right:70px;top:560px">
+  <div style="display:flex;gap:6px;padding:0 10px">{tabs}</div>
+  <div style="height:150px;background:#fff;border-radius:0 0 28px 28px;box-shadow:0 18px 50px rgba(0,30,140,.2)"></div></div>
+<div class="abs" style="left:440px;top:835px">{buddy(190, look=(0, -0.6))}</div>
+<div class="sub" style="top:1060px">Sluit er een paar.</div>""")
+
+
+def pR28():
+    apps = "".join(f'<div style="width:58px;height:58px;border-radius:16px;background:{C["blueSoft"]};opacity:{0.55 + (i % 3) * 0.15}"></div>' for i in range(16))
+    phone = (f'<div class="abs" style="left:350px;top:420px;width:380px;height:640px;border-radius:64px;background:{C["blue"]};padding:20px">'
+             f'<div style="width:100%;height:100%;border-radius:46px;background:#fff;padding:34px 26px;display:flex;flex-direction:column;gap:26px">'
+             f'<div style="height:62px;border-radius:18px;background:{C["grey"]};display:flex;align-items:center;padding:0 18px;font-family:Geist,sans-serif;font-size:22px;font-weight:500;color:{C["ink"]}">Opslag bijna vol</div>'
+             f'<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:18px;justify-items:center">{apps}</div></div></div>')
+    return page("light", f"""
+<h1>Geen app erbij.</h1>
+{phone}
+<div class="sub" style="top:1100px">Je mail is genoeg.</div>""")
+
+
+def pR06():
+    def bub(txt, side):
+        mine = side == "r"
+        bg = C["blue"] if mine else C["grey"]
+        col = "#fff" if mine else C["ink"]
+        al = "flex-end" if mine else "flex-start"
+        br = "40px 40px 12px 40px" if mine else "40px 40px 40px 12px"
+        return (f'<div style="display:flex;justify-content:{al}"><div style="max-width:720px;background:{bg};color:{col};border-radius:{br};padding:34px 44px;'
+                f'font-family:Geist,sans-serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.2">{txt}</div></div>')
+    return page("dark", f"""
+<h1 class="s" style="font-size:84px">Bij elk bezoek,<br>dezelfde vraag.</h1>
+<div class="abs" style="left:90px;right:90px;top:470px;display:flex;flex-direction:column;gap:40px">
+  <div style="display:flex;justify-content:flex-start"><div style="max-width:720px;background:#fff;color:{C['ink']};border-radius:40px 40px 40px 12px;padding:34px 44px;font-family:Geist,sans-serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.2">Heb je dat al betaald?</div></div>
+  <div style="display:flex;justify-content:flex-end"><div style="max-width:720px;background:{C['blueSoft']};color:{C['blue']};border-radius:40px 40px 12px 40px;padding:34px 44px;font-family:Geist,sans-serif;font-size:46px;font-weight:500;letter-spacing:-0.02em;line-height:1.2">Ja. Staat in mijn agenda.</div></div></div>
+<div class="abs" style="left:140px;top:850px">{buddy(150, look=(0.5, 0), blink=0.8)}</div>""")
+
+
+def pR14():
+    return page("light", f"""
+<h1>Factuur binnen?<br>Doorsturen.</h1>
+<div class="abs card" style="left:90px;right:90px;top:480px;height:360px;border-radius:36px;padding:44px 50px;font-family:Geist,sans-serif">
+  <div style="font-size:26px;color:{C['greyText']};font-weight:500">Aan</div>
+  <div style="font-size:42px;font-weight:600;color:{C['ink']};letter-spacing:-0.02em;margin:6px 0 30px">jouwcode@in.betaalbuddy.nl</div>
+  <div style="height:3px;background:{C['grey']};margin-bottom:30px"></div>
+  <div style="font-size:26px;color:{C['greyText']};font-weight:500">Onderwerp</div>
+  <div style="font-size:38px;font-weight:500;color:{C['ink']};margin-top:6px">Fwd: Factuur Energieleverancier</div></div>
+<div class="abs" style="right:90px;top:880px"><div class="pill solid" style="background:{C['blue']};color:#fff;height:86px;padding:0 54px;font-size:34px">Verstuur</div></div>
+<div class="sub" style="top:890px;left:90px;right:auto;text-align:left;font-size:50px;color:{C['blue']}">Dat is het.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
     ("R01", "eerste-nacht", pR01),
     ("R02", "sleutels-binnen", pR02), ("R04", "post-it-laptop", pR04), ("R12", "badge-eerste-baan", pR12),
     ("R18", "laptop-dicht", pR18), ("R26", "lijstje-later", pR26), ("R32", "welke-vergeet-jij", pR32),
+    ("R37", "jij-betaalt", pR37), ("R41", "huisgenoot-vanavond", pR41), ("R35", "te-veel-tabbladen", pR35),
+    ("R28", "geen-app-erbij", pR28), ("R06", "zondag-ouders", pR06), ("R14", "doorsturen", pR14),
 ]
 
 
