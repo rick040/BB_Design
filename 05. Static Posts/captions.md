@@ -453,3 +453,20 @@ Link in bio 👆
 ```
 Alt per slide: 1 Titel met route. 2 Halte 1: de vervaldatum gaat voorbij. 3 Halte 2: herinnering of aanmaning. 4 Halte 3: de veertiendagenbrief, nog 14 dagen zonder extra kosten. 5 Halte 4: incassokosten, kan uitlopen op minimaal €40. 6 Uitstappen kan bij halte 1.
 Controle: bron art. 6:96 BW en het Besluit vergoeding voor buitengerechtelijke incassokosten (Schuldinfo). Altijd "kan uitlopen op".
+
+## R03 · Aantekeningen op je hand (lijst #3)
+```
+Je hand, je notities-app, drie post-its en een vaag gevoel. Klinkt bekend? ✍️
+
+Zo kan het ook:
+1️⃣ Factuur binnen? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#rekeningen #mentalload #geldzaken #volwassenworden #betaalbuddy
+```
+Alt: Een lichtblauwe hand met aantekeningen op de handpalm: "tandarts betalen", "huur 28e?" en "gemeente??". Rechtsonder kijkt Buddy ernaar. Kop: Dit is geen systeem.
+Let op: dit is een illustratieve vertaling van het fotoidee (hand met balpen). Spiegelpaar met #35 (te veel tabbladen), die al gemaakt is: zet R03 en R35 in dezelfde week.

@@ -268,5 +268,14 @@
     "idee": "Metrolijn van factuur tot incasso",
     "datum": "2026-10-14",
     "bestand": "BB-Post-R24-metrolijn-incasso.png"
+  },
+  {
+    "nr": "R03",
+    "slug": "geen-systeem",
+    "kop": "Dit is geen systeem.",
+    "hoek": "H2 mentale belasting",
+    "idee": "aantekeningen op je hand: tandarts betalen, huur 28e, gemeente",
+    "datum": "2026-10-15",
+    "bestand": "BB-Post-R03-geen-systeem.png"
   }
 ]

@@ -638,6 +638,26 @@ def pR24():
     ]
 
 
+def pR03():
+    hand = C["blueSoft"]
+    fingers = ""
+    for x, top in [(250, 120), (345, 60), (440, 90), (535, 170)]:
+        fingers += f'<rect x="{x}" y="{top}" width="88" height="{330 - top + 40}" rx="44" fill="{hand}"/>'
+    def line(y, txt, rot, x=262):
+        return (f'<g transform="rotate({rot} 440 {y})"><text x="{x}" y="{y}" font-family="Space Grotesk" font-weight="500" font-size="40" '
+                f'letter-spacing="-1.5" fill="#0128c4">{txt}</text></g>')
+    svg = (f'<svg viewBox="0 0 900 640" width="900" height="640" style="display:block">'
+           f'<rect x="150" y="360" width="190" height="90" rx="45" fill="{hand}" transform="rotate(-32 245 405)"/>'
+           f'{fingers}<rect x="250" y="300" width="373" height="120" fill="{hand}"/><rect x="230" y="250" width="420" height="340" rx="130" fill="{hand}"/>'
+           + line(380, "tandarts betalen", -3) + line(450, "huur 28e?", 2, 300) + line(520, "gemeente??", -2, 285)
+           + '</svg>')
+    return page("light", f"""
+<h1>Dit is geen<br>systeem.</h1>
+<div class="abs" style="left:90px;top:380px">{svg}</div>
+<div class="abs" style="left:800px;top:850px">{buddy(170, body=C["blue"], eye="#fff", look=(-0.8, -0.2))}</div>
+<div class="sub" style="top:1060px">Stuur je factuur door.<br>Buddy zet de datum in je agenda.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -650,6 +670,7 @@ POSTS = [
     ("R36", "lockscreen-straks", pR36), ("R25", "later-meme", pR25), ("R39", "bingo", pR39),
     ("R22", "negen-rekeningen", pR22), ("R29", "vier-stappen", pR29), ("R15", "staat-in-agenda", pR15),
     ("R30", "een-keer-instellen", pR30), ("R24", "metrolijn-incasso", pR24),
+    ("R03", "geen-systeem", pR03),
 ]
 
 
