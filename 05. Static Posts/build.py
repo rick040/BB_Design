@@ -658,6 +658,22 @@ def pR03():
 <div class="sub" style="top:1060px">Stuur je factuur door.<br>Buddy zet de datum in je agenda.</div>""")
 
 
+def pR07():
+    kaart = (f'<div class="abs" style="left:200px;top:500px;width:420px;height:270px;background:#fff;border-radius:26px;transform:rotate(-4deg);'
+             f'box-shadow:0 18px 50px rgba(0,30,140,.25);font-family:Geist,sans-serif;color:{C["ink"]};padding:34px 38px;opacity:.78">'
+             f'<div style="font-size:24px;font-weight:600;color:{C["greyText"]};letter-spacing:.04em">AFSPRAAKKAARTJE</div>'
+             f'<div style="font-size:46px;font-weight:600;margin-top:18px;letter-spacing:-0.02em">Tandarts</div>'
+             f'<div style="font-size:34px;font-weight:400;margin-top:10px;color:#6b7280">dinsdag in juni, 14:30</div></div>'
+             f'<div class="abs" style="left:376px;top:462px;width:68px;height:68px;border-radius:50%;background:{C["blueSoft"]};box-shadow:0 8px 20px rgba(0,30,140,.3)"></div>')
+    nota = (f'<div class="abs card bill" style="left:430px;right:70px;top:770px;height:150px;border-radius:75px;padding-left:30px;transform:rotate(1.5deg)">'
+            f'{glyph("heart", 96)}<div class="bt"><b style="font-size:38px">Tandarts</b><span style="font-size:28px">nota, weken later</span></div></div>')
+    return page("dark", f"""
+<h1 class="s" style="font-size:88px;top:90px">De afspraak was in juni.<br>De nota komt<br>wanneer hij komt.</h1>
+{kaart}{nota}
+<div class="abs" style="left:150px;top:790px">{buddy(170, look=(0.9, 0.1))}</div>
+<div class="sub" style="top:1030px;font-size:36px">Stuur de nota door. Buddy onthoudt de datum.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -671,6 +687,7 @@ POSTS = [
     ("R22", "negen-rekeningen", pR22), ("R29", "vier-stappen", pR29), ("R15", "staat-in-agenda", pR15),
     ("R30", "een-keer-instellen", pR30), ("R24", "metrolijn-incasso", pR24),
     ("R03", "geen-systeem", pR03),
+    ("R07", "tandarts-nota", pR07),
 ]
 
 
