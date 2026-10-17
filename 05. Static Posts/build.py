@@ -674,6 +674,28 @@ def pR07():
 <div class="sub" style="top:1030px;font-size:36px">Stuur de nota door. Buddy onthoudt de datum.</div>""")
 
 
+def pR08():
+    ijs = (f'<svg viewBox="0 0 360 520" width="330" height="476" style="display:block;transform:rotate(-8deg)">'
+           f'<rect x="110" y="10" width="140" height="70" rx="22" fill="#0128c4"/>'
+           f'<path d="M40 100 Q40 80 60 80 H300 Q320 80 320 100 V470 Q320 500 290 500 H70 Q40 500 40 470Z" fill="{C["blueSoft"]}"/>'
+           f'<path d="M40 130 H320" stroke="#fff" stroke-width="6" stroke-dasharray="2 18" stroke-linecap="round"/>'
+           f'<g stroke="#fff" stroke-width="12" stroke-linecap="round"><path d="M180 240V400M110 280L250 360M250 280L110 360"/></g>'
+           f'<g fill="none" stroke="#fff" stroke-width="8" stroke-linecap="round"><path d="M160 262l20 18 20-18M160 378l20-18 20 18"/></g></svg>')
+    schoen = (f'<svg viewBox="0 0 420 260" width="400" height="248" style="display:block;transform:rotate(6deg)">'
+              f'<path d="M30 60 Q30 30 60 30 H130 Q150 30 160 52 Q180 100 250 110 Q340 120 390 150 Q410 165 410 190 V210 H30Z" fill="{C["blue"]}"/>'
+              f'<path d="M30 190 H410 V222 Q410 240 392 240 H48 Q30 240 30 222Z" fill="#fff" stroke="{C["blue"]}" stroke-width="6"/>'
+              f'<path d="M165 72l50 22M185 50l50 22M150 95l50 22" stroke="#fff" stroke-width="9" stroke-linecap="round"/></svg>')
+    nota = (f'<div class="abs card bill" style="left:290px;right:90px;top:890px;height:130px;border-radius:65px;padding-left:26px;transform:rotate(-1.5deg)">'
+            f'{glyph("heart", 84)}<div class="bt"><b style="font-size:36px">Fysiotherapeut</b><span style="font-size:27px">nota, ergens in je mail</span></div></div>')
+    return page("light", f"""
+<h1 class="s" style="font-size:92px;top:90px">Knie: weer prima.<br>Fysionota: ergens<br>in je mail.</h1>
+<div class="abs" style="left:140px;top:420px">{ijs}</div>
+<div class="abs" style="left:520px;top:600px">{schoen}</div>
+<div class="abs" style="left:100px;top:870px">{buddy(150, body=C["blue"], eye="#fff", look=(0.9, 0.1))}</div>
+{nota}
+<div class="sub" style="top:1060px;font-size:40px">Doorsturen, klaar.<br>Buddy zet de datum in je agenda.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -688,6 +710,7 @@ POSTS = [
     ("R30", "een-keer-instellen", pR30), ("R24", "metrolijn-incasso", pR24),
     ("R03", "geen-systeem", pR03),
     ("R07", "tandarts-nota", pR07),
+    ("R08", "ijszak-knie", pR08),
 ]
 
 

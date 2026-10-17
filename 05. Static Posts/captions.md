@@ -487,3 +487,20 @@ Link in bio 👆
 ```
 Alt: Een half verbleekt afsprakenkaartje "Tandarts, dinsdag in juni, 14:30" hangt met een magneet op een blauwe achtergrond. Ernaast een wit kaartje "Tandarts, nota, weken later" en Buddy die ernaar kijkt. Kop: De afspraak was in juni. De nota komt wanneer hij komt.
 Let op: dit is een illustratieve vertaling van het fotoidee (kaartje onder koelkastmagneet). Niet in dezelfde week als de Reel met tandarts juni, nota augustus testen.
+
+## R08 · IJszak op de knie (lijst #8)
+```
+Herstellen ging sneller dan het betalen. 🧊
+
+Zo hou je het bij:
+1️⃣ Nota binnen? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#zorgnota #fysio #rekeningen #geldzaken #betaalbuddy
+```
+Alt: Een lichtblauwe ijszak en een blauwe sportschoen op een lichte achtergrond. Eronder een kaartje "Fysiotherapeut, nota, ergens in je mail" en Buddy die ernaar kijkt. Kop: Knie: weer prima. Fysionota: ergens in je mail.
+Let op: dit is een illustratieve vertaling van het fotoidee (ijszak op de knie op de bank). Zorgnota-thema, dus niet in dezelfde week als R07 (tandarts) posten.
