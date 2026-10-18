@@ -504,3 +504,20 @@ Link in bio 👆
 ```
 Alt: Een lichtblauwe ijszak en een blauwe sportschoen op een lichte achtergrond. Eronder een kaartje "Fysiotherapeut, nota, ergens in je mail" en Buddy die ernaar kijkt. Kop: Knie: weer prima. Fysionota: ergens in je mail.
 Let op: dit is een illustratieve vertaling van het fotoidee (ijszak op de knie op de bank). Zorgnota-thema, dus niet in dezelfde week als R07 (tandarts) posten.
+
+## R19 · Vergelijken op de bank in november (lijst #19)
+```
+Overstappen van zorgverzekering kan tot en met 31 december. Met een openstaande premie lukt dat niet. 🛋️
+
+Zo hou je het bij:
+1️⃣ Premienota binnen? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#zorgverzekering #overstappen #zorgpremie #geldzaken #betaalbuddy
+```
+Alt: Buddy gluurt vanonder een geruite plaid naast een laptop met een onscherp scherm vol vergelijkrijen. Kop: Overstappen kan tot en met 31 december. Met een openstaande premie lukt dat niet.
+Let op: dit is een illustratieve vertaling van het fotoidee (iemand onder een plaid met laptop). Check voor plaatsing: deadline 31 december en "openstaande premie = overstappen lukt niet" (bron: Zorgwijzer, zie ook Rijksoverheid). Posten tussen 12 november en 31 december is ook goed, nu al kan.

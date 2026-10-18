@@ -696,6 +696,30 @@ def pR08():
 <div class="sub" style="top:1060px;font-size:40px">Doorsturen, klaar.<br>Buddy zet de datum in je agenda.</div>""")
 
 
+def pR19():
+    """Illustratieve vertaling van fotoidee R19: iemand onder een plaid met laptop, scherm onscherp, geen merk."""
+    rows = "".join(
+        f'<div style="display:flex;align-items:center;gap:18px;height:74px;margin-top:{0 if i==0 else 16}px;background:#fff;border-radius:18px;padding:0 22px;filter:blur(2.2px)">'
+        f'<div style="width:34px;height:34px;border-radius:50%;background:{C["blueSoft"]}"></div>'
+        f'<div style="flex:1"><div style="height:14px;width:{w}%;background:{C["grey"]};border-radius:7px"></div>'
+        f'<div style="height:11px;width:{w-25}%;background:#eef1f6;border-radius:6px;margin-top:9px"></div></div>'
+        f'<div style="height:16px;width:70px;background:{C["blueMid"]};border-radius:8px;opacity:.7"></div></div>'
+        for i, w in enumerate((70, 55, 62)))
+    laptop = (f'<div class="abs" style="left:250px;top:470px;width:580px;height:380px;background:#0128c4;border-radius:30px 30px 10px 10px;box-shadow:0 0 0 3px rgba(182,199,255,.45);padding:26px 26px 20px">'
+              f'<div style="background:{C["light"]};border-radius:16px;height:100%;padding:24px 24px 0">'
+              f'<div style="height:16px;width:46%;background:{C["blueSoft"]};border-radius:8px;margin-bottom:22px;filter:blur(1.5px)"></div>{rows}</div></div>'
+              f'<div class="abs" style="left:200px;top:846px;width:680px;height:26px;background:#0a2bb8;border-radius:6px 6px 26px 26px"></div>')
+    plaid = (f'<div class="abs" style="left:110px;top:800px;width:860px;height:250px;border-radius:120px 120px 40px 40px;'
+             f'background:{C["blueSoft"]};'
+             f'background-image:repeating-linear-gradient(90deg,rgba(255,255,255,.55) 0 18px,transparent 18px 70px),repeating-linear-gradient(0deg,rgba(1,59,255,.28) 0 18px,transparent 18px 70px);'
+             f'box-shadow:0 18px 50px rgba(0,20,120,.3);z-index:3"></div>')
+    return page("dark", f"""
+<h1 class="s" style="font-size:88px;top:96px">Overstappen kan tot<br>en met 31 december.<br>Met een openstaande<br>premie lukt dat niet.</h1>
+<div class="abs" style="left:132px;top:640px;z-index:2">{buddy(190, look=(0.9, 0.2))}</div>
+{laptop}{plaid}
+<div class="sub" style="top:1068px;font-size:36px;z-index:4">Stuur je premienota door.<br>Buddy zet de datum in je agenda.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -711,6 +735,7 @@ POSTS = [
     ("R03", "geen-systeem", pR03),
     ("R07", "tandarts-nota", pR07),
     ("R08", "ijszak-knie", pR08),
+    ("R19", "overstappen-zorg", pR19),
 ]
 
 
