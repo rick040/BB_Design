@@ -17,8 +17,8 @@ export const FWD_T = {
   fly: 18, // de eerste envelop vliegt erin
   flyStagger: 5, // duur: tussen twee enveloppen
   flyLen: 16, // duur van een vlucht
-  card: 68, // de agenda klapt open onder het adres
-  row: 72, // eerste agenda-item
+  card: 66, // de agenda klapt open onder het adres
+  row: 68, // eerste agenda-item
   rowStagger: 14, // duur: tussen twee agenda-items
   toast: 118, // de Buddies kijken tevreden
   sub: 96,
