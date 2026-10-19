@@ -101,7 +101,7 @@ export const StoryDoor: React.FC<StoryProps> = (props) => {
                 <div
                   style={{
                     fontFamily: decFonts.display,
-                    fontSize: 112,
+                    fontSize: door.amount.length > 6 ? 92 : 112,
                     letterSpacing: "-0.03em",
                     color: dec.blue,
                     lineHeight: 1.15,
