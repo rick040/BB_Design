@@ -1,6 +1,7 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { DecemberCompositions } from "./december";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -103,5 +104,8 @@ export const RemotionRoot: React.FC = () => (
         height={1350}
       />
     </Folder>
+
+    {/* December-campagne "Buddy houdt het lijstje bij" (december/README.md) */}
+    <DecemberCompositions />
   </>
 );
