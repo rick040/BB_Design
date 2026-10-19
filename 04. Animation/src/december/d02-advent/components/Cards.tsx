@@ -1,7 +1,7 @@
 import React from "react";
 import { AppIcon } from "../../../components/AppIcon";
 import { Checkmark } from "../../../components/Checkmark";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 
 export const MAIL_W = 900;
 export const MAIL_H = 150;
@@ -28,7 +28,7 @@ export const MailRow: React.FC<{
       gap: 24,
       padding: "0 32px 0 28px",
       boxSizing: "border-box",
-      fontFamily: decFonts.text,
+      fontFamily: decFonts.ui,
       ...style,
     }}
   >
@@ -43,6 +43,7 @@ export const MailRow: React.FC<{
         alignItems: "center",
         justifyContent: "center",
         fontFamily: decFonts.display,
+        fontWeight: 500,
         fontSize: 40,
         flexShrink: 0,
       }}
@@ -91,7 +92,7 @@ export const AddressChip: React.FC<{ text: string; pulse?: number; style?: React
       borderRadius: 46,
       background: dec.white,
       color: dec.blue,
-      fontFamily: decFonts.text,
+      fontFamily: decFonts.ui,
       fontWeight: 600,
       fontSize: 34,
       transform: `scale(${1 + pulse * 0.07})`,
@@ -152,7 +153,7 @@ export const AgendaCard: React.FC<{
         boxSizing: "border-box",
         display: "flex",
         gap: 34,
-        fontFamily: decFonts.text,
+        fontFamily: decFonts.ui,
         ...style,
       }}
     >
@@ -169,11 +170,11 @@ export const AgendaCard: React.FC<{
           flexShrink: 0,
         }}
       >
-        <span style={{ fontFamily: decFonts.display, fontSize: 98, lineHeight: 0.95, letterSpacing: "-0.03em" }}>{day}</span>
+        <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 98, lineHeight: 0.95, letterSpacing: decTracking }}>{day}</span>
         <span style={{ fontWeight: 600, fontSize: 34, textTransform: "uppercase", letterSpacing: "0.06em", color: dec.softBlue }}>{month}</span>
       </div>
       <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", gap: 6 }}>
-        <div style={{ fontFamily: decFonts.display, fontSize: 52, lineHeight: 1.05, letterSpacing: "-0.02em", color: dec.ink }}>{title}</div>
+        <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 56, lineHeight: 1.05, letterSpacing: decTracking, color: dec.ink }}>{title}</div>
         <div style={{ fontSize: 27, fontWeight: 400, color: dec.greyText, marginBottom: 14 }}>{sub}</div>
         <div style={{ display: "flex", gap: 14 }}>
           {chip(chipFar, tickFar)}

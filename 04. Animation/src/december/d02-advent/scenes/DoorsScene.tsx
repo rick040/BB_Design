@@ -22,7 +22,7 @@ export const DOORS_T = {
 };
 
 const BUDDY = 140;
-const FEET_Y = 915;
+const FEET_Y = 900;
 const BUDDY_X = 540;
 
 const openAt = (frame: number, start: number) =>
@@ -91,7 +91,7 @@ export const DoorsScene: React.FC<{ props: AdventProps["doors"]; bills: AdventPr
   return (
     <SceneBg color={p.blue}>
       <DHeadline text={props.headline} color={dec.white} delay={-4} stagger={3} />
-      <Stage offsetY={36}>
+      <Stage offsetY={46}>
         <AdventCalendar
           states={states}
           leaf={dec.deep}

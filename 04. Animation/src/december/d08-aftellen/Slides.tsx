@@ -1,7 +1,7 @@
 import React from "react";
 import { Buddy } from "../../components/Buddy";
 import { StaticPage, type PageTone } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { AftellenProps } from "./schema";
 
 const Kicker: React.FC<{ text: string; fg: string; bg: string; top?: number }> = ({ text, fg, bg, top = 280 }) => (
@@ -12,7 +12,7 @@ const Kicker: React.FC<{ text: string; fg: string; bg: string; top?: number }> =
         color: fg,
         borderRadius: 999,
         padding: "12px 30px",
-        fontFamily: decFonts.text,
+        fontFamily: decFonts.ui,
         fontWeight: 600,
         fontSize: 30,
         letterSpacing: "0.04em",
@@ -33,9 +33,10 @@ const Display: React.FC<{ text: string; top: number; size: number; color: string
       right: 90,
       textAlign: "center",
       fontFamily: decFonts.display,
+      fontWeight: 500,
       fontSize: size,
-      lineHeight: 1.04,
-      letterSpacing: "-0.02em",
+      lineHeight: 1.0,
+      letterSpacing: decTracking,
       color,
       textWrap: "balance",
       whiteSpace: "pre-line",
@@ -53,8 +54,8 @@ const Source: React.FC<{ text: string; color: string; top?: number }> = ({ text,
       left: 90,
       right: 90,
       textAlign: "center",
-      fontFamily: decFonts.text,
-      fontWeight: 500,
+      fontFamily: decFonts.ui,
+      fontWeight: 400,
       fontSize: 24,
       color,
     }}
@@ -66,7 +67,7 @@ const Source: React.FC<{ text: string; color: string; top?: number }> = ({ text,
 // 1 · Poll
 export const AftellenPoll: React.FC<AftellenProps> = ({ poll }) => (
   <StaticPage tone="blue">
-    <Display text={poll.headline} top={300} size={92} color={dec.white} />
+    <Display text={poll.headline} top={300} size={118} color={dec.white} />
     <div style={{ position: "absolute", top: 790, left: 150, right: 150, display: "flex", flexDirection: "column", gap: 26 }}>
       {poll.options.map((o, i) => (
         <div
@@ -79,7 +80,7 @@ export const AftellenPoll: React.FC<AftellenProps> = ({ poll }) => (
             alignItems: "center",
             gap: 26,
             padding: "0 44px",
-            fontFamily: decFonts.text,
+            fontFamily: decFonts.ui,
             fontWeight: 600,
             fontSize: 44,
             color: dec.blue,
@@ -119,14 +120,14 @@ export const AftellenFeit1: React.FC<AftellenProps> = ({ fact1 }) => (
         textAlign: "center",
       }}
     >
-      <div style={{ height: 96, background: dec.blue, color: dec.white, fontFamily: decFonts.display, fontSize: 56, lineHeight: "96px" }}>
+      <div style={{ height: 96, background: dec.blue, color: dec.white, fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 64, lineHeight: "96px" }}>
         {fact1.dateTop}
       </div>
-      <div style={{ fontFamily: decFonts.display, fontSize: 190, lineHeight: 1.2, color: dec.blue, letterSpacing: "-0.03em" }}>
+      <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 210, lineHeight: 1.15, color: dec.blue, letterSpacing: decTracking }}>
         {fact1.dateDay}
       </div>
     </div>
-    <Display text={fact1.headline} top={830} size={84} color={dec.blue} />
+    <Display text={fact1.headline} top={830} size={106} color={dec.blue} />
     <div
       style={{
         position: "absolute",
@@ -135,9 +136,9 @@ export const AftellenFeit1: React.FC<AftellenProps> = ({ fact1 }) => (
         right: 110,
         textAlign: "center",
         fontFamily: decFonts.text,
-        fontWeight: 500,
-        fontSize: 44,
-        lineHeight: 1.3,
+        fontWeight: 400,
+        fontSize: 50,
+        lineHeight: 1.25,
         color: dec.ink,
         textWrap: "balance",
       }}
@@ -190,12 +191,12 @@ export const AftellenFeit2: React.FC<AftellenProps> = ({ fact2 }) => (
       >
         <Padlock size={78} color={dec.white} />
       </div>
-      <div style={{ fontFamily: decFonts.text }}>
+      <div style={{ fontFamily: decFonts.ui }}>
         <div style={{ fontWeight: 600, fontSize: 44, color: dec.ink, lineHeight: 1.15 }}>{fact2.cardTitle}</div>
         <div style={{ fontWeight: 500, fontSize: 32, color: dec.greyText, marginTop: 6 }}>{fact2.cardSub}</div>
       </div>
     </div>
-    <Display text={fact2.headline} top={760} size={88} color={dec.white} />
+    <Display text={fact2.headline} top={760} size={104} color={dec.white} />
     <Buddy
       size={230}
       body={dec.white}
@@ -218,7 +219,9 @@ export const AftellenCountdown: React.FC<AftellenProps> = ({ countdown }) => (
         right: 0,
         textAlign: "center",
         fontFamily: decFonts.display,
-        fontSize: 84,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 100,
         lineHeight: 1,
         color: dec.softBlue,
       }}
@@ -233,9 +236,10 @@ export const AftellenCountdown: React.FC<AftellenProps> = ({ countdown }) => (
         right: 0,
         textAlign: "center",
         fontFamily: decFonts.display,
-        fontSize: 520,
+        fontWeight: 500,
+        fontSize: 600,
         lineHeight: 1,
-        letterSpacing: "-0.04em",
+        letterSpacing: decTracking,
         color: dec.white,
       }}
     >
@@ -244,12 +248,14 @@ export const AftellenCountdown: React.FC<AftellenProps> = ({ countdown }) => (
     <div
       style={{
         position: "absolute",
-        top: 880,
+        top: 870,
         left: 0,
         right: 0,
         textAlign: "center",
         fontFamily: decFonts.display,
-        fontSize: 92,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 110,
         lineHeight: 1,
         color: dec.white,
       }}
@@ -259,13 +265,13 @@ export const AftellenCountdown: React.FC<AftellenProps> = ({ countdown }) => (
     <div
       style={{
         position: "absolute",
-        top: 990,
+        top: 1012,
         left: 0,
         right: 0,
         textAlign: "center",
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 54,
+        fontWeight: 400,
+        fontSize: 58,
         color: dec.softBlue,
       }}
     >
@@ -274,13 +280,13 @@ export const AftellenCountdown: React.FC<AftellenProps> = ({ countdown }) => (
     <div
       style={{
         position: "absolute",
-        top: 1130,
+        top: 1150,
         left: 120,
         right: 330,
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 44,
-        lineHeight: 1.28,
+        fontWeight: 400,
+        fontSize: 50,
+        lineHeight: 1.22,
         color: dec.white,
         textWrap: "balance",
       }}

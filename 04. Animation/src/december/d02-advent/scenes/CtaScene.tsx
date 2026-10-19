@@ -7,7 +7,7 @@ import { Wordmark } from "../../../components/Wordmark";
 import { blinkScale, clamp, pop, springs } from "../../../lib/anim";
 import { useLayout } from "../../../lib/layout";
 import { usePalette } from "../../../lib/palette";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import type { AdventProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -63,9 +63,10 @@ export const CtaScene: React.FC<{ props: AdventProps["cta"] }> = ({ props }) => 
           right: L.sidePadding,
           textAlign: "center",
           fontFamily: decFonts.display,
-          fontSize: L.headlineSize * 0.8,
-          lineHeight: 1.04,
-          letterSpacing: "-0.02em",
+          fontWeight: 500,
+          fontSize: L.headlineSize * 0.88,
+          lineHeight: 1.0,
+          letterSpacing: decTracking,
         }}
       >
         {lines.map((words, li) => (
@@ -152,7 +153,7 @@ export const CtaScene: React.FC<{ props: AdventProps["cta"] }> = ({ props }) => 
                 justifyContent: "center",
               }}
             >
-              <span style={{ fontFamily: decFonts.display, fontSize: 180, color: dec.blue, letterSpacing: "-0.03em", lineHeight: 1 }}>
+              <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 190, color: dec.blue, letterSpacing: decTracking, lineHeight: 1 }}>
                 {props.doorNumber}
               </span>
             </div>
@@ -197,8 +198,8 @@ export const CtaScene: React.FC<{ props: AdventProps["cta"] }> = ({ props }) => 
             top: 715,
             textAlign: "center",
             fontFamily: decFonts.text,
-            fontWeight: 500,
-            fontSize: 40,
+            fontWeight: 400,
+            fontSize: 42,
             color: p.blueText,
             opacity: subIn,
             transform: `translateY(${(1 - subIn) * 20}px)`,

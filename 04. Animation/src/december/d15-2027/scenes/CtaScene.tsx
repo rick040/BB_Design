@@ -7,7 +7,7 @@ import { Wordmark } from "../../../components/Wordmark";
 import { clamp, pop, springs } from "../../../lib/anim";
 import { useLayout } from "../../../lib/layout";
 import { usePalette } from "../../../lib/palette";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import { Burst } from "../components/Burst";
 import type { AftellenProps } from "../schema";
 
@@ -63,9 +63,10 @@ export const CtaScene: React.FC<{ props: AftellenProps["cta"] }> = ({ props }) =
           right: L.sidePadding,
           textAlign: "center",
           fontFamily: decFonts.display,
-          fontSize: L.headlineSize * 0.8,
-          lineHeight: 1.04,
-          letterSpacing: "-0.02em",
+          fontWeight: 500,
+          fontSize: L.headlineSize * 0.94,
+          lineHeight: 1.0,
+          letterSpacing: decTracking,
         }}
       >
         {lines.map((words, li) => (
@@ -151,8 +152,8 @@ export const CtaScene: React.FC<{ props: AftellenProps["cta"] }> = ({ props }) =
             top: 790,
             textAlign: "center",
             fontFamily: decFonts.text,
-            fontWeight: 500,
-            fontSize: 40,
+            fontWeight: 400,
+            fontSize: 42,
             color: p.blueText,
             opacity: subIn,
             transform: `translateY(${(1 - subIn) * 20}px)`,

@@ -16,7 +16,7 @@ Code: `src/december/d06-brief/` (`schema.ts` heeft alle teksten). Posten: vanaf 
 - Achtergrond Betaalbuddy-blauw `#013bff`, wit papier met harde schaduw in `#0026a8`, lichte kanteling.
 - Kicker: "Brief van de maker".
 - Brieftekst (letterlijk uit het campagnebestand): "Ik ben Rick en ik maak Betaalbuddy in Eindhoven." / "Buddy leest je mail niet: hij pakt de betaaldatum en gooit de rest weg." / "Geen bankkoppeling, geen inbox-toegang."
-- Handtekening "Rick" in Poppins cursief, daaronder "Maker van Betaalbuddy".
+- Handtekening "Rick" in Space Grotesk 500 cursief, daaronder "Maker van Betaalbuddy".
 - Chip: "Stuur door · seintje 7 en 2 dagen vooraf".
 
 ## Caption (organisch)

@@ -2,7 +2,7 @@ import React from "react";
 import { Buddy } from "../../components/Buddy";
 import { PaletteProvider } from "../../lib/palette";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import { Chocolate } from "./components/AdventCalendar";
 import type { StoryProps } from "./schema";
 
@@ -38,7 +38,7 @@ export const StoryDoor: React.FC<StoryProps> = (props) => {
               color: dec.blue,
               borderRadius: 999,
               padding: "16px 34px",
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
               fontWeight: 600,
               fontSize: 32,
               lineHeight: 1,
@@ -94,15 +94,16 @@ export const StoryDoor: React.FC<StoryProps> = (props) => {
                   padding: "40px 40px 44px",
                   boxShadow: "0 24px 60px rgba(1, 40, 160, 0.16)",
                   boxSizing: "border-box",
-                  fontFamily: decFonts.text,
+                  fontFamily: decFonts.ui,
                 }}
               >
                 <div style={{ fontWeight: 600, fontSize: 40, color: dec.ink, lineHeight: 1.1 }}>{door.title}</div>
                 <div
                   style={{
                     fontFamily: decFonts.display,
-                    fontSize: door.amount.length > 6 ? 92 : 112,
-                    letterSpacing: "-0.03em",
+                    fontWeight: 500,
+                    fontSize: door.amount.length > 6 ? 96 : 116,
+                    letterSpacing: decTracking,
                     color: dec.blue,
                     lineHeight: 1.15,
                     margin: "14px 0 20px",
@@ -150,8 +151,9 @@ export const StoryDoor: React.FC<StoryProps> = (props) => {
               alignItems: "center",
               justifyContent: "center",
               fontFamily: decFonts.display,
-              fontSize: 92,
-              letterSpacing: "-0.03em",
+              fontWeight: 500,
+              fontSize: 96,
+              letterSpacing: decTracking,
               boxShadow: "0 16px 40px rgba(0, 20, 120, 0.3)",
             }}
           >
@@ -169,14 +171,14 @@ export const StoryDoor: React.FC<StoryProps> = (props) => {
             color: dec.white,
           }}
         >
-          <div style={{ fontFamily: decFonts.display, fontSize: 76, lineHeight: 1.04, letterSpacing: "-0.02em", textWrap: "balance" }}>
+          <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 92, lineHeight: 1.0, letterSpacing: decTracking, textWrap: "balance" }}>
             {door.kind === "rekening" ? props.doorLabel + " " + props.day : door.title}
           </div>
           <div
             style={{
               fontFamily: decFonts.text,
-              fontWeight: 500,
-              fontSize: 36,
+              fontWeight: 400,
+              fontSize: 38,
               lineHeight: 1.3,
               color: dec.softBlue,
               marginTop: 18,

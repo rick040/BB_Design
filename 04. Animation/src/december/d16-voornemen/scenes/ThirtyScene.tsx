@@ -7,7 +7,7 @@ import { clamp, pop, springs } from "../../../lib/anim";
 import { useLayout } from "../../../lib/layout";
 import { usePalette } from "../../../lib/palette";
 import { DHeadline, DSubline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import type { VoornemenProps } from "../schema";
 
 // Beats (frames, scene-lokaal).
@@ -43,8 +43,8 @@ export const ThirtyScene: React.FC<{ props: VoornemenProps["thirty"] }> = ({ pro
 
   return (
     <SceneBg color={p.light}>
-      <DHeadline text={props.headline} color={p.blue} delay={4} stagger={3} sizeFactor={L.tall ? 0.92 : 1.05} />
-      <Stage offsetY={20}>
+      <DHeadline text={props.headline} color={p.blue} delay={4} stagger={3} sizeFactor={L.tall ? 0.85 : 1.0} />
+      <Stage offsetY={40}>
         <div
           style={{
             position: "absolute",
@@ -77,7 +77,9 @@ export const ThirtyScene: React.FC<{ props: VoornemenProps["thirty"] }> = ({ pro
               alignItems: "center",
               justifyContent: "center",
               fontFamily: decFonts.display,
-              fontSize: 140,
+              fontWeight: 500,
+              letterSpacing: decTracking,
+              fontSize: 150,
               color: p.blue,
               opacity: 1 - Math.min(1, done * 3),
             }}
@@ -120,7 +122,7 @@ export const ThirtyScene: React.FC<{ props: VoornemenProps["thirty"] }> = ({ pro
                 >
                   <Checkmark size={48} color={p.white} progress={c} strokeWidth={15} />
                 </div>
-                <span style={{ fontFamily: decFonts.text, fontWeight: 600, fontSize: 54, color: dec.ink }}>{s}</span>
+                <span style={{ fontFamily: decFonts.text, fontWeight: 500, fontSize: 56, color: dec.ink }}>{s}</span>
               </div>
             );
           })}

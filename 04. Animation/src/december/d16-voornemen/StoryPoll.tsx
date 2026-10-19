@@ -2,7 +2,7 @@ import React from "react";
 import { Buddy, BUDDY_RATIO } from "../../components/Buddy";
 import { PaletteProvider } from "../../lib/palette";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import { brand } from "../../theme";
 import { GoalCard, GoalRow } from "./GoalRow";
 import type { VoornemenStoryProps } from "./schema";
@@ -17,11 +17,12 @@ export const StoryPoll: React.FC<VoornemenStoryProps> = (props) => (
           position: "absolute",
           left: 90,
           right: 90,
-          top: 250,
+          top: 240,
           fontFamily: decFonts.display,
-          fontSize: 96,
-          lineHeight: 1.04,
-          letterSpacing: "-0.02em",
+          fontWeight: 500,
+          fontSize: 124,
+          lineHeight: 1.0,
+          letterSpacing: decTracking,
           color: dec.white,
           whiteSpace: "pre-line",
         }}
@@ -47,8 +48,8 @@ export const StoryPoll: React.FC<VoornemenStoryProps> = (props) => (
           right: 90,
           top: 1210,
           fontFamily: decFonts.text,
-          fontWeight: 600,
-          fontSize: 38,
+          fontWeight: 400,
+          fontSize: 42,
           color: dec.softBlue,
         }}
       >

@@ -3,7 +3,7 @@ import { Buddy, BUDDY_RATIO } from "../../components/Buddy";
 import { Notification } from "../../components/Notification";
 import { PaletteProvider } from "../../lib/palette";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import { MailRow, Rich, SlideTop, SwipeHint } from "./parts";
 import type { RijmProps } from "./schema";
 
@@ -62,8 +62,8 @@ const Slide1: React.FC<{ p: RijmProps }> = ({ p }) => (
           borderRadius: 60,
           padding: "26px 40px",
           fontFamily: decFonts.text,
-          fontWeight: 600,
-          fontSize: 32,
+          fontWeight: 500,
+          fontSize: 34,
           color: dec.ink,
           boxShadow: "0 10px 30px rgba(1, 40, 160, 0.12)",
           whiteSpace: "nowrap",
@@ -132,7 +132,7 @@ const Slide3: React.FC<{ p: RijmProps }> = ({ p }) => (
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        fontFamily: "'Geist', system-ui, sans-serif",
+        fontFamily: decFonts.ui,
         fontWeight: 600,
         fontSize: 30,
         color: dec.blue,
@@ -146,8 +146,8 @@ const Slide3: React.FC<{ p: RijmProps }> = ({ p }) => (
         left: 110,
         top: 1046,
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 28,
+        fontWeight: 500,
+        fontSize: 30,
         color: dec.deep,
       }}
     >
@@ -188,7 +188,9 @@ const Slide4: React.FC<{ p: RijmProps }> = ({ p }) => (
         borderRadius: 999,
         padding: "20px 36px",
         fontFamily: decFonts.display,
-        fontSize: 36,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 38,
       }}
     >
       <svg width={40} height={40} viewBox="0 0 40 40">
@@ -215,9 +217,8 @@ export const RijmSlide: React.FC<RijmProps> = (props) => {
             right: 90,
             top: TEXT_TOP,
             fontFamily: decFonts.text,
-            fontStyle: "italic",
             fontWeight: 400,
-            fontSize: 49,
+            fontSize: 56,
             lineHeight: `${LINE_H}px`,
             color: dec.ink,
             whiteSpace: "pre-line",

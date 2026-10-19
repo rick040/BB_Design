@@ -1,5 +1,5 @@
 import React from "react";
-import { decFonts } from "../theme";
+import { decFonts, decTracking } from "../theme";
 import { Flag, Parcel } from "./Parcel";
 
 // Ontwerpmaten in Stage-coördinaten (1080 × 900).
@@ -69,7 +69,7 @@ export const CalendarCard: React.FC<{
         background: "#fff",
         boxShadow: "0 30px 80px rgba(1, 30, 140, 0.22)",
         overflow: "hidden",
-        fontFamily: decFonts.text,
+        fontFamily: decFonts.ui,
         ...style,
       }}
     >
@@ -81,9 +81,11 @@ export const CalendarCard: React.FC<{
           display: "flex",
           alignItems: "center",
           fontFamily: decFonts.display,
-          fontSize: 46,
+          fontWeight: 500,
+          fontSize: 50,
+          lineHeight: 1,
           color: accent,
-          letterSpacing: "-0.01em",
+          letterSpacing: decTracking,
         }}
       >
         {monthLabel}

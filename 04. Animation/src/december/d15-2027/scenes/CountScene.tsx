@@ -4,7 +4,7 @@ import { SceneBg, Stage } from "../../../components/Stage";
 import { clamp, pop } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { DHeadline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import type { AftellenProps } from "../schema";
 
 // Timeline (frames, scene-local). 10 tot en met 0, elk getal even lang.
@@ -25,7 +25,8 @@ const Mini: React.FC<{ label: string; size?: number }> = ({ label, size = 62 }) 
       background: dec.blue,
       color: dec.white,
       fontFamily: decFonts.display,
-      fontSize: size * 0.52,
+      fontWeight: 500,
+      fontSize: size * 0.54,
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -56,7 +57,7 @@ export const CountScene: React.FC<{ props: AftellenProps["count"] }> = ({ props 
 
   return (
     <SceneBg color={dec.ink}>
-      <DHeadline text={props.headline} color={dec.white} delay={-14} stagger={3} sizeFactor={0.9} />
+      <DHeadline text={props.headline} color={dec.white} delay={-14} stagger={3} sizeFactor={1} />
       <Stage offsetY={50}>
         <div
           style={{
@@ -66,9 +67,10 @@ export const CountScene: React.FC<{ props: AftellenProps["count"] }> = ({ props 
             top: -60,
             textAlign: "center",
             fontFamily: decFonts.display,
-            fontSize: isZero ? 800 : 730,
+            fontWeight: 500,
+            fontSize: isZero ? 900 : 820,
             lineHeight: 1,
-            letterSpacing: "-0.04em",
+            letterSpacing: decTracking,
             color: flash > 0.5 ? dec.white : p.blueSoft,
             transform: `scale(${0.88 + 0.12 * hit + flash * 0.05})`,
             transformOrigin: "50% 55%",
@@ -93,7 +95,7 @@ export const CountScene: React.FC<{ props: AftellenProps["count"] }> = ({ props 
               gap: 24,
               padding: "0 36px 0 24px",
               boxSizing: "border-box",
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
               opacity: billT * (1 - billOut),
               transform: `translateY(${(1 - billT) * 50 - billOut * 20}px)`,
             }}
@@ -106,7 +108,8 @@ export const CountScene: React.FC<{ props: AftellenProps["count"] }> = ({ props 
                 background: dec.ice,
                 color: dec.blue,
                 fontFamily: decFonts.display,
-                fontSize: 52,
+                fontWeight: 500,
+                fontSize: 54,
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",

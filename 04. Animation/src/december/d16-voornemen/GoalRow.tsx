@@ -29,8 +29,8 @@ export const GoalRow: React.FC<{
     }}
   >
     <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", height: 62 * k }}>
-      <span style={{ fontFamily: decFonts.text, fontWeight: 600, fontSize: 40 * k, color: dec.ink }}>{label}</span>
-      <span style={{ display: "flex", alignItems: "center", gap: 14 * k, fontFamily: decFonts.display, fontSize: 48 * k, color: dec.blue }}>
+      <span style={{ fontFamily: decFonts.ui, fontWeight: 500, fontSize: 40 * k, color: dec.ink }}>{label}</span>
+      <span style={{ display: "flex", alignItems: "center", gap: 14 * k, fontFamily: decFonts.ui, fontWeight: 600, fontSize: 48 * k, color: dec.blue }}>
         {check > 0 ? <Checkmark size={44 * k} color={dec.blue} progress={check} strokeWidth={16} /> : null}
         {Math.round(shown)} %
       </span>

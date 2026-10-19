@@ -1,7 +1,7 @@
 import React from "react";
 import { usePalette } from "../../lib/palette";
 import { Flag } from "../d01-pakketjes/Parcel";
-import { decFonts } from "../theme";
+import { decFonts, decTracking } from "../theme";
 import type { AgendaProps } from "./schema";
 
 // Ontwerpmaten in Stage-coördinaten (1080 × 900).
@@ -46,7 +46,7 @@ export const Block: React.FC<{
         border: t.border ? `3px solid ${t.border}` : undefined,
         boxSizing: "border-box",
         padding: "10px 10px",
-        fontFamily: decFonts.text,
+        fontFamily: decFonts.ui,
         fontWeight: 600,
         fontSize: 21,
         lineHeight: 1.1,
@@ -88,7 +88,7 @@ export const WeekCard: React.FC<{
         background: "#fff",
         boxShadow: "0 30px 80px rgba(1, 30, 140, 0.22)",
         overflow: "hidden",
-        fontFamily: decFonts.text,
+        fontFamily: decFonts.ui,
         ...style,
       }}
     >
@@ -104,7 +104,7 @@ export const WeekCard: React.FC<{
           }}
         >
           <div style={{ fontWeight: 500, fontSize: 22, color: "#9aa3b2" }}>{d.name}</div>
-          <div style={{ fontFamily: decFonts.display, fontSize: 40, lineHeight: 1.1, color: p.blue }}>{d.num}</div>
+          <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 44, lineHeight: 1.05, letterSpacing: decTracking, color: p.blue }}>{d.num}</div>
         </div>
       ))}
       {/* hele-dag-rij */}
@@ -213,7 +213,7 @@ export const AllDayItem: React.FC<{
           borderRadius: 14,
           background: p.ink,
           color: "#fff",
-          fontFamily: decFonts.text,
+          fontFamily: decFonts.ui,
           fontWeight: 600,
           fontSize: 19,
           display: "flex",

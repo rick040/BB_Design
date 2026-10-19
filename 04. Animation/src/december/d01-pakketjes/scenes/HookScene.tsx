@@ -4,7 +4,7 @@ import { SceneBg, Stage } from "../../../components/Stage";
 import { clamp, pop, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { DHeadline } from "../../text";
-import { decFonts } from "../../theme";
+import { decFonts, decTracking } from "../../theme";
 import { PARCEL_COLORS } from "../CalendarCard";
 import { Parcel } from "../Parcel";
 import type { PakketjesProps } from "../schema";
@@ -65,7 +65,7 @@ export const HookScene: React.FC<{ props: PakketjesProps["hook"] }> = ({ props }
             background: p.white,
             boxShadow: "0 30px 80px rgba(1, 30, 140, 0.2)",
             overflow: "hidden",
-            fontFamily: decFonts.text,
+            fontFamily: decFonts.ui,
             transform: `scale(${0.96 + 0.04 * tile})`,
             transformOrigin: "50% 100%",
           }}
@@ -89,11 +89,12 @@ export const HookScene: React.FC<{ props: PakketjesProps["hook"] }> = ({ props }
             style={{
               textAlign: "center",
               fontFamily: decFonts.display,
-              fontSize: 190,
+              fontWeight: 500,
+              fontSize: 200,
               lineHeight: 1,
               color: p.blue,
-              marginTop: 22,
-              letterSpacing: "-0.03em",
+              marginTop: 18,
+              letterSpacing: decTracking,
             }}
           >
             {props.day}

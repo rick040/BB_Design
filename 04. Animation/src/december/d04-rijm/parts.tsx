@@ -1,5 +1,5 @@
 import React from "react";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 
 /** Tekst met *gemarkeerde* woorden (lichtblauwe markeerstift). */
 export const Rich: React.FC<{ text: string; mark: string }> = ({ text, mark }) => (
@@ -63,14 +63,14 @@ export const SlideTop: React.FC<{ label: string; index: number; total: number; c
       justifyContent: "space-between",
     }}
   >
-    <span style={{ fontFamily: decFonts.display, fontSize: 30, color, letterSpacing: "0.01em" }}>{label}</span>
+    <span style={{ fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 32, color }}>{label}</span>
     <Pager index={index} total={total} color={color} dim={dim} />
   </div>
 );
 
 /** Veegaanwijzing onderaan de eerste slide. */
 export const SwipeHint: React.FC<{ text: string; color: string }> = ({ text, color }) => (
-  <div style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: decFonts.text, fontWeight: 600, fontSize: 28, color }}>
+  <div style={{ display: "flex", alignItems: "center", gap: 12, fontFamily: decFonts.text, fontWeight: 500, fontSize: 30, color }}>
     {text}
     <svg width={36} height={36} viewBox="0 0 40 40">
       <path d="M6 20h27M22 9l11 11-11 11" fill="none" stroke={color} strokeWidth={3.2} strokeLinecap="round" strokeLinejoin="round" />
@@ -101,7 +101,7 @@ export const MailRow: React.FC<{
       alignItems: "center",
       gap: 22,
       padding: "0 28px 0 22px",
-      fontFamily: "'Geist', system-ui, sans-serif",
+      fontFamily: decFonts.ui,
       opacity,
       ...style,
     }}

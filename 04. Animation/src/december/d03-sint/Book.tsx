@@ -1,5 +1,5 @@
 import React from "react";
-import { decFonts } from "../theme";
+import { decFonts, decTracking } from "../theme";
 
 // Ontwerpmaten van het boek (twee pagina's naast elkaar).
 export const BOOK_W = 800;
@@ -66,8 +66,9 @@ const Page: React.FC<{
           <div
             style={{
               flex: 1,
-              fontWeight: 600,
-              fontSize: 36,
+              fontWeight: 500,
+              fontSize: 38,
+              letterSpacing: decTracking,
               color: ink,
               opacity: on,
               transform: `translateX(${(1 - on) * -18}px)`,
@@ -75,7 +76,7 @@ const Page: React.FC<{
           >
             {r.name}
           </div>
-          <div style={{ fontWeight: 500, fontSize: 28, color: "#6b7280", opacity: on }}>{r.date}</div>
+          <div style={{ fontWeight: 400, fontSize: 28, color: "#6b7280", opacity: on }}>{r.date}</div>
         </div>
       );
     })}
@@ -174,7 +175,7 @@ export const Book: React.FC<{
           }}
         >
           <div style={{ width: 90, height: 6, borderRadius: 3, background: coverAccent }} />
-          <div style={{ fontFamily: decFonts.display, fontSize: 52, lineHeight: 1.05, color: "#fff", letterSpacing: "-0.01em" }}>
+          <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 60, lineHeight: 1, color: "#fff", letterSpacing: decTracking }}>
             {coverTitle}
           </div>
           <div style={{ width: 90, height: 6, borderRadius: 3, background: coverAccent }} />

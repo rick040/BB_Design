@@ -1,7 +1,7 @@
 import React from "react";
 import { Buddy } from "../../components/Buddy";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { RareWeekProps } from "./schema";
 
 const CELL_W = 124;
@@ -40,9 +40,10 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
         right: 90,
         textAlign: "center",
         fontFamily: decFonts.display,
-        fontSize: 60,
-        lineHeight: 1.08,
-        letterSpacing: "-0.02em",
+        fontWeight: 500,
+        fontSize: 72,
+        lineHeight: 1.02,
+        letterSpacing: decTracking,
         color: dec.blue,
         textWrap: "balance",
       }}
@@ -72,9 +73,10 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
           alignItems: "center",
           paddingLeft: 36,
           fontFamily: decFonts.display,
-          fontSize: 44,
+          fontWeight: 500,
+          fontSize: 52,
           color: dec.white,
-          letterSpacing: "-0.01em",
+          letterSpacing: decTracking,
         }}
       >
         {month}
@@ -109,7 +111,7 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
           <div
             style={{
               height: 64,
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
               fontWeight: 600,
               fontSize: 21,
               lineHeight: 1.12,
@@ -124,9 +126,10 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
           <div
             style={{
               fontFamily: decFonts.display,
-              fontSize: 64,
+              fontWeight: 500,
+              fontSize: 74,
               lineHeight: 1,
-              letterSpacing: "-0.03em",
+              letterSpacing: decTracking,
               marginTop: 18,
             }}
           >
@@ -136,7 +139,7 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
           {sharp ? (
             <div
               style={{
-                fontFamily: decFonts.text,
+                fontFamily: decFonts.ui,
                 fontWeight: 600,
                 fontSize: 17,
                 background: dec.white,
@@ -185,9 +188,9 @@ export const RareWeekPost: React.FC<RareWeekProps> = ({
         right: 110,
         textAlign: "center",
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 34,
-        lineHeight: 1.3,
+        fontWeight: 400,
+        fontSize: 40,
+        lineHeight: 1.25,
         color: dec.ink,
         textWrap: "balance",
       }}

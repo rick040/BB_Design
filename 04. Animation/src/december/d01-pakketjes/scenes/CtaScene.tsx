@@ -54,7 +54,7 @@ export const CtaScene: React.FC<{ props: PakketjesProps["cta"] }> = ({ props }) 
 
   return (
     <SceneBg color={p.blue}>
-      <DHeadline text={props.headline} color={p.white} delay={CTA_T.headline} stagger={3} sizeFactor={0.92} />
+      <DHeadline text={props.headline} color={p.white} delay={CTA_T.headline} stagger={3} />
 
       <Stage offsetY={40}>
         <div

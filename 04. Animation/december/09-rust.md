@@ -13,7 +13,7 @@ Een kassabonnetje met één regel: "Rust in december, €3,49 per maand". De kop
 Code: `src/december/d09-rust/` (`schema.ts` heeft alle teksten, ook de bonregels).
 
 ## Beeld en tekst
-- Lichte achtergrond `#E8EEFF`, kop in Archivo Black `#013bff`.
+- Lichte achtergrond `#E8EEFF`, kop in Space Grotesk Medium `#013bff`, bonregels in Geist.
 - Kop: "Het kleinste dat je deze maand koopt."
 - Bon: "Rust in december €3,49", "Standard, per maand", totaal €3,49, streepjescode, "Jij viert. Buddy onthoudt." (kernzin van de campagne). Kleine Buddy kijkt over de rand.
 - Knop: "Start met je Buddy."

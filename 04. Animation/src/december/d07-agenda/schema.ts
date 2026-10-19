@@ -74,7 +74,7 @@ export const defaultAgendaProps: AgendaProps = {
       { day: 2, slot: 2, len: 1, label: "Cadeaus", tone: 3 },
       { day: 3, slot: 0, len: 2, label: "Werk", tone: 1 },
       { day: 3, slot: 2, len: 2, label: "Kerst­diner", tone: 0 },
-      { day: 3, slot: 5, len: 1, label: "Boodschappen", tone: 3 },
+      { day: 3, slot: 5, len: 1, label: "Winkelen", tone: 3 },
       { day: 4, slot: 0, len: 2, label: "Werk", tone: 1 },
       { day: 4, slot: 3, len: 2, label: "Kerst­borrel", tone: 0 },
       { day: 4, slot: 5, len: 1, label: "Sporten", tone: 2 },

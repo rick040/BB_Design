@@ -6,12 +6,12 @@ import { PaletteProvider } from "../../lib/palette";
 import { brand } from "../../theme";
 import { SlideTop, SwipeHint } from "../d04-rijm/parts";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { JanuariProps } from "./schema";
 
-const UI = "'Geist', system-ui, sans-serif";
+const UI = decFonts.ui;
 
-const Headline: React.FC<{ text: string; color: string; size?: number; top?: number }> = ({ text, color, size = 96, top = 170 }) => (
+const Headline: React.FC<{ text: string; color: string; size?: number; top?: number }> = ({ text, color, size = 120, top = 170 }) => (
   <div
     style={{
       position: "absolute",
@@ -19,9 +19,10 @@ const Headline: React.FC<{ text: string; color: string; size?: number; top?: num
       right: 90,
       top,
       fontFamily: decFonts.display,
+      fontWeight: 500,
       fontSize: size,
-      lineHeight: 1.04,
-      letterSpacing: "-0.02em",
+      lineHeight: 1.0,
+      letterSpacing: decTracking,
       color,
       whiteSpace: "pre-line",
     }}
@@ -38,8 +39,8 @@ const Sub: React.FC<{ text: string; color: string; top: number; size?: number }>
       right: 90,
       top,
       fontFamily: decFonts.text,
-      fontWeight: 600,
-      fontSize: size,
+      fontWeight: 400,
+      fontSize: size + 4,
       lineHeight: 1.25,
       color,
       whiteSpace: "pre-line",
@@ -73,7 +74,7 @@ const Card: React.FC<{ style?: React.CSSProperties; children: React.ReactNode }>
 const Tag: React.FC<{ text: string; on?: boolean }> = ({ text, on = false }) => (
   <span
     style={{
-      fontFamily: decFonts.text,
+      fontFamily: decFonts.ui,
       fontWeight: 600,
       fontSize: 26,
       color: on ? dec.white : dec.blue,
@@ -125,13 +126,13 @@ const Envelope: React.FC<{ label: string; rotate: number; style?: React.CSSPrope
 
 const Cover: React.FC<{ p: JanuariProps }> = ({ p }) => (
   <>
-    <Headline text={p.cover.headline} color={dec.white} size={92} top={176} />
-    <Sub text={p.cover.sub} color={dec.softBlue} top={500} size={46} />
+    <Headline text={p.cover.headline} color={dec.white} size={112} top={176} />
+    <Sub text={p.cover.sub} color={dec.softBlue} top={548} size={46} />
     {/* Kalendertegel januari met rekeningen die eruit piepen. */}
     <div style={{ position: "absolute", left: 130, top: 700, width: 520, transform: "rotate(-3deg)" }}>
       <div style={{ borderRadius: 44, background: dec.white, boxShadow: "0 24px 60px rgba(0, 20, 120, 0.3)", overflow: "hidden" }}>
         <div style={{ background: dec.deep, height: 108, display: "flex", alignItems: "center", paddingLeft: 40 }}>
-          <span style={{ fontFamily: decFonts.display, fontSize: 52, color: dec.white }}>{p.cover.month}</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 56, color: dec.white }}>{p.cover.month}</span>
         </div>
         <div style={{ padding: "30px 40px 40px", display: "grid", gridTemplateColumns: "repeat(7, 1fr)", gap: 18 }}>
           {Array.from({ length: 21 }, (_, i) => (
@@ -157,7 +158,9 @@ const Cover: React.FC<{ p: JanuariProps }> = ({ p }) => (
         borderRadius: 999,
         padding: "16px 30px 16px 24px",
         fontFamily: decFonts.display,
-        fontSize: 32,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 34,
       }}
     >
       <svg width={28} height={36} viewBox="0 0 28 36">
@@ -185,7 +188,7 @@ const Premie: React.FC<{ p: JanuariProps }> = ({ p }) => (
         <Tag text={p.premie.tag} on />
       </div>
       <div style={{ display: "flex", alignItems: "center", gap: 22, marginTop: 52 }}>
-        <span style={{ fontFamily: decFonts.display, fontSize: 84, color: dec.blue }}>€</span>
+        <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 88, color: dec.blue }}>€</span>
         <Skeleton w={150} h={34} />
         <Skeleton w={30} h={34} />
         <Skeleton w={90} h={34} />
@@ -202,8 +205,8 @@ const Termijn: React.FC<{ p: JanuariProps }> = ({ p }) => {
   const t = p.termijn;
   return (
     <>
-      <Headline text={t.headline} color={dec.white} />
-      <Card style={{ position: "absolute", left: 90, top: 540, width: 900, padding: "44px 48px 52px" }}>
+      <Headline text={t.headline} color={dec.white} size={112} />
+      <Card style={{ position: "absolute", left: 90, top: 560, width: 900, padding: "44px 48px 52px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 26 }}>
           <div style={{ width: 84, height: 84, borderRadius: "50%", background: dec.ice, color: dec.blue, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 40, fontWeight: 700 }}>
             {t.sender.slice(0, 1)}
@@ -239,7 +242,7 @@ const Termijn: React.FC<{ p: JanuariProps }> = ({ p }) => {
                 >
                   {done ? <Checkmark size={44} color={dec.white} progress={1} strokeWidth={15} /> : null}
                 </div>
-                <div style={{ fontFamily: decFonts.text, fontWeight: 600, fontSize: 30, color: now ? dec.blue : dec.greyText, marginTop: 14 }}>{s}</div>
+                <div style={{ fontFamily: decFonts.ui, fontWeight: 600, fontSize: 30, color: now ? dec.blue : dec.greyText, marginTop: 14 }}>{s}</div>
               </div>
             );
           })}
@@ -254,7 +257,7 @@ const Abonnement: React.FC<{ p: JanuariProps }> = ({ p }) => {
   const a = p.abonnement;
   return (
     <>
-      <Headline text={a.headline} color={dec.blue} size={86} />
+      <Headline text={a.headline} color={dec.blue} size={104} />
       <div style={{ position: "absolute", left: 90, top: 400, width: 900 }}>
         {a.rows.map((r, i) => (
           <Card
@@ -287,7 +290,7 @@ const Abonnement: React.FC<{ p: JanuariProps }> = ({ p }) => {
 
 const Post: React.FC<{ p: JanuariProps }> = ({ p }) => (
   <>
-    <Headline text={p.post.headline} color={dec.white} />
+    <Headline text={p.post.headline} color={dec.white} size={108} />
     <Sub text={p.post.sub} color={dec.softBlue} top={400} />
     <Envelope label={p.post.envelopes[0]} rotate={-5} style={{ left: 90, top: 640 }} />
     <Envelope label={p.post.envelopes[1]} rotate={4} style={{ left: 480, top: 800 }} />
@@ -314,8 +317,8 @@ const Forward: React.FC<{ p: JanuariProps }> = ({ p }) => {
   const f = p.forward;
   return (
     <>
-      <Headline text={f.headline} color={dec.blue} size={84} top={160} />
-      <Sub text={f.sub} color={dec.deep} top={350} size={38} />
+      <Headline text={f.headline} color={dec.blue} size={88} top={160} />
+      <Sub text={f.sub} color={dec.deep} top={364} size={38} />
       <Card style={{ position: "absolute", left: 90, top: 450, width: 900, height: 124, padding: "0 36px", display: "flex", alignItems: "center", gap: 24 }}>
         <div style={{ width: 66, height: 66, borderRadius: "50%", background: dec.blue, color: dec.white, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 30, fontWeight: 600 }}>
           {f.sender.slice(0, 1)}
@@ -331,7 +334,7 @@ const Forward: React.FC<{ p: JanuariProps }> = ({ p }) => {
       <Card style={{ position: "absolute", left: 90, top: 690, width: 900, padding: "34px 40px 38px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, paddingBottom: 20, borderBottom: `3px solid ${dec.ice}` }}>
           <AppIcon size={48} circle={false} />
-          <span style={{ fontFamily: decFonts.display, fontSize: 34, color: dec.blue, flex: 1 }}>{f.agendaTitle}</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 38, color: dec.blue, flex: 1 }}>{f.agendaTitle}</span>
           <Tag text={f.due} on />
         </div>
         {f.alerts.map((a, i) => (
@@ -343,7 +346,7 @@ const Forward: React.FC<{ p: JanuariProps }> = ({ p }) => {
               gap: 20,
               height: 90,
               borderBottom: i === 0 ? `3px solid ${dec.ice}` : "none",
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
             }}
           >
             <svg width={30} height={34} viewBox="0 0 26 30">
@@ -364,7 +367,9 @@ const Forward: React.FC<{ p: JanuariProps }> = ({ p }) => {
           alignItems: "center",
           gap: 14,
           fontFamily: decFonts.display,
-          fontSize: 40,
+          fontWeight: 500,
+          letterSpacing: decTracking,
+          fontSize: 44,
           color: dec.blue,
         }}
       >

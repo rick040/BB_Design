@@ -53,7 +53,7 @@ export const CtaScene: React.FC<{ props: SintProps["cta"]; book: SintProps["book
 
   return (
     <SceneBg color={p.blue}>
-      <DHeadline text={props.headline} color={p.white} delay={CTA_T.headline} stagger={4} sizeFactor={1.15} />
+      <DHeadline text={props.headline} color={p.white} delay={CTA_T.headline} stagger={4} sizeFactor={1.2} />
 
       <Stage offsetY={30}>
         <div

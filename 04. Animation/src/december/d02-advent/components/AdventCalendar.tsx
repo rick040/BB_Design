@@ -1,5 +1,5 @@
 import React from "react";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 
 // Rooster van 24 deurtjes (6 × 4) in het 1080 × 900 Stage-vak.
 export const COLS = 6;
@@ -107,7 +107,7 @@ const DoorFace: React.FC<{
           <>
             <div
               style={{
-                fontFamily: decFonts.text,
+                fontFamily: decFonts.ui,
                 fontWeight: 600,
                 fontSize: 21,
                 lineHeight: 1.1,
@@ -121,9 +121,10 @@ const DoorFace: React.FC<{
             <div
               style={{
                 fontFamily: decFonts.display,
-                fontSize: Math.min(38, 128 / (c.amount.length * 0.64)),
+                fontWeight: 500,
+                fontSize: Math.min(38, 128 / (c.amount.length * 0.58)),
                 lineHeight: 1.1,
-                letterSpacing: "-0.02em",
+                letterSpacing: decTracking,
                 color: accent,
               }}
             >
@@ -150,9 +151,10 @@ const DoorFace: React.FC<{
         <span
           style={{
             fontFamily: decFonts.display,
-            fontSize: 64,
+            fontWeight: 500,
+            fontSize: 72,
             lineHeight: 1,
-            letterSpacing: "-0.02em",
+            letterSpacing: decTracking,
             color: numberColor,
           }}
         >
@@ -213,7 +215,7 @@ export const Flag: React.FC<{
   >
     <rect x="11" y="6" width="7" height="100" rx="3.5" fill={pennant} />
     <path d={`M18 8 L${98 + wave} 26 L18 52Z`} fill={pennant} />
-    <text x="43" y="38" fontFamily="Archivo Black, sans-serif" fontSize="23" fill={ink} textAnchor="middle">
+    <text x="43" y="38" fontFamily="Space Grotesk, sans-serif" fontWeight="700" fontSize="24" fill={ink} textAnchor="middle">
       {label}
     </text>
   </svg>

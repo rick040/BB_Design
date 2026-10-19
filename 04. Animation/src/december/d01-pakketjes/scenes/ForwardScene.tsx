@@ -117,7 +117,7 @@ export const ForwardScene: React.FC<{ props: PakketjesProps["forward"]; cal: Pak
                 padding: "10px 22px 10px 14px",
                 borderRadius: 999,
                 background: p.white,
-                fontFamily: decFonts.text,
+                fontFamily: decFonts.ui,
                 fontWeight: 600,
                 fontSize: 30,
                 color: p.ink,

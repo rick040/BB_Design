@@ -6,7 +6,7 @@ import { pop, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { Flag } from "../../d02-advent/components/AdventCalendar";
 import { DHeadline, DSubline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import type { AftellenProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -47,7 +47,7 @@ export const JanuaryScene: React.FC<{ props: AftellenProps["january"] }> = ({ pr
 
   return (
     <SceneBg color={p.light}>
-      <DHeadline text={props.headline} color={p.blue} delay={-6} stagger={3} sizeFactor={0.7} />
+      <DHeadline text={props.headline} color={p.blue} delay={-6} stagger={3} sizeFactor={0.72} />
       <Stage offsetY={10}>
         <div
           style={{
@@ -57,8 +57,9 @@ export const JanuaryScene: React.FC<{ props: AftellenProps["january"] }> = ({ pr
             top: 0,
             textAlign: "center",
             fontFamily: decFonts.display,
-            fontSize: 46,
-            letterSpacing: "-0.02em",
+            fontWeight: 500,
+            fontSize: 52,
+            letterSpacing: decTracking,
             color: dec.ink,
             opacity: grid,
           }}
@@ -74,7 +75,7 @@ export const JanuaryScene: React.FC<{ props: AftellenProps["january"] }> = ({ pr
               width: COL_W,
               top: 66,
               textAlign: "center",
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
               fontWeight: 600,
               fontSize: 26,
               color: dec.greyText,
@@ -104,7 +105,7 @@ export const JanuaryScene: React.FC<{ props: AftellenProps["january"] }> = ({ pr
                 background: item && mark > 0.05 ? dec.blue : dec.white,
                 opacity: (isDec(i) ? 0.55 : 1) * Math.min(1, grid * 1.5),
                 transform: `scale(${0.9 + 0.1 * grid + (item ? mark * 0.04 : 0)})`,
-                fontFamily: decFonts.text,
+                fontFamily: decFonts.ui,
                 boxShadow: "0 10px 26px rgba(1, 40, 160, 0.08)",
               }}
             >

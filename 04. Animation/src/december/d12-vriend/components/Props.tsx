@@ -69,7 +69,7 @@ export const LinkBubble: React.FC<{
       padding: "28px 36px 30px",
       boxSizing: "border-box",
       boxShadow: "0 22px 60px rgba(0, 20, 120, 0.28)",
-      fontFamily: decFonts.text,
+      fontFamily: decFonts.ui,
       ...style,
     }}
   >
@@ -107,7 +107,7 @@ export const SpeechBubble: React.FC<{
       color,
       borderRadius: 40,
       padding: "20px 34px",
-      fontFamily: decFonts.text,
+      fontFamily: decFonts.ui,
       fontWeight: 600,
       fontSize: 34,
       lineHeight: 1.1,

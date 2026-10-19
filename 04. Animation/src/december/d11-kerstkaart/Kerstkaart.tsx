@@ -2,7 +2,7 @@ import React from "react";
 import { AppIcon } from "../../components/AppIcon";
 import { Buddy } from "../../components/Buddy";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import { Scarf } from "./Scarf";
 import { Snow } from "./Snow";
 import type { KerstkaartProps } from "./schema";
@@ -16,9 +16,10 @@ const Head: React.FC<{ text: string; top: number; size: number; color: string }>
       right: 90,
       textAlign: "center",
       fontFamily: decFonts.display,
+      fontWeight: 500,
       fontSize: size,
-      lineHeight: 1.02,
-      letterSpacing: "-0.02em",
+      lineHeight: 1.0,
+      letterSpacing: decTracking,
       color,
       whiteSpace: "pre-line",
     }}
@@ -31,7 +32,7 @@ const Head: React.FC<{ text: string; top: number; size: number; color: string }>
 export const KerstkaartFront: React.FC<KerstkaartProps> = ({ front }) => (
   <StaticPage tone="blue">
     <Snow color={dec.softBlue} />
-    <Head text={front.headline} top={96} size={140} color={dec.white} />
+    <Head text={front.headline} top={96} size={170} color={dec.white} />
     <Buddy
       size={430}
       body={dec.white}
@@ -48,8 +49,8 @@ export const KerstkaartFront: React.FC<KerstkaartProps> = ({ front }) => (
         right: 90,
         textAlign: "center",
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 48,
+        fontWeight: 400,
+        fontSize: 60,
         color: dec.white,
       }}
     >
@@ -87,12 +88,13 @@ export const KerstkaartBack: React.FC<KerstkaartProps> = ({ back }) => (
         left: 90,
         right: 90,
         fontFamily: decFonts.display,
+        fontWeight: 500,
         color: dec.blue,
-        letterSpacing: "-0.02em",
+        letterSpacing: decTracking,
       }}
     >
-      <div style={{ fontSize: 66, lineHeight: 1, color: dec.deep }}>{back.kicker}</div>
-      <div style={{ fontSize: 104, lineHeight: 1.04, marginTop: 24, textWrap: "balance" }}>{back.quote}</div>
+      <div style={{ fontSize: 76, lineHeight: 1, color: dec.deep }}>{back.kicker}</div>
+      <div style={{ fontSize: 124, lineHeight: 1.0, marginTop: 24, textWrap: "balance" }}>{back.quote}</div>
     </div>
     <Buddy
       size={250}
@@ -103,7 +105,7 @@ export const KerstkaartBack: React.FC<KerstkaartProps> = ({ back }) => (
       style={{ position: "absolute", left: 730, top: 900 }}
     />
     <div style={{ position: "absolute", left: 90, width: 560, top: 1040 }}>
-      <div style={{ fontFamily: decFonts.text, fontStyle: "italic", fontSize: 46, color: dec.blue, marginBottom: 14 }}>
+      <div style={{ fontFamily: decFonts.text, fontStyle: "italic", fontWeight: 500, fontSize: 50, letterSpacing: "-0.02em", color: dec.blue, marginBottom: 14 }}>
         {back.note}
       </div>
       <div style={{ height: 4, background: dec.softBlue }} />
@@ -117,7 +119,7 @@ export const KerstkaartBack: React.FC<KerstkaartProps> = ({ back }) => (
 export const KerstkaartStory: React.FC<KerstkaartProps> = ({ story }) => (
   <StaticPage tone="blue" chip={story.chip}>
     <Snow color={dec.softBlue} scaleY={1.7} />
-    <Head text={story.headline} top={290} size={140} color={dec.white} />
+    <Head text={story.headline} top={290} size={170} color={dec.white} />
     <Buddy
       size={440}
       body={dec.white}
@@ -134,8 +136,8 @@ export const KerstkaartStory: React.FC<KerstkaartProps> = ({ story }) => (
         right: 90,
         textAlign: "center",
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 48,
+        fontWeight: 400,
+        fontSize: 60,
         color: dec.white,
       }}
     >
@@ -155,7 +157,9 @@ export const KerstkaartStory: React.FC<KerstkaartProps> = ({ story }) => (
         alignItems: "center",
         padding: "0 44px",
         fontFamily: decFonts.display,
-        fontSize: 48,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 56,
         color: dec.blue,
       }}
     >

@@ -8,7 +8,7 @@ import { usePalette } from "../../../lib/palette";
 import { fonts } from "../../../theme";
 import { DHeadline, DSubline } from "../../text";
 import { Flag } from "../../d01-pakketjes/Parcel";
-import { decFonts } from "../../theme";
+import { decFonts, decTracking } from "../../theme";
 import { Phone } from "../Phone";
 import type { SintProps } from "../schema";
 
@@ -154,8 +154,8 @@ export const ForwardScene: React.FC<{ props: SintProps["forward"] }> = ({ props 
           </div>
 
           {/* Agenda: net zo netjes als het boek */}
-          <div style={{ position: "absolute", inset: 0, opacity: sw, transform: `translateX(${(1 - sw) * 60}px)`, fontFamily: decFonts.text }}>
-            <div style={{ position: "absolute", left: 30, top: 84, fontFamily: decFonts.display, fontSize: 50, color: p.blue }}>
+          <div style={{ position: "absolute", inset: 0, opacity: sw, transform: `translateX(${(1 - sw) * 60}px)`, fontFamily: decFonts.ui }}>
+            <div style={{ position: "absolute", left: 30, top: 84, fontFamily: decFonts.display, fontWeight: 500, fontSize: 56, lineHeight: 1, letterSpacing: decTracking, color: p.blue }}>
               {props.agendaTitle}
             </div>
             {props.agenda.map((a, i) => {
@@ -195,7 +195,7 @@ export const ForwardScene: React.FC<{ props: SintProps["forward"] }> = ({ props 
                       flexShrink: 0,
                     }}
                   >
-                    <div style={{ fontFamily: decFonts.display, fontSize: 40, lineHeight: 1 }}>{a.day}</div>
+                    <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 42, lineHeight: 1, letterSpacing: decTracking }}>{a.day}</div>
                     <div style={{ fontWeight: 600, fontSize: 21, marginTop: 2 }}>{a.month}</div>
                   </div>
                   <div style={{ flex: 1, fontWeight: 600, fontSize: 28, lineHeight: 1.15, color: p.ink }}>{a.title}</div>

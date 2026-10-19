@@ -6,7 +6,7 @@ import { SceneBg, Stage } from "../../../components/Stage";
 import { blinkScale, clamp, pop, shake, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { DHeadline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import { Envelope, FRIEND_BODY, SpeechBubble, Zoom } from "../components/Props";
 import type { VriendProps } from "../schema";
 
@@ -50,7 +50,7 @@ export const HookScene: React.FC<{ props: VriendProps["hook"] }> = ({ props }) =
 
   return (
     <SceneBg color={p.light}>
-      <DHeadline text={props.headline} color={p.blue} delay={-20} stagger={3} />
+      <DHeadline text={props.headline} color={p.blue} delay={-20} stagger={3} sizeFactor={0.92} />
       <Stage offsetY={0}>
         <Zoom k={1.12} dy={-10}>
         {/* Links: rustig, met een nette agenda */}
@@ -65,10 +65,10 @@ export const HookScene: React.FC<{ props: VriendProps["hook"] }> = ({ props }) =
             padding: "26px 30px 30px",
             boxSizing: "border-box",
             boxShadow: "0 24px 60px rgba(1, 40, 160, 0.14)",
-            fontFamily: decFonts.text,
+            fontFamily: decFonts.ui,
           }}
         >
-          <div style={{ fontFamily: decFonts.display, fontSize: 36, color: dec.blue, letterSpacing: "-0.02em", marginBottom: 14 }}>
+          <div style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 40, color: dec.blue, letterSpacing: decTracking, marginBottom: 14 }}>
             {props.agendaTitle}
           </div>
           {props.agendaRows.map((r, i) => {

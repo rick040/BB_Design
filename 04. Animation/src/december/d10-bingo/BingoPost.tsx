@@ -1,7 +1,7 @@
 import React from "react";
 import { Buddy } from "../../components/Buddy";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { BingoProps } from "./schema";
 
 const TILE = 264;
@@ -18,14 +18,15 @@ export const BingoPost: React.FC<BingoProps> = ({ title, questions, freeSquare, 
       <div
         style={{
           position: "absolute",
-          top: 84,
+          top: 70,
           left: 90,
           right: 90,
           textAlign: "center",
           fontFamily: decFonts.display,
-          fontSize: 88,
+          fontWeight: 500,
+          fontSize: 108,
           lineHeight: 1,
-          letterSpacing: "-0.02em",
+          letterSpacing: decTracking,
           color: dec.white,
         }}
       >
@@ -63,9 +64,9 @@ export const BingoPost: React.FC<BingoProps> = ({ title, questions, freeSquare, 
                 gap: free ? 8 : 0,
                 padding: free ? "16px 18px" : "20px 22px",
                 textAlign: "center",
-                fontFamily: decFonts.text,
+                fontFamily: decFonts.ui,
                 fontWeight: 600,
-                fontSize: free ? 29 : 33,
+                fontSize: free ? 30 : 35,
                 lineHeight: 1.18,
                 textWrap: "balance",
               }}
@@ -90,8 +91,8 @@ export const BingoPost: React.FC<BingoProps> = ({ title, questions, freeSquare, 
           right: 90,
           textAlign: "center",
           fontFamily: decFonts.text,
-          fontWeight: 600,
-          fontSize: 38,
+          fontWeight: 400,
+          fontSize: 46,
           color: dec.white,
         }}
       >

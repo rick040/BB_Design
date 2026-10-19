@@ -6,13 +6,13 @@ import { PaletteProvider } from "../../lib/palette";
 import { SlideTop, SwipeHint } from "../d04-rijm/parts";
 import { StaticPage } from "../StaticPage";
 import { brand } from "../../theme";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { LijstjesProps } from "./schema";
 
 const Headline: React.FC<{ text: string; color: string; size?: number; bottom?: number; top?: number }> = ({
   text,
   color,
-  size = 96,
+  size = 116,
   top = 170,
 }) => (
   <div
@@ -22,9 +22,10 @@ const Headline: React.FC<{ text: string; color: string; size?: number; bottom?: 
       right: 90,
       top,
       fontFamily: decFonts.display,
+      fontWeight: 500,
       fontSize: size,
-      lineHeight: 1.04,
-      letterSpacing: "-0.02em",
+      lineHeight: 1.0,
+      letterSpacing: decTracking,
       color,
       whiteSpace: "pre-line",
     }}
@@ -80,10 +81,10 @@ const ListCard: React.FC<{
   >
     <div style={{ display: "flex", alignItems: "center", gap: 18, paddingBottom: 22, borderBottom: `3px solid ${dec.ice}` }}>
       <AppIcon size={52} circle={false} />
-      <span style={{ fontFamily: decFonts.display, fontSize: 38, color: dec.blue, flex: 1 }}>{title}</span>
+      <span style={{ fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 42, color: dec.blue, flex: 1 }}>{title}</span>
       <span
         style={{
-          fontFamily: decFonts.text,
+          fontFamily: decFonts.ui,
           fontWeight: 600,
           fontSize: 26,
           color: dec.blue,
@@ -110,8 +111,8 @@ const ListCard: React.FC<{
         <span
           style={{
             flex: 1,
-            fontFamily: decFonts.text,
-            fontWeight: 600,
+            fontFamily: decFonts.ui,
+            fontWeight: 500,
             fontSize: 40,
             color: done ? dec.greyText : dec.ink,
             textDecoration: done ? "line-through" : "none",
@@ -126,7 +127,7 @@ const ListCard: React.FC<{
               display: "flex",
               alignItems: "center",
               gap: 10,
-              fontFamily: decFonts.text,
+              fontFamily: decFonts.ui,
               fontWeight: 600,
               fontSize: 28,
               color: dec.blue,
@@ -153,9 +154,9 @@ const buddyAt = (size: number, left: number, feet: number): React.CSSProperties 
 
 const Cover: React.FC<{ p: LijstjesProps }> = ({ p }) => (
   <>
-    <Headline text={p.cover.headline} color={dec.white} size={116} top={190} />
+    <Headline text={p.cover.headline} color={dec.white} size={136} top={186} />
     {/* Drie lijstjes in een waaier, Buddy kijkt erachter vandaan. */}
-    <Buddy size={250} body={dec.white} eye={brand.blueMascot} look={{ x: -0.4, y: 0.5 }} style={buddyAt(250, 730, 800)} />
+    <Buddy size={250} body={dec.white} eye={brand.blueMascot} look={{ x: -0.4, y: 0.5 }} style={buddyAt(250, 770, 820)} />
     {p.cover.cards.map((t, i) => (
       <div
         key={i}
@@ -182,7 +183,7 @@ const Cover: React.FC<{ p: LijstjesProps }> = ({ p }) => (
           }}
         >
           <Box done />
-          <span style={{ fontFamily: decFonts.display, fontSize: 40, color: dec.blue }}>{t}</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 44, color: dec.blue }}>{t}</span>
         </div>
       </div>
     ))}
@@ -193,14 +194,14 @@ const Checked: React.FC<{ p: LijstjesProps; onBlue: boolean }> = ({ p, onBlue })
   const list = p.lists[p.slide - 2];
   return (
     <>
-      <Headline text={list.headline} color={onBlue ? dec.white : dec.blue} />
-      <ListCard title={list.title} rows={list.items.map((name) => ({ name }))} done style={{ position: "absolute", left: 120, top: 500 }} />
+      <Headline text={list.headline} color={onBlue ? dec.white : dec.blue} size={112} />
+      <ListCard title={list.title} rows={list.items.map((name) => ({ name }))} done style={{ position: "absolute", left: 120, top: 530 }} />
       <Buddy
         size={210}
         body={onBlue ? dec.white : dec.blue}
         eye={onBlue ? brand.blueMascot : dec.white}
         blink={0.2}
-        style={buddyAt(210, 800, 508)}
+        style={buddyAt(210, 800, 538)}
       />
     </>
   );
@@ -208,35 +209,37 @@ const Checked: React.FC<{ p: LijstjesProps; onBlue: boolean }> = ({ p, onBlue })
 
 const Final: React.FC<{ p: LijstjesProps }> = ({ p }) => (
   <>
-    <Headline text={p.buddy.headline} color={dec.white} />
+    <Headline text={p.buddy.headline} color={dec.white} size={124} />
     <div
       style={{
         position: "absolute",
         left: 90,
-        top: 390,
+        top: 440,
         fontFamily: decFonts.text,
-        fontWeight: 600,
-        fontSize: 44,
+        fontWeight: 400,
+        fontSize: 48,
         color: dec.softBlue,
       }}
     >
       {p.buddy.subline}
     </div>
-    <Buddy size={230} body={dec.white} eye={brand.blueMascot} blink={0.2} style={buddyAt(230, 760, 1196)} />
+    <Buddy size={230} body={dec.white} eye={brand.blueMascot} blink={0.2} style={buddyAt(230, 760, 1206)} />
     <ListCard
       title={p.buddy.title}
       rows={p.buddy.rows.map((r) => ({ name: r.name, right: r.date }))}
       done={false}
-      style={{ position: "absolute", left: 90, top: 500, width: 900 }}
+      style={{ position: "absolute", left: 90, top: 540, width: 900 }}
     />
     <div
       style={{
         position: "absolute",
         left: 90,
-        top: 1010,
+        top: 1030,
         fontFamily: decFonts.display,
-        fontSize: 44,
-        lineHeight: 1.12,
+        fontWeight: 500,
+        letterSpacing: decTracking,
+        fontSize: 52,
+        lineHeight: 1.08,
         color: dec.white,
         whiteSpace: "pre-line",
       }}

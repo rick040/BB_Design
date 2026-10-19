@@ -2,7 +2,7 @@ import React from "react";
 import { Arrow } from "../../components/CtaPill";
 import { Buddy } from "../../components/Buddy";
 import { StaticPage } from "../StaticPage";
-import { dec, decFonts } from "../theme";
+import { dec, decFonts, decTracking } from "../theme";
 import type { RustProps } from "./schema";
 
 const RECEIPT_W = 660;
@@ -36,9 +36,10 @@ export const RustPost: React.FC<RustProps> = ({ headline, receipt, button, chip 
         right: 90,
         textAlign: "center",
         fontFamily: decFonts.display,
-        fontSize: 84,
-        lineHeight: 1.04,
-        letterSpacing: "-0.02em",
+        fontWeight: 500,
+        fontSize: 108,
+        lineHeight: 1.0,
+        letterSpacing: decTracking,
         color: dec.blue,
         textWrap: "balance",
         whiteSpace: "pre-line",
@@ -72,12 +73,12 @@ export const RustPost: React.FC<RustProps> = ({ headline, receipt, button, chip 
           padding: `40px 52px ${TOOTH + 36}px`,
           background: dec.white,
           clipPath: zigzag(),
-          fontFamily: decFonts.text,
+          fontFamily: decFonts.ui,
           color: dec.ink,
         }}
       >
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-          <span style={{ fontFamily: decFonts.text, fontWeight: 700, fontSize: 34, letterSpacing: "-0.03em", color: dec.blue }}>Betaalbuddy</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 700, fontSize: 38, letterSpacing: decTracking, color: dec.blue }}>betaalbuddy</span>
           <span style={{ fontWeight: 500, fontSize: 24, color: dec.greyText }}>{receipt.label}</span>
         </div>
         <Dashed />
@@ -88,8 +89,8 @@ export const RustPost: React.FC<RustProps> = ({ headline, receipt, button, chip 
         <div style={{ fontWeight: 500, fontSize: 25, color: dec.greyText, marginTop: 6 }}>{receipt.itemNote}</div>
         <Dashed />
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", color: dec.blue }}>
-          <span style={{ fontFamily: decFonts.display, fontSize: 40 }}>{receipt.totalLabel}</span>
-          <span style={{ fontFamily: decFonts.display, fontSize: 64, letterSpacing: "-0.02em" }}>{receipt.total}</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 46, letterSpacing: decTracking }}>{receipt.totalLabel}</span>
+          <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 80, letterSpacing: decTracking }}>{receipt.total}</span>
         </div>
         <Dashed />
         <div style={{ display: "flex", gap: 4, height: 62, alignItems: "stretch", justifyContent: "center" }}>
@@ -138,7 +139,7 @@ export const RustPost: React.FC<RustProps> = ({ headline, receipt, button, chip 
         >
           <Arrow size={40} />
         </div>
-        <span style={{ fontFamily: decFonts.text, fontWeight: 600, fontSize: 44, color: dec.white, lineHeight: 1 }}>
+        <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 50, letterSpacing: decTracking, color: dec.white, lineHeight: 1 }}>
           {button}
         </span>
       </div>

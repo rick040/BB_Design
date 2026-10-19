@@ -48,7 +48,7 @@ export const CtaScene: React.FC<{ props: VoornemenProps["cta"] }> = ({ props }) 
 
   return (
     <SceneBg color={p.blue}>
-      <DHeadline text={props.tagline} color={p.white} delay={CTA_T.tagline} stagger={CTA_T.tagStagger} sizeFactor={L.tall ? 0.9 : 1.05} />
+      <DHeadline text={props.tagline} color={p.white} delay={CTA_T.tagline} stagger={CTA_T.tagStagger} sizeFactor={L.tall ? 0.84 : 1.0} />
       <Stage offsetY={30}>
         <GoalCard
           width={900}
@@ -119,8 +119,8 @@ export const CtaScene: React.FC<{ props: VoornemenProps["cta"] }> = ({ props }) 
             top: 640,
             textAlign: "center",
             fontFamily: decFonts.text,
-            fontWeight: 500,
-            fontSize: 42,
+            fontWeight: 400,
+            fontSize: 44,
             color: p.blueText,
             opacity: subIn,
             transform: `translateY(${(1 - subIn) * 20}px)`,

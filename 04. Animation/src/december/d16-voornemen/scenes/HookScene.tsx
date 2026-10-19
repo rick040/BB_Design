@@ -6,7 +6,7 @@ import { blinkScale, clamp, pop, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { DHeadline, DSubline } from "../../text";
 import { useLayout } from "../../../lib/layout";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import { GoalCard, goalCardHeight, GoalRow } from "../GoalRow";
 import type { VoornemenProps } from "../schema";
 
@@ -45,7 +45,7 @@ export const HookScene: React.FC<{ props: VoornemenProps["hook"]; goals: Voornem
 
   return (
     <SceneBg color={p.light}>
-      <DHeadline text={props.headline} color={p.blue} delay={-14} stagger={3} sizeFactor={L.tall ? 1 : 1.15} />
+      <DHeadline text={props.headline} color={p.blue} delay={-14} stagger={3} sizeFactor={L.tall ? 1 : 1.2} />
       <Stage offsetY={10}>
         <GoalCard
           width={CARD_W}
@@ -95,8 +95,8 @@ export const HookScene: React.FC<{ props: VoornemenProps["hook"]; goals: Voornem
             opacity: Math.min(1, cardIn * 2),
           }}
         >
-          <div style={{ background: dec.deep, color: dec.white, fontFamily: decFonts.display, fontSize: 38, padding: "10px 0" }}>jan</div>
-          <div style={{ color: p.blue, fontFamily: decFonts.display, fontSize: 130, lineHeight: 1.1, paddingBottom: 6 }}>4</div>
+          <div style={{ background: dec.deep, color: dec.white, fontFamily: decFonts.display, fontWeight: 500, letterSpacing: decTracking, fontSize: 40, padding: "10px 0" }}>jan</div>
+          <div style={{ color: p.blue, fontFamily: decFonts.display, fontWeight: 500, fontSize: 140, lineHeight: 1.1, paddingBottom: 6 }}>4</div>
         </div>
       </Stage>
       <DSubline text={props.subline} color={p.blue} delay={HOOK_T.sub} />

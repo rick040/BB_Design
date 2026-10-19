@@ -7,7 +7,7 @@ import { blinkScale, clamp, pop, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { MailRow } from "../../d04-rijm/parts";
 import { DHeadline, DSubline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import { useLayout } from "../../../lib/layout";
 import { goalCardHeight, GoalCard, GoalRow } from "../GoalRow";
 import type { VoornemenProps } from "../schema";
@@ -70,7 +70,7 @@ export const SendScene: React.FC<{ props: VoornemenProps["send"]; goals: Voornem
 
   return (
     <SceneBg color={p.blue}>
-      <DHeadline text={props.headline} color={p.white} delay={6} stagger={4} sizeFactor={L.tall ? 1 : 1.15} />
+      <DHeadline text={props.headline} color={p.white} delay={6} stagger={4} sizeFactor={L.tall ? 1 : 1.2} />
       <Stage offsetY={20}>
         <GoalCard
           width={CARD_W}
@@ -123,7 +123,9 @@ export const SendScene: React.FC<{ props: VoornemenProps["send"]; goals: Voornem
                 borderRadius: 999,
                 padding: "10px 24px",
                 fontFamily: decFonts.display,
-                fontSize: 34,
+                fontWeight: 500,
+                letterSpacing: decTracking,
+                fontSize: 36,
                 opacity: 1 - fly,
               }}
             >
@@ -154,11 +156,11 @@ export const SendScene: React.FC<{ props: VoornemenProps["send"]; goals: Voornem
           >
             <AppIcon size={104} circle={false} />
             <div>
-              <div style={{ fontFamily: decFonts.display, fontSize: 44, color: dec.blue }}>{props.agendaTitle}</div>
-              <div style={{ fontFamily: decFonts.text, fontWeight: 500, fontSize: 30, color: dec.greyText, marginTop: 4 }}>
+              <div style={{ fontFamily: decFonts.ui, fontWeight: 600, fontSize: 42, color: dec.blue }}>{props.agendaTitle}</div>
+              <div style={{ fontFamily: decFonts.ui, fontWeight: 400, fontSize: 30, color: dec.greyText, marginTop: 4 }}>
                 {props.sender} · {props.due}
               </div>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: decFonts.text, fontWeight: 600, fontSize: 30, color: dec.deep, marginTop: 8 }}>
+              <div style={{ display: "flex", alignItems: "center", gap: 10, fontFamily: decFonts.ui, fontWeight: 600, fontSize: 30, color: dec.deep, marginTop: 8 }}>
                 <svg width={26} height={30} viewBox="0 0 26 30">
                   <path d="M5 2v26" stroke={dec.blue} strokeWidth={4} strokeLinecap="round" />
                   <path d="M5 4h18l-5 6 5 6H5z" fill={dec.blue} />

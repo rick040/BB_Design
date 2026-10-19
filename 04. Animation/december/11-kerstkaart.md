@@ -16,7 +16,7 @@ Code: `src/december/d11-kerstkaart/` (`schema.ts` heeft alle teksten, `Scarf.tsx
 
 ## Beeld en tekst
 - Voorkant: witte Buddy met blauwe ogen en een sjaal in `#0026a8` met zachtblauwe strepen, sneeuwstippen, kop "Fijne feestdagen." en "Ik let wel op de rekeningen."
-- Achterkant: lichte achtergrond, postzegel met het app-icoon, "Voor:" en de zin in Archivo Black, "Stuur dit door." als handschrift-achtige regel, kleine Buddy met sjaal. Chip: "Stuur door · seintje 7 en 2 dagen vooraf".
+- Achterkant: lichte achtergrond, postzegel met het app-icoon, "Voor:" en de zin in Space Grotesk Medium, "Stuur dit door." als handschrift-achtige regel, kleine Buddy met sjaal. Chip: "Stuur door · seintje 7 en 2 dagen vooraf".
 - Story: dezelfde kaart met een vrije "Voor:"-balk waar je een @-vermelding of mention-sticker op kunt zetten. Bovenste 250 px en onderste 330 px blijven vrij.
 
 ## Caption

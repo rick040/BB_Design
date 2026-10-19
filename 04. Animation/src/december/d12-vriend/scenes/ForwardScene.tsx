@@ -6,7 +6,7 @@ import { blinkScale, clamp, pop, springs } from "../../../lib/anim";
 import { usePalette } from "../../../lib/palette";
 import { AddressChip } from "../../d02-advent/components/Cards";
 import { DHeadline, DSubline } from "../../text";
-import { dec, decFonts } from "../../theme";
+import { dec, decFonts, decTracking } from "../../theme";
 import { Envelope, FRIEND_BODY } from "../components/Props";
 import type { VriendProps } from "../schema";
 import { PILE } from "./HookScene";
@@ -51,7 +51,7 @@ export const ForwardScene: React.FC<{ props: VriendProps["forward"] }> = ({ prop
 
   return (
     <SceneBg color={p.light}>
-      <DHeadline text={props.headline} color={p.blue} delay={-8} stagger={3} sizeFactor={0.74} />
+      <DHeadline text={props.headline} color={p.blue} delay={-8} stagger={3} sizeFactor={0.76} />
       <Stage offsetY={40}>
         {/* Het eigen Buddy-adres */}
         <div
@@ -107,7 +107,7 @@ export const ForwardScene: React.FC<{ props: VriendProps["forward"] }> = ({ prop
                   boxSizing: "border-box",
                   opacity: Math.min(1, t * 2),
                   transform: `translateX(${(1 - t) * -60}px)`,
-                  fontFamily: decFonts.text,
+                  fontFamily: decFonts.ui,
                 }}
               >
                 <div
@@ -124,7 +124,7 @@ export const ForwardScene: React.FC<{ props: VriendProps["forward"] }> = ({ prop
                     lineHeight: 1,
                   }}
                 >
-                  <span style={{ fontFamily: decFonts.display, fontSize: 38 }}>{r.day}</span>
+                  <span style={{ fontFamily: decFonts.display, fontWeight: 500, fontSize: 40, letterSpacing: decTracking }}>{r.day}</span>
                   <span style={{ fontSize: 17, fontWeight: 600, textTransform: "uppercase", color: dec.softBlue }}>{r.month}</span>
                 </div>
                 <div style={{ flex: 1, fontSize: 38, fontWeight: 600, color: dec.ink }}>{r.title}</div>
@@ -142,7 +142,8 @@ export const ForwardScene: React.FC<{ props: VriendProps["forward"] }> = ({ prop
                         background: dec.blue,
                         color: dec.white,
                         fontFamily: decFonts.display,
-                        fontSize: 34,
+                        fontWeight: 500,
+                        fontSize: 36,
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
