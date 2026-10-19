@@ -10,6 +10,7 @@ Campagne "Buddy houdt het lijstje bij" · fase Lijstjestijd · TOFU · organisch
 | Lengte | 14,8 s (444 frames, 30 fps), 4 scènes |
 | Bestanden | `renders/december/DEC03-Sint-Reel.mp4`, `DEC03-Sint-Feed.mp4`, `DEC03-Sint-Reel-cover.png` (frame 60) |
 | Code | `src/december/d03-sint/` (schema in `schema.ts`, scènes in `scenes/`, boek in `Book.tsx`, telefoon in `Phone.tsx`, harde wissel in `hardCut.tsx`) |
+| Lettertypen | BetaalBuddy-huisstijl: Space Grotesk (koppen en lopende tekst), Geist (UI in de mockups), woordmerk Space Grotesk Bold |
 | Ad | Ja (campagnebestand: organisch plus betaald, TOFU) |
 
 ## Storyboard en gemeten tijden

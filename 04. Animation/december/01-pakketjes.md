@@ -10,6 +10,7 @@ Campagne "Buddy houdt het lijstje bij" · fase Na Black Friday · TOFU · organi
 | Lengte | 15,0 s (450 frames, 30 fps), 4 scènes |
 | Bestanden | `renders/december/DEC01-Pakketjes-Reel.mp4`, `DEC01-Pakketjes-Feed.mp4`, `DEC01-Pakketjes-Reel-cover.png` (frame 50) |
 | Code | `src/december/d01-pakketjes/` (schema in `schema.ts`, scènes in `scenes/`) |
+| Lettertypen | BetaalBuddy-huisstijl: Space Grotesk (koppen en lopende tekst), Geist (UI in de mockups), woordmerk Space Grotesk Bold |
 | Ad | Ja (campagnebestand: organisch plus betaald, TOFU) |
 
 ## Storyboard en gemeten tijden
