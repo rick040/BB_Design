@@ -11,6 +11,13 @@ import {
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
+import { Walkthrough } from "./walkthrough/Walkthrough";
+import {
+  defaultWalkthroughProps,
+  type WalkthroughProps,
+  walkthroughSchema,
+  walkthroughTotal,
+} from "./walkthrough/schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
   durationInFrames: totalFrames(props.timing),
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const walkthroughMetadata: CalculateMetadataFunction<WalkthroughProps> = ({ props }) => ({
+  durationInFrames: walkthroughTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -101,6 +112,32 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1350}
+      />
+    </Folder>
+
+    {/* Walkthrough · "Stel je Buddy in" (WALKTHROUGH.md), not an ad */}
+    <Folder name="Walkthrough-Stel-je-Buddy-in">
+      <Composition
+        id="BB-Walkthrough"
+        component={Walkthrough}
+        schema={walkthroughSchema}
+        defaultProps={defaultWalkthroughProps}
+        calculateMetadata={walkthroughMetadata}
+        durationInFrames={walkthroughTotal(defaultWalkthroughProps.timing)}
+        fps={FPS}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="BB-Walkthrough-Vertical"
+        component={Walkthrough}
+        schema={walkthroughSchema}
+        defaultProps={defaultWalkthroughProps}
+        calculateMetadata={walkthroughMetadata}
+        durationInFrames={walkthroughTotal(defaultWalkthroughProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
       />
     </Folder>
   </>

@@ -1,6 +1,6 @@
-# BetaalBuddy · Instagram ads (Remotion)
+# BetaalBuddy · Instagram ads + walkthrough (Remotion)
 
-Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Three concepts, each in two formats:
+Editable animated ads and an onboarding walkthrough, built in [Remotion](https://www.remotion.dev) (React → MP4). Three ad concepts, each in two formats:
 
 | Concept | Composition | Size | Use | Length |
 |---|---|---|---|---|
@@ -10,6 +10,13 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+
+Plus one walkthrough (not an ad) for the setup page [/stel-je-buddy-in/](https://betaalbuddy.nl/stel-je-buddy-in/):
+
+| Video | Composition | Size | Use | Length |
+|---|---|---|---|---|
+| Walkthrough "Stel je Buddy in" ([`WALKTHROUGH.md`](./WALKTHROUGH.md)) | `BB-Walkthrough` | 1920 × 1080 (16:9) | Setup page, YouTube, welcome mail | 61.8 s |
+| | `BB-Walkthrough-Vertical` | 1080 × 1920 (9:16) | Phone, WhatsApp, Stories | 61.8 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -40,7 +47,7 @@ The Studio opens in your browser. Pick a composition on the left (they are group
 
 Edits in the Props panel are **live**, and they are used when you click **Render** in the Studio. So edit → preview → render works directly.
 
-To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`) or `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
+To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`), `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`) or `src/walkthrough/schema.ts` (walkthrough, `defaultWalkthroughProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
 
@@ -55,10 +62,13 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:walkthrough           # walkthrough → out/BB-Walkthrough.mp4          (16:9)
+npm run render:walkthrough:vertical  # walkthrough → out/BB-Walkthrough-Vertical.mp4 (9:16)
+npm run render:all             # all eight
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:walkthrough      # walkthrough cover → out/BB-Walkthrough-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -74,11 +84,14 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
+  walkthrough/        walkthrough: Walkthrough.tsx, schema.ts, tokens.ts (setup-page colours + fonts), layout.ts (16:9 / 9:16),
+                      scenes/ (Intro · Stap 1–5 · Klaar), screens/ (setup page, mail app, calendar on the phone),
+                      components/ (Phone, Tap fingertip, StepPanel instructions)
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …
   lib/                animation helpers, layout per format, palette, focusPull (blur transition)
-public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
+public/fonts/         Space Grotesk, Geist, Geist Mono + Poppins (SIL OFL, bundled so renders work offline)
 ```
 
 All brand elements (mascot, app icon, notification, CTA pill, calendar tile, wordmark) are rebuilt as vectors from the files in `01. Logo` and `02. Elements`, so they stay sharp at any size and their text can be edited.
