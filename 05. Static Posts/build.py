@@ -720,6 +720,29 @@ def pR19():
 <div class="sub" style="top:1068px;font-size:36px;z-index:4">Stuur je premienota door.<br>Buddy zet de datum in je agenda.</div>""")
 
 
+def pR34():
+    """Carrousel R34: zorgverzekering, check dit eerst. Licht, checklistkaarten."""
+    n = 6
+    bg = "#e8eeff"
+    def tick(size=96):
+        return (f'<div style="width:{size}px;height:{size}px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;flex:none">'
+                f'<svg width="{int(size*0.56)}" height="{int(size*0.56)}" viewBox="0 0 24 24" fill="none" stroke="{C["blue"]}" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>')
+    def card(txt, top, h=420, small=""):
+        sm = f'<div style="font-size:38px;font-weight:400;opacity:.85;margin-top:18px;letter-spacing:-0.02em;line-height:1.15">{small}</div>' if small else ""
+        return (f'<div class="abs" style="left:90px;right:90px;top:{top}px;height:{h}px;border-radius:48px;background:{C["blue"]};color:#fff;display:flex;align-items:center;gap:40px;padding:0 56px">'
+                f'{tick()}<div><div style="font-size:66px;font-weight:500;letter-spacing:-0.05em;line-height:1.05">{txt}</div>{sm}</div></div>')
+    def bd(x=380, top=860, w=200, **k):
+        return f'<div class="abs" style="left:{x}px;top:{top}px">{buddy(w, body=C["blue"], eye="#fff", **k)}</div>'
+    sl = []
+    sl.append(pageC("light", _t("Overstappen van<br>zorgverzekering?<br>Check eerst dit.", 98, 150, C["blue"]) + bd(380, 660, 320) + _s("Bewaar dit tot 31 december.", 1070, 44, C["blue"]), 1, n, bg=bg))
+    sl.append(pageC("light", card("De nieuwe premies zijn uiterlijk 12&nbsp;november bekend.", 330, 440) + bd(100, 880, 190, look=(0.4, 0)), 2, n, bg=bg))
+    sl.append(pageC("light", card("Overstappen kan tot en met 31&nbsp;december.", 330, 440) + bd(100, 880, 190), 3, n, bg=bg))
+    sl.append(pageC("light", card("Zelf opgezegd vóór 1&nbsp;januari?", 330, 440, "Dan heb je tot eind januari voor een nieuwe polis.") + bd(100, 880, 190, look=(0.4, 0)), 4, n, bg=bg))
+    sl.append(pageC("light", card("Openstaande premie?", 330, 440, "Dan kun je meestal niet overstappen.") + bd(100, 880, 190, look=(0.9, 0.2)), 5, n, bg=bg))
+    sl.append(pageC("light", _t("Stuur je premienota door.", 96, 170, C["blue"]) + bd(380, 560, 320) + _s("Buddy zet de datum in je agenda.", 1000, 44, C["blue"]), 6, n, last=True, bg=bg))
+    return sl
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -736,6 +759,7 @@ POSTS = [
     ("R07", "tandarts-nota", pR07),
     ("R08", "ijszak-knie", pR08),
     ("R19", "overstappen-zorg", pR19),
+    ("R34", "zorg-check", pR34),
 ]
 
 

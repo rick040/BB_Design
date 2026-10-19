@@ -521,3 +521,28 @@ Link in bio 👆
 ```
 Alt: Buddy gluurt vanonder een geruite plaid naast een laptop met een onscherp scherm vol vergelijkrijen. Kop: Overstappen kan tot en met 31 december. Met een openstaande premie lukt dat niet.
 Let op: dit is een illustratieve vertaling van het fotoidee (iemand onder een plaid met laptop). Check voor plaatsing: deadline 31 december en "openstaande premie = overstappen lukt niet" (bron: Zorgwijzer, zie ook Rijksoverheid). Posten tussen 12 november en 31 december is ook goed, nu al kan.
+
+## R34 · Zorgverzekering: check dit eerst (lijst #34, carrousel 6)
+```
+Overstappen van zorgverzekering? Check eerst of je premie betaald is. 🛋️
+
+Zo hou je het bij:
+1️⃣ Premienota binnen? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+Bron: Rijksoverheid en overstappen.nl (premies uiterlijk 12 november bekend, overstappen tot en met 31 december).
+
+#zorgverzekering #overstappen #zorgpremie #geldzaken #betaalbuddy
+```
+Alt-tekst:
+- Slide 1: Blauwe Buddy onder de kop "Overstappen van zorgverzekering? Check eerst dit." op lichtblauwe achtergrond.
+- Slide 2: Blauwe kaart met vinkje: "De nieuwe premies zijn uiterlijk 12 november bekend."
+- Slide 3: Blauwe kaart met vinkje: "Overstappen kan tot en met 31 december."
+- Slide 4: Blauwe kaart met vinkje: "Zelf opgezegd vóór 1 januari? Dan heb je tot eind januari voor een nieuwe polis."
+- Slide 5: Blauwe kaart met vinkje: "Openstaande premie? Dan kun je meestal niet overstappen."
+- Slide 6: Buddy onder "Stuur je premienota door. Buddy zet de datum in je agenda." met de knop "Ontmoet je buddy".
+Open controles: openstaande premie en overstappen (alleen "meestal") nog bij Rijksoverheid of zorgverzekeraar checken; "tot eind januari" is bewust ruimer geformuleerd dan 1 februari.
