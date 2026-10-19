@@ -534,7 +534,7 @@ Zo hou je het bij:
 Geen app. Geen bankkoppeling.
 Link in bio 👆
 
-Bron: Rijksoverheid en overstappen.nl (premies uiterlijk 12 november bekend, overstappen tot en met 31 december).
+Bron: Rijksoverheid (premies uiterlijk 12 november bekend, overstappen tot en met 31 december).
 
 #zorgverzekering #overstappen #zorgpremie #geldzaken #betaalbuddy
 ```
