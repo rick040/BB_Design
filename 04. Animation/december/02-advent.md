@@ -129,7 +129,7 @@ Sticker- en captionideeën voor de Story (optioneel, in de app toevoegen):
 
 - De 21 eigen deurtjes (zie tabel) en de voorbeeldbedragen laten goedkeuren.
 - Linksticker of "link in bio" laat naar de gekozen instappagina wijzen (`/start-met-betaalbuddy/` zodra de fixweek klaar is).
-- Huisstijl: de koppen staan in Archivo Black en Poppins, het woordmerk en de UI-onderdelen blijven in Space Grotesk en Geist. Zie de open beslissing over de huisstijl.
+- Huisstijl: koppen en lopende tekst staan in Space Grotesk (tracking -0.06em), de UI in de mockups (deurtjes met rekeningen, kaarten, chips) in Geist en het woordmerk in Space Grotesk Bold.
 - De Story-chip onderaan staat op ~1620 px van 1920; de gewone Story-safe-zone onderaan is ~250 px (Reels 330 px), dus dat past.
 
 ## Aanpassen en exporteren

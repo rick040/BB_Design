@@ -48,7 +48,7 @@ export const StaticPage: React.FC<{
         }}
       >
         {wordmark ? (
-          <Wordmark size={46} betaal={t === "ice" || t === "white" ? dec.softBlue : dec.softBlue} buddy={t === "ice" || t === "white" ? dec.blue : dec.white} />
+          <Wordmark size={46} betaal={t === "ice" || t === "white" ? "#8aa3ff" : dec.softBlue} buddy={t === "ice" || t === "white" ? dec.blue : dec.white} />
         ) : (
           <span />
         )}
