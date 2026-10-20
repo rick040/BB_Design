@@ -743,6 +743,34 @@ def pR34():
     return sl
 
 
+def pR09():
+    """Illustratieve vertaling van fotoidee R09: drie dozen zonder logo's in een smalle gang, plus retourzak."""
+    def box(x, y, w, h, tape=True):
+        t = f'<rect x="{x + w/2 - 14}" y="{y}" width="28" height="{h}" fill="#fff" opacity=".7"/>' if tape else ""
+        return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="14" fill="{C["blueSoft"]}"/>'
+                f'<rect x="{x}" y="{y}" width="{w}" height="34" rx="14" fill="#99b1ff"/>{t}')
+    hall = (f'<svg class="abs" style="left:90px;top:430px" width="900" height="560" viewBox="0 0 900 560">'
+            f'<rect width="900" height="560" rx="48" fill="#0128c4"/>'
+            f'<path d="M0 440H900V512a48 48 0 0 1-48 48H48A48 48 0 0 1 0 512Z" fill="#0a2bb8"/>'
+            f'<rect x="640" y="60" width="170" height="330" rx="16" fill="#0026a8"/><rect x="640" y="60" width="170" height="330" rx="16" fill="none" stroke="#99b1ff" stroke-width="8"/>'
+            f'<circle cx="782" cy="230" r="10" fill="#ffce31"/>'
+            f'{box(80, 300, 250, 140)}{box(360, 330, 210, 110)}{box(130, 190, 190, 110)}'
+            f'<path d="M600 330Q600 300 630 300H750Q780 300 780 330V440H600Z" fill="#ffce31"/>'
+            f'<path d="M630 300Q690 250 750 300" fill="none" stroke="#f0bb10" stroke-width="12" stroke-linecap="round"/>'
+            f'<rect x="650" y="350" width="80" height="14" rx="7" fill="#f0bb10"/></svg>')
+    def tag(txt, x, y, rot):
+        return (f'<div class="abs card" style="left:{x}px;top:{y}px;transform:rotate({rot}deg);z-index:5;padding:14px 30px;border-radius:40px;'
+                f'font-family:Geist,sans-serif;font-size:30px;font-weight:600;color:{C["ink"]};white-space:nowrap">{txt}</div>')
+    return page("dark", f"""
+<h1 class="s" style="font-size:96px;top:96px">Drie webshops.<br>Drie betaal&shy;termijnen.<br>Eén hoofd.</h1>
+{hall}
+{tag("Webshop &middot; vervalt 3 nov", 130, 490, -3)}
+{tag("Webshop &middot; vervalt 9 nov", 560, 640, 2.5)}
+{tag("Webshop &middot; vervalt 14 nov", 150, 905, -2)}
+<div class="abs" style="left:430px;top:575px;z-index:4">{buddy(180, look=(-0.7, 0.4))}</div>
+<div class="sub" style="top:1050px;font-size:40px">Stuur elke betaalmail door.<br>Buddy zet de vervaldatum in je agenda.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -760,6 +788,7 @@ POSTS = [
     ("R08", "ijszak-knie", pR08),
     ("R19", "overstappen-zorg", pR19),
     ("R34", "zorg-check", pR34),
+    ("R09", "pakketjes-gang", pR09),
 ]
 
 

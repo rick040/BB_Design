@@ -546,3 +546,20 @@ Alt-tekst:
 - Slide 5: Blauwe kaart met vinkje: "Openstaande premie? Dan kun je meestal niet overstappen."
 - Slide 6: Buddy onder "Stuur je premienota door. Buddy zet de datum in je agenda." met de knop "Ontmoet je buddy".
 Open controles: openstaande premie en overstappen (alleen "meestal") nog bij Rijksoverheid of zorgverzekeraar checken; "tot eind januari" is bewust ruimer geformuleerd dan 1 februari.
+
+## R09 · Pakketjes in de gang (lijst #9, single)
+```
+Achteraf betalen voelt als pinnen. Tot de termijnen door elkaar gaan lopen. 📦
+
+Zo hou je het bij:
+1️⃣ Betaalmail van een webshop? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+#achterafbetalen #webshop #geldzaken #betaalbuddy #pakketjes
+```
+Alt: Buddy staat in een smalle gang naast drie dozen en een gele retourzak. Drie labels zeggen "Webshop, vervalt 3 nov", "9 nov" en "14 nov". Kop: Drie webshops. Drie betaaltermijnen. Eén hoofd.
+Let op: illustratieve vertaling van het fotoidee (dozen in een gang). Data op de labels zijn voorbeelden. Geen Nibud- of AFM-cijfers gebruikt; wil Rick die in de caption, dan eerst de bronnen controleren. Spiegelpaar met R25 (later-meme) in testweek 5.
