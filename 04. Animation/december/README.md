@@ -31,6 +31,7 @@ De MP4's zijn h264, yuv420p, bt709 (gecontroleerd met ffprobe). De Reels hebben 
 
 - [`META-ADS-PLAN.md`](./META-ADS-PLAN.md): setup, campagnestructuur, budget, schema en beslisregels voor de betaalde kant van de campagne.
 - [`META-ADS-STAPPENPLAN.md`](./META-ADS-STAPPENPLAN.md): het hoe, voor iemand die nog nooit met Meta Ads werkte: accounts, Pixel, doelgroepen en de eerste campagne, in volgorde.
+- [`META-ADS-INVOER.md`](./META-ADS-INVOER.md): per campagne en advertentie wat je in Ads Manager invult (namen, bestanden, teksten, knop, URL met tracking, data om aan te maken en live te zetten).
 - [`META-ADS-PLANNING.xlsx`](./META-ADS-PLANNING.xlsx): dag-voor-dag schema met bedragen (verandert mee met de pot in 'Instellingen'), advertentielijst met beslissing per advertentie, meetplan, rekensom en preflight-checklist.
 
 ## Aanpassen en opnieuw renderen
