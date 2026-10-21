@@ -15,6 +15,10 @@ All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
 
+## December campaign · "Buddy houdt het lijstje bij"
+
+16 ideas (7 Reels, carousels, statics and Stories) built in the BetaalBuddy brand fonts. Overview, file list, open decisions and how to render: [`december/README.md`](./december/README.md). Code lives in `src/december/<slug>/`, finished files in `renders/december/`, and `npm run render:december` renders them all (stills become PNG, everything else MP4).
+
 ## 1 · Install (once)
 
 You need [Node.js](https://nodejs.org) 18 or newer.
