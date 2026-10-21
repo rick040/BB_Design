@@ -771,6 +771,37 @@ def pR09():
 <div class="sub" style="top:1050px;font-size:40px">Stuur elke betaalmail door.<br>Buddy zet de vervaldatum in je agenda.</div>""")
 
 
+def pR33():
+    """Carrousel R33: het rekeningenjaar van een twintiger. Blauw, maandstrook met markering."""
+    n = 7
+    mnd = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"]
+    def strip(on, top=170):
+        cells = ""
+        for k, m in enumerate(mnd, start=1):
+            a = k in on
+            cells += (f'<div style="flex:1;height:96px;border-radius:26px;display:flex;align-items:center;justify-content:center;font-family:Geist,sans-serif;'
+                      f'font-size:34px;font-weight:600;background:{"#fff" if a else "rgba(255,255,255,.16)"};color:{C["blue"] if a else "rgba(255,255,255,.6)"}">{m}</div>')
+        return f'<div class="abs" style="left:90px;right:90px;top:{top}px;display:flex;gap:10px">{cells}</div>'
+    def slide(i, on, label, txt, size=84, bx=420, look=(0, 0), last=False, extra=""):
+        body = (strip(on) +
+                f'<div class="abs" style="left:90px;right:90px;top:360px;text-align:center"><div style="font-family:Geist,sans-serif;font-size:40px;font-weight:600;color:{C["blueText"]};margin-bottom:26px">{label}</div>'
+                f'<div style="font-size:{size}px;font-weight:500;letter-spacing:-0.05em;line-height:1.04">{txt}</div></div>'
+                f'<div class="abs" style="left:{bx}px;top:850px">{buddy(240, look=look)}</div>' + extra)
+        return pageC("dark", body, i, n, last=last)
+    sl = []
+    sl.append(pageC("dark", _t("Het rekeningenjaar van een twintiger.", 100, 150) + strip(range(1, 13), 520) + f'<div class="abs" style="left:390px;top:690px">{buddy(300)}</div>'
+                    + _s("Bewaar dit.", 1075, 44, C["blueText"]), 1, n))
+    sl.append(slide(2, [1], "Januari", "Nieuwe premie zorgverzekering. Nieuwe jaar&shy;abonnementen."))
+    sl.append(slide(3, [], "Ergens in het jaar", "Aanslag gemeentelijke belastingen.", 84, look=(0.6, 0),
+                    extra=_s("Het moment verschilt per gemeente.", 700, 40, C["blueText"])))
+    sl.append(slide(4, [6, 7, 8], "Zomer", "Vakantie, terwijl de vaste lasten doorlopen.", look=(0.5, 0.2)))
+    sl.append(slide(5, [11, 12], "12 november", "Nieuwe zorgpremies bekend. Tot en met 31&nbsp;december overstappen.", 76))
+    sl.append(slide(6, [11, 12], "Eind november en december", "Black Friday, Sinterklaas, feestdagen.", look=(-0.5, 0)))
+    sl.append(pageC("dark", strip(range(1, 13)) + _t("Elk moment: doorsturen.", 100, 360) + f'<div class="abs" style="left:380px;top:690px">{buddy(320)}</div>'
+                    + _s("Buddy zet de datum in je agenda.", 1060, 44, C["blueText"]), 7, n, last=True))
+    return sl
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -789,6 +820,7 @@ POSTS = [
     ("R19", "overstappen-zorg", pR19),
     ("R34", "zorg-check", pR34),
     ("R09", "pakketjes-gang", pR09),
+    ("R33", "rekeningenjaar", pR33),
 ]
 
 

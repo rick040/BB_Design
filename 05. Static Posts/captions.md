@@ -563,3 +563,29 @@ Link in bio 👆
 ```
 Alt: Buddy staat in een smalle gang naast drie dozen en een gele retourzak. Drie labels zeggen "Webshop, vervalt 3 nov", "9 nov" en "14 nov". Kop: Drie webshops. Drie betaaltermijnen. Eén hoofd.
 Let op: illustratieve vertaling van het fotoidee (dozen in een gang). Data op de labels zijn voorbeelden. Geen Nibud- of AFM-cijfers gebruikt; wil Rick die in de caption, dan eerst de bronnen controleren. Spiegelpaar met R25 (later-meme) in testweek 5.
+
+## R33 · Het rekeningenjaar (lijst #33, carrousel 7)
+```
+Sommige rekeningen komen elk jaar op hetzelfde moment. Toch verrassen ze je. 📅
+
+Zo hou je het bij:
+1️⃣ Factuur in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆
+
+Bron: Rijksoverheid (zorgpremies uiterlijk 12 november bekend, overstappen tot en met 31 december).
+
+#geldzaken #zorgverzekering #rekeningen #twintiger #betaalbuddy
+```
+Alt-tekst:
+- Slide 1: Blauwe achtergrond met de kop "Het rekeningenjaar van een twintiger." Een rij van twaalf maandletters en Buddy eronder. "Bewaar dit."
+- Slide 2: Januari gemarkeerd. "Nieuwe premie zorgverzekering. Nieuwe jaarabonnementen." Buddy onderaan.
+- Slide 3: "Ergens in het jaar: aanslag gemeentelijke belastingen. Het moment verschilt per gemeente."
+- Slide 4: Zomermaanden gemarkeerd. "Vakantie, terwijl de vaste lasten doorlopen."
+- Slide 5: November en december gemarkeerd. "12 november: nieuwe zorgpremies bekend. Tot en met 31 december overstappen."
+- Slide 6: "Eind november en december: Black Friday, Sinterklaas, feestdagen."
+- Slide 7: Alle maanden gemarkeerd. "Elk moment: doorsturen. Buddy zet de datum in je agenda." met de knop "Ontmoet je buddy".
+Open controles: Rijksoverheid-data (12 november, 31 december) checken voor plaatsing. Gemeentebelasting bewust zonder datum. Posten ruim vóór 12 november of kort erna past het best.
