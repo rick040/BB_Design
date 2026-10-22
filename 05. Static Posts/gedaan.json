@@ -331,5 +331,14 @@
     "idee": "jaarkalender met maandstrook, zeven slides",
     "datum": "2026-10-21",
     "bestand": "BB-Post-R33-rekeningenjaar.png"
+  },
+  {
+    "nr": "R16",
+    "slug": "weekmail",
+    "kop": "Eén mail per week. Dan weet je het weer.",
+    "hoek": "H6/H2 weekoverzicht",
+    "idee": "mailkaart Je week met twee betalingen en Buddy",
+    "datum": "2026-10-22",
+    "bestand": "BB-Post-R16-weekmail.png"
   }
 ]

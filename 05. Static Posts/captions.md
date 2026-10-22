@@ -589,3 +589,20 @@ Alt-tekst:
 - Slide 6: "Eind november en december: Black Friday, Sinterklaas, feestdagen."
 - Slide 7: Alle maanden gemarkeerd. "Elk moment: doorsturen. Buddy zet de datum in je agenda." met de knop "Ontmoet je buddy".
 Open controles: Rijksoverheid-data (12 november, 31 december) checken voor plaatsing. Gemeentebelasting bewust zonder datum. Posten ruim vóór 12 november of kort erna past het best.
+
+## R16 · Eén mail per week (lijst #16)
+```
+Geen gezoek in je inbox. Gewoon een overzicht van wat er deze week moet. 📬
+
+Zo werkt het:
+1️⃣ Factuur in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een weekoverzicht en een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#geldzaken #betaalbuddy #rekeningen #overzicht #twintiger
+```
+Alt: Een lichte post met de kop "Eén mail per week. Dan weet je het weer." Een mailkaart "Je week, 2 betalingen" met Zorgverzekeraar €128,95 en Verhuurder €745,00. Eronder Buddy.
+Let op: illustratieve vertaling van het fotoidee (ontbijt met telefoon). Kop bewust zonder "zondag". Open controle voor Rick: dag, inhoud en opmaak van het weekoverzicht (staat nog niet bevestigd), en of de voorbeeldbedragen zo mogen. Bedragen en afzenders zijn voorbeelden.

@@ -771,6 +771,26 @@ def pR09():
 <div class="sub" style="top:1050px;font-size:40px">Stuur elke betaalmail door.<br>Buddy zet de vervaldatum in je agenda.</div>""")
 
 
+def pR16():
+    """Illustratieve vertaling van fotoidee R16: ontbijt met telefoon en weekmail. Hier als grafische mailkaart met Buddy."""
+    def row(g, t, s, a):
+        return (f'<div style="display:flex;align-items:center;gap:24px;height:116px;padding:0 10px">{glyph(g, 76)}'
+                f'<div style="flex:1;display:flex;flex-direction:column;gap:6px"><b style="font-weight:600;font-size:36px;color:{C["ink"]}">{t}</b>'
+                f'<span style="font-size:27px;color:{C["greyText"]}">{s}</span></div>'
+                f'<div style="font-weight:600;font-size:38px;color:{C["ink"]};letter-spacing:-0.02em">{a}</div></div>')
+    sep = f'<div style="height:2px;background:{C["grey"]};margin:0 10px"></div>'
+    mail = (f'<div class="abs card" style="left:110px;right:110px;top:390px;border-radius:44px;padding:36px 36px 28px;font-family:Geist,sans-serif">'
+            f'<div style="display:flex;align-items:center;gap:18px;margin-bottom:22px">{app_icon(64, circle=False)}'
+            f'<div style="display:flex;flex-direction:column;gap:4px"><b style="font-weight:600;font-size:34px;color:{C["ink"]}">Je week</b>'
+            f'<span style="font-size:25px;color:{C["greyText"]}">2 betalingen</span></div></div>'
+            f'{sep}{row("heart", "Zorgverzekeraar", "vervalt donderdag", "&euro;128,95")}{sep}{row("home", "Verhuurder", "vervalt vrijdag", "&euro;745,00")}</div>')
+    return page("light", f"""
+<h1 class="s">Eén mail per week.<br>Dan weet je het weer.</h1>
+{mail}
+<div class="abs" style="left:400px;top:880px">{buddy(190, body=C["blue"], eye="#fff", look=(0, 0.1), blink=0.5)}</div>
+<div class="sub" style="top:1135px;font-size:36px;color:{C['blue']};left:90px;right:90px"></div>""")
+
+
 def pR33():
     """Carrousel R33: het rekeningenjaar van een twintiger. Blauw, maandstrook met markering."""
     n = 7
@@ -821,6 +841,7 @@ POSTS = [
     ("R34", "zorg-check", pR34),
     ("R09", "pakketjes-gang", pR09),
     ("R33", "rekeningenjaar", pR33),
+    ("R16", "weekmail", pR16),
 ]
 
 
