@@ -606,3 +606,22 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Een lichte post met de kop "Eén mail per week. Dan weet je het weer." Een mailkaart "Je week, 2 betalingen" met Zorgverzekeraar €128,95 en Verhuurder €745,00. Eronder Buddy.
 Let op: illustratieve vertaling van het fotoidee (ontbijt met telefoon). Kop bewust zonder "zondag". Open controle voor Rick: dag, inhoud en opmaak van het weekoverzicht (staat nog niet bevestigd), en of de voorbeeldbedragen zo mogen. Bedragen en afzenders zijn voorbeelden.
+
+## R40 · Eén op de vier (lijst #40, single)
+```
+Een kwart van de huishoudens kon dit jaar rekeningen niet betalen. Twee jaar eerder was dat nog 17%. 📉
+
+Op tijd weten wanneer helpt al:
+1️⃣ Rekening in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+Bron: Nibud, Geldzaken in de praktijk 2026.
+
+#geldzaken #rekeningen #nibud #betaalbuddy #twintiger
+```
+Alt: Lichte post met de kop "Een kwart van de huishoudens kon dit jaar rekeningen niet betalen." Vier Buddy-figuren naast elkaar, drie blauw en één lichtblauw die naar beneden kijkt, naar twee mailkaarten "Verhuurder, vervalt maandag" en "Webshop, vervalt vrijdag". Eronder: "Twee jaar eerder was dat nog 17%. Op tijd weten wanneer helpt al."
+Let op: cijfers 25% en 17% staan in NOS (23 juni 2026) over het Nibud-rapport; de Nibud-pagina zelf was niet op te halen. Kop gebruikt de NOS-formulering "niet betalen", jouw lijst zegt "niet op tijd betalen": controleer de exacte Nibud-zin. Kaarten zijn voorbeelden met generieke afzenders.

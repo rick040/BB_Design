@@ -340,5 +340,14 @@
     "idee": "mailkaart Je week met twee betalingen en Buddy",
     "datum": "2026-10-22",
     "bestand": "BB-Post-R16-weekmail.png"
+  },
+  {
+    "nr": "R40",
+    "slug": "een-op-de-vier",
+    "kop": "Een kwart van de huishoudens kon dit jaar rekeningen niet betalen.",
+    "hoek": "H3 kosten van vergeten",
+    "idee": "Vier Buddy-figuren, een kijkt naar twee mailkaarten",
+    "datum": "2026-10-23",
+    "bestand": "BB-Post-R40-een-op-de-vier.png"
   }
 ]

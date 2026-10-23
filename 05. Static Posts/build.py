@@ -822,6 +822,28 @@ def pR33():
     return sl
 
 
+def pR40():
+    """R40: een op de vier. Vier Buddy-figuren, een kijkt schuin naar een stapel mails. Licht."""
+    bw = 200
+    xs = [95, 325, 555, 785]
+    top = 450
+    figs = ""
+    for k, x in enumerate(xs):
+        if k < 3:
+            figs += f'<div class="abs" style="left:{x}px;top:{top}px">{buddy(bw, body=C["blue"], eye="#fff", look=(0, 0.1))}</div>'
+        else:
+            figs += f'<div class="abs" style="left:{x}px;top:{top}px">{buddy(bw, body=C["blueSoft"], eye=C["blue"], look=(0.3, 1.0))}</div>'
+    cs = "position:absolute;height:96px;padding:0 24px 0 18px;border-radius:32px"
+    mails = (bill("home", "Verhuurder", "vervalt maandag", "", rot=3, extra=f"{cs};left:560px;top:708px;width:430px", z=1)
+             + bill("mail", "Webshop", "vervalt vrijdag", "", rot=-3, extra=f"{cs};left:530px;top:822px;width:430px", z=2))
+    return page("light", f"""
+<h1 class="s" style="font-size:84px;top:90px">Een kwart van de huishoudens kon dit jaar rekeningen niet betalen.</h1>
+{figs}{mails}
+<div class="sub" style="top:960px;font-size:46px;color:{C['blue']}">Twee jaar eerder was dat nog 17%.</div>
+<div class="sub" style="top:1032px;font-size:38px">Op tijd weten wanneer helpt al.</div>
+<div class="sub" style="top:1110px;font-size:26px;color:#8fa0d6">Bron: Nibud, Geldzaken in de praktijk 2026</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -842,6 +864,7 @@ POSTS = [
     ("R09", "pakketjes-gang", pR09),
     ("R33", "rekeningenjaar", pR33),
     ("R16", "weekmail", pR16),
+    ("R40", "een-op-de-vier", pR40),
 ]
 
 
