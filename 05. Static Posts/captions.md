@@ -625,3 +625,22 @@ Bron: Nibud, Geldzaken in de praktijk 2026.
 ```
 Alt: Lichte post met de kop "Een kwart van de huishoudens kon dit jaar rekeningen niet betalen." Vier Buddy-figuren naast elkaar, drie blauw en één lichtblauw die naar beneden kijkt, naar twee mailkaarten "Verhuurder, vervalt maandag" en "Webshop, vervalt vrijdag". Eronder: "Twee jaar eerder was dat nog 17%. Op tijd weten wanneer helpt al."
 Let op: cijfers 25% en 17% staan in NOS (23 juni 2026) over het Nibud-rapport; de Nibud-pagina zelf was niet op te halen. Kop gebruikt de NOS-formulering "niet betalen", jouw lijst zegt "niet op tijd betalen": controleer de exacte Nibud-zin. Kaarten zijn voorbeelden met generieke afzenders.
+
+## R13 · Snelweg bij avond, boete loopt op (lijst #13, single)
+```
+Het is niet de boete die pijn doet. Het is de mail die je niet meer terugvond. 🚗
+
+Zo hou je het bij:
+1️⃣ Digitale boete in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+Bron: CJIB, positiepaper verkeersboetes en oplopende betalingsproblemen (15 april 2026): bij niet betalen volgt 50% verhoging, daarna nog eens 100%.
+
+#verkeersboete #geldzaken #rekeningen #betaalbuddy #twintiger
+```
+Alt: Blauwe post met de kop "€100 boete. Te laat betaald: €150. Nog later: €300." Een snelweg in perspectief met Buddy bovenaan. Drie kaarten onder elkaar: Boete €100, Te laat betaald €150, Nog later €300. Eronder: "Stuur de digitale boete door. Buddy mailt je 7 en 2 dagen vooraf."
+Let op: illustratieve vertaling van het fotoidee (snelweg bij avond). Open controle voor Rick: het CJIB-positiepaper noemt een lopende Hoge Raad-zaak (25/03653) over de verhogingspercentages van 50% en 100%. Check vlak voor plaatsing of daar al een uitspraak is. Alleen digitale boetes. Het voorbeeld €100, €150, €300 volgt het CJIB-voorbeeld (€100 wordt €300).

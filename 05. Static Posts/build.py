@@ -844,6 +844,36 @@ def pR40():
 <div class="sub" style="top:1110px;font-size:26px;color:#8fa0d6">Bron: Nibud, Geldzaken in de praktijk 2026</div>""")
 
 
+def pR13():
+    """Illustratieve vertaling van fotoidee R13: snelweg in de schemering, geen kentekens. Blauw."""
+    weg = (f'<svg viewBox="0 0 1080 560" width="1080" height="560" style="display:block">'
+           f'<defs><linearGradient id="rg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0128c4"/>'
+           f'<stop offset=".7" stop-color="#0128c4"/><stop offset="1" stop-color="#013bff"/></linearGradient>'
+           f'<linearGradient id="eg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#b6c7ff" stop-opacity=".55"/>'
+           f'<stop offset=".7" stop-color="#b6c7ff" stop-opacity=".45"/><stop offset="1" stop-color="#b6c7ff" stop-opacity="0"/></linearGradient></defs>'
+           f'<path d="M470 0 L610 0 L1170 560 L-90 560Z" fill="url(#rg)"/>'
+           f'<path d="M470 0 L450 0 L-110 560 L-70 560Z" fill="url(#eg)"/>'
+           f'<path d="M610 0 L630 0 L1190 560 L1150 560Z" fill="url(#eg)"/>'
+           f'<g fill="#fff" opacity=".9">'
+           f'<path d="M537 70 L543 70 L546 110 L534 110Z"/><path d="M533 160 L547 160 L553 240 L527 240Z"/>'
+           f'<path d="M524 300 L556 300 L572 430 L508 430Z"/></g></svg>')
+    def stap(top, txt, big, tilt):
+        return (f'<div class="abs card" style="left:150px;right:150px;top:{top}px;height:118px;border-radius:59px;display:flex;'
+                f'align-items:center;justify-content:space-between;padding:0 44px;transform:rotate({tilt}deg)">'
+                f'<span style="font-size:34px;font-weight:500;color:#6b7280">{txt}</span>'
+                f'<b style="font-size:{big}px;font-weight:600;color:{C["ink"]};letter-spacing:-0.03em">{{b}}</b></div>')
+    cards = ""
+    for top, txt, big, bed, tilt in [(560, "Boete", 46, "€100", -1.2), (690, "Te laat betaald", 54, "€150", 0.9), (820, "Nog later", 62, "€300", -0.8)]:
+        cards += stap(top, txt, big, tilt).replace("{b}", bed)
+    return page("dark", f"""
+<h1 class="s" style="font-size:84px;top:90px">€100 boete.<br>Te laat betaald: €150.<br>Nog later: €300.</h1>
+<div class="abs" style="left:0;top:395px">{weg}</div>
+<div class="abs" style="left:482px;top:418px">{buddy(116, look=(0, -0.4))}</div>
+{cards}
+<div class="sub" style="top:975px;font-size:38px">Stuur de digitale boete door.<br>Buddy mailt je 7 en 2 dagen vooraf.</div>
+<div class="sub" style="top:1128px;font-size:24px;color:#8fa0d6">Wettelijke verhogingen verkeersboete (Wahv). Bron: CJIB</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -865,6 +895,7 @@ POSTS = [
     ("R33", "rekeningenjaar", pR33),
     ("R16", "weekmail", pR16),
     ("R40", "een-op-de-vier", pR40),
+    ("R13", "snelweg-boete", pR13),
 ]
 
 
