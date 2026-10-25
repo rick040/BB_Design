@@ -644,3 +644,26 @@ Bron: CJIB, positiepaper verkeersboetes en oplopende betalingsproblemen (15 apri
 ```
 Alt: Blauwe post met de kop "€100 boete. Te laat betaald: €150. Nog later: €300." Een snelweg in perspectief met Buddy bovenaan. Drie kaarten onder elkaar: Boete €100, Te laat betaald €150, Nog later €300. Eronder: "Stuur de digitale boete door. Buddy mailt je 7 en 2 dagen vooraf."
 Let op: illustratieve vertaling van het fotoidee (snelweg bij avond). Open controle voor Rick: het CJIB-positiepaper noemt een lopende Hoge Raad-zaak (25/03653) over de verhogingspercentages van 50% en 100%. Check vlak voor plaatsing of daar al een uitspraak is. Alleen digitale boetes. Het voorbeeld €100, €150, €300 volgt het CJIB-voorbeeld (€100 wordt €300).
+
+## R23 · Rekensom van een verkeersboete (lijst #23, carrousel 5)
+```
+Het verschil tussen €100 en €300 is één vergeten mail. 🚗
+
+Zo hou je het bij:
+1️⃣ Digitale boete in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+Bron: CJIB, positiepaper verkeersboetes en oplopende betalingsproblemen (15 april 2026): bij niet betalen volgt 50% verhoging, daarna nog eens 100%. Voorbeeld bij een boete van €100.
+
+#verkeersboete #geldzaken #rekeningen #betaalbuddy #twintiger
+```
+Alt slide 1: Blauwe slide met de kop "Wat een vergeten verkeersboete kan kosten." Een witte Buddy kijkt schuin omhoog. Eronder: "De rekensom."
+Alt slide 2: Blauwe slide met "Boete" en het grote bedrag €100. Buddy kijkt omhoog naar het bedrag.
+Alt slide 3: Blauwe slide met "Niet op tijd betaald", het bedrag €150 en een label +50%. Buddy kijkt omhoog.
+Alt slide 4: Blauwe slide met "Nog steeds niet", het bedrag €300 en een label +100%. Buddy kijkt omhoog.
+Alt slide 5: Blauwe slide met "Stuur de digitale boete door. Buddy mailt je 7 en 2 dagen vóór de deadline." Buddy en de knop "Ontmoet je buddy". Klein: bron CJIB.
+Let op: illustratieve vertaling van een grafisch idee. Open controle voor Rick: het CJIB-positiepaper (15 april 2026) bevestigt 50% en daarna 100%, en noemt een voorstel om de verhogingen te verlagen en een lopende Hoge Raad-zaak. Check vlak voor plaatsing of de regels nog gelden. Alleen digitale boetes. Zelfde cijfers als R13 (spiegelpaar).

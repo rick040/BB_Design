@@ -358,5 +358,14 @@
     "idee": "snelweg in schemering, drie boetebedragen",
     "datum": "2026-10-23",
     "bestand": "BB-Post-R13-snelweg-boete.png"
+  },
+  {
+    "nr": "R23",
+    "slug": "rekensom-boete",
+    "kop": "Wat een vergeten verkeersboete kan kosten.",
+    "hoek": "H3 kosten carrousel",
+    "idee": "Rekensom boete 100 150 300, Buddy kijkt naar groeiend bedrag",
+    "datum": "2026-10-25",
+    "bestand": "BB-Post-R23-rekensom-boete.png"
   }
 ]

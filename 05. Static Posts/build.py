@@ -873,6 +873,26 @@ def pR13():
 <div class="sub" style="top:975px;font-size:38px">Stuur de digitale boete door.<br>Buddy mailt je 7 en 2 dagen vooraf.</div>
 <div class="sub" style="top:1128px;font-size:24px;color:#8fa0d6">Wettelijke verhogingen verkeersboete (Wahv). Bron: CJIB</div>""")
 
+def pR23():
+    """R23: rekensom van een verkeersboete (carrousel 5). Blauw, groot cijfer per slide, Buddy kijkt naar het getal."""
+    bg = "#0026a8"
+    n = 5
+    def stap(i, label, bed, size, plus, look_y, bw):
+        pill = (f'<div class="abs" style="left:0;right:0;top:720px;display:flex;justify-content:center"><div class="pill out" style="height:92px;padding:0 48px;font-size:44px">{plus}</div></div>'
+                if plus else "")
+        return pageC("dark", _s(label, 230, 54, C["blueText"]) + _t(bed, size, 330 + (300 - size) // 3)
+                     + pill + f'<div class="abs" style="left:{(1080 - bw) // 2}px;top:840px">{buddy(bw, look=(0, look_y))}</div>', i, n, bg=bg)
+    return [
+        pageC("dark", _t("Wat een vergeten<br>verkeersboete<br>kan kosten.", 100, 190) + f'<div class="abs" style="left:380px;top:640px">{buddy(320, look=(0.2, 0.6))}</div>'
+              + _s("De rekensom.", 1060, 44, C["blueText"]), 1, n, bg=bg),
+        stap(2, "Boete", "&euro;100", 280, "", -0.4, 220),
+        stap(3, "Niet op tijd betaald", "&euro;150", 320, "+50%", -0.7, 220),
+        stap(4, "Nog steeds niet", "&euro;300", 360, "+100%", -1.0, 220),
+        pageC("dark", _t("Stuur de digitale boete door.", 100, 190) + _s("Buddy mailt je 7 en 2 dagen v&oacute;&oacute;r de deadline.", 540, 46, "#fff").replace("dagen v", "dagen<br>v")
+              + f'<div class="abs" style="left:400px;top:730px">{buddy(280)}</div>'
+              + _s("Bron: CJIB. Voorbeeld bij een boete van &euro;100, alleen digitale boetes.", 1100, 24, "#8fa0d6"), 5, n, last=True, bg=bg),
+    ]
+
 
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
@@ -896,6 +916,7 @@ POSTS = [
     ("R16", "weekmail", pR16),
     ("R40", "een-op-de-vier", pR40),
     ("R13", "snelweg-boete", pR13),
+    ("R23", "rekensom-boete", pR23),
 ]
 
 
