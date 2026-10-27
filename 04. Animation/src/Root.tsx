@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { MuseumAd } from "./museum/MuseumAd";
+import { defaultMuseumProps, type MuseumProps, museumSchema, museumTotal } from "./museum/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const museumMetadata: CalculateMetadataFunction<MuseumProps> = ({ props }) => ({
+  durationInFrames: museumTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,31 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+    {/* Concept 25 · "Vergeten? Dat is geschiedenis." (CONCEPT-25.md) */}
+    <Folder name="Concept-25-Museum">
+      <Composition
+        id="BB-Museum-Reel"
+        component={MuseumAd}
+        schema={museumSchema}
+        defaultProps={defaultMuseumProps}
+        calculateMetadata={museumMetadata}
+        durationInFrames={museumTotal(defaultMuseumProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Museum-Feed"
+        component={MuseumAd}
+        schema={museumSchema}
+        defaultProps={defaultMuseumProps}
+        calculateMetadata={museumMetadata}
+        durationInFrames={museumTotal(defaultMuseumProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

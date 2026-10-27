@@ -11,11 +11,14 @@
     "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed",
+    "render:museum": "remotion render BB-Museum-Reel out/BB-Museum-Reel.mp4",
+    "render:museum:feed": "remotion render BB-Museum-Feed out/BB-Museum-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:museum && npm run render:museum:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "still:museum": "remotion still BB-Museum-Reel out/BB-Museum-Reel-cover.png --frame=56"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
