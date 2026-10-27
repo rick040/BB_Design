@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { SpookAd } from "./spook/SpookAd";
+import { defaultSpookProps, type SpookProps, spookSchema, spookTotal } from "./spook/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const spookMetadata: CalculateMetadataFunction<SpookProps> = ({ props }) => ({
+  durationInFrames: spookTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 26 · "Eng was hij alleen in het donker." (CONCEPT-26.md) */}
+    <Folder name="Concept-26-Spook">
+      <Composition
+        id="BB-Spook-Reel"
+        component={SpookAd}
+        schema={spookSchema}
+        defaultProps={defaultSpookProps}
+        calculateMetadata={spookMetadata}
+        durationInFrames={spookTotal(defaultSpookProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Spook-Feed"
+        component={SpookAd}
+        schema={spookSchema}
+        defaultProps={defaultSpookProps}
+        calculateMetadata={spookMetadata}
+        durationInFrames={spookTotal(defaultSpookProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

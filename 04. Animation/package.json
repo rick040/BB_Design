@@ -11,10 +11,13 @@
     "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed",
+    "render:spook": "remotion render BB-Spook-Reel out/BB-Spook-Reel.mp4",
+    "render:spook:feed": "remotion render BB-Spook-Feed out/BB-Spook-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:spook && npm run render:spook:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:spook": "remotion still BB-Spook-Reel out/BB-Spook-Reel-cover.png --frame=66",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
