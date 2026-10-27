@@ -894,6 +894,51 @@ def pR23():
     ]
 
 
+def pR10():
+    """Illustratieve vertaling van fotoidee R10: dozen en vulmateriaal op de slaapkamervloer, Buddy op de bedrand. Licht."""
+    def box(x, y, w, h):
+        return (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" rx="12" fill="#99b1ff"/>'
+                f'<rect x="{x}" y="{y}" width="{w}" height="28" rx="12" fill="#7d9bff"/>'
+                f'<rect x="{x + w/2 - 13}" y="{y}" width="26" height="{h}" fill="#fff" opacity=".7"/>')
+    def paper(cx, cy, r):
+        return (f'<circle cx="{cx}" cy="{cy}" r="{r}" fill="#fff"/><path d="M{cx-r*0.5} {cy-r*0.2}q{r*0.5} {r*0.6} {r} 0" '
+                f'fill="none" stroke="#cdd8ff" stroke-width="4" stroke-linecap="round"/>')
+    room = f'''<svg class="abs" style="left:90px;top:470px" width="900" height="560" viewBox="0 0 900 560">
+  <rect width="900" height="560" rx="48" fill="#e8eeff"/>
+  <path d="M0 410H900V512a48 48 0 0 1-48 48H48A48 48 0 0 1 0 512Z" fill="#cdd8ff"/>
+  <rect x="600" y="60" width="200" height="220" rx="20" fill="#0026a8"/>
+  <rect x="600" y="60" width="200" height="220" rx="20" fill="none" stroke="#fff" stroke-width="12"/>
+  <path d="M700 60V280M600 170H800" stroke="#fff" stroke-width="8"/>
+  <rect x="40" y="320" width="440" height="130" rx="26" fill="#013bff"/>
+  <rect x="40" y="296" width="440" height="52" rx="24" fill="#b6c7ff"/>
+  <rect x="58" y="268" width="130" height="58" rx="26" fill="#fff"/>
+  {box(520, 400, 190, 110)}{box(730, 430, 130, 80)}
+  <rect x="300" y="470" width="170" height="60" rx="14" fill="#fff"/>
+  <g fill="#cdd8ff"><circle cx="330" cy="500" r="9"/><circle cx="365" cy="500" r="9"/><circle cx="400" cy="500" r="9"/><circle cx="435" cy="500" r="9"/></g>
+  {paper(130, 505, 34)}{paper(215, 520, 26)}{paper(250, 490, 20)}{paper(760, 405, 22)}
+</svg>'''
+    return page("light", f'''
+<h1 style="font-size:92px">Black Friday<br>was vrijdag.<br>De betaalmails<br>komen in december.</h1>
+{room}
+<div class="abs" style="left:370px;top:588px">{buddy(190, body=C["blue"], eye="#fff", blink=0.45, look=(0.5, 0.3))}</div>
+<div class="sub" style="top:1068px;font-size:38px">Stuur ze door naar Buddy.<br>Geniet van je spullen.</div>''')
+
+
+def pR42():
+    """R42: Sinterklaasgedicht van Buddy. Blauw, Buddy met mijter (geen mond), gedicht op een lichte kaart."""
+    mijter = (f'<svg class="abs" style="left:-12px;top:-132px" width="190" height="150" viewBox="0 0 190 150">'
+              f'<path d="M10 140 70 8Q95 -4 120 8L180 140Z" fill="{C["blueSoft"]}"/>'
+              f'<path d="M95 24V140" stroke="#fff" stroke-width="16"/><path d="M62 70H128" stroke="#fff" stroke-width="16"/>'
+              f'<rect x="0" y="126" width="190" height="24" rx="12" fill="#99b1ff"/></svg>')
+    return page("dark", f'''
+<div class="abs" style="left:410px;top:230px;width:260px">{mijter}{buddy(260, look=(0.2, 0.6))}</div>
+<div class="abs" style="left:90px;right:90px;top:570px;height:380px;background:{C['light']};border-radius:48px;
+     box-shadow:0 22px 60px rgba(0,20,120,.35);padding:68px 40px;text-align:center;color:{C['ink']};
+     font-size:41px;font-weight:500;line-height:1.35;letter-spacing:-0.03em;white-space:nowrap">
+Sint zocht een factuur in zijn boek<br>en vond alleen maar gezoek.<br><span style="display:block;height:26px"></span>Hij stuurde de mail door, één tik en klaar.<br>Buddy houdt de datum bij. Tot volgend jaar.</div>
+<div class="sub" style="top:1030px;font-size:44px">Ook de Sint stuurt door.</div>''')
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -917,6 +962,8 @@ POSTS = [
     ("R40", "een-op-de-vier", pR40),
     ("R13", "snelweg-boete", pR13),
     ("R23", "rekensom-boete", pR23),
+    ("R10", "na-black-friday", pR10),
+    ("R42", "sinterklaasgedicht", pR42),
 ]
 
 

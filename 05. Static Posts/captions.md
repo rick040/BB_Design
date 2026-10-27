@@ -667,3 +667,37 @@ Alt slide 3: Blauwe slide met "Niet op tijd betaald", het bedrag €150 en een l
 Alt slide 4: Blauwe slide met "Nog steeds niet", het bedrag €300 en een label +100%. Buddy kijkt omhoog.
 Alt slide 5: Blauwe slide met "Stuur de digitale boete door. Buddy mailt je 7 en 2 dagen vóór de deadline." Buddy en de knop "Ontmoet je buddy". Klein: bron CJIB.
 Let op: illustratieve vertaling van een grafisch idee. Open controle voor Rick: het CJIB-positiepaper (15 april 2026) bevestigt 50% en daarna 100%, en noemt een voorstel om de verhogingen te verlagen en een lopende Hoge Raad-zaak. Check vlak voor plaatsing of de regels nog gelden. Alleen digitale boetes. Zelfde cijfers als R13 (spiegelpaar).
+
+## R10 · Na Black Friday (lijst #10, single)
+```
+Alles binnen. Alles leuk. En nu nog weten wat wanneer betaald moet worden. 📦
+
+Zo hou je het bij:
+1️⃣ Betaalmail van een webshop? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#blackfriday #geldzaken #rekeningen #betaalbuddy #twintiger
+```
+Alt: Lichte post met de kop "Black Friday was vrijdag. De betaalmails komen in december." Een slaapkamer met een bed waar een blauwe Buddy op zit, open verhuisdozen, verfrommeld vulpapier en noppenfolie op de vloer. Eronder: "Stuur ze door naar Buddy. Geniet van je spullen."
+Let op: illustratieve vertaling van fotoidee R10 (iemand in sokken op de bedrand wordt Buddy op het bed). Timing: plaatsen vanaf vrijdag 27 november 2026 (Black Friday is dan voorbij), liefst die week. "Was vrijdag" klopt alleen dan. Geen bronnen of cijfers in de post.
+
+## R42 · Sinterklaasgedicht van Buddy (lijst #42, single)
+```
+Ook de Sint stuurt door. 🎁
+
+Zo hou je het bij:
+1️⃣ Factuur of betaalmail in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#sinterklaas #pakjesavond #geldzaken #betaalbuddy #twintiger
+```
+Alt: Blauwe post met een witte Buddy met een lichtblauwe mijter, zonder mond. Op een lichte kaart het gedicht: "Sint zocht een factuur in zijn boek en vond alleen maar gezoek. Hij stuurde de mail door, één tik en klaar. Buddy houdt de datum bij. Tot volgend jaar." Eronder: "Ook de Sint stuurt door."
+Let op: rijm is geschaafd t.o.v. de lijst (de regel met "Piet" is weggelaten om gevoeligheid rond Zwarte Piet te vermijden): controleer of je het gedicht zo wilt. Timing: 1 t/m 5 december 2026. Het gedicht is een verzonnen situatie met de Sint, geen quote van een gebruiker.

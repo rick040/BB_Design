@@ -367,5 +367,23 @@
     "idee": "Rekensom boete 100 150 300, Buddy kijkt naar groeiend bedrag",
     "datum": "2026-10-25",
     "bestand": "BB-Post-R23-rekensom-boete.png"
+  },
+  {
+    "nr": "R10",
+    "slug": "na-black-friday",
+    "kop": "Black Friday was vrijdag. De betaalmails komen in december.",
+    "hoek": "H4/H10 Seizoen",
+    "idee": "dozen en vulmateriaal op slaapkamervloer, Buddy op bed",
+    "datum": "2026-10-27",
+    "bestand": "BB-Post-R10-na-black-friday.png"
+  },
+  {
+    "nr": "R42",
+    "slug": "sinterklaasgedicht",
+    "kop": "Sint zocht een factuur in zijn boek",
+    "hoek": "H10/H7 Seizoen",
+    "idee": "gedicht op lichte kaart, Buddy met mijter",
+    "datum": "2026-10-27",
+    "bestand": "BB-Post-R42-sinterklaasgedicht.png"
   }
 ]
