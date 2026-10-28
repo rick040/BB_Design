@@ -939,6 +939,30 @@ Sint zocht een factuur in zijn boek<br>en vond alleen maar gezoek.<br><span styl
 <div class="sub" style="top:1030px;font-size:44px">Ook de Sint stuurt door.</div>''')
 
 
+def pR11():
+    """Illustratieve vertaling van fotoidee R11: inpakpapier, schaar, half af surprise, telefoon met scherm naar beneden. Licht."""
+    scene = f'''<svg class="abs" style="left:90px;top:500px" width="900" height="540" viewBox="0 0 900 540">
+  <rect width="900" height="540" rx="48" fill="#e8eeff"/>
+  <path d="M0 400H900V492a48 48 0 0 1-48 48H48A48 48 0 0 1 0 492Z" fill="#cdd8ff"/>
+  <rect x="60" y="250" width="300" height="230" rx="18" fill="#99b1ff"/>
+  <rect x="60" y="250" width="300" height="46" rx="14" fill="#7d9bff"/>
+  <rect x="190" y="250" width="40" height="230" fill="#fff"/>
+  <path d="M210 250C160 170 90 190 130 240ZM210 250C260 170 330 190 290 240Z" fill="#fff"/>
+  <rect x="420" y="360" width="400" height="120" rx="18" fill="#fff"/>
+  <path d="M420 400H820" stroke="#cdd8ff" stroke-width="5"/><path d="M470 360v120M560 360v120M650 360v120M740 360v120" stroke="#cdd8ff" stroke-width="5"/>
+  <rect x="640" y="130" width="150" height="250" rx="28" fill="#0026a8"/>
+  <rect x="640" y="130" width="150" height="250" rx="28" fill="none" stroke="#fff" stroke-width="8"/>
+  <circle cx="715" cy="255" r="26" fill="#fff" opacity=".25"/>
+  <g transform="translate(450 440) rotate(-18)"><path d="M0 0L130 16M0 24L130 8" stroke="#111114" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="-14" cy="-6" r="20" fill="none" stroke="#111114" stroke-width="9"/><circle cx="-14" cy="30" r="20" fill="none" stroke="#111114" stroke-width="9"/></g>
+</svg>'''
+    return page("light", f'''
+<h1 style="font-size:90px">Surprise: af.<br>Gedicht: af.<br>Die ene factuur van<br>november: nog open.</h1>
+{scene}
+<div class="abs" style="left:375px;top:600px">{buddy(200, body=C["blue"], eye="#fff", blink=0.5, look=(0.6, 0.3))}</div>
+<div class="sub" style="top:1068px;font-size:40px">Stuur hem nu door.<br>Dan kun jij weer rijmen.</div>''')
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -964,6 +988,7 @@ POSTS = [
     ("R23", "rekensom-boete", pR23),
     ("R10", "na-black-friday", pR10),
     ("R42", "sinterklaasgedicht", pR42),
+    ("R11", "cadeaus-inpakken", pR11),
 ]
 
 

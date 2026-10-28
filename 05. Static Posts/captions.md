@@ -701,3 +701,20 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Blauwe post met een witte Buddy met een lichtblauwe mijter, zonder mond. Op een lichte kaart het gedicht: "Sint zocht een factuur in zijn boek en vond alleen maar gezoek. Hij stuurde de mail door, één tik en klaar. Buddy houdt de datum bij. Tot volgend jaar." Eronder: "Ook de Sint stuurt door."
 Let op: rijm is geschaafd t.o.v. de lijst (de regel met "Piet" is weggelaten om gevoeligheid rond Zwarte Piet te vermijden): controleer of je het gedicht zo wilt. Timing: 1 t/m 5 december 2026. Het gedicht is een verzonnen situatie met de Sint, geen quote van een gebruiker.
+
+## R11 · Cadeaus inpakken (lijst #11, single)
+```
+December is volle agenda's. Juist dan glipt er iets tussendoor. 🎁
+
+Zo hou je het bij:
+1️⃣ Factuur of betaalmail in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#sinterklaas #decembermaand #geldzaken #betaalbuddy #twintiger
+```
+Alt: Lichte post met de kop "Surprise: af. Gedicht: af. Die ene factuur van november: nog open." Een lichtblauw ingepakt cadeau met witte strik, een rol inpakpapier met een schaar, een telefoon met het scherm naar beneden en een blauwe Buddy die over het cadeau kijkt. Eronder: "Stuur hem nu door. Dan kun jij weer rijmen."
+Let op: illustratieve vertaling van fotoidee R11. Timing: plaatsen 30 november t/m 5 december 2026. Geen bronnen of cijfers in de post.
