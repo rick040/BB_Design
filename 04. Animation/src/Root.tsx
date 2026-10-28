@@ -8,6 +8,13 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { EstafetteAd } from "./estafette/EstafetteAd";
+import {
+  defaultEstafetteProps,
+  type EstafetteProps,
+  estafetteSchema,
+  estafetteTotal,
+} from "./estafette/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const estafetteMetadata: CalculateMetadataFunction<EstafetteProps> = ({ props }) => ({
+  durationInFrames: estafetteTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 27 · "Buddy loopt mee. Jij finisht." (CONCEPT-27.md) */}
+    <Folder name="Concept-27-Estafette">
+      <Composition
+        id="BB-Estafette-Reel"
+        component={EstafetteAd}
+        schema={estafetteSchema}
+        defaultProps={defaultEstafetteProps}
+        calculateMetadata={estafetteMetadata}
+        durationInFrames={estafetteTotal(defaultEstafetteProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Estafette-Feed"
+        component={EstafetteAd}
+        schema={estafetteSchema}
+        defaultProps={defaultEstafetteProps}
+        calculateMetadata={estafetteMetadata}
+        durationInFrames={estafetteTotal(defaultEstafetteProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
