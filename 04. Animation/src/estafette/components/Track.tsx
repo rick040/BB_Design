@@ -6,16 +6,47 @@ import { fonts } from "../../theme";
 
 // ---------------------------------------------------------------- Runner
 
-/** The runner is drawn in a 300-unit-tall local space, feet at (0, 0). */
+/**
+ * The runner is a flat illustration (shirt, shorts, sneakers, hair and a
+ * sweatband) drawn in a 300-unit-tall local space, feet on the ground at (0, 0),
+ * facing right. Arms and legs are posed from angles, so it can run, carry,
+ * reach forward or reach back for the baton.
+ */
 const UNIT_H = 300;
-const HEAD = { y: -262, r: 30 };
-const NECK_Y = -226;
-const SHOULDER_Y = -212;
-const HIP_Y = -128;
+const SHOULDER = { x: 2, y: -228 };
+const HIP_Y = -146;
 const THIGH = 66;
 const SHIN = 66;
-const UPPER_ARM = 56;
-const FOREARM = 52;
+const UPPER_ARM = 54;
+const FOREARM = 50;
+
+export type Outfit = {
+  skin: string;
+  skinFar: string;
+  hair: string;
+  shirt: string;
+  shirtFar: string;
+  shorts: string;
+  shoe: string;
+  sole: string;
+  band: string;
+};
+
+/** Brand-coloured outfit; `onBlue` swaps the shirt to white for blue scenes. */
+export const outfitFor = (
+  p: { blue: string; white: string; blueSoft: string; blueMid: string; yellow: string },
+  onBlue: boolean,
+): Outfit => ({
+  skin: "#e9b48e",
+  skinFar: "#d49c77",
+  hair: "#131a44",
+  shirt: onBlue ? p.white : p.blue,
+  shirtFar: onBlue ? p.blueSoft : p.blueMid,
+  shorts: "#0b1f6e",
+  shoe: p.white,
+  sole: onBlue ? p.yellow : p.blueSoft,
+  band: p.yellow,
+});
 
 export type ArmPose = "swing" | "carry" | "reach" | "back" | "down";
 
@@ -24,7 +55,7 @@ export type RunnerPose = {
   phase: number;
   /** 0 = standing, 1 = full running stride. */
   run: number;
-  /** Arm pose; "reach" blends from swing with `reach` 0..1. */
+  /** Arm pose; "reach"/"back" blend from swing with `reach` 0..1. */
   arms: ArmPose;
   reach?: number;
   /** Forward lean in degrees. */
@@ -49,8 +80,8 @@ const armAngles = (pose: RunnerPose, side: 0 | 1) => {
   const swingSign = side === 0 ? 1 : -1;
   const swingUpper = -pose.run * 42 * Math.sin(pose.phase) * swingSign;
   const swing = { upper: swingUpper, fore: swingUpper + 75 + 10 * pose.run };
-  if (pose.arms === "carry") return { upper: 28, fore: 96 };
-  if (pose.arms === "down") return { upper: side === 0 ? 8 : -6, fore: side === 0 ? 18 : 4 };
+  if (pose.arms === "carry") return side === 0 ? { upper: 26, fore: 96 } : { upper: 34, fore: 100 };
+  if (pose.arms === "down") return { upper: side === 0 ? 8 : -6, fore: side === 0 ? 22 : 8 };
   if (pose.arms === "back" && side === 0) {
     // Front arm stretched backwards, palm open for the baton.
     const r = pose.reach ?? 1;
@@ -63,48 +94,75 @@ const armAngles = (pose: RunnerPose, side: 0 | 1) => {
   return swing;
 };
 
+const bodyBob = (pose: RunnerPose) => -pose.run * 7 * Math.abs(Math.sin(pose.phase));
+
+const armPoints = (pose: RunnerPose, side: 0 | 1) => {
+  const a = armAngles(pose, side);
+  const elbow = limb(SHOULDER.x, SHOULDER.y, a.upper, UPPER_ARM);
+  const hand = limb(elbow.x, elbow.y, a.fore, FOREARM);
+  return { a, elbow, hand };
+};
+
 /** Front hand position (stage px) for a runner whose feet are at (x, feetY). */
 export const runnerHand = (pose: RunnerPose, x: number, feetY: number, height: number) => {
   const s = height / UNIT_H;
-  const bob = bodyBob(pose);
-  const a = armAngles(pose, 0);
-  const elbow = limb(0, SHOULDER_Y, a.upper, UPPER_ARM);
-  const hand = limb(elbow.x, elbow.y, a.fore, FOREARM);
+  const { hand } = armPoints(pose, 0);
   const leaned = rotateAround(hand, 0, HIP_Y, pose.lean ?? 0);
-  return { x: x + leaned.x * s, y: feetY + (leaned.y + bob) * s };
+  return { x: x + leaned.x * s, y: feetY + (leaned.y + bodyBob(pose)) * s };
 };
 
-const bodyBob = (pose: RunnerPose) => -pose.run * 7 * Math.abs(Math.sin(pose.phase));
+const Shoe: React.FC<{ x: number; y: number; angle: number; shoe: string; sole: string }> = ({ x, y, angle, shoe, sole }) => (
+  <g transform={`translate(${x} ${y}) rotate(${angle})`}>
+    <path d="M-15 -4 Q-15 -14 -4 -14 L8 -12 Q24 -6 34 -2 Q44 2 42 8 L-15 8 Z" fill={shoe} />
+    <path d="M-17 7 L45 7 Q45 15 37 15 L-11 15 Q-17 15 -17 7 Z" fill={sole} />
+    <path d="M6 -9 L14 -4 M12 -11 L20 -6" stroke={sole} strokeWidth={3} strokeLinecap="round" />
+  </g>
+);
 
 export const Runner: React.FC<
   RunnerPose & {
     x: number;
     feetY: number;
     height: number;
-    color: string;
-    /** Colour of the far-side limbs (a touch lighter for depth). */
-    farColor?: string;
+    outfit: Outfit;
     style?: React.CSSProperties;
   }
-> = ({ x, feetY, height, color, farColor, style, ...pose }) => {
+> = ({ x, feetY, height, outfit: o, style, ...pose }) => {
   const s = height / UNIT_H;
   const bob = bodyBob(pose);
   const lean = pose.lean ?? 0;
-  const far = farColor ?? color;
 
   const leg = (side: 0 | 1) => {
     const ph = pose.phase + (side === 0 ? 0 : Math.PI);
-    const thigh = pose.run * 40 * Math.sin(ph);
+    const thighDeg = pose.run * 40 * Math.sin(ph);
     const bend = pose.run * (18 + 62 * Math.max(0, Math.sin(ph - 1.4))) + (1 - pose.run) * 4;
-    const knee = limb(0, HIP_Y, thigh, THIGH);
-    const foot = limb(knee.x, knee.y, thigh - bend, SHIN);
-    return `M0 ${HIP_Y} L${knee.x} ${knee.y} L${foot.x} ${foot.y} L${foot.x + 18} ${foot.y + 2}`;
+    const hip = { x: 0, y: HIP_Y };
+    const knee = limb(hip.x, hip.y, thighDeg, THIGH);
+    const ankle = limb(knee.x, knee.y, thighDeg - bend, SHIN);
+    const shortsEnd = limb(hip.x, hip.y, thighDeg, THIGH * 0.5);
+    const skin = side === 0 ? o.skin : o.skinFar;
+    // Foot follows the shin a little, toes up on the swing.
+    const footAngle = -(thighDeg - bend) * 0.55 + pose.run * 6;
+    return (
+      <g key={side}>
+        <path d={`M${hip.x} ${hip.y} L${knee.x} ${knee.y} L${ankle.x} ${ankle.y}`} stroke={skin} strokeWidth={24} />
+        <path d={`M${hip.x} ${hip.y} L${shortsEnd.x} ${shortsEnd.y}`} stroke={o.shorts} strokeWidth={38} />
+        <Shoe x={ankle.x} y={ankle.y} angle={footAngle} shoe={side === 0 ? o.shoe : "#dfe6ff"} sole={o.sole} />
+      </g>
+    );
   };
+
   const arm = (side: 0 | 1) => {
-    const a = armAngles(pose, side);
-    const elbow = limb(0, SHOULDER_Y, a.upper, UPPER_ARM);
-    const hand = limb(elbow.x, elbow.y, a.fore, FOREARM);
-    return `M0 ${SHOULDER_Y} L${elbow.x} ${elbow.y} L${hand.x} ${hand.y}`;
+    const { elbow, hand } = armPoints(pose, side);
+    const skin = side === 0 ? o.skin : o.skinFar;
+    const sleeveEnd = { x: SHOULDER.x + (elbow.x - SHOULDER.x) * 0.5, y: SHOULDER.y + (elbow.y - SHOULDER.y) * 0.5 };
+    return (
+      <g key={side}>
+        <path d={`M${SHOULDER.x} ${SHOULDER.y} L${elbow.x} ${elbow.y} L${hand.x} ${hand.y}`} stroke={skin} strokeWidth={17} />
+        <path d={`M${SHOULDER.x} ${SHOULDER.y} L${sleeveEnd.x} ${sleeveEnd.y}`} stroke={side === 0 ? o.shirt : o.shirtFar} strokeWidth={28} />
+        <circle cx={hand.x} cy={hand.y} r={10} fill={skin} />
+      </g>
+    );
   };
 
   const W = 400;
@@ -116,15 +174,23 @@ export const Runner: React.FC<
       style={{ position: "absolute", left: x - (W / 2) * s, top: feetY - 320 * s, overflow: "visible", ...style }}
     >
       <g transform={`translate(0 ${bob})`} strokeLinecap="round" strokeLinejoin="round" fill="none">
-        <path d={leg(1)} stroke={far} strokeWidth={26} />
+        <g transform={`rotate(${lean} 0 ${HIP_Y})`}>{arm(1)}</g>
+        {leg(1)}
+        {leg(0)}
+        {/* shorts over the hips */}
+        <path d="M-25 -166 L27 -166 L29 -136 Q29 -128 20 -128 L-20 -128 Q-28 -128 -27 -138 Z" fill={o.shorts} />
         <g transform={`rotate(${lean} 0 ${HIP_Y})`}>
-          <path d={arm(1)} stroke={far} strokeWidth={21} />
-          <path d={`M0 ${NECK_Y} L0 ${HIP_Y}`} stroke={color} strokeWidth={46} />
-          <circle cx={0} cy={HEAD.y} r={HEAD.r} fill={color} />
-        </g>
-        <path d={leg(0)} stroke={color} strokeWidth={26} />
-        <g transform={`rotate(${lean} 0 ${HIP_Y})`}>
-          <path d={arm(0)} stroke={color} strokeWidth={21} />
+          {/* shirt */}
+          <path d="M-24 -150 L-28 -220 Q-28 -244 -4 -246 L10 -246 Q34 -244 34 -220 L28 -150 Q2 -144 -24 -150 Z" fill={o.shirt} />
+          {/* neck + head */}
+          <rect x={-8} y={-262} width={18} height={22} rx={6} fill={o.skin} />
+          <circle cx={-2} cy={-274} r={27} fill={o.hair} />
+          <circle cx={6} cy={-269} r={24} fill={o.skin} />
+          <path d="M-29 -276 Q-26 -302 4 -300 Q26 -298 30 -282 Q14 -290 -4 -284 Q-18 -278 -22 -262 Q-30 -266 -29 -276 Z" fill={o.hair} />
+          <path d="M-27 -281 Q2 -296 30 -284" stroke={o.band} strokeWidth={9} />
+          <circle cx={-6} cy={-268} r={6} fill={o.skinFar} />
+          <path d="M29 -268 Q34 -264 29 -260" stroke={o.skinFar} strokeWidth={3} />
+          {arm(0)}
         </g>
       </g>
     </svg>
@@ -378,44 +444,59 @@ export const SpeedLines: React.FC<{ x: number; y: number; strength: number; colo
 
 // ---------------------------------------------------------------- Podium + medal
 
+/** Podium with three steps standing on one base line (`base` = floor y). */
+export const PODIUM_STEPS = { first: 150, second: 104, third: 70, width: 230 } as const;
+
 export const Podium: React.FC<{
   cx: number;
-  top: number;
+  base: number;
   color: string;
   side: string;
+  shade: string;
   numberColor: string;
   rise: number;
-}> = ({ cx, top, color, side, numberColor, rise }) => {
-  const block = (x: number, w: number, h: number, n: string, bg: string, k: number) => (
+}> = ({ cx, base, color, side, shade, numberColor, rise }) => {
+  const W = PODIUM_STEPS.width;
+  const block = (x: number, h: number, n: string, bg: string, k: number) => (
     <div
       key={n}
       style={{
         position: "absolute",
         left: x,
-        width: w,
-        top: top + (1 - k) * h,
+        width: W,
+        top: base - h * k,
         height: h * k,
-        opacity: Math.min(1, k * 4),
         background: bg,
-        borderRadius: "14px 14px 0 0",
+        borderRadius: "16px 16px 0 0",
         overflow: "hidden",
-        display: "flex",
-        justifyContent: "center",
-        paddingTop: 10,
-        fontFamily: fonts.display,
-        fontWeight: 700,
-        fontSize: 58,
-        color: numberColor,
+        boxShadow: `inset 0 10px 0 rgba(255,255,255,0.35), inset -10px 0 0 ${shade}`,
       }}
     >
-      {n}
+      <div
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 10,
+          top: 18,
+          textAlign: "center",
+          fontFamily: fonts.display,
+          fontWeight: 700,
+          fontSize: 64,
+          lineHeight: 1,
+          letterSpacing: "-0.04em",
+          color: numberColor,
+        }}
+      >
+        {n}
+      </div>
     </div>
   );
   return (
     <>
-      {block(cx - 330, 210, 70, "2", side, Math.min(1, rise * 1.2))}
-      {block(cx + 120, 210, 50, "3", side, Math.min(1, rise * 1.1))}
-      {block(cx - 120, 240, 100, "1", color, rise)}
+      {block(cx - W * 1.5, PODIUM_STEPS.second, "2", side, Math.min(1, rise * 1.15))}
+      {block(cx + W * 0.5, PODIUM_STEPS.third, "3", side, Math.min(1, rise * 1.1))}
+      {block(cx - W / 2, PODIUM_STEPS.first, "1", color, rise)}
+      <div style={{ position: "absolute", left: cx - W * 1.5 - 30, width: W * 3 + 60, top: base, height: 8, borderRadius: 4, background: side, opacity: rise }} />
     </>
   );
 };
@@ -460,8 +541,8 @@ export const Medal: React.FC<{
         textAlign: "center",
         fontFamily: fonts.display,
         fontWeight: 700,
-        fontSize: 34,
-        lineHeight: 0.95,
+        fontSize: 40,
+        lineHeight: 0.9,
         letterSpacing: "-0.03em",
         color: textColor,
       }}

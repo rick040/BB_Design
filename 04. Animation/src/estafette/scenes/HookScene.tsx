@@ -4,7 +4,7 @@ import { SceneBg, Stage } from "../../components/Stage";
 import { Headline, Subline } from "../../components/Text";
 import { clamp, pop, shake } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
-import { Baton, Runner, type RunnerPose, runnerHand, Tag, Track } from "../components/Track";
+import { Baton, outfitFor, Runner, type RunnerPose, runnerHand, Tag, Track } from "../components/Track";
 import type { EstafetteProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -59,7 +59,7 @@ export const HookScene: React.FC<{ props: EstafetteProps["hook"] }> = ({ props }
   // Falling top baton: world-fixed after it lands.
   const top = props.batons.length - 1;
   const stackPos = (i: number) => ({
-    cx: hand.x + 40 + Math.sin(frame / 4 + i * 1.3) * 6 * sway * (i + 1) * 0.6,
+    cx: hand.x + 95 + Math.sin(frame / 4 + i * 1.3) * 6 * sway * (i + 1) * 0.6,
     cy: hand.y - BH / 2 - 4 - i * (BH + 8),
     r: Math.sin(frame / 5 + i) * 2.4 * sway * (i + 1) * 0.5,
   });
@@ -100,8 +100,7 @@ export const HookScene: React.FC<{ props: EstafetteProps["hook"] }> = ({ props }
           x={RUNNER_X + stop.x}
           feetY={FEET}
           height={RUNNER_H}
-          color={p.blue}
-          farColor={p.blueMid}
+          outfit={outfitFor(p, false)}
           {...pose}
         />
 

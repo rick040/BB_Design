@@ -5,7 +5,7 @@ import { SceneBg, Stage } from "../../components/Stage";
 import { Headline, Subline } from "../../components/Text";
 import { blinkScale, clamp, pop, springs } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
-import { Baton, Runner, type RunnerPose, runnerHand, SpeedLines, Tag, Track } from "../components/Track";
+import { Baton, outfitFor, Runner, type RunnerPose, runnerHand, SpeedLines, Tag, Track } from "../components/Track";
 import type { EstafetteProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -116,7 +116,7 @@ export const WisselScene: React.FC<{
         <Tag text={bill.amount} x={360} y={120} bg={p.white} fg={p.blue} size={52} scale={amount} />
         <Tag text={`Vervalt ${bill.due}`} x={720} y={120} bg={p.blueSoft} fg={p.blue} size={52} scale={due} />
 
-        <Runner x={runnerX} feetY={FEET} height={RUNNER_H} color={p.white} farColor={p.blueSoft} {...pose} />
+        <Runner x={runnerX} feetY={FEET} height={RUNNER_H} outfit={outfitFor(p, true)} {...pose} />
 
         <SpeedLines x={buddyX - 80} y={FEET - 20} strength={sprintT > 0 ? Math.min(1, sprintT * 3) : 0} color={p.blueSoft} />
 

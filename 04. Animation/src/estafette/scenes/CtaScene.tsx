@@ -8,7 +8,7 @@ import { blinkScale, clamp, pop, springs } from "../../lib/anim";
 import { useLayout } from "../../lib/layout";
 import { usePalette } from "../../lib/palette";
 import { fonts, headlineTracking } from "../../theme";
-import { Medal, Podium } from "../components/Track";
+import { Medal, Podium, PODIUM_STEPS } from "../components/Track";
 import type { EstafetteProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -27,7 +27,8 @@ export const CTA_T = {
 };
 
 const BUDDY = 190;
-const PODIUM_TOP = 230;
+const PODIUM_BASE = 360; // floor line of the podium (stage px)
+const PODIUM_TOP = PODIUM_BASE - PODIUM_STEPS.first;
 
 export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) => {
   const frame = useCurrentFrame();
@@ -44,9 +45,10 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
   // Buddy jumps up onto the podium in an arc from below-left.
   const appear = pop(frame, fps, CTA_T.buddyIn, springs.bouncy);
   const jumpT = interpolate(frame, [CTA_T.hop, CTA_T.hop + 14], [0, 1], clamp);
-  const step2 = PODIUM_TOP + 30;
+  const step2 = PODIUM_BASE - PODIUM_STEPS.second;
   const feetY = step2 + (PODIUM_TOP - step2) * jumpT - 70 * 4 * jumpT * (1 - jumpT);
-  const buddyX = 315 + (540 - 315) * Easing.inOut(Easing.quad)(jumpT);
+  const step2X = 540 - PODIUM_STEPS.width - 5;
+  const buddyX = step2X + (540 - step2X) * Easing.inOut(Easing.quad)(jumpT);
   const squash =
     frame < CTA_T.hop
       ? interpolate(appear, [0, 0.6, 1], [0.5, 1.1, 1])
@@ -66,7 +68,7 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
   // Medal pops onto his chest and swings to rest.
   const medalIn = pop(frame, fps, CTA_T.medal, springs.bouncy);
   const medalSwing = frame > CTA_T.medal ? Math.sin((frame - CTA_T.medal) / 3) * 16 * Math.exp(-(frame - CTA_T.medal) / 14) : 0;
-  const medalTop = buddyTop + BUDDY * BUDDY_RATIO * 0.04;
+  const medalTop = buddyTop + BUDDY * BUDDY_RATIO * 0.36;
 
   const btnIn = pop(frame, fps, CTA_T.button, springs.bouncy);
   const arrowIn = pop(frame, fps, CTA_T.button + 6, springs.pop);
@@ -118,8 +120,8 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
       </div>
 
       <Stage offsetY={40}>
-        <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: 330, overflow: "hidden" }}>
-          <Podium cx={540} top={PODIUM_TOP} color={p.white} side={p.blueSoft} numberColor={p.blue} rise={rise} />
+        <div style={{ position: "absolute", left: 0, top: 0, width: 1080, height: PODIUM_BASE + 10, overflow: "hidden" }}>
+          <Podium cx={540} base={PODIUM_BASE} color={p.white} side={p.blueSoft} shade="rgba(1,59,255,0.12)" numberColor={p.blue} rise={rise} />
         </div>
 
         {frame >= CTA_T.buddyIn ? (
@@ -135,7 +137,7 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
         ) : null}
 
         {frame >= CTA_T.medal ? (
-          <div style={{ position: "absolute", left: 0, top: 0, transform: `scale(${0.8 * medalIn})`, transformOrigin: `${buddyX}px ${medalTop}px` }}>
+          <div style={{ position: "absolute", left: 0, top: 0, transform: `scale(${0.62 * medalIn})`, transformOrigin: `${buddyX}px ${medalTop}px` }}>
             <Medal cx={buddyX} top={medalTop} swing={medalSwing} ribbon={p.blueSoft} disc={p.yellow} text={props.medal} textColor={p.blue} />
           </div>
         ) : null}
@@ -145,7 +147,7 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
             position: "absolute",
             left: 0,
             right: 0,
-            top: 380,
+            top: 420,
             display: "flex",
             justifyContent: "center",
             transform: `scale(${1.3 * btnIn * tap})`,
@@ -175,7 +177,7 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
             position: "absolute",
             left: 60,
             right: 60,
-            top: 560,
+            top: 590,
             textAlign: "center",
             fontFamily: fonts.display,
             fontSize: 44,
@@ -193,7 +195,7 @@ export const CtaScene: React.FC<{ props: EstafetteProps["cta"] }> = ({ props }) 
             position: "absolute",
             left: 0,
             right: 0,
-            top: 700,
+            top: 720,
             display: "flex",
             justifyContent: "center",
             opacity: logoIn,

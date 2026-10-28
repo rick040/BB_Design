@@ -6,7 +6,7 @@ import { Headline, Subline } from "../../components/Text";
 import { blinkScale, clamp, pop, springs } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
 import { fonts } from "../../theme";
-import { Baton, Runner, type RunnerPose, runnerHand, SpeedLines, Tag, Track } from "../components/Track";
+import { Baton, outfitFor, Runner, type RunnerPose, runnerHand, SpeedLines, Tag, Track } from "../components/Track";
 import type { EstafetteProps } from "../schema";
 
 // Timeline (frames, scene-local).
@@ -185,7 +185,7 @@ export const ScoreScene: React.FC<{
           );
         })}
 
-        <Runner x={runnerX} feetY={FEET} height={RUNNER_H} color={p.blue} farColor={p.blueMid} {...pose} />
+        <Runner x={runnerX} feetY={FEET} height={RUNNER_H} outfit={outfitFor(p, false)} {...pose} />
 
         <SpeedLines x={runnerX - 60} y={FEET - 30} strength={goT > 0 ? Math.min(1, goT * 4) : 0} color={p.blueSoft} />
         <SpeedLines x={buddyX - 60} y={FEET - 10} strength={running ? 0.8 : 0} color={p.blueSoft} />

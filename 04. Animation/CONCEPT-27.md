@@ -37,7 +37,7 @@ Met elk bestaand concept verschilt dit op minstens 5 van de 6 punten (concept 5 
 ## Storyboard
 
 ### 1 · Hook: "Jij rent met alle rekeningen." (0,0 tot 3,4 s) · licht
-- Frame 0 toont de complete kop, een atletiekbaan en een loper (vlak blauw figuurtje) met vier stokjes in zijn armen: *Huur*, *Energie*, *Telefoon*, *Zorg*. De baan schuift onder hem door.
+- Frame 0 toont de complete kop, een atletiekbaan en een loper (vlakke illustratie: blauw shirt, donkere korte broek, witte sneakers, gele zweetband) met vier stokjes in zijn armen: *Huur*, *Energie*, *Telefoon*, *Zorg*. De baan schuift onder hem door.
 - **0,60 s:** de stapel begint harder te wiebelen.
 - **1,00 s:** het bovenste stokje *Zorg* glipt eraf en valt achter hem op de baan (**1,47 s**).
 - **1,67 s:** rood label **"! Aanmaning"** slaat op het gevallen stokje. **1,73 s:** de loper staat stil, zweetdruppels.
@@ -61,7 +61,7 @@ Met elk bestaand concept verschilt dit op minstens 5 van de 6 punten (concept 5 
 ### 4 · CTA (10,8 tot 14,6 s) · finishlint knapt naar blauw
 - Een geel finishlint spant over het beeld, knapt in het midden en de CTA opent vanuit het midden.
 - Tagline woord voor woord vanaf 10,93 s: **"Buddy loopt mee."** (wit) **"Jij finisht."** (zachtblauw).
-- Een podium komt op. **11,33 s:** Buddy ploept op plek 2, **11,60 s:** hij hopt naar plek 1.
+- Een podium met drie echte treden (1 hoogst, dan 2, dan 3) komt op. **11,33 s:** Buddy ploept op plek 2, **11,60 s:** hij hopt naar plek 1.
 - **11,80 s:** knop "activeer buddy". **12,27 s:** "Geen app. Geen bankkoppeling." **12,40 s:** medaille "op tijd" om Buddy. **12,60 s:** woordmerk. **12,73 s:** blije ogen. **13,60 s:** tik op de knop.
 
 ---
