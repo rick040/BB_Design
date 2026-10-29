@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { TelshopAd } from "./telshop/TelshopAd";
+import { defaultTelshopProps, type TelshopProps, telshopSchema, telshopTotal } from "./telshop/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const telshopMetadata: CalculateMetadataFunction<TelshopProps> = ({ props }) => ({
+  durationInFrames: telshopTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 28 · "Niet bellen. Gewoon doorsturen." (CONCEPT-28.md) */}
+    <Folder name="Concept-28-Telshop">
+      <Composition
+        id="BB-Telshop-Reel"
+        component={TelshopAd}
+        schema={telshopSchema}
+        defaultProps={defaultTelshopProps}
+        calculateMetadata={telshopMetadata}
+        durationInFrames={telshopTotal(defaultTelshopProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Telshop-Feed"
+        component={TelshopAd}
+        schema={telshopSchema}
+        defaultProps={defaultTelshopProps}
+        calculateMetadata={telshopMetadata}
+        durationInFrames={telshopTotal(defaultTelshopProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
