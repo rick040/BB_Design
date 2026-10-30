@@ -1,6 +1,6 @@
 # BetaalBuddy · Instagram ads (Remotion)
 
-Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Three concepts, each in two formats:
+Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Concepts 1 to 3 and 30 are on this branch (4 to 29 live on separate branches, see the BetaalBuddy changelog), each in two formats:
 
 | Concept | Composition | Size | Use | Length |
 |---|---|---|---|---|
@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 30 · "Vaste lasten. Geen handleiding." ([`CONCEPT-30.md`](./CONCEPT-30.md)) | `BB-Handleiding-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 14.0 s |
+| | `BB-Handleiding-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,10 +57,13 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:handleiding     # concept 30 → out/BB-Handleiding-Reel.mp4 (9:16)
+npm run render:handleiding:feed # concept 30 → out/BB-Handleiding-Feed.mp4 (4:5)
+npm run render:all             # all of the above
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:handleiding      # concept 30 cover → out/BB-Handleiding-Reel-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -74,10 +79,13 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
+  handleiding/        concept 30: HandleidingAd.tsx, schema.ts, scenes/ (Hook · Onderdeel · Stappen · CTA),
+                      components/Manual.tsx (line-art manual parts)
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …
-  lib/                animation helpers, layout per format, palette, focusPull (blur transition)
+  lib/                animation helpers, layout per format, palette, focusPull (blur transition),
+                      manualTransitions (unfold + assemble)
 public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
 ```
 

@@ -65,7 +65,7 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 - **Wekelijks overzicht.**
 - **Geen app, geen bankkoppeling.** Buddy ziet alleen wat jij doorstuurt; dat is ook een privacy-argument.
 - **Betaalmodel (sinds 5 oktober 2026):** je betaalt bij aanmelding en hebt dan de eerste maand. Er is **geen** proefperiode en niets gratis.
-- **Pakketten:** Basic, Standard en Premium. **Basic heeft geen agenda en geen herinneringen.** Premium noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
+- **Pakketten:** Basic, Buddy en Buddy pro (changelog, oktober 2026). **Basic heeft geen agenda en geen herinneringen.** Noem de extra's van Buddy pro niet in ads; de melding op je telefoon is nog niet live.
 - **Kanalen niet beschikbaar:** WhatsApp, Telegram en Signal.
 
 ### Privacy en gegevens (belangrijk voor een privacy-invalshoek)
@@ -119,7 +119,7 @@ Ze staan in het EmailTool-project onder `landingspaginas/`. Waar ze live komen t
 
 ## 4. Invalshoeken
 
-**Wat al gemaakt is, staat in de CONCEPT-bestanden** (`04. Animation/CONCEPT*.md`), elk met een vergelijkingstabel: invalshoek, visueel systeem, rol van Buddy, einde, slotbeeld en overgangen. Lees die altijd. Deze lijst houdt bewust niet bij wat al gemaakt is, zodat hij niet veroudert.
+**Wat al gemaakt is, staat in de CONCEPT-bestanden** (`04. Animation/CONCEPT*.md`), elk met een vergelijkingstabel: invalshoek, visueel systeem, rol van Buddy, einde, slotbeeld en overgangen. Lees die altijd. Concept 4 tot 29 staan op losse branches en niet altijd in deze map; lees daarom ook de concept-entries in de BetaalBuddy-changelog. Deze lijst houdt bewust niet bij wat al gemaakt is, zodat hij niet veroudert.
 
 Invalshoeken uit de landingspagina's en de Meta-strategie (sla over wat al in een CONCEPT-bestand staat):
 - **Overzicht:** een volle inbox, een aanmaning.

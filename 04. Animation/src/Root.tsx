@@ -8,6 +8,13 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { HandleidingAd } from "./handleiding/HandleidingAd";
+import {
+  defaultHandleidingProps,
+  type HandleidingProps,
+  handleidingSchema,
+  handleidingTotal,
+} from "./handleiding/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const handleidingMetadata: CalculateMetadataFunction<HandleidingProps> = ({ props }) => ({
+  durationInFrames: handleidingTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 30 · "Vaste lasten. Geen handleiding." (CONCEPT-30.md) */}
+    <Folder name="Concept-30-Handleiding">
+      <Composition
+        id="BB-Handleiding-Reel"
+        component={HandleidingAd}
+        schema={handleidingSchema}
+        defaultProps={defaultHandleidingProps}
+        calculateMetadata={handleidingMetadata}
+        durationInFrames={handleidingTotal(defaultHandleidingProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Handleiding-Feed"
+        component={HandleidingAd}
+        schema={handleidingSchema}
+        defaultProps={defaultHandleidingProps}
+        calculateMetadata={handleidingMetadata}
+        durationInFrames={handleidingTotal(defaultHandleidingProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

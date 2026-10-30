@@ -35,6 +35,9 @@ export type BuddyProps = {
 
 export const BUDDY_VIEWBOX = { width: VB_W, height: VB_H, eyes: EYES } as const;
 
+/** The body outline in BUDDY_VIEWBOX units (e.g. for a dashed silhouette). */
+export const BUDDY_PATH = BODY;
+
 export const Buddy: React.FC<BuddyProps> = ({
   size,
   body = "#ffffff",
