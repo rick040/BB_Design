@@ -1,0 +1,98 @@
+<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>story</title><style>
+@font-face { font-family:'Space Grotesk'; src:url('file:///home/user/BB_Design/04.%20Animation/public/fonts/SpaceGrotesk-Variable.woff2'); font-weight:300 700; }
+@font-face { font-family:'Geist'; src:url('file:///home/user/BB_Design/04.%20Animation/public/fonts/Geist-Variable.woff2'); font-weight:100 900; }
+* { box-sizing:border-box; margin:0; padding:0; }
+html,body { width:1080px; height:1920px; }
+.story { width:1080px; height:1920px; position:relative; overflow:hidden; font-family:'Space Grotesk',sans-serif; }
+.story.light { background:#fafbff; color:#013bff; }
+.story.dark { background:#013bff; color:#fff; }
+/* Inhoud blijft tussen y 270 en 1590: daarboven en daaronder legt Instagram balken over de story. */
+.col { position:absolute; left:90px; right:90px; top:262px; bottom:330px; display:flex; flex-direction:column;
+        align-items:stretch; }
+.stepchip { align-self:center; font-family:'Geist',sans-serif; font-size:30px; font-weight:600; letter-spacing:.01em;
+            border-radius:999px; padding:14px 30px; }
+.light .stepchip { background:#e8eeff; color:#013bff; }
+.dark .stepchip { border:2px solid rgba(255,255,255,.55); color:#fff; }
+h1 { text-align:center; font-weight:500; font-size:100px; line-height:1.0; letter-spacing:-0.06em; margin-top:26px; }
+.sub { text-align:center; font-weight:400; font-size:42px; line-height:1.2; letter-spacing:-0.02em; margin-top:30px; }
+.light .sub { color:#6b7fc9; } .dark .sub { color:#99b1ff; }
+.visual { position:relative; margin-top:46px; }
+.how { list-style:none; display:flex; flex-direction:column; gap:16px; margin-top:42px; }
+.how li { display:flex; gap:24px; align-items:flex-start; font-size:38px; line-height:1.22; letter-spacing:-0.02em; }
+.light .how li { color:#111114; } .dark .how li { color:#fff; }
+.how b { font-weight:600; }
+.light .how b { color:#013bff; }
+.how .n { flex:none; width:54px; height:54px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+          font-family:'Geist',sans-serif; font-size:28px; font-weight:600; margin-top:-3px; }
+.light .how .n { background:#013bff; color:#fff; } .dark .how .n { background:#fff; color:#013bff; }
+.tip { display:flex; gap:22px; align-items:flex-start; border-radius:30px; padding:24px 32px; margin-top:30px;
+        font-size:32px; line-height:1.3; letter-spacing:-0.01em; }
+.tip p { margin-top:1px; }
+.light .tip { background:#e8eeff; color:#26315e; } .light .tip b { color:#013bff; font-weight:600; }
+.dark .tip { background:rgba(255,255,255,.13); color:#e3e9ff; } .dark .tip b { color:#fff; font-weight:600; }
+/* telefoon-UI in Geist, net als de meldingen in de ads */
+.card { background:#fff; border-radius:40px; font-family:'Geist',sans-serif; color:#111114; position:relative; }
+.light .card { box-shadow:0 14px 40px rgba(1,59,255,.12); border:1px solid #e9eefb; }
+.dark .card { box-shadow:0 18px 50px rgba(0,20,120,.28); }
+.mail { padding:28px 34px; }
+.mhead { display:flex; align-items:center; gap:22px; padding-bottom:20px; border-bottom:1.5px solid #eef1f6; }
+.mhead .mt { flex:1; display:flex; flex-direction:column; gap:4px; }
+.mhead b { font-size:32px; font-weight:600; letter-spacing:-0.01em; }
+.mhead span { font-size:27px; color:#55586a; }
+.mhead em { font-style:normal; font-size:24px; color:#9b9aa3; align-self:flex-start; margin-top:6px; }
+.mrow { display:flex; align-items:center; gap:18px; padding:17px 0; border-bottom:1.5px solid #eef1f6; font-size:29px; }
+.mrow:last-child { border-bottom:0; }
+.mrow .k { width:170px; flex:none; color:#9b9aa3; }
+.mrow .v { flex:1; font-weight:500; min-width:0; }
+.mrow.mark { background:#fff6d6; box-shadow:0 0 0 3px #ffce31; border-radius:16px; margin:6px -16px; padding:17px 16px;
+             border-bottom:0; }
+.token { display:inline-block; background:#e8eeff; color:#013bff; border-radius:12px; padding:6px 14px; font-weight:500; }
+.btn { display:inline-flex; align-items:center; justify-content:center; gap:12px; height:76px; padding:0 38px; border-radius:38px;
+        font-family:'Geist',sans-serif; font-size:30px; font-weight:600; white-space:nowrap; position:relative; }
+.btn.solid { background:#013bff; color:#fff; }
+.btn.soft { background:#e8eeff; color:#013bff; }
+.btn.white { background:#fff; color:#013bff; }
+.skel { height:16px; border-radius:8px; background:#e8edf2; }
+.line { font-size:28px; color:#3c4052; line-height:1.35; }
+.sel { background:rgba(1,59,255,.16); border-radius:6px; padding:2px 4px; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+.bubble { position:absolute; background:#111114; color:#fff; font-family:'Geist',sans-serif; font-size:26px; font-weight:500;
+          border-radius:14px; padding:12px 22px; }
+.bubble:after { content:''; position:absolute; left:50%; bottom:-10px; margin-left:-10px; border:10px solid transparent;
+                border-bottom:0; border-top-color:#111114; }
+.field { border:2px solid #dfe5f3; border-radius:20px; padding:16px 22px; display:flex; align-items:center; gap:16px; }
+.field .fl { flex:1; min-width:0; }
+.field small { display:block; font-size:23px; color:#9b9aa3; margin-bottom:4px; }
+.field span { font-size:28px; font-weight:500; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; display:block; }
+.down { width:64px; height:64px; border-radius:50%; background:#2459fd; display:flex; align-items:center;
+         justify-content:center; margin:12px auto; }
+.dark .down { background:#fff; }
+/* vingertop: halfdoorzichtige stip met een rimpeling, rechts op de knop */
+.tap { position:absolute; right:11%; top:50%; width:92px; height:92px; margin:-46px -46px 0 0; border-radius:50%;
+        background:rgba(255,255,255,.3); border:3px solid rgba(255,255,255,.85);
+        box-shadow:0 0 0 14px rgba(1,59,255,.14), 0 6px 16px rgba(0,20,120,.25); }
+.btn.soft .tap { background:rgba(1,59,255,.22); border-color:#013bff; }
+.abs { position:absolute; }
+.foot { position:absolute; left:70px; right:70px; top:1612px; display:flex; justify-content:space-between; align-items:center; }
+.wm { font-weight:700; font-size:54px; letter-spacing:-0.06em; line-height:1; }
+.next { display:flex; align-items:center; gap:10px; font-family:'Geist',sans-serif; font-size:26px; font-weight:500; }
+.light .next { color:#013bff; } .dark .next { color:#fff; }
+
+.simple h1 { position:absolute; left:60px; right:60px; top:150px; height:270px; margin:0; display:flex; align-items:center;
+              justify-content:center; font-size:120px; line-height:1.04; }
+.simple .stage { position:absolute; left:0; right:0; top:480px; height:840px; display:flex; align-items:center;
+                  justify-content:center; }
+.simple .stage > * { transform:scale(1.07); }
+.simple .say { position:absolute; left:90px; right:90px; top:1370px; height:290px; display:flex; align-items:center;
+                justify-content:center; text-align:center; font-size:64px; line-height:1.25; letter-spacing:0.005em;
+                color:#99b1ff; }
+.scard { position:relative; background:#fcfcff; border:2.5px solid #111114; border-radius:44px;
+          font-family:'Geist',sans-serif; color:#111114; }
+.scard .k { color:#9b9aa3; }
+.scard .rule { height:2px; background:#eef1f6; margin:34px 0; }
+.scard .big { font-size:36px; padding:10px 20px; border-radius:14px; }
+.chip2 { background:#e8eeff; color:#013bff; border-radius:20px; padding:18px 26px; font-size:40px; font-weight:600;
+          letter-spacing:-0.02em; }
+.flt { position:absolute; z-index:2; background:#fff; color:#013bff; border-radius:999px; padding:16px 36px;
+        font-family:'Space Grotesk',sans-serif; font-size:44px; letter-spacing:-0.03em; white-space:nowrap;
+        box-shadow:0 12px 30px rgba(0,20,120,.28); }
+</style></head><body><div class="story dark"><div class="simple"><h1>Zo stel je<br>Buddy in</h1><div class="stage"><svg viewBox="0 0 464.69 506.36" width="400" height="436" style="display:block;overflow:visible;"><path d="M196.66,288.64c66.71-12.11,101.71-55.41,117.98-116.76,73.03-13.14,144.94,50.85,149.65,131.87,6.68,115.03-70.87,199.8-186.16,201.88-67.22,1.21-134.49.66-201.73.13-45.07-.36-74.89-28.16-75.36-73.08C-.13,323.18-.4,213.65.68,104.15,1.16,55.47,28.08,24.42,75.78,11.47c55.01-14.93,109.72-17.97,162.91,7.26,56.92,27,67.02,77.99,64.48,133.09-2.11,45.74-37.48,63.69-74.33,77.97-39.19,15.19-39.33,14.82-32.17,58.86Z" fill="#fff"/><g transform="translate(0 -7.0) translate(96.67 105.1) scale(1 1.0) translate(-96.67 -105.1)"><ellipse cx="96.67" cy="105.1" rx="38.08" ry="52.73" fill="#0046e2"/><circle cx="93.74" cy="146.11" r="17.58" fill="#fff"/></g><g transform="translate(0 -7.0) translate(213.85 105.1) scale(1 1.0) translate(-213.85 -105.1)"><ellipse cx="213.85" cy="105.1" rx="38.08" ry="52.73" fill="#0046e2"/><circle cx="216.78" cy="146.11" r="17.58" fill="#fff"/></g></svg></div><div class="say">Vier korte stappen.<br>Samen zo'n vijf minuten.</div></div></div></body></html>

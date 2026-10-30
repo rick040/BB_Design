@@ -2,16 +2,34 @@
 
 Statische Instagram Stories voor BetaalBuddy in 1080×1920 (9:16).
 
-- `build.py`: alle stories staan in `STORIES`. `python3 build.py` bouwt alles, `python3 build.py 03 05` alleen die stories. Vereist Python met `playwright` en Chromium. Staat Chromium op een andere plek, zet dan `CHROME_PATH`.
+- `build.py`: alle stories staan in `STORIES`. `python3 build.py` bouwt alles, `python3 build.py simpel` één serie, `python3 build.py simpel-03` één story. Vereist Python met `playwright` en Chromium. Staat Chromium op een andere plek, zet dan `CHROME_PATH`.
 - `src/`: bewerkbare HTML per story. Open in je browser om tekst te proberen; blijvend aanpassen doe je in `build.py`, want een nieuwe build overschrijft `src/`.
 - `renders/`: PNG's om te posten.
-- Het script meldt per story de onderkant van de inhoud. Komt die onder y 1590, dan staat er `LET OP`: dan botst de tekst met het woordmerk of met de berichtbalk van Instagram.
+- Bij de serie Instellen meldt het script per story de onderkant van de inhoud. Komt die onder y 1590, dan staat er `LET OP`: dan botst de tekst met het woordmerk of met de berichtbalk van Instagram.
 
-Merk, fonts en Buddy komen uit `04. Animation` (zelfde paden en kleuren). Inhoud blijft tussen y 262 en 1590, zodat de balken van Instagram boven en onder niets afdekken.
+Merk, fonts en Buddy komen uit `04. Animation` (zelfde paden en kleuren).
 
 ---
 
-## Serie "Stel je Buddy in" (highlight)
+## Serie "Simpel" (highlight, compact)
+
+Vijf stories in dezelfde opbouw als de bestaande highlight "Meet Buddy": blauw vlak, grote witte kop bovenaan, één beeld in het midden, één zin in zacht blauw eronder. Geen stapnummers, lijstjes of tipvakken. Stap 1 en 2 van de instelpagina (mailtje sturen, gegevens plakken) zijn samengevoegd tot "Stuur één mailtje".
+
+| # | Bestand | Kop | Zin eronder |
+|---|---|---|---|
+| 01 | `BB-Story-Simpel-01-zo-stel-je-buddy-in.png` | Zo stel je Buddy in | Vier korte stappen. Samen zo'n vijf minuten. |
+| 02 | `BB-Story-Simpel-02-stuur-een-mailtje.png` | Stuur één mailtje | Je krijgt je eigen doorstuuradres terug. |
+| 03 | `BB-Story-Simpel-03-stuur-je-rekening-door.png` | Stuur je rekening door | Buddy haalt het bedrag en de vervaldatum eruit. |
+| 04 | `BB-Story-Simpel-04-zet-de-agenda-aan.png` | Zet de agenda aan | Met één tik staan je vervaldatums in je agenda. |
+| 05 | `BB-Story-Simpel-05-doe-een-test.png` | Doe één test | Krijg je een mail terug met bedrag en datum? Dan let Buddy op. |
+
+Plaatsen: post 01 tot en met 05 op volgorde en bundel ze in een highlight "Instellen". Als cover kun je `BB-Story-Instellen-00-highlight-cover.png` gebruiken. Zet op story 05 eventueel een linksticker naar de instelpagina, in de lege ruimte tussen het beeld en de zin.
+
+Open controles: dezelfde als hieronder (instelpagina live, Basic zonder agenda, novemberdata). Story 02 zegt niet dat je het mailtje moet sturen vanaf het adres waar je je mails van Buddy wilt krijgen; dat staat op de instelpagina zelf.
+
+---
+
+## Serie "Stel je Buddy in" (highlight, uitgebreid)
 
 Zeven stories die de vijf stappen van de instelpagina `/stel-je-buddy-in/` laten zien, plus een highlight-cover. Bron: de instelpagina en de walkthrough-video (`04. Animation/WALKTHROUGH.md` op branch `ccr-fbc3e39b-cdjg5n`). Titels, knoppen en tips volgen de pagina.
 

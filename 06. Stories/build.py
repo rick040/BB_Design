@@ -1,15 +1,18 @@
 #!/usr/bin/env python3
 """Bouwt de statische Instagram Stories (1080x1920) van BetaalBuddy.
 
-Serie "Stel je Buddy in": een highlight-cover plus zeven stories die de vijf
-stappen van de instelpagina (/stel-je-buddy-in/) laten zien.
+Twee series over de instelpagina (/stel-je-buddy-in/):
+- "Simpel": vijf compacte stories in de stijl van de highlight "Meet Buddy"
+  (grote kop, één beeld, één zin);
+- "Instellen": een highlight-cover plus zeven stories met alle vijf stappen in detail.
 
 Elke story = één HTML-bestand in ./src/ (open het in je browser en pas tekst aan)
 en één PNG in ./renders/. Alles staat in STORIES onderaan dit bestand.
 
 Gebruik (vanuit deze map):
     python3 build.py              # alle stories
-    python3 build.py 03 05        # alleen story 03 en 05
+    python3 build.py simpel       # alleen de serie Simpel
+    python3 build.py simpel-03    # alleen story 03 van Simpel
 
 Vereist: pip install playwright && playwright install chromium.
 Staat Chromium ergens anders, zet dan CHROME_PATH=/pad/naar/chrome.
@@ -25,7 +28,6 @@ FONTS = HERE.parent / "04. Animation" / "public" / "fonts"
 SRC = HERE / "src"
 OUT = HERE / "renders"
 W, H = 1080, 1920
-SERIES = "Instellen"
 
 C = dict(
     blue="#013bff", blueMid="#2459fd", blueMascot="#0046e2", blueSoft="#b6c7ff",
@@ -210,7 +212,7 @@ h1 {{ text-align:center; font-weight:500; font-size:100px; line-height:1.0; lett
 
 def page(theme, body, hint="Tik voor de volgende stap", foot=True):
     f = footer(theme == "dark", hint) if foot else ""
-    return (f'<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>story</title><style>{CSS}</style></head>'
+    return (f'<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>story</title><style>{CSS}{SIMPLE_CSS}</style></head>'
             f'<body><div class="story {theme}">{body}{f}</div></body></html>')
 
 
@@ -383,15 +385,113 @@ def s07():
 </div>''', hint="")
 
 
+# ---------- serie "Simpel": compact, in de stijl van de highlight "Meet Buddy" ----------
+# Blauw vlak, grote witte kop bovenaan, één beeld in het midden, één zin in zacht blauw eronder.
+SIMPLE_CSS = f"""
+.simple h1 {{ position:absolute; left:60px; right:60px; top:150px; height:270px; margin:0; display:flex; align-items:center;
+              justify-content:center; font-size:120px; line-height:1.04; }}
+.simple .stage {{ position:absolute; left:0; right:0; top:480px; height:840px; display:flex; align-items:center;
+                  justify-content:center; }}
+.simple .stage > * {{ transform:scale(1.07); }}
+.simple .say {{ position:absolute; left:90px; right:90px; top:1370px; height:290px; display:flex; align-items:center;
+                justify-content:center; text-align:center; font-size:64px; line-height:1.25; letter-spacing:0.005em;
+                color:{C['blueText']}; }}
+.scard {{ position:relative; background:#fcfcff; border:2.5px solid {C['ink']}; border-radius:44px;
+          font-family:'Geist',sans-serif; color:{C['ink']}; }}
+.scard .k {{ color:{C['greyText']}; }}
+.scard .rule {{ height:2px; background:#eef1f6; margin:34px 0; }}
+.scard .big {{ font-size:36px; padding:10px 20px; border-radius:14px; }}
+.chip2 {{ background:{C['tint']}; color:{C['blue']}; border-radius:20px; padding:18px 26px; font-size:40px; font-weight:600;
+          letter-spacing:-0.02em; }}
+.flt {{ position:absolute; z-index:2; background:#fff; color:{C['blue']}; border-radius:999px; padding:16px 36px;
+        font-family:'Space Grotesk',sans-serif; font-size:44px; letter-spacing:-0.03em; white-space:nowrap;
+        box-shadow:0 12px 30px rgba(0,20,120,.28); }}
+"""
+
+
+def simple(head, visual, say):
+    return page("dark", f'<div class="simple"><h1>{head}</h1><div class="stage">{visual}</div>'
+                        f'<div class="say">{say}</div></div>', foot=False)
+
+
+def k1():
+    return simple("Zo stel je<br>Buddy in", buddy(400, look=(0, -0.5)),
+                  "Vier korte stappen.<br>Samen zo'n vijf minuten.")
+
+
+def k2():
+    card = (f'<div class="scard" style="width:880px;padding:44px 48px">'
+            f'<div style="display:flex;align-items:center;gap:26px;font-size:34px"><span class="k">Aan</span>'
+            f'<span class="token big">start@in.betaalbuddy.nl</span></div><div class="rule"></div>'
+            f'<div class="skel" style="width:72%;height:22px;border-radius:11px"></div>'
+            f'<div class="skel" style="width:46%;height:22px;border-radius:11px;margin-top:22px"></div>'
+            f'<div style="display:flex;justify-content:flex-end;margin-top:44px">'
+            f'{btn("Verstuur " + arrow(30, "#fff"), style="height:84px;padding:0 44px;font-size:34px;border-radius:42px")}'
+            f'</div></div>')
+    return simple("Stuur één<br>mailtje", card, "Je krijgt je eigen<br>doorstuuradres terug.")
+
+
+def k3():
+    card = (f'<div class="scard" style="width:880px;padding:44px 48px">'
+            f'<div class="flt" style="left:-30px;top:-52px;transform:rotate(-3deg)">vervaldatum</div>'
+            f'<div class="flt" style="right:-30px;top:-46px;transform:rotate(3deg)">bedrag</div>'
+            f'<div style="display:flex;align-items:center;gap:26px;padding-top:10px">{glyph("bolt", 100)}'
+            f'<div style="flex:1;display:flex;flex-direction:column;gap:6px"><b style="font-size:38px;font-weight:600;'
+            f'letter-spacing:-0.01em">Energieleverancier</b><span class="k" style="font-size:31px">Vervalt 28 nov</span></div>'
+            f'<b style="font-size:44px;font-weight:600;letter-spacing:-0.02em">€ 84,20</b></div><div class="rule"></div>'
+            f'<div class="k" style="font-size:30px;margin-bottom:14px">Doorsturen naar</div>'
+            f'<span class="token big">jouwcode@in.betaalbuddy.nl</span></div>')
+    return simple("Stuur je<br>rekening door", card, "Buddy haalt het bedrag en<br>de vervaldatum eruit.")
+
+
+def k4():
+    sq = "width:58px;height:58px;border-radius:10px"
+    grid = "".join(f'<span style="{sq};background:{C["blueSoft"] if r == 0 else C["grey"]};'
+                   f'{"height:22px;border-radius:11px;align-self:center;" if r == 0 else ""}"></span>'
+                   for r in range(1) for _ in range(5))
+    for r in range(1, 5):
+        for c in range(5):
+            on = (r, c) == (3, 3)
+            dot = ('<i style="position:absolute;right:-6px;top:-6px;width:16px;height:16px;border-radius:50%;'
+                   f'background:#fff;border:3px solid {C["blueMid"]}"></i>') if on else ""
+            grid += f'<span style="{sq};position:relative;background:{C["blueMid"] if on else C["grey"]}">{dot}</span>'
+    card = (f'<div class="scard" style="width:940px;padding:48px 52px;display:flex;align-items:center;gap:56px">'
+            f'<div style="flex:1;display:flex;flex-direction:column;gap:10px">{glyph("heart", 104)}'
+            f'<b style="font-size:36px;font-weight:600;letter-spacing:-0.01em;margin-top:18px">Zorgverzekeraar</b>'
+            f'<span class="k" style="font-size:30px">Vervalt 24 nov</span>'
+            f'<div class="skel" style="width:70%;height:30px;border-radius:8px;margin-top:30px"></div></div>'
+            f'<div style="display:grid;grid-template-columns:repeat(5,58px);gap:16px">{grid}</div></div>')
+    return simple("Zet de<br>agenda aan", card, "Met één tik staan je<br>vervaldatums in je agenda.")
+
+
+def k5():
+    badge = (f'<div style="position:absolute;right:-12px;top:-56px;border-radius:50%;background:#fff;padding:10px;'
+             f'box-shadow:0 12px 30px rgba(0,20,120,.28)">{check(116, C["blueMid"])}</div>')
+    card = (f'<div class="scard" style="width:880px;padding:44px 48px">{badge}'
+            f'<div style="display:flex;align-items:center;gap:26px">{glyph("bb", 100)}'
+            f'<div style="display:flex;flex-direction:column;gap:6px"><b style="font-size:38px;font-weight:600;'
+            f'letter-spacing:-0.01em">Betaalbuddy</b><span class="k" style="font-size:31px">Genoteerd: proefmail</span>'
+            f'</div></div><div class="rule"></div>'
+            f'<div style="display:flex;gap:18px"><span class="chip2">€ 1,00</span><span class="chip2">Vervalt 13 nov</span></div>'
+            f'</div>')
+    return simple("Doe één test", card, "Krijg je een mail terug<br>met bedrag en datum?<br>Dan let Buddy op.")
+
+
+# (serie, nummer, slug, functie). Bestandsnaam: renders/BB-Story-<serie>-<nummer>-<slug>.png
 STORIES = [
-    ("00", "highlight-cover", s00), ("01", "intro", s01), ("02", "stap-1-adres", s02),
-    ("03", "stap-2-plakken", s03), ("04", "stap-3-doorsturen", s04), ("05", "stap-4-agenda", s05),
-    ("06", "stap-5-test", s06), ("07", "klaar", s07),
+    ("Instellen", "00", "highlight-cover", s00), ("Instellen", "01", "intro", s01),
+    ("Instellen", "02", "stap-1-adres", s02), ("Instellen", "03", "stap-2-plakken", s03),
+    ("Instellen", "04", "stap-3-doorsturen", s04), ("Instellen", "05", "stap-4-agenda", s05),
+    ("Instellen", "06", "stap-5-test", s06), ("Instellen", "07", "klaar", s07),
+    ("Simpel", "01", "zo-stel-je-buddy-in", k1), ("Simpel", "02", "stuur-een-mailtje", k2),
+    ("Simpel", "03", "stuur-je-rekening-door", k3), ("Simpel", "04", "zet-de-agenda-aan", k4),
+    ("Simpel", "05", "doe-een-test", k5),
 ]
 
 
 def main():
-    want = set(sys.argv[1:])
+    # Zonder argumenten: alles. "simpel" bouwt een hele serie, "simpel-03" één story, "03" dat nummer in elke serie.
+    want = {a.lower() for a in sys.argv[1:]}
     SRC.mkdir(exist_ok=True)
     OUT.mkdir(exist_ok=True)
     launch = {"args": ["--allow-file-access-from-files"]}
@@ -400,15 +500,16 @@ def main():
     with sync_playwright() as pw:
         br = pw.chromium.launch(**launch)
         pg = br.new_page(viewport={"width": W, "height": H}, device_scale_factor=1)
-        for num, slug, fn in STORIES:
-            if want and num not in want:
+        for series, num, slug, fn in STORIES:
+            s = series.lower()
+            if want and not want & {s, num, f"{s}-{num}"}:
                 continue
-            f = SRC / f"{num}-{slug}.html"
+            f = SRC / f"{s}-{num}-{slug}.html"
             f.write_text(fn(), encoding="utf-8")
             pg.goto(f.as_uri())
             pg.evaluate("document.fonts.ready")
             pg.wait_for_timeout(250)
-            png = OUT / f"BB-Story-{SERIES}-{num}-{slug}.png"
+            png = OUT / f"BB-Story-{series}-{num}-{slug}.png"
             pg.screenshot(path=str(png), clip={"x": 0, "y": 0, "width": W, "height": H})
             bottom = pg.evaluate(MEASURE)
             warn = f"  LET OP: inhoud loopt tot y {bottom}, maximaal {SAFE_BOTTOM}" if bottom > SAFE_BOTTOM else ""
