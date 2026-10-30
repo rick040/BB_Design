@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { GoochelAd } from "./goochel/GoochelAd";
+import { defaultGoochelProps, type GoochelProps, goochelSchema, goochelTotal } from "./goochel/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const goochelMetadata: CalculateMetadataFunction<GoochelProps> = ({ props }) => ({
+  durationInFrames: goochelTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 29 · "Geen truc. Gewoon op tijd." (CONCEPT-29.md) */}
+    <Folder name="Concept-29-Goochel">
+      <Composition
+        id="BB-Goochel-Reel"
+        component={GoochelAd}
+        schema={goochelSchema}
+        defaultProps={defaultGoochelProps}
+        calculateMetadata={goochelMetadata}
+        durationInFrames={goochelTotal(defaultGoochelProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Goochel-Feed"
+        component={GoochelAd}
+        schema={goochelSchema}
+        defaultProps={defaultGoochelProps}
+        calculateMetadata={goochelMetadata}
+        durationInFrames={goochelTotal(defaultGoochelProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

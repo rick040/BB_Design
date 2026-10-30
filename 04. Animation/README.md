@@ -1,6 +1,6 @@
 # BetaalBuddy · Instagram ads (Remotion)
 
-Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Three concepts, each in two formats:
+Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Each concept comes in two formats:
 
 | Concept | Composition | Size | Use | Length |
 |---|---|---|---|---|
@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 29 · "Geen truc. Gewoon op tijd." ([`CONCEPT-29.md`](./CONCEPT-29.md)) | `BB-Goochel-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.5 s |
+| | `BB-Goochel-Feed` | 1080 × 1350 (4:5) | Feed | 13.5 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -40,7 +42,7 @@ The Studio opens in your browser. Pick a composition on the left (they are group
 
 Edits in the Props panel are **live**, and they are used when you click **Render** in the Studio. So edit → preview → render works directly.
 
-To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`) or `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
+To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`), `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`) or `src/goochel/schema.ts` (concept 29, `defaultGoochelProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
 
@@ -55,10 +57,13 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:goochel         # concept 29 → out/BB-Goochel-Reel.mp4   (9:16)
+npm run render:goochel:feed    # concept 29 → out/BB-Goochel-Feed.mp4   (4:5)
+npm run render:all             # all of the above
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:goochel          # concept 29 cover → out/BB-Goochel-Reel-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -74,10 +79,12 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
+  goochel/            concept 29: GoochelAd.tsx, schema.ts, scenes/ (Verdwijntruc · Uit de hoed · Voorspelling · CTA),
+                      components/Magic.tsx (hoed, toverstaf, rookwolk, envelop, toneeldoek)
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …
-  lib/                animation helpers, layout per format, palette, focusPull (blur transition)
+  lib/                animation helpers, layout per format, palette, focusPull (blur transition), curtain (toneeldoek), wandSwish (toverstaf-veeg)
 public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
 ```
 
