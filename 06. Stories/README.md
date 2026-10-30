@@ -23,7 +23,7 @@ Vijf stories in dezelfde opbouw als de bestaande highlight "Meet Buddy": blauw v
 | 04 | `BB-Story-Simpel-04-zet-de-agenda-aan.png` | Zet de agenda aan | Met één tik staan je vervaldatums in je agenda. |
 | 05 | `BB-Story-Simpel-05-doe-een-test.png` | Doe één test | Krijg je een mail terug met bedrag en datum? Dan let Buddy op. |
 
-Plaatsen: post 01 tot en met 05 op volgorde en bundel ze in een highlight "Instellen". Als cover kun je `BB-Story-Instellen-00-highlight-cover.png` gebruiken. Zet op story 05 eventueel een linksticker naar de instelpagina, in de lege ruimte tussen het beeld en de zin.
+Plaatsen: post 01 tot en met 05 op volgorde en bundel ze in een highlight "Instellen". Als cover gebruik je `BB-Story-Simpel-00-cover-vierkant.png` (1080×1080): Buddy met tandwiel, gecentreerd, zodat alles binnen het rondje valt. De staande versie `BB-Story-Instellen-00-highlight-cover.png` kan ook. Zet op story 05 eventueel een linksticker naar de instelpagina, in de lege ruimte tussen het beeld en de zin.
 
 Open controles: dezelfde als hieronder (instelpagina live, Basic zonder agenda, novemberdata). Story 02 zegt niet dat je het mailtje moet sturen vanaf het adres waar je je mails van Buddy wilt krijgen; dat staat op de instelpagina zelf.
 

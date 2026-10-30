@@ -210,10 +210,10 @@ h1 {{ text-align:center; font-weight:500; font-size:100px; line-height:1.0; lett
 """
 
 
-def page(theme, body, hint="Tik voor de volgende stap", foot=True):
+def page(theme, body, hint="Tik voor de volgende stap", foot=True, size=(W, H)):
     f = footer(theme == "dark", hint) if foot else ""
     return (f'<!doctype html><html lang="nl"><head><meta charset="utf-8"><title>story</title><style>{CSS}{SIMPLE_CSS}</style></head>'
-            f'<body><div class="story {theme}">{body}{f}</div></body></html>')
+            f'<body><div class="story {theme}" style="width:{size[0]}px;height:{size[1]}px">{body}{f}</div></body></html>')
 
 
 # Laagste punt van de inhoud. Alles onder SAFE_BOTTOM botst met het woordmerk of de berichtbalk van Instagram.
@@ -414,6 +414,17 @@ def simple(head, visual, say):
                         f'<div class="say">{say}</div></div>', foot=False)
 
 
+def k0():
+    """Vierkante highlight-cover (1080x1080). Instagram knipt er een rondje uit, dus Buddy en het tandwiel
+    staan samen precies in het midden, ruim binnen de cirkel."""
+    return page("dark", f'''
+<div class="abs" style="left:215px;top:258px">{buddy(470, look=(0.2, -0.3))}</div>
+<div class="abs" style="left:565px;top:523px">{gear(300, C["blueSoft"])}</div>''', foot=False, size=k0.size)
+
+
+k0.size = (W, W)
+
+
 def k1():
     return simple("Zo stel je<br>Buddy in", buddy(400, look=(0, -0.5)),
                   "Vier korte stappen.<br>Samen zo'n vijf minuten.")
@@ -483,6 +494,7 @@ STORIES = [
     ("Instellen", "02", "stap-1-adres", s02), ("Instellen", "03", "stap-2-plakken", s03),
     ("Instellen", "04", "stap-3-doorsturen", s04), ("Instellen", "05", "stap-4-agenda", s05),
     ("Instellen", "06", "stap-5-test", s06), ("Instellen", "07", "klaar", s07),
+    ("Simpel", "00", "cover-vierkant", k0),
     ("Simpel", "01", "zo-stel-je-buddy-in", k1), ("Simpel", "02", "stuur-een-mailtje", k2),
     ("Simpel", "03", "stuur-je-rekening-door", k3), ("Simpel", "04", "zet-de-agenda-aan", k4),
     ("Simpel", "05", "doe-een-test", k5),
@@ -510,7 +522,8 @@ def main():
             pg.evaluate("document.fonts.ready")
             pg.wait_for_timeout(250)
             png = OUT / f"BB-Story-{series}-{num}-{slug}.png"
-            pg.screenshot(path=str(png), clip={"x": 0, "y": 0, "width": W, "height": H})
+            w, h = getattr(fn, "size", (W, H))  # een functie met .size wijkt af van 9:16, zoals de vierkante cover
+            pg.screenshot(path=str(png), clip={"x": 0, "y": 0, "width": w, "height": h})
             bottom = pg.evaluate(MEASURE)
             warn = f"  LET OP: inhoud loopt tot y {bottom}, maximaal {SAFE_BOTTOM}" if bottom > SAFE_BOTTOM else ""
             print("ok", png.name, f"(onderkant {bottom})" if bottom else "", warn)
