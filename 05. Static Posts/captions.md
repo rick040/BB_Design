@@ -718,3 +718,20 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Lichte post met de kop "Surprise: af. Gedicht: af. Die ene factuur van november: nog open." Een lichtblauw ingepakt cadeau met witte strik, een rol inpakpapier met een schaar, een telefoon met het scherm naar beneden en een blauwe Buddy die over het cadeau kijkt. Eronder: "Stuur hem nu door. Dan kun jij weer rijmen."
 Let op: illustratieve vertaling van fotoidee R11. Timing: plaatsen 30 november t/m 5 december 2026. Geen bronnen of cijfers in de post.
+
+## R44 · Als ik hem niet open, bestaat hij niet (lijst #44, single)
+```
+Tien seconden openmaken. Drie weken eromheen lopen. 📩
+
+Zo hou je het bij:
+1️⃣ Factuur of betaalmail in je mail? Stuur hem door naar je eigen Betaalbuddy-adres. Lezen hoeft niet eerst.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#geldzaken #rekeningen #uitstelgedrag #betaalbuddy #twintiger
+```
+Alt: Blauwe post met de kop "Als ik hem niet open, bestaat hij niet." Een witte Buddy gluurt over de rand van een mailrij met een blauwe ongelezen-stip, afzender "Zorgverzekeraar", tekst "Er is een nieuwe nota voor je". Eronder: "Doorsturen mag zonder hem te lezen."
+Let op: ik-vorm, geen jij-taal over achterstand. "Lezen hoeft niet eerst" klopt volgens de producttaal (Buddy leest bedrag en datum uit de doorgestuurde mail). Overlap met Reel-backlog stond in de lijst op "Nog checken". Idee komt uit ideeen.csv in de repo (#44 t/m #63), niet uit de Google Sheet.

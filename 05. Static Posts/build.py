@@ -963,6 +963,20 @@ def pR11():
 <div class="sub" style="top:1068px;font-size:40px">Stuur hem nu door.<br>Dan kun jij weer rijmen.</div>''')
 
 
+def pR44():
+    """R44: Als ik hem niet open, bestaat hij niet. Blauw, mailrij met ongelezen-stip, Buddy gluurt erachter vandaan."""
+    dot = f'<div style="width:34px;height:34px;border-radius:50%;background:{C["blueMid"]};flex-shrink:0"></div>'
+    row = (f'<div class="card" style="position:absolute;left:100px;right:100px;top:700px;height:190px;z-index:2;display:flex;align-items:center;gap:26px;padding:0 44px 0 40px">'
+           f'{dot}{glyph("mail", 92)}<div style="display:flex;flex-direction:column;gap:8px;flex:1">'
+           f'<b style="font-weight:700;font-size:44px;color:{C["ink"]}">Zorgverzekeraar</b>'
+           f'<span style="font-size:32px;color:{C["greyText"]}">Er is een nieuwe nota voor je</span></div></div>')
+    return page("dark", f"""
+<h1 style="top:120px;font-size:104px">Als ik hem<br>niet open,<br>bestaat hij niet.</h1>
+<div class="abs" style="left:420px;top:520px;z-index:1">{buddy(240, look=(0.1, 0.9))}</div>
+{row}
+<div class="sub" style="top:990px;font-size:40px">Doorsturen mag zonder hem te lezen.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -989,6 +1003,7 @@ POSTS = [
     ("R10", "na-black-friday", pR10),
     ("R42", "sinterklaasgedicht", pR42),
     ("R11", "cadeaus-inpakken", pR11),
+    ("R44", "niet-open", pR44),
 ]
 
 
