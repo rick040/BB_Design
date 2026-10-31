@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { DartsAd } from "./darts/DartsAd";
+import { dartsSchema, dartsTotal, type DartsProps, defaultDartsProps } from "./darts/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const dartsMetadata: CalculateMetadataFunction<DartsProps> = ({ props }) => ({
+  durationInFrames: dartsTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 35 · "Niet ongeveer. Precies." (CONCEPT-35.md) */}
+    <Folder name="Concept-35-Darts">
+      <Composition
+        id="BB-Darts-Reel"
+        component={DartsAd}
+        schema={dartsSchema}
+        defaultProps={defaultDartsProps}
+        calculateMetadata={dartsMetadata}
+        durationInFrames={dartsTotal(defaultDartsProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Darts-Feed"
+        component={DartsAd}
+        schema={dartsSchema}
+        defaultProps={defaultDartsProps}
+        calculateMetadata={dartsMetadata}
+        durationInFrames={dartsTotal(defaultDartsProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
