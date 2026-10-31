@@ -1,0 +1,472 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zo werkt Buddy · sectie</title>
+<!-- Alleen voor deze preview. Op betaalbuddy.nl laadt Oxygen Space Grotesk al. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>html,body{margin:0;background:#fafbff}</style>
+</head>
+<body>
+
+<!-- =====================================================================
+     BEGIN SECTIE "Onder de motorkap"
+     Kopieer alles tussen BEGIN en EINDE in één Oxygen Code Block (tab HTML).
+     Styling, iconen en script zitten erin en gelden alleen binnen #bb-uitleg,
+     dus ze botsen niet met de rest van de pagina.
+     ===================================================================== -->
+<section id="bb-uitleg" aria-labelledby="bbx-titel">
+<style>
+#bb-uitleg{
+  --bb-blue:#013bff;--bb-mid:#2459fd;--bb-soft:#b6c7ff;--bb-softer:#d9e2fe;
+  --bb-tint:#edf1ff;--bb-ink:#111114;--bb-text:#404040;--bb-muted:#6b7280;
+  background:#fafbff;color:var(--bb-text);
+  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  padding:110px 25px;overflow:hidden;
+}
+#bb-uitleg *,#bb-uitleg *::before,#bb-uitleg *::after{box-sizing:border-box}
+#bb-uitleg h2,#bb-uitleg h3,#bb-uitleg p,#bb-uitleg ul,#bb-uitleg ol,#bb-uitleg li{margin:0;padding:0}
+#bb-uitleg svg text{font-family:'Space Grotesk',system-ui,-apple-system,sans-serif}
+#bb-uitleg .bbx-sprite{position:absolute;width:0;height:0;overflow:hidden}
+
+#bb-uitleg .bbx-wrap{max-width:1120px;margin:0 auto}
+
+/* Kop van de sectie */
+#bb-uitleg .bbx-head{max-width:720px;margin:0 auto 88px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
+#bb-uitleg .bbx-eyebrow{display:inline-flex;padding:5px 12px;border-radius:55px;background:var(--bb-blue);color:#fff;font-size:14px;font-weight:500}
+#bb-uitleg .bbx-h2{font-size:3rem;line-height:1;font-weight:600;letter-spacing:-0.04em;color:var(--bb-blue);text-wrap:balance}
+#bb-uitleg .bbx-h2 span{color:var(--bb-mid);display:block}
+#bb-uitleg .bbx-intro{font-size:20px;line-height:1.45;max-width:560px;text-wrap:pretty}
+
+/* Rijen */
+#bb-uitleg .bbx-rows{display:flex;flex-direction:column;gap:104px;list-style:none}
+#bb-uitleg .bbx-row{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,1fr);gap:72px;align-items:center}
+#bb-uitleg .bbx-row:nth-child(even){grid-template-columns:minmax(0,1fr) minmax(0,1.08fr)}
+#bb-uitleg .bbx-row:nth-child(even) .bbx-art{order:2}
+
+#bb-uitleg .bbx-art{border-radius:24px;background:var(--bb-tint);overflow:hidden;box-shadow:0 0 22px 11px rgba(36,89,253,.04)}
+#bb-uitleg .bbx-art--blue{background:var(--bb-blue)}
+#bb-uitleg .bbx-art svg{display:block;width:100%;height:auto}
+
+#bb-uitleg .bbx-copy{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:500px}
+#bb-uitleg .bbx-step{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--bb-mid)}
+#bb-uitleg .bbx-step b{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--bb-softer);color:var(--bb-blue);font-weight:600;font-size:14px}
+#bb-uitleg .bbx-title{font-size:2.35rem;line-height:1.04;font-weight:600;letter-spacing:-0.035em;color:var(--bb-blue);text-wrap:balance}
+#bb-uitleg .bbx-body{font-size:18px;line-height:1.55}
+#bb-uitleg .bbx-kicker{font-size:18px;line-height:1.45;font-weight:500;color:var(--bb-ink);padding-left:16px;border-left:3px solid var(--bb-soft)}
+#bb-uitleg .bbx-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:4px}
+#bb-uitleg .bbx-chips li{display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 9px;border-radius:55px;background:#fff;border:1px solid var(--bb-softer);color:var(--bb-blue);font-size:14px;font-weight:500;line-height:1.2}
+#bb-uitleg .bbx-chips svg{flex:none;width:15px;height:15px}
+#bb-uitleg .bbx-note{font-size:14px;line-height:1.4;color:var(--bb-muted)}
+
+/* Afsluiter */
+#bb-uitleg .bbx-cta{margin-top:110px;display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center}
+#bb-uitleg .bbx-btn{display:inline-flex;align-items:center;gap:12px;padding:10px 24px 10px 14px;border-radius:55px;background:var(--bb-blue);color:#fff;text-decoration:none;font-size:18px;font-weight:500;transition:transform .5s ease,box-shadow .5s ease}
+#bb-uitleg .bbx-btn:hover{transform:scale(1.04);box-shadow:7px 7px 11px rgba(182,199,255,.44)}
+#bb-uitleg .bbx-btn:focus-visible{outline:3px solid var(--bb-soft);outline-offset:3px}
+#bb-uitleg .bbx-btn svg{width:30px;height:33px;flex:none}
+#bb-uitleg .bbx-cta p{font-size:15px;color:var(--bb-muted)}
+#bb-uitleg .bbx-cta a:not(.bbx-btn){color:var(--bb-blue)}
+
+/* Beweging: alleen als JS draait en de bezoeker beweging toestaat */
+#bb-uitleg.bbx-anim .bbx-reveal{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+#bb-uitleg.bbx-anim .bbx-copy.bbx-reveal{transition-delay:.12s}
+#bb-uitleg.bbx-anim .bbx-reveal.bbx-in{opacity:1;transform:none}
+#bb-uitleg .bbx-flow{stroke-dasharray:3 6;animation:bbx-dash 2.4s linear infinite}
+@keyframes bbx-dash{to{stroke-dashoffset:-36}}
+@media (prefers-reduced-motion:reduce){
+  #bb-uitleg .bbx-flow{animation:none}
+  #bb-uitleg .bbx-btn{transition:none}
+}
+
+/* Tablet en mobiel: illustratie boven, tekst eronder */
+@media (max-width:900px){
+  #bb-uitleg{padding:80px 25px}
+  #bb-uitleg .bbx-head{margin-bottom:60px}
+  #bb-uitleg .bbx-h2{font-size:2.5rem}
+  #bb-uitleg .bbx-rows{gap:72px}
+  #bb-uitleg .bbx-row,#bb-uitleg .bbx-row:nth-child(even){grid-template-columns:minmax(0,1fr);gap:28px}
+  #bb-uitleg .bbx-row:nth-child(even) .bbx-art{order:0}
+  #bb-uitleg .bbx-art{max-width:600px;width:100%;margin:0 auto}
+  #bb-uitleg .bbx-copy{max-width:600px;width:100%;margin:0 auto}
+  #bb-uitleg .bbx-title{font-size:1.9rem}
+  #bb-uitleg .bbx-cta{margin-top:80px}
+}
+@media (max-width:479px){
+  #bb-uitleg{padding:64px 16px}
+  #bb-uitleg .bbx-h2{font-size:2.15rem}
+  #bb-uitleg .bbx-intro{font-size:18px}
+  #bb-uitleg .bbx-art{border-radius:18px}
+  #bb-uitleg .bbx-title{font-size:1.7rem}
+  #bb-uitleg .bbx-body,#bb-uitleg .bbx-kicker{font-size:17px}
+  #bb-uitleg .bbx-btn{font-size:16px;padding:9px 20px 9px 12px}
+}
+</style>
+
+<!-- Gedeelde onderdelen: Buddy (wit en blauw), bel, vinkje en schaduw -->
+<svg class="bbx-sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <filter id="bbx-shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="10" stdDeviation="12" flood-color="#013bff" flood-opacity=".12"/>
+    </filter>
+    <symbol id="bbx-buddy-w" viewBox="0 0 465 507">
+      <path fill="#fff" d="M196.66,288.64c66.71-12.11,101.71-55.41,117.98-116.76,73.03-13.14,144.94,50.85,149.65,131.87,6.68,115.03-70.87,199.8-186.16,201.88-67.22,1.21-134.49.66-201.73.13-45.07-.36-74.89-28.16-75.36-73.08C-.13,323.18-.4,213.65.68,104.15,1.16,55.47,28.08,24.42,75.78,11.47c55.01-14.93,109.72-17.97,162.91,7.26,56.92,27,67.02,77.99,64.48,133.09-2.11,45.74-37.48,63.69-74.33,77.97-39.19,15.19-39.33,14.82-32.17,58.86Z"/>
+      <ellipse fill="#0046e2" cx="96.67" cy="105.1" rx="38.08" ry="52.73"/>
+      <circle fill="#fff" cx="93.74" cy="146.11" r="17.58"/>
+      <ellipse fill="#0046e2" cx="213.85" cy="105.1" rx="38.08" ry="52.73"/>
+      <circle fill="#fff" cx="216.78" cy="146.11" r="17.58"/>
+    </symbol>
+    <symbol id="bbx-buddy-b" viewBox="0 0 465 507">
+      <path fill="#013bff" d="M196.66,288.64c66.71-12.11,101.71-55.41,117.98-116.76,73.03-13.14,144.94,50.85,149.65,131.87,6.68,115.03-70.87,199.8-186.16,201.88-67.22,1.21-134.49.66-201.73.13-45.07-.36-74.89-28.16-75.36-73.08C-.13,323.18-.4,213.65.68,104.15,1.16,55.47,28.08,24.42,75.78,11.47c55.01-14.93,109.72-17.97,162.91,7.26,56.92,27,67.02,77.99,64.48,133.09-2.11,45.74-37.48,63.69-74.33,77.97-39.19,15.19-39.33,14.82-32.17,58.86Z"/>
+      <ellipse fill="#fff" cx="96.67" cy="105.1" rx="38.08" ry="52.73"/>
+      <circle fill="#013bff" cx="93.74" cy="146.11" r="17.58"/>
+      <ellipse fill="#fff" cx="213.85" cy="105.1" rx="38.08" ry="52.73"/>
+      <circle fill="#013bff" cx="216.78" cy="146.11" r="17.58"/>
+    </symbol>
+    <symbol id="bbx-bell" viewBox="0 0 24 24">
+      <path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 2h-15z M10 20.5a2 2 0 0 0 4 0" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    </symbol>
+    <symbol id="bbx-check" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="8" fill="#d9e2fe"/>
+      <path d="M4.6 8.3l2.2 2.2 4.6-5" fill="none" stroke="#013bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    </symbol>
+  </defs>
+</svg>
+
+<div class="bbx-wrap">
+
+  <header class="bbx-head bbx-reveal">
+    <span class="bbx-eyebrow">Onder de motorkap</span>
+    <h2 class="bbx-h2" id="bbx-titel">Geen trucs. <span>Gewoon doorsturen.</span></h2>
+    <p class="bbx-intro">Je wilt weten wat er met je rekening gebeurt. Terecht. Dit is precies wat Buddy doet, en wat hij níet doet.</p>
+  </header>
+
+  <ol class="bbx-rows">
+
+    <!-- 01 · Geen koppeling met je mail -->
+    <li class="bbx-row">
+      <div class="bbx-art bbx-reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="bbx-art1">
+          <title id="bbx-art1">Een venster dat toegang tot je mailbox vraagt, met de stempel Niet nodig. Daarvoor een mail die je zelf doorstuurt naar jouwnaam@in.betaalbuddy.nl.</title>
+          <g transform="rotate(-6 190 115)">
+            <g opacity=".55">
+              <rect x="40" y="40" width="300" height="150" rx="16" fill="#fff" stroke="#d9e2fe" stroke-width="1.5"/>
+              <circle cx="74" cy="76" r="17" fill="#e8edf2"/>
+              <path d="M65 70h18v13H65z M65 71l9 6 9-6" fill="none" stroke="#7b8494" stroke-width="1.8" stroke-linejoin="round"/>
+              <text x="102" y="73" font-size="15" font-weight="600" fill="#111114">Toegang tot je mailbox?</text>
+              <text x="102" y="92" font-size="12" fill="#8a8f98">Lezen, ordenen en verwijderen</text>
+              <rect x="60" y="112" width="250" height="8" rx="4" fill="#e8edf2"/>
+              <rect x="60" y="127" width="180" height="8" rx="4" fill="#e8edf2"/>
+              <rect x="150" y="148" width="84" height="28" rx="14" fill="#e8edf2"/>
+              <text x="192" y="166.5" font-size="12" font-weight="500" fill="#555b66" text-anchor="middle">Weigeren</text>
+              <rect x="242" y="148" width="84" height="28" rx="14" fill="#013bff"/>
+              <text x="284" y="166.5" font-size="12" font-weight="600" fill="#fff" text-anchor="middle">Toestaan</text>
+            </g>
+          </g>
+          <g transform="rotate(-9 196 118)">
+            <rect x="104" y="94" width="184" height="48" rx="24" fill="#fff" stroke="#ff5a79" stroke-width="3"/>
+            <text x="196" y="126" font-size="22" font-weight="700" fill="#ff5a79" text-anchor="middle">Niet nodig</text>
+          </g>
+
+          <rect x="170" y="206" width="352" height="196" rx="18" fill="#fff" filter="url(#bbx-shadow)"/>
+          <path d="M194 236h16m-6-6 6 6-6 6" fill="none" stroke="#013bff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="222" y="241" font-size="15" font-weight="600" fill="#111114">Doorsturen</text>
+          <line x1="190" y1="258" x2="502" y2="258" stroke="#eef0f5" stroke-width="1.5"/>
+          <text x="192" y="287" font-size="13" fill="#8a8f98">Aan</text>
+          <rect x="222" y="268" width="234" height="28" rx="14" fill="#edf1ff" stroke="#b6c7ff"/>
+          <text x="238" y="287" font-size="13.5" font-weight="600" fill="#013bff">jouwnaam@in.betaalbuddy.nl</text>
+          <line x1="190" y1="310" x2="502" y2="310" stroke="#eef0f5" stroke-width="1.5"/>
+          <text x="192" y="337" font-size="14" font-weight="600" fill="#111114">Fwd: Rekening november</text>
+          <rect x="192" y="352" width="300" height="8" rx="4" fill="#e8edf2"/>
+          <rect x="192" y="368" width="196" height="8" rx="4" fill="#e8edf2"/>
+          <rect x="410" y="364" width="92" height="30" rx="15" fill="#013bff"/>
+          <text x="456" y="383.5" font-size="13" font-weight="600" fill="#fff" text-anchor="middle">Verstuur</text>
+
+          <use href="#bbx-buddy-b" x="54" y="298" width="94" height="102"/>
+        </svg>
+      </div>
+      <div class="bbx-copy bbx-reveal">
+        <span class="bbx-step"><b>01</b>Doorsturen</span>
+        <h3 class="bbx-title">Geen koppeling met je mail nodig.</h3>
+        <p class="bbx-body">Je logt nergens in en je deelt geen wachtwoord of account. Bij je aanmelding krijg je een eigen doorstuuradres. Komt er een rekening binnen? Dan stuur jij hem door naar dat adres, of je stelt één keer een doorstuurregel in je mailprogramma in.</p>
+        <p class="bbx-kicker">Dat betekent ook: stuur je niets door, dan ziet Buddy niets. Jij houdt de sleutel, Buddy kan zelf nergens bij.</p>
+        <ul class="bbx-chips">
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen inlog of wachtwoord</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen toegang tot je inbox</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Werkt met elk mailprogramma</li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- 02 · Geen AI, maar vaste regels -->
+    <li class="bbx-row">
+      <div class="bbx-art bbx-art--blue bbx-reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="bbx-art2">
+          <title id="bbx-art2">Een mail waarvan alleen de afzender, het bedrag, de vervaldatum en het rekeningnummer zijn gemarkeerd. Die vier gaan naar een kaartje Gevonden. De rest van de mail blijft grijs.</title>
+          <rect x="32" y="36" width="282" height="368" rx="18" fill="#fff"/>
+          <circle cx="62" cy="66" r="15" fill="#e8edf2"/>
+          <rect x="86" y="54" width="92" height="25" rx="7" fill="#d9e2fe"/>
+          <text x="132" y="71.5" font-size="14" font-weight="600" fill="#013bff" text-anchor="middle">Verhuurder</text>
+          <rect x="86" y="86" width="60" height="7" rx="3.5" fill="#e8edf2"/>
+          <g fill="#eceff3">
+            <rect x="50" y="110" width="176" height="11" rx="5.5" fill="#dfe4ea"/>
+            <rect x="50" y="138" width="246" height="7" rx="3.5"/>
+            <rect x="50" y="153" width="200" height="7" rx="3.5"/>
+            <rect x="50" y="183" width="64" height="7" rx="3.5"/>
+            <rect x="50" y="216" width="236" height="7" rx="3.5"/>
+            <rect x="50" y="246" width="86" height="7" rx="3.5"/>
+            <rect x="50" y="279" width="226" height="7" rx="3.5"/>
+            <rect x="50" y="309" width="36" height="7" rx="3.5"/>
+            <rect x="50" y="342" width="240" height="7" rx="3.5"/>
+            <rect x="50" y="357" width="170" height="7" rx="3.5"/>
+            <rect x="50" y="380" width="120" height="7" rx="3.5"/>
+          </g>
+          <rect x="122" y="173" width="84" height="27" rx="8" fill="#d9e2fe"/>
+          <text x="164" y="192" font-size="15" font-weight="700" fill="#013bff" text-anchor="middle">€64,50</text>
+          <rect x="144" y="236" width="114" height="27" rx="8" fill="#d9e2fe"/>
+          <text x="201" y="255" font-size="15" font-weight="700" fill="#013bff" text-anchor="middle">27 november</text>
+          <rect x="94" y="299" width="204" height="27" rx="8" fill="#d9e2fe"/>
+          <text x="196" y="317.5" font-size="13.5" font-weight="700" fill="#013bff" text-anchor="middle">NL12 BANK 0123 4567 89</text>
+
+          <g fill="none" stroke="#b6c7ff" stroke-width="2" stroke-linecap="round">
+            <path class="bbx-flow" d="M178 66H314C352 66 344 180 382 180"/>
+            <path class="bbx-flow" d="M206 186.5H314C350 186.5 346 224 382 224"/>
+            <path class="bbx-flow" d="M258 249.5H314C350 249.5 346 268 382 268"/>
+            <path class="bbx-flow" d="M298 312.5H382"/>
+          </g>
+          <g fill="#b6c7ff">
+            <circle cx="382" cy="180" r="4"/><circle cx="382" cy="224" r="4"/>
+            <circle cx="382" cy="268" r="4"/><circle cx="382" cy="312.5" r="4"/>
+          </g>
+
+          <rect x="382" y="118" width="150" height="220" rx="16" fill="#fff"/>
+          <text x="400" y="145" font-size="12" font-weight="600" fill="#2459fd">Gevonden</text>
+          <g font-size="11.5" fill="#9aa0a8">
+            <text x="400" y="170">Afzender</text>
+            <text x="400" y="214">Bedrag</text>
+            <text x="400" y="258">Vervaldatum</text>
+            <text x="400" y="302">Rekening</text>
+          </g>
+          <g font-size="15" font-weight="600" fill="#111114">
+            <text x="400" y="188">Verhuurder</text>
+            <text x="400" y="232">€64,50</text>
+            <text x="400" y="276">27 nov</text>
+            <text x="400" y="320">NL12 … 89</text>
+          </g>
+
+          <rect x="382" y="62" width="150" height="36" rx="18" fill="none" stroke="#b6c7ff" stroke-opacity=".75" stroke-width="1.5"/>
+          <path d="M406 73l-7 7 7 7M418 73l7 7-7 7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="434" y="85" font-size="13.5" font-weight="600" fill="#fff">Vaste regels</text>
+
+          <rect x="382" y="356" width="150" height="36" rx="18" fill="none" stroke="#b6c7ff" stroke-opacity=".75" stroke-width="1.5"/>
+          <path d="M406 364l2.6 6.4 6.4 2.6-6.4 2.6-2.6 6.4-2.6-6.4-6.4-2.6 6.4-2.6z" fill="#fff"/>
+          <line x1="396" y1="383" x2="416" y2="363" stroke="#ff5a79" stroke-width="2.6" stroke-linecap="round"/>
+          <text x="426" y="379" font-size="13.5" font-weight="600" fill="#fff">Geen AI-dienst</text>
+        </svg>
+      </div>
+      <div class="bbx-copy bbx-reveal">
+        <span class="bbx-step"><b>02</b>Uitlezen</span>
+        <h3 class="bbx-title">Geen AI, maar vaste regels.</h3>
+        <p class="bbx-body">Je mail wordt niet aan een AI voorgelegd en gaat niet naar een externe AI-dienst. Vaste regels in onze eigen code zoeken naar vier dingen: de afzender, het bedrag, de vervaldatum en het rekeningnummer. Zo'n regel kijkt bijvoorbeeld naar wat er achter ‘te betalen vóór’ staat.</p>
+        <p class="bbx-kicker">Alles daaromheen, zoals je aanhef, je klantnummer of de reclame onderaan, doet niet mee. Geen model dat meeleest. Zelfde mail, zelfde uitkomst.</p>
+        <ul class="bbx-chips">
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen AI die meeleest</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Eigen code, vaste regels</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Alleen vier gegevens</li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- 03 · Twijfel? Dan vraagt Buddy het jou -->
+    <li class="bbx-row">
+      <div class="bbx-art bbx-reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="bbx-art3">
+          <title id="bbx-art3">Een mail van Buddy: ik zie twee datums in je rekening van Verhuurder, welke klopt? Je kiest 27 november en daarna staat die datum in je agenda.</title>
+          <rect x="56" y="54" width="404" height="262" rx="18" fill="#fff" filter="url(#bbx-shadow)"/>
+          <circle cx="92" cy="92" r="19" fill="#013bff"/>
+          <use href="#bbx-buddy-w" x="81" y="80" width="22" height="24"/>
+          <text x="122" y="88" font-size="14.5" font-weight="600" fill="#111114">Buddy</text>
+          <text x="122" y="106" font-size="12.5" fill="#8a8f98">Even checken: welke datum klopt?</text>
+          <line x1="76" y1="128" x2="440" y2="128" stroke="#eef0f5" stroke-width="1.5"/>
+          <text x="80" y="158" font-size="14.5" fill="#404040">Ik zie twee datums in je rekening</text>
+          <text x="80" y="179" font-size="14.5" fill="#404040">van Verhuurder. Welke klopt?</text>
+          <rect x="80" y="200" width="122" height="42" rx="21" fill="#fff" stroke="#d9e2fe" stroke-width="2"/>
+          <text x="141" y="226" font-size="15" font-weight="600" fill="#a3a9b3" text-anchor="middle">18 nov</text>
+          <line x1="114" y1="221" x2="168" y2="221" stroke="#a3a9b3" stroke-width="2"/>
+          <rect x="214" y="200" width="138" height="42" rx="21" fill="#013bff"/>
+          <path d="M240 221l5 5 9-10" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="298" y="226" font-size="15" font-weight="600" fill="#fff" text-anchor="middle">27 nov</text>
+          <text x="80" y="282" font-size="12.5" fill="#8a8f98">Antwoord gewoon op deze mail.</text>
+
+          <circle cx="462" cy="62" r="30" fill="#ffce31"/>
+          <text x="462" y="75" font-size="36" font-weight="700" fill="#111114" text-anchor="middle">?</text>
+
+          <rect x="56" y="338" width="232" height="64" rx="16" fill="#fff" filter="url(#bbx-shadow)"/>
+          <rect x="70" y="350" width="40" height="40" rx="10" fill="#013bff"/>
+          <text x="90" y="376.5" font-size="17" font-weight="700" fill="#fff" text-anchor="middle">27</text>
+          <text x="124" y="366" font-size="14" font-weight="600" fill="#111114">27 november</text>
+          <text x="124" y="384" font-size="12" fill="#8a8f98">staat nu in je agenda</text>
+
+          <use href="#bbx-buddy-b" x="404" y="292" width="112" height="122"/>
+        </svg>
+      </div>
+      <div class="bbx-copy bbx-reveal">
+        <span class="bbx-step"><b>03</b>Controleren</span>
+        <h3 class="bbx-title">Twijfelt Buddy? Dan gokt hij niet.</h3>
+        <p class="bbx-body">Soms staan er twee datums in een mail, of staat het bedrag op een rare plek. Een vaste regel gaat dan niet raden. Kan Buddy iets niet zeker vinden, dan krijg je een mailtje met de vraag het even aan te vullen. Jij antwoordt, Buddy zet het goed.</p>
+        <p class="bbx-kicker">Liever één vraag te veel dan een herinnering op de verkeerde dag.</p>
+      </div>
+    </li>
+
+    <!-- 04 · We bewaren je mail niet -->
+    <li class="bbx-row">
+      <div class="bbx-art bbx-art--blue bbx-reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="bbx-art4">
+          <title id="bbx-art4">Links een doorzichtige mail met onderwerp, tekst en bijlage en de stempel Niet opgeslagen. Rechts een kaartje Opgeslagen met alleen naam, bedrag, datum en rekeningnummer, na 14 dagen opgeruimd.</title>
+          <rect x="32" y="64" width="222" height="300" rx="18" fill="#fff" fill-opacity=".08" stroke="#fff" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <g font-size="12" font-weight="600" fill="#b6c7ff">
+            <text x="52" y="98">Onderwerp</text>
+            <text x="52" y="148">Tekst</text>
+            <text x="52" y="250">Bijlage</text>
+          </g>
+          <g fill="#fff" fill-opacity=".3">
+            <rect x="52" y="108" width="150" height="10" rx="5" fill-opacity=".38"/>
+            <rect x="52" y="158" width="180" height="7" rx="3.5"/>
+            <rect x="52" y="172" width="150" height="7" rx="3.5"/>
+            <rect x="52" y="186" width="172" height="7" rx="3.5"/>
+            <rect x="52" y="200" width="120" height="7" rx="3.5"/>
+            <rect x="52" y="214" width="160" height="7" rx="3.5"/>
+          </g>
+          <rect x="52" y="260" width="140" height="32" rx="9" fill="#fff" fill-opacity=".16"/>
+          <path d="M71 269v11a4 4 0 0 1-8 0v-12a2.5 2.5 0 0 1 5 0v11" fill="none" stroke="#fff" stroke-opacity=".85" stroke-width="1.6" stroke-linecap="round"/>
+          <text x="82" y="281" font-size="12.5" fill="#fff" fill-opacity=".85">rekening.pdf</text>
+          <g transform="rotate(-8 143 330)">
+            <rect x="52" y="311" width="182" height="38" rx="19" fill="#ff5a79"/>
+            <text x="143" y="336" font-size="15" font-weight="700" fill="#fff" text-anchor="middle">Niet opgeslagen</text>
+          </g>
+
+          <path d="M268 222h40m-9-9 9 9-9 9" fill="none" stroke="#fff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+
+          <rect x="322" y="122" width="206" height="200" rx="18" fill="#fff"/>
+          <text x="342" y="150" font-size="12" font-weight="600" fill="#2459fd">Opgeslagen</text>
+          <use href="#bbx-check" x="340" y="168" width="20" height="20"/>
+          <use href="#bbx-check" x="340" y="204" width="20" height="20"/>
+          <use href="#bbx-check" x="340" y="240" width="20" height="20"/>
+          <use href="#bbx-check" x="340" y="276" width="20" height="20"/>
+          <g font-size="15" font-weight="600" fill="#111114">
+            <text x="370" y="183">Naam</text>
+            <text x="370" y="219">Bedrag</text>
+            <text x="370" y="255">Datum</text>
+            <text x="370" y="291">Rekeningnummer</text>
+          </g>
+          <use href="#bbx-buddy-w" x="396" y="60" width="58" height="64"/>
+
+          <rect x="322" y="338" width="206" height="54" rx="14" fill="#fff" fill-opacity=".1" stroke="#b6c7ff" stroke-opacity=".6"/>
+          <circle cx="346" cy="365" r="10" fill="none" stroke="#fff" stroke-width="2"/>
+          <path d="M346 359v6l4 3" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="366" y="361" font-size="13" font-weight="600" fill="#fff">Na 14 dagen opgeruimd</text>
+          <text x="366" y="379" font-size="11.5" fill="#b6c7ff">vanaf de vervaldatum</text>
+        </svg>
+      </div>
+      <div class="bbx-copy bbx-reveal">
+        <span class="bbx-step"><b>04</b>Bewaren</span>
+        <h3 class="bbx-title">We bewaren je mail niet.</h3>
+        <p class="bbx-body">Wat jij doorstuurt, bestaat bij ons een paar honderd milliseconden in het geheugen. Wat overblijft is een naam, een bedrag, een datum en een rekeningnummer. De tekst, het onderwerp en de bijlage worden nergens weggeschreven. Er is in onze database simpelweg geen plek waar een mail in past.</p>
+        <p class="bbx-kicker">En ook die vier gegevens ruimen we op, 14 dagen na de vervaldatum.</p>
+        <ul class="bbx-chips">
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen mailtekst</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen bijlagen</li>
+          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Opgeruimd na de vervaldatum</li>
+        </ul>
+      </div>
+    </li>
+
+    <!-- 05 · Op tijd een seintje -->
+    <li class="bbx-row">
+      <div class="bbx-art bbx-reveal">
+        <svg viewBox="0 0 560 440" role="img" aria-labelledby="bbx-art5">
+          <title id="bbx-art5">Een agenda van november met 27 november als vervaldatum. Daarnaast herinneringen Nog 7 dagen en Nog 2 dagen, en een weekoverzicht.</title>
+          <rect x="34" y="46" width="272" height="348" rx="18" fill="#fff" filter="url(#bbx-shadow)"/>
+          <text x="56" y="88" font-size="18" font-weight="600" fill="#013bff">November</text>
+          <path d="M268 78l-5 5 5 5M282 78l5 5-5 5" fill="none" stroke="#b6c7ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <g font-size="11.5" font-weight="600" fill="#9aa0a8" text-anchor="middle">
+            <text x="73" y="122">M</text><text x="107" y="122">D</text><text x="141" y="122">W</text><text x="175" y="122">D</text><text x="209" y="122">V</text><text x="243" y="122">Z</text><text x="277" y="122">Z</text>
+          </g>
+          <circle cx="209" cy="272" r="16" fill="#d9e2fe"/>
+          <circle cx="141" cy="312" r="16" fill="#d9e2fe"/>
+          <circle cx="209" cy="312" r="16" fill="#013bff"/>
+          <g font-size="13" fill="#404040" text-anchor="middle">
+            <text x="277" y="157">1</text>
+            <text x="73" y="197">2</text><text x="107" y="197">3</text><text x="141" y="197">4</text><text x="175" y="197">5</text><text x="209" y="197">6</text><text x="243" y="197">7</text><text x="277" y="197">8</text>
+            <text x="73" y="237">9</text><text x="107" y="237">10</text><text x="141" y="237">11</text><text x="175" y="237">12</text><text x="209" y="237">13</text><text x="243" y="237">14</text><text x="277" y="237">15</text>
+            <text x="73" y="277">16</text><text x="107" y="277">17</text><text x="141" y="277">18</text><text x="175" y="277">19</text><text x="209" y="277" font-weight="600" fill="#013bff">20</text><text x="243" y="277">21</text><text x="277" y="277">22</text>
+            <text x="73" y="317">23</text><text x="107" y="317">24</text><text x="141" y="317" font-weight="600" fill="#013bff">25</text><text x="175" y="317">26</text><text x="209" y="317" font-weight="700" fill="#fff">27</text><text x="243" y="317">28</text><text x="277" y="317">29</text>
+            <text x="73" y="357">30</text>
+          </g>
+
+          <rect x="288" y="148" width="244" height="66" rx="16" fill="#fff" filter="url(#bbx-shadow)"/>
+          <circle cx="318" cy="181" r="17" fill="#edf1ff"/>
+          <use href="#bbx-bell" x="309" y="172" width="18" height="18" color="#013bff"/>
+          <text x="346" y="177" font-size="14.5" font-weight="600" fill="#111114">Nog 7 dagen</text>
+          <text x="346" y="197" font-size="12.5" fill="#8a8f98">Verhuurder · €64,50</text>
+          <text x="518" y="177" font-size="11" fill="#b1afb2" text-anchor="end">20 nov</text>
+
+          <rect x="300" y="228" width="232" height="66" rx="16" fill="#fff" filter="url(#bbx-shadow)"/>
+          <circle cx="330" cy="261" r="17" fill="#ffce31"/>
+          <use href="#bbx-bell" x="321" y="252" width="18" height="18" color="#111114"/>
+          <text x="358" y="257" font-size="14.5" font-weight="600" fill="#111114">Nog 2 dagen</text>
+          <text x="358" y="277" font-size="12.5" fill="#8a8f98">Verhuurder · €64,50</text>
+          <text x="518" y="257" font-size="11" fill="#b1afb2" text-anchor="end">25 nov</text>
+
+          <rect x="312" y="308" width="220" height="62" rx="16" fill="#fff" filter="url(#bbx-shadow)"/>
+          <circle cx="342" cy="339" r="17" fill="#edf1ff"/>
+          <path d="M335 333h14M335 339h14M335 345h9" fill="none" stroke="#013bff" stroke-width="2" stroke-linecap="round"/>
+          <text x="370" y="335" font-size="14" font-weight="600" fill="#111114">Je weekoverzicht</text>
+          <text x="370" y="354" font-size="12.5" fill="#8a8f98">1 rekening staat open</text>
+
+          <use href="#bbx-buddy-b" x="452" y="82" width="62" height="68"/>
+        </svg>
+      </div>
+      <div class="bbx-copy bbx-reveal">
+        <span class="bbx-step"><b>05</b>Herinneren</span>
+        <h3 class="bbx-title">Op tijd een seintje. En de datum in je agenda.</h3>
+        <p class="bbx-body">Zeven dagen en twee dagen voor de vervaldatum krijg je een herinnering per mail. Met je agendalink staat elke vervaldatum ook gewoon in je eigen agenda, tussen je afspraken. En één keer per week zie je in een overzicht wat er nog openstaat.</p>
+        <p class="bbx-kicker">Betalen doe je zelf, wanneer het jou uitkomt. Buddy zorgt er alleen voor dat je het niet vergeet.</p>
+        <p class="bbx-note">Herinneringen en de agendalink zitten in Buddy en Buddy pro.</p>
+      </div>
+    </li>
+
+  </ol>
+
+  <div class="bbx-cta bbx-reveal">
+    <a class="bbx-btn" href="https://www.betaalbuddy.nl/start-met-betaalbuddy/">
+      <svg viewBox="0 0 465 507" aria-hidden="true"><use href="#bbx-buddy-w"/></svg>
+      Probeer het met je eigen rekening
+    </a>
+    <p>Nog een vraag? Kijk bij de <a href="#faq">veelgestelde vragen</a>.</p>
+  </div>
+
+</div>
+
+<script>
+(function(){
+  var root=document.getElementById('bb-uitleg');
+  if(!root||!('IntersectionObserver' in window)) return;
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  root.classList.add('bbx-anim');
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){e.target.classList.add('bbx-in');io.unobserve(e.target);}
+    });
+  },{rootMargin:'0px 0px -8% 0px',threshold:0.12});
+  root.querySelectorAll('.bbx-reveal').forEach(function(el){io.observe(el);});
+})();
+</script>
+</section>
+<!-- ===================== EINDE SECTIE "Onder de motorkap" ===================== -->
+
+</body>
+</html>
