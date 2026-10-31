@@ -4,11 +4,17 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Zo werkt Buddy · sectie</title>
-<!-- Alleen voor deze preview. Op betaalbuddy.nl laadt Oxygen Space Grotesk al. -->
+<!-- Alleen voor deze preview. Op betaalbuddy.nl laadt Oxygen Space Grotesk al (koppen). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-<style>html,body{margin:0;background:#fafbff}</style>
+<style>
+  html,body{margin:0;background:#fafbff}
+  /* Nabootsing van betaalbuddy.nl: daar zet het Code Block "BetaalBuddy Conversie Elementen"
+     body op 'space-grotesk'. Die naam bestaat niet, dus de browser valt terug op zijn
+     standaardletter. De sectie neemt de letter van de pagina over en loopt zo altijd gelijk. */
+  body{font-family:'space-grotesk';letter-spacing:-0.1px}
+</style>
 </head>
 <body>
 
@@ -24,12 +30,15 @@
   --bb-blue:#013bff;--bb-mid:#2459fd;--bb-soft:#b6c7ff;--bb-softer:#d9e2fe;
   --bb-tint:#edf1ff;--bb-ink:#111114;--bb-text:#404040;--bb-muted:#6b7280;
   background:#fafbff;color:var(--bb-text);
-  font-family:'Space Grotesk',system-ui,-apple-system,sans-serif;
+  font-family:inherit;letter-spacing:-0.1px;
   padding:110px 25px;overflow:hidden;
 }
 #bb-uitleg *,#bb-uitleg *::before,#bb-uitleg *::after{box-sizing:border-box}
 #bb-uitleg h2,#bb-uitleg h3,#bb-uitleg p,#bb-uitleg ul,#bb-uitleg ol,#bb-uitleg li{margin:0;padding:0}
-#bb-uitleg svg text{font-family:'Space Grotesk',system-ui,-apple-system,sans-serif}
+/* Zelfde verdeling als op de site: koppen, titels, labels en knoppen in Space Grotesk,
+   lopende tekst in de letter van de pagina (font-family:inherit hierboven). */
+#bb-uitleg .bbx-eyebrow,#bb-uitleg .bbx-h2,#bb-uitleg .bbx-step,#bb-uitleg .bbx-title,
+#bb-uitleg .bbx-feats li,#bb-uitleg .bbx-btn,#bb-uitleg svg text{font-family:'Space Grotesk',sans-serif}
 #bb-uitleg .bbx-sprite{position:absolute;width:0;height:0;overflow:hidden}
 
 #bb-uitleg .bbx-wrap{max-width:1120px;margin:0 auto}
@@ -37,7 +46,7 @@
 /* Kop van de sectie */
 #bb-uitleg .bbx-head{max-width:720px;margin:0 auto 88px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:22px}
 #bb-uitleg .bbx-eyebrow{display:inline-flex;padding:5px 12px;border-radius:55px;background:var(--bb-blue);color:#fff;font-size:14px;font-weight:500}
-#bb-uitleg .bbx-h2{font-size:3rem;line-height:1;font-weight:600;letter-spacing:-0.04em;color:var(--bb-blue);text-wrap:balance}
+#bb-uitleg .bbx-h2{font-size:3rem;line-height:1;font-weight:600;letter-spacing:-0.1px;color:var(--bb-blue);text-wrap:balance}
 #bb-uitleg .bbx-h2 span{color:var(--bb-mid);display:block}
 #bb-uitleg .bbx-intro{font-size:20px;line-height:1.45;max-width:560px;text-wrap:pretty}
 
@@ -54,7 +63,7 @@
 #bb-uitleg .bbx-copy{display:flex;flex-direction:column;align-items:flex-start;gap:18px;max-width:500px}
 #bb-uitleg .bbx-step{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--bb-mid)}
 #bb-uitleg .bbx-step b{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--bb-softer);color:var(--bb-blue);font-weight:600;font-size:14px}
-#bb-uitleg .bbx-title{font-size:2.35rem;line-height:1.04;font-weight:600;letter-spacing:-0.035em;color:var(--bb-blue);text-wrap:balance}
+#bb-uitleg .bbx-title{font-size:2.35rem;line-height:1.05;font-weight:600;letter-spacing:-0.1px;color:var(--bb-blue);text-wrap:balance}
 #bb-uitleg .bbx-body{font-size:19px;line-height:1.5}
 #bb-uitleg .bbx-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;list-style:none;margin-top:6px;padding-top:24px;border-top:1px solid #e3e9fb}
 #bb-uitleg .bbx-feats li{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:15px;font-weight:500;line-height:1.25;color:var(--bb-ink)}
