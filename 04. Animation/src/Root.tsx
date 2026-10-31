@@ -1,6 +1,8 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { BallonAd } from "./ballon/BallonAd";
+import { type BallonProps, ballonSchema, ballonTotal, defaultBallonProps } from "./ballon/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const ballonMetadata: CalculateMetadataFunction<BallonProps> = ({ props }) => ({
+  durationInFrames: ballonTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 31 · "Jij laat los. Buddy houdt vast." (CONCEPT-31.md) */}
+    <Folder name="Concept-31-Ballon">
+      <Composition
+        id="BB-Ballon-Reel"
+        component={BallonAd}
+        schema={ballonSchema}
+        defaultProps={defaultBallonProps}
+        calculateMetadata={ballonMetadata}
+        durationInFrames={ballonTotal(defaultBallonProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Ballon-Feed"
+        component={BallonAd}
+        schema={ballonSchema}
+        defaultProps={defaultBallonProps}
+        calculateMetadata={ballonMetadata}
+        durationInFrames={ballonTotal(defaultBallonProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
