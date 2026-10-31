@@ -17,7 +17,7 @@
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "still:herovsl": "remotion still BB-HeroVSL-Desktop out/BB-HeroVSL-summary.png --frame=150",
+    "still:herovsl": "remotion still BB-HeroVSL-Desktop out/BB-HeroVSL-summary.png --frame=290",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

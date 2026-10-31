@@ -10,12 +10,12 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
-| Hero VSL · "Stuur door. Buddy seint. Jij betaalt op tijd." ([`HERO-VSL.md`](./HERO-VSL.md)) | `BB-HeroVSL-Desktop` | 1920 × 1080 (16:9) | Homepage hero, desktop | 17.6 s loop |
-| | `BB-HeroVSL-Mobile` | 1080 × 1350 (4:5) | Homepage hero, mobile | 17.6 s loop |
+| Hero VSL · "Stuur door. Buddy seint. Jij betaalt op tijd." ([`HERO-VSL.md`](./HERO-VSL.md)) | `BB-HeroVSL-Desktop` | 1920 × 1080 (16:9) | Homepage hero, desktop | 10.6 s loop |
+| | `BB-HeroVSL-Mobile` | 1080 × 1350 (4:5) | Homepage hero, mobile | 10.6 s loop |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
-**Hero VSL:** autoplays muted in a seamless loop; the first 5 seconds are the whole pitch. Web-ready files (compressed MP4s and posters), the embed snippet for the WordPress/Oxygen hero and a local test page are in [`renders/hero-vsl/`](./renders/hero-vsl). How to place it is in [`HERO-VSL.md`](./HERO-VSL.md).
+**Hero VSL:** autoplays muted in a seamless loop; calm, one line and one object at a time, with the win on screen at about 5 seconds. Web-ready files (compressed MP4s and posters), the embed snippet for the WordPress/Oxygen hero and a local test page are in [`renders/hero-vsl/`](./renders/hero-vsl). How to place it is in [`HERO-VSL.md`](./HERO-VSL.md).
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
 
@@ -80,8 +80,8 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
-  herovsl/            hero VSL: HeroVsl.tsx, schema.ts, layout.tsx (16:9 + 4:5), scenes/ (Pitch · Stuur door ·
-                      Buddy onthoudt · Seintje op tijd · Belofte), components/ui.tsx
+  herovsl/            hero VSL: HeroVsl.tsx, schema.ts, layout.tsx (16:9 + 4:5), scenes/ (Steps · End),
+                      components/ui.tsx
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …

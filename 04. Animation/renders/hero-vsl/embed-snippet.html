@@ -8,8 +8,8 @@
   · speelt automatisch, zonder geluid, in een lus (dat mag in elke browser alleen muted);
   · kiest 16:9 op desktop en 4:5 op mobiel (onder 768 px), en laadt alleen die ene video;
   · pauzeert als de video uit beeld is (scheelt batterij en CPU);
-  · bij "verminderde beweging" (prefers-reduced-motion) geen video: dan staat de
-    samenvatting met alle drie de stappen als stilstaand beeld;
+  · bij "verminderde beweging" (prefers-reduced-motion) geen video: dan staat het
+    slotbeeld (belofte en knop) als stilstaand beeld;
   · de hele video linkt naar de start-pagina (haal de <a> weg als je dat niet wilt).
 -->
 <a class="bb-vsl" href="/start-met-betaalbuddy/" aria-label="Start met BetaalBuddy">
@@ -29,10 +29,8 @@
     aria-describedby="bb-vsl-text"
   ></video>
   <span id="bb-vsl-text" class="bb-vsl__sr">
-    Zo werkt BetaalBuddy. 1: stuur je rekening door naar je eigen Buddy-adres, met de hand of
-    automatisch met een filterregel. 2: Buddy haalt er het bedrag, de vervaldatum, het kenmerk en
-    de betaallink uit. 3: je krijgt 7 en 2 dagen voor de vervaldatum een seintje in je mail, en de
-    vervaldatum staat in je agenda. Zo betaal jij op tijd. Geen app, geen bankkoppeling.
+    Zo werkt BetaalBuddy. 1: stuur je rekening door naar Buddy. 2: Buddy seint je op tijd, voor de
+    vervaldatum. 3: jij betaalt op tijd, zonder extra kosten. Nooit meer een rekening vergeten.
   </span>
 </a>
 
@@ -85,7 +83,7 @@
     video.muted = true;
     video.defaultMuted = true;
     video.poster = video.dataset[key + (reduced ? "Summary" : "Poster")];
-    // Reduced motion: no video at all; the summary frame shows all three steps.
+    // Reduced motion: no video at all; the end frame (promise + button) is shown.
     if (reduced) return;
     video.src = video.dataset[key];
 

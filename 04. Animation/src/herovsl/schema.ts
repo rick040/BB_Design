@@ -3,73 +3,32 @@ import { z } from "zod";
 import { brand } from "../theme";
 
 // Hero VSL for the homepage (betaalbuddy.nl). Autoplays muted and loops, so
-// everything is told in on-screen text. The first scene (~5 s) is the whole
-// pitch: forward → Buddy reminds you → you pay on time. Scenes 2–4 explain
-// the three steps in more detail, scene 5 is the promise + CTA, and the last
-// frames slide back into frame 0 so the loop has no visible seam.
+// everything is told in on-screen text. Deliberately calm: one short line on
+// top, one object in the middle, Buddy below, always in the same place.
+//
+//   Step 1  "Stuur je rekening door."   the bill flies to Buddy
+//   Step 2  "Buddy seint je op tijd."   one reminder rises out of Buddy
+//   Step 3  "Jij betaalt op tijd."      "Betaald" with a checkmark (≈5 s)
+//   End     promise + button + wordmark, then it slides back to frame 0.
 //
 // Every field below is editable in Remotion Studio (Props panel).
-// Tip: "\n" in a title or body forces a line break.
 
 export const heroVslSchema = z.object({
-  // The example bill that travels through the whole video.
+  // The example bill.
   bill: z.object({
     sender: z.string(),
-    subject: z.string(),
-    amount: z.string(),
     dueLabel: z.string(),
-  }),
-  pitch: z.object({
-    overline: z.string(),
-    // The three-step pitch. Line 1 is on screen from frame 0.
-    lines: z.array(z.string()).length(3),
+    amount: z.string(),
     forwardButton: z.string(),
-    remind7: z.object({ text: z.string(), time: z.string() }),
-    remind2: z.object({ text: z.string(), time: z.string() }),
-    paidTitle: z.string(),
-    paidText: z.string(),
-    // Two chips that get crossed out: what you no longer get.
-    crossedOut: z.array(z.string()).length(2),
   }),
-  // Labels of the step indicator shown during scenes 2–4.
+  // One line per step, shown one at a time.
   steps: z.array(z.string()).length(3),
-  send: z.object({
-    title: z.string(),
-    body: z.string(),
-    composeTitle: z.string(),
-    toLabel: z.string(),
-    address: z.string(),
-    subjectLabel: z.string(),
-    subjectLine: z.string(),
-    sendButton: z.string(),
-    autoLabel: z.string(),
-    autoNote: z.string(),
-  }),
-  read: z.object({
-    title: z.string(),
-    body: z.string(),
-    greeting: z.string(),
-    // The four lines Buddy picks out of the forwarded mail.
-    fields: z
-      .array(z.object({ label: z.string(), value: z.string(), chip: z.string() }))
-      .length(4),
-  }),
-  remind: z.object({
-    title: z.string(),
-    body: z.string(),
-    month: z.string(),
-    weekdays: z.array(z.string()).length(7),
-    // Day number in the first cell (a Monday); two weeks are shown.
-    firstDay: z.number().int().min(1).max(31),
-    daysInMonth: z.number().int().min(28).max(31),
-    dueDay: z.number().int().min(1).max(31),
-    eventLabel: z.string(),
-    remind7: z.object({ text: z.string(), time: z.string() }),
-    remind2: z.object({ text: z.string(), time: z.string() }),
-  }),
+  reminder: z.object({ text: z.string(), time: z.string() }),
+  paid: z.object({ title: z.string(), text: z.string() }),
   end: z.object({
-    // First line white, the rest soft blue.
+    // First line white, the rest soft blue. "\n" = line break.
     headline: z.string(),
+    // Optional small line under the headline; leave empty to hide it.
     subline: z.string(),
     button: z.string(),
     showButton: z.boolean(),
@@ -82,11 +41,10 @@ export const heroVslSchema = z.object({
     alert: zColor(),
   }),
   timing: z.object({
-    pitch: z.number().min(5).max(10),
-    send: z.number().min(2.6).max(8),
-    read: z.number().min(2.6).max(8),
-    remind: z.number().min(2.8).max(8),
-    end: z.number().min(2.6).max(8),
+    step1: z.number().min(1.8).max(6),
+    step2: z.number().min(1.6).max(6),
+    step3: z.number().min(2).max(8),
+    end: z.number().min(2.4).max(8),
     transition: z.number().min(0.2).max(1),
     // The last frames slide back into frame 0 (seamless loop).
     loopIn: z.number().min(0).max(1),
@@ -100,59 +58,16 @@ export type HeroVslProps = z.infer<typeof heroVslSchema>;
 export const defaultHeroVslProps: HeroVslProps = {
   bill: {
     sender: "Energieleverancier",
-    subject: "Je factuur van november",
-    amount: "€86,40",
     dueLabel: "Vervalt 27 nov",
-  },
-  pitch: {
-    overline: "Zo werkt BetaalBuddy",
-    lines: ["Stuur je rekening door.", "Buddy seint je op tijd.", "Jij betaalt op tijd."],
+    amount: "€86,40",
     forwardButton: "Doorsturen",
-    remind7: { text: "Nog 7 dagen · €86,40", time: "20 nov" },
-    remind2: { text: "Nog 2 dagen · betaal op tijd", time: "25 nov" },
-    paidTitle: "Betaald",
-    paidText: "Energieleverancier · op tijd",
-    crossedOut: ["Aanmaning", "Extra kosten"],
   },
-  steps: ["Stuur door", "Buddy onthoudt", "Seintje op tijd"],
-  send: {
-    title: "Stuur je rekening door naar je eigen Buddy-adres.",
-    body: "Met de hand, of automatisch met één filterregel in je mail.",
-    composeTitle: "Doorsturen",
-    toLabel: "Aan",
-    address: "jouwnaam@in.betaalbuddy.nl",
-    subjectLabel: "Onderwerp",
-    subjectLine: "Fwd: Je factuur van november",
-    sendButton: "Verstuur",
-    autoLabel: "Automatisch doorsturen",
-    autoNote: "Voor je vaste afzenders",
-  },
-  read: {
-    title: "Buddy haalt eruit wat telt.",
-    body: "Alleen uit wat jij doorstuurt.\nJe mailbox ziet hij nooit.",
-    greeting: "Beste klant,",
-    fields: [
-      { label: "Te betalen", value: "€86,40", chip: "€86,40" },
-      { label: "Vervaldatum", value: "27 november", chip: "27 nov" },
-      { label: "Kenmerk", value: "4471 0923 5518", chip: "Kenmerk" },
-      { label: "Betaallink", value: "Betaal direct", chip: "Betaallink" },
-    ],
-  },
-  remind: {
-    title: "Jij krijgt op tijd een seintje.",
-    body: "7 en 2 dagen vooraf in je mail.\nDe vervaldatum staat in je agenda.",
-    month: "november",
-    weekdays: ["ma", "di", "wo", "do", "vr", "za", "zo"],
-    firstDay: 16,
-    daysInMonth: 30,
-    dueDay: 27,
-    eventLabel: "Energie €86,40",
-    remind7: { text: "Nog 7 dagen · €86,40", time: "20 nov" },
-    remind2: { text: "Nog 2 dagen · betaal op tijd", time: "25 nov" },
-  },
+  steps: ["Stuur je rekening door.", "Buddy seint je op tijd.", "Jij betaalt op tijd."],
+  reminder: { text: "Nog 2 dagen · €86,40", time: "25 nov" },
+  paid: { title: "Betaald", text: "Op tijd, zonder extra kosten" },
   end: {
     headline: "Nooit meer een\nrekening vergeten.",
-    subline: "Geen app. Geen bankkoppeling.",
+    subline: "",
     button: "activeer buddy",
     showButton: true,
   },
@@ -164,13 +79,12 @@ export const defaultHeroVslProps: HeroVslProps = {
     alert: brand.red,
   },
   timing: {
-    pitch: 5.6,
-    send: 3.4,
-    read: 3.2,
-    remind: 3.6,
-    end: 3.4,
-    transition: 0.4,
-    loopIn: 0.4,
+    step1: 2.3,
+    step2: 2.2,
+    step3: 3.0,
+    end: 3.6,
+    transition: 0.5,
+    loopIn: 0.5,
   },
   music: "",
   musicVolume: 0.6,
@@ -180,11 +94,15 @@ export const FPS = 30;
 
 export const heroVslFrames = (t: HeroVslProps["timing"]) => {
   const f = (s: number) => Math.round(s * FPS);
+  const step1 = f(t.step1);
+  const step2 = f(t.step2);
+  const step3 = f(t.step3);
   return {
-    pitch: f(t.pitch),
-    send: f(t.send),
-    read: f(t.read),
-    remind: f(t.remind),
+    step1,
+    step2,
+    step3,
+    // Steps 1–3 are one continuous shot.
+    steps: step1 + step2 + step3,
     end: f(t.end),
     transition: f(t.transition),
     loopIn: f(t.loopIn),
@@ -193,15 +111,5 @@ export const heroVslFrames = (t: HeroVslProps["timing"]) => {
 
 export const heroVslTotal = (t: HeroVslProps["timing"]) => {
   const s = heroVslFrames(t);
-  return s.pitch + s.send + s.read + s.remind + s.end - 4 * s.transition;
-};
-
-/** Global frame at which each scene starts (transitions overlap). */
-export const heroVslStarts = (t: HeroVslProps["timing"]) => {
-  const s = heroVslFrames(t);
-  const send = s.pitch - s.transition;
-  const read = send + s.send - s.transition;
-  const remind = read + s.read - s.transition;
-  const end = remind + s.remind - s.transition;
-  return { pitch: 0, send, read, remind, end };
+  return s.steps + s.end - s.transition;
 };
