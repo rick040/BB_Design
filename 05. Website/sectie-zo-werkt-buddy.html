@@ -55,11 +55,11 @@
 #bb-uitleg .bbx-step{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:500;color:var(--bb-mid)}
 #bb-uitleg .bbx-step b{display:inline-grid;place-items:center;width:32px;height:32px;border-radius:10px;background:var(--bb-softer);color:var(--bb-blue);font-weight:600;font-size:14px}
 #bb-uitleg .bbx-title{font-size:2.35rem;line-height:1.04;font-weight:600;letter-spacing:-0.035em;color:var(--bb-blue);text-wrap:balance}
-#bb-uitleg .bbx-body{font-size:18px;line-height:1.55}
-#bb-uitleg .bbx-kicker{font-size:18px;line-height:1.45;font-weight:500;color:var(--bb-ink);padding-left:16px;border-left:3px solid var(--bb-soft)}
-#bb-uitleg .bbx-chips{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin-top:4px}
-#bb-uitleg .bbx-chips li{display:inline-flex;align-items:center;gap:6px;padding:6px 12px 6px 9px;border-radius:55px;background:#fff;border:1px solid var(--bb-softer);color:var(--bb-blue);font-size:14px;font-weight:500;line-height:1.2}
-#bb-uitleg .bbx-chips svg{flex:none;width:15px;height:15px}
+#bb-uitleg .bbx-body{font-size:19px;line-height:1.5}
+#bb-uitleg .bbx-feats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;width:100%;list-style:none;margin-top:6px;padding-top:24px;border-top:1px solid #e3e9fb}
+#bb-uitleg .bbx-feats li{display:flex;flex-direction:column;align-items:flex-start;gap:10px;font-size:15px;font-weight:500;line-height:1.25;color:var(--bb-ink)}
+#bb-uitleg .bbx-ico{display:grid;place-items:center;width:46px;height:46px;border-radius:13px;background:var(--bb-tint);border:1px solid var(--bb-softer);color:var(--bb-blue)}
+#bb-uitleg .bbx-ico svg{width:23px;height:23px}
 #bb-uitleg .bbx-note{font-size:14px;line-height:1.4;color:var(--bb-muted)}
 
 /* Afsluiter */
@@ -101,7 +101,10 @@
   #bb-uitleg .bbx-intro{font-size:18px}
   #bb-uitleg .bbx-art{border-radius:18px}
   #bb-uitleg .bbx-title{font-size:1.7rem}
-  #bb-uitleg .bbx-body,#bb-uitleg .bbx-kicker{font-size:17px}
+  #bb-uitleg .bbx-body{font-size:17px}
+  #bb-uitleg .bbx-feats{gap:12px;padding-top:20px}
+  #bb-uitleg .bbx-feats li{font-size:14px}
+  #bb-uitleg .bbx-ico{width:42px;height:42px;border-radius:12px}
   #bb-uitleg .bbx-btn{font-size:16px;padding:9px 20px 9px 12px}
 }
 </style>
@@ -133,6 +136,22 @@
       <circle cx="8" cy="8" r="8" fill="#d9e2fe"/>
       <path d="M4.6 8.3l2.2 2.2 4.6-5" fill="none" stroke="#013bff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
     </symbol>
+    <!-- Iconen bij de labels -->
+    <symbol id="bbx-i-lock-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="11" width="14" height="9.5" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/><path d="M3.5 3.5l17 17" stroke="#edf1ff" stroke-width="5.5"/><path d="M3.5 3.5l17 17"/></g></symbol>
+    <symbol id="bbx-i-inbox-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 5h14l2 8v6H3v-6z"/><path d="M3 13h5l1.5 2.5h5L16 13h5"/><path d="M3.5 3.5l17 17" stroke="#edf1ff" stroke-width="5.5"/><path d="M3.5 3.5l17 17"/></g></symbol>
+    <symbol id="bbx-i-forward" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M14 6l6 6-6 6"/><path d="M20 12H11a6 6 0 0 0-6 6v1"/></g></symbol>
+    <symbol id="bbx-i-ai-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5l2.4 6.6 6.6 2.4-6.6 2.4L12 20.5l-2.4-6.6L3 11.5l6.6-2.4z"/><path d="M3.5 3.5l17 17" stroke="#edf1ff" stroke-width="5.5"/><path d="M3.5 3.5l17 17"/></g></symbol>
+    <symbol id="bbx-i-code" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M13.5 5l-3 14"/></g></symbol>
+    <symbol id="bbx-i-four" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></g></symbol>
+    <symbol id="bbx-i-question" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.6 9.4a2.5 2.5 0 1 1 3.4 2.4c-.6.3-1 .8-1 1.5v.5"/><path d="M12 17h.01"/></g></symbol>
+    <symbol id="bbx-i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2"/><path d="M3.5 7.5l8.5 6 8.5-6"/></g></symbol>
+    <symbol id="bbx-i-cal-check" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4M9 15l2 2 4-4"/></g></symbol>
+    <symbol id="bbx-i-text-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h8l4 4v14H6z"/><path d="M9 12h6M9 16h4"/><path d="M3.5 3.5l17 17" stroke="#edf1ff" stroke-width="5.5"/><path d="M3.5 3.5l17 17"/></g></symbol>
+    <symbol id="bbx-i-clip-off" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 7.5l-6 6a1.8 1.8 0 0 0 2.5 2.5l6.5-6.5a3.5 3.5 0 0 0-5-5L7 11a5.3 5.3 0 0 0 7.5 7.5l5-5"/><path d="M3.5 3.5l17 17" stroke="#edf1ff" stroke-width="5.5"/><path d="M3.5 3.5l17 17"/></g></symbol>
+    <symbol id="bbx-i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></g></symbol>
+    <symbol id="bbx-i-bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M6 16.5V11a6 6 0 1 1 12 0v5.5l1.5 2h-15z"/><path d="M10 20.5a2 2 0 0 0 4 0"/></g></symbol>
+    <symbol id="bbx-i-calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15" rx="2"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M12 15h.01"/></g></symbol>
+    <symbol id="bbx-i-list" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7h11M9 12h11M9 17h11M4.5 7h.01M4.5 12h.01M4.5 17h.01"/></g></symbol>
   </defs>
 </svg>
 
@@ -141,7 +160,7 @@
   <header class="bbx-head bbx-reveal">
     <span class="bbx-eyebrow">Onder de motorkap</span>
     <h2 class="bbx-h2" id="bbx-titel">Geen trucs. <span>Gewoon doorsturen.</span></h2>
-    <p class="bbx-intro">Je wilt weten wat er met je rekening gebeurt. Terecht. Dit is precies wat Buddy doet, en wat hij níet doet.</p>
+    <p class="bbx-intro">Dit doet Buddy met je rekening. En wat hij níet doet.</p>
   </header>
 
   <ol class="bbx-rows">
@@ -191,12 +210,11 @@
       <div class="bbx-copy bbx-reveal">
         <span class="bbx-step"><b>01</b>Doorsturen</span>
         <h3 class="bbx-title">Geen koppeling met je mail nodig.</h3>
-        <p class="bbx-body">Je logt nergens in en je deelt geen wachtwoord of account. Bij je aanmelding krijg je een eigen doorstuuradres. Komt er een rekening binnen? Dan stuur jij hem door naar dat adres, of je stelt één keer een doorstuurregel in je mailprogramma in.</p>
-        <p class="bbx-kicker">Dat betekent ook: stuur je niets door, dan ziet Buddy niets. Jij houdt de sleutel, Buddy kan zelf nergens bij.</p>
-        <ul class="bbx-chips">
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen inlog of wachtwoord</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen toegang tot je inbox</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Werkt met elk mailprogramma</li>
+        <p class="bbx-body">Je krijgt een eigen doorstuuradres en stuurt je rekeningen zelf door. Stuur je niets door, dan ziet Buddy ook niets.</p>
+        <ul class="bbx-feats">
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-lock-off"/></svg></span>Geen inlog of wachtwoord</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-inbox-off"/></svg></span>Geen toegang tot je inbox</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-forward"/></svg></span>Jij bepaalt wat je doorstuurt</li>
         </ul>
       </div>
     </li>
@@ -270,12 +288,11 @@
       <div class="bbx-copy bbx-reveal">
         <span class="bbx-step"><b>02</b>Uitlezen</span>
         <h3 class="bbx-title">Geen AI, maar vaste regels.</h3>
-        <p class="bbx-body">Je mail wordt niet aan een AI voorgelegd en gaat niet naar een externe AI-dienst. Vaste regels in onze eigen code zoeken naar vier dingen: de afzender, het bedrag, de vervaldatum en het rekeningnummer. Zo'n regel kijkt bijvoorbeeld naar wat er achter ‘te betalen vóór’ staat.</p>
-        <p class="bbx-kicker">Alles daaromheen, zoals je aanhef, je klantnummer of de reclame onderaan, doet niet mee. Geen model dat meeleest. Zelfde mail, zelfde uitkomst.</p>
-        <ul class="bbx-chips">
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen AI die meeleest</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Eigen code, vaste regels</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Alleen vier gegevens</li>
+        <p class="bbx-body">Vaste regels in onze eigen code pakken alleen wat nodig is voor je herinnering. Je mail gaat niet langs een AI.</p>
+        <ul class="bbx-feats">
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-ai-off"/></svg></span>Geen AI die meeleest</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-code"/></svg></span>Vaste regels, eigen code</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-four"/></svg></span>Alleen 4 gegevens</li>
         </ul>
       </div>
     </li>
@@ -316,8 +333,12 @@
       <div class="bbx-copy bbx-reveal">
         <span class="bbx-step"><b>03</b>Controleren</span>
         <h3 class="bbx-title">Twijfelt Buddy? Dan gokt hij niet.</h3>
-        <p class="bbx-body">Soms staan er twee datums in een mail, of staat het bedrag op een rare plek. Een vaste regel gaat dan niet raden. Kan Buddy iets niet zeker vinden, dan krijg je een mailtje met de vraag het even aan te vullen. Jij antwoordt, Buddy zet het goed.</p>
-        <p class="bbx-kicker">Liever één vraag te veel dan een herinnering op de verkeerde dag.</p>
+        <p class="bbx-body">Kan Buddy iets niet zeker vinden, dan vraagt hij het je per mail. Jij antwoordt, Buddy zet het goed.</p>
+        <ul class="bbx-feats">
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-question"/></svg></span>Geen gokwerk</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-mail"/></svg></span>Gewoon antwoorden per mail</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-cal-check"/></svg></span>Daarna pas in je agenda</li>
+        </ul>
       </div>
     </li>
 
@@ -374,12 +395,11 @@
       <div class="bbx-copy bbx-reveal">
         <span class="bbx-step"><b>04</b>Bewaren</span>
         <h3 class="bbx-title">We bewaren je mail niet.</h3>
-        <p class="bbx-body">Wat jij doorstuurt, bestaat bij ons een paar honderd milliseconden in het geheugen. Wat overblijft is een naam, een bedrag, een datum en een rekeningnummer. De tekst, het onderwerp en de bijlage worden nergens weggeschreven. Er is in onze database simpelweg geen plek waar een mail in past.</p>
-        <p class="bbx-kicker">En ook die vier gegevens ruimen we op, 14 dagen na de vervaldatum.</p>
-        <ul class="bbx-chips">
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen mailtekst</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Geen bijlagen</li>
-          <li><svg aria-hidden="true"><use href="#bbx-check"/></svg>Opgeruimd na de vervaldatum</li>
+        <p class="bbx-body">Alleen naam, bedrag, datum en rekeningnummer blijven over. Ook die ruimen we op, 14 dagen na de vervaldatum.</p>
+        <ul class="bbx-feats">
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-text-off"/></svg></span>Geen mailtekst of onderwerp</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-clip-off"/></svg></span>Geen bijlagen</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-clock"/></svg></span>Na 14 dagen opgeruimd</li>
         </ul>
       </div>
     </li>
@@ -433,8 +453,12 @@
       <div class="bbx-copy bbx-reveal">
         <span class="bbx-step"><b>05</b>Herinneren</span>
         <h3 class="bbx-title">Op tijd een seintje. En de datum in je agenda.</h3>
-        <p class="bbx-body">Zeven dagen en twee dagen voor de vervaldatum krijg je een herinnering per mail. Met je agendalink staat elke vervaldatum ook gewoon in je eigen agenda, tussen je afspraken. En één keer per week zie je in een overzicht wat er nog openstaat.</p>
-        <p class="bbx-kicker">Betalen doe je zelf, wanneer het jou uitkomt. Buddy zorgt er alleen voor dat je het niet vergeet.</p>
+        <p class="bbx-body">Je krijgt een herinnering 7 en 2 dagen voor de vervaldatum. Betalen doe je zelf, Buddy zorgt dat je het niet vergeet.</p>
+        <ul class="bbx-feats">
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-bell"/></svg></span>Seintje per mail</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-calendar"/></svg></span>In je eigen agenda</li>
+          <li><span class="bbx-ico"><svg aria-hidden="true"><use href="#bbx-i-list"/></svg></span>Wekelijks overzicht</li>
+        </ul>
         <p class="bbx-note">Herinneringen en de agendalink zitten in Buddy en Buddy pro.</p>
       </div>
     </li>
