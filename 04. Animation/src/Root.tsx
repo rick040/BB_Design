@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { HeroVsl } from "./herovsl/HeroVsl";
+import { defaultHeroVslProps, type HeroVslProps, heroVslSchema, heroVslTotal } from "./herovsl/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const heroVslMetadata: CalculateMetadataFunction<HeroVslProps> = ({ props }) => ({
+  durationInFrames: heroVslTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Hero VSL for the homepage (HERO-VSL.md): muted autoplay loop */}
+    <Folder name="Hero-VSL-Homepage">
+      <Composition
+        id="BB-HeroVSL-Desktop"
+        component={HeroVsl}
+        schema={heroVslSchema}
+        defaultProps={defaultHeroVslProps}
+        calculateMetadata={heroVslMetadata}
+        durationInFrames={heroVslTotal(defaultHeroVslProps.timing)}
+        fps={FPS}
+        width={1920}
+        height={1080}
+      />
+      <Composition
+        id="BB-HeroVSL-Mobile"
+        component={HeroVsl}
+        schema={heroVslSchema}
+        defaultProps={defaultHeroVslProps}
+        calculateMetadata={heroVslMetadata}
+        durationInFrames={heroVslTotal(defaultHeroVslProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

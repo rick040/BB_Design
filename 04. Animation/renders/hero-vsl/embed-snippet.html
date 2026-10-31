@@ -1,0 +1,111 @@
+<!--
+  BetaalBuddy · hero-VSL voor de homepage
+  Plak dit hele blok in een Oxygen "Code Block" (HTML-tab), op de plek van de
+  drie zwevende kaartjes onder de kop. Upload eerst de zes bestanden (2 mp4 en 4 webp) uit
+  renders/hero-vsl/web naar de mediabibliotheek en zet hieronder de echte URL's.
+
+  Wat het doet:
+  · speelt automatisch, zonder geluid, in een lus (dat mag in elke browser alleen muted);
+  · kiest 16:9 op desktop en 4:5 op mobiel (onder 768 px), en laadt alleen die ene video;
+  · pauzeert als de video uit beeld is (scheelt batterij en CPU);
+  · bij "verminderde beweging" (prefers-reduced-motion) geen video: dan staat de
+    samenvatting met alle drie de stappen als stilstaand beeld;
+  · de hele video linkt naar de start-pagina (haal de <a> weg als je dat niet wilt).
+-->
+<a class="bb-vsl" href="/start-met-betaalbuddy/" aria-label="Start met BetaalBuddy">
+  <video
+    class="bb-vsl__video"
+    muted
+    loop
+    playsinline
+    preload="none"
+    poster="/wp-content/uploads/betaalbuddy-hero-desktop-poster.webp"
+    data-desktop="/wp-content/uploads/betaalbuddy-hero-desktop.mp4"
+    data-desktop-poster="/wp-content/uploads/betaalbuddy-hero-desktop-poster.webp"
+    data-desktop-summary="/wp-content/uploads/betaalbuddy-hero-desktop-summary.webp"
+    data-mobile="/wp-content/uploads/betaalbuddy-hero-mobile.mp4"
+    data-mobile-poster="/wp-content/uploads/betaalbuddy-hero-mobile-poster.webp"
+    data-mobile-summary="/wp-content/uploads/betaalbuddy-hero-mobile-summary.webp"
+    aria-describedby="bb-vsl-text"
+  ></video>
+  <span id="bb-vsl-text" class="bb-vsl__sr">
+    Zo werkt BetaalBuddy. 1: stuur je rekening door naar je eigen Buddy-adres, met de hand of
+    automatisch met een filterregel. 2: Buddy haalt er het bedrag, de vervaldatum, het kenmerk en
+    de betaallink uit. 3: je krijgt 7 en 2 dagen voor de vervaldatum een seintje in je mail, en de
+    vervaldatum staat in je agenda. Zo betaal jij op tijd. Geen app, geen bankkoppeling.
+  </span>
+</a>
+
+<style>
+  .bb-vsl {
+    display: block;
+    position: relative;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    aspect-ratio: 16 / 9;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #fafbff;
+    box-shadow: 0 30px 80px rgba(0, 20, 120, 0.35);
+    -webkit-tap-highlight-color: transparent;
+  }
+  .bb-vsl__video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .bb-vsl__sr {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+  @media (max-width: 767px) {
+    .bb-vsl {
+      aspect-ratio: 4 / 5;
+      max-width: 520px;
+      border-radius: 22px;
+    }
+  }
+</style>
+
+<script>
+  (function () {
+    var video = document.querySelector(".bb-vsl__video");
+    if (!video) return;
+    var mobile = window.matchMedia("(max-width: 767px)").matches;
+    var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var key = mobile ? "mobile" : "desktop";
+
+    // iOS only autoplays when muted is set as a property too.
+    video.muted = true;
+    video.defaultMuted = true;
+    video.poster = video.dataset[key + (reduced ? "Summary" : "Poster")];
+    // Reduced motion: no video at all; the summary frame shows all three steps.
+    if (reduced) return;
+    video.src = video.dataset[key];
+
+    var play = function () {
+      var p = video.play();
+      if (p && p.catch) p.catch(function () {});
+    };
+
+    if ("IntersectionObserver" in window) {
+      new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (e) {
+            if (e.isIntersecting) play();
+            else video.pause();
+          });
+        },
+        { threshold: 0.25 }
+      ).observe(video);
+    } else {
+      play();
+    }
+  })();
+</script>
