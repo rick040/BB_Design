@@ -8,7 +8,8 @@ import { brand } from "../theme";
 //
 //   Step 1  "Stuur je rekening door."   the bill flies to Buddy
 //   Step 2  "Buddy seint je op tijd."   one reminder rises out of Buddy
-//   Step 3  "Jij betaalt op tijd."      "Betaald" with a checkmark (≈5 s)
+//   Step 3  "Jij betaalt op tijd."      "Betaald" with a checkmark (≈3.7 s)
+//   USPs    three rows: any mail app · we don't keep your mail · no AI
 //   End     promise + button + wordmark, then it slides back to frame 0.
 //
 // Every field below is editable in Remotion Studio (Props panel).
@@ -25,6 +26,10 @@ export const heroVslSchema = z.object({
   steps: z.array(z.string()).length(3),
   reminder: z.object({ text: z.string(), time: z.string() }),
   paid: z.object({ title: z.string(), text: z.string() }),
+  // Three USPs, shown one by one on blue after the steps.
+  usps: z
+    .array(z.object({ icon: z.enum(["mail", "privacy", "noAi"]), text: z.string() }))
+    .length(3),
   end: z.object({
     // First line white, the rest soft blue. "\n" = line break.
     headline: z.string(),
@@ -41,10 +46,11 @@ export const heroVslSchema = z.object({
     alert: zColor(),
   }),
   timing: z.object({
-    step1: z.number().min(1.8).max(6),
-    step2: z.number().min(1.6).max(6),
-    step3: z.number().min(2).max(8),
-    end: z.number().min(2.4).max(8),
+    step1: z.number().min(1.4).max(6),
+    step2: z.number().min(1.4).max(6),
+    step3: z.number().min(1.6).max(8),
+    usps: z.number().min(1.6).max(8),
+    end: z.number().min(2.2).max(8),
     transition: z.number().min(0.2).max(1),
     // The last frames slide back into frame 0 (seamless loop).
     loopIn: z.number().min(0).max(1),
@@ -65,6 +71,14 @@ export const defaultHeroVslProps: HeroVslProps = {
   steps: ["Stuur je rekening door.", "Buddy seint je op tijd.", "Jij betaalt op tijd."],
   reminder: { text: "Nog 2 dagen · €86,40", time: "25 nov" },
   paid: { title: "Betaald", text: "Op tijd, zonder extra kosten" },
+  usps: [
+    { icon: "mail", text: "Werkt met elk mailprogramma" },
+    // Exact claim: the mail itself is not stored. Amount, date and a few
+    // details are kept until 14 days after the due date, so never say
+    // "we slaan niets op".
+    { icon: "privacy", text: "We bewaren je mail niet" },
+    { icon: "noAi", text: "Geen AI die je mail leest" },
+  ],
   end: {
     headline: "Nooit meer een\nrekening vergeten.",
     subline: "",
@@ -79,12 +93,13 @@ export const defaultHeroVslProps: HeroVslProps = {
     alert: brand.red,
   },
   timing: {
-    step1: 2.3,
-    step2: 2.2,
-    step3: 3.0,
-    end: 3.6,
-    transition: 0.5,
-    loopIn: 0.5,
+    step1: 1.8,
+    step2: 1.7,
+    step3: 2.1,
+    usps: 2.8,
+    end: 3.0,
+    transition: 0.4,
+    loopIn: 0.4,
   },
   music: "",
   musicVolume: 0.6,
@@ -103,6 +118,7 @@ export const heroVslFrames = (t: HeroVslProps["timing"]) => {
     step3,
     // Steps 1–3 are one continuous shot.
     steps: step1 + step2 + step3,
+    usps: f(t.usps),
     end: f(t.end),
     transition: f(t.transition),
     loopIn: f(t.loopIn),
@@ -111,5 +127,5 @@ export const heroVslFrames = (t: HeroVslProps["timing"]) => {
 
 export const heroVslTotal = (t: HeroVslProps["timing"]) => {
   const s = heroVslFrames(t);
-  return s.steps + s.end - s.transition;
+  return s.steps + s.usps + s.end - 2 * s.transition;
 };

@@ -15,19 +15,19 @@ import { type HeroVslProps, heroVslFrames } from "../schema";
 // Beats are in frames relative to the start of their step.
 export const STEP_T = {
   // step 1 · "Stuur je rekening door."  (bill + line are there on frame 0)
-  press: 22, // the Doorsturen button is pressed
-  fly: 28, // the bill glides into Buddy
-  flyLen: 24,
+  press: 12, // the Doorsturen button is pressed
+  fly: 16, // the bill glides into Buddy
+  flyLen: 18,
   // step 2 · "Buddy seint je op tijd."
-  swapOut: 8, // old line fades out first …
-  swapLen: 12, // … then the new line fades in (never both at once)
-  reminder: 12, // reminder rises out of Buddy
+  swapOut: 6, // old line fades out first …
+  swapLen: 10, // … then the new line fades in (never both at once)
+  reminder: 8, // reminder rises out of Buddy
   // step 3 · "Jij betaalt op tijd."
-  paid: 8, // "Betaald" card
-  check: 16, // checkmark draws
-  checkLen: 14,
-  hop: 10, // Buddy hops once
-  hopLen: 18,
+  paid: 6, // "Betaald" card
+  check: 12, // checkmark draws
+  checkLen: 12,
+  hop: 8, // Buddy hops once
+  hopLen: 16,
 };
 
 const SLOT_Y = 230; // centre of the object slot on the stage
@@ -39,7 +39,7 @@ const BILL_H = 268;
 const NOTIF_W = 900;
 const NOTIF_H = 156 * (NOTIF_W / 900);
 
-const soft = { damping: 16, stiffness: 120, mass: 0.9 };
+const soft = { damping: 15, stiffness: 170, mass: 0.8 };
 
 export const StepsScene: React.FC<{ props: HeroVslProps }> = ({ props }) => {
   const frame = useCurrentFrame();
@@ -119,7 +119,7 @@ export const StepsScene: React.FC<{ props: HeroVslProps }> = ({ props }) => {
     clamp,
   );
   const happy = frame >= land ? 0.2 : 1;
-  const blink = Math.min(happy, blinkScale(frame, [caught + 10, s2 + 44]));
+  const blink = Math.min(happy, blinkScale(frame, [caught + 8, s2 + 34]));
   const idle = Math.sin(frame / 12) * 3 * (frame < hopStart - 5 || frame > land + 10 ? 1 : 0);
 
   return (

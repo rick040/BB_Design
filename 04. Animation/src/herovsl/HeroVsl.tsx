@@ -1,4 +1,5 @@
 import { springTiming, TransitionSeries } from "@remotion/transitions";
+import { fade } from "@remotion/transitions/fade";
 import { slide } from "@remotion/transitions/slide";
 import React from "react";
 import { AbsoluteFill, Audio, Freeze, spring, staticFile, useCurrentFrame, useVideoConfig } from "remotion";
@@ -7,9 +8,11 @@ import "../theme";
 import { type HeroVslProps, heroVslFrames, heroVslTotal } from "./schema";
 import { EndScene } from "./scenes/EndScene";
 import { StepsScene } from "./scenes/StepsScene";
+import { UspScene } from "./scenes/UspScene";
 
-// Hero VSL: steps 1–3 as one calm shot, a slide to the promise + button,
-// and a slide back into frame 0 so the loop has no seam.
+// Hero VSL: steps 1–3 as one calm shot, a slide to the USPs, a soft fade to
+// the promise + button (both blue), and a slide back into frame 0 so the loop
+// has no seam.
 export const HeroVsl: React.FC<HeroVslProps> = (props) => {
   const f = heroVslFrames(props.timing);
   const timing = springTiming({
@@ -27,7 +30,11 @@ export const HeroVsl: React.FC<HeroVslProps> = (props) => {
               <StepsScene props={props} />
             </TransitionSeries.Sequence>
             <TransitionSeries.Transition presentation={slide({ direction: "from-right" })} timing={timing} />
-            <TransitionSeries.Sequence durationInFrames={f.end} name="4 · Belofte + knop">
+            <TransitionSeries.Sequence durationInFrames={f.usps} name="4 · USP's">
+              <UspScene usps={props.usps} />
+            </TransitionSeries.Sequence>
+            <TransitionSeries.Transition presentation={fade()} timing={timing} />
+            <TransitionSeries.Sequence durationInFrames={f.end} name="5 · Belofte + knop">
               <EndScene props={props.end} />
             </TransitionSeries.Sequence>
           </TransitionSeries>

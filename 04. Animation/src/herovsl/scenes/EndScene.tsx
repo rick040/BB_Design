@@ -13,16 +13,16 @@ import type { HeroVslProps } from "../schema";
 // Promise + CTA, calm: the headline fades in line by line, then Buddy and
 // the button, then the wordmark. Buddy looks at the button.
 export const END_T = {
-  headline: 8,
-  lineStagger: 7,
-  button: 24,
-  subline: 30,
-  logo: 36,
-  lookAtButton: 46,
-  blink: 62,
+  headline: 6,
+  lineStagger: 5,
+  button: 18,
+  subline: 22,
+  logo: 28,
+  lookAtButton: 36,
+  blink: 52,
 };
 
-const soft = { damping: 16, stiffness: 120, mass: 0.9 };
+const soft = { damping: 15, stiffness: 170, mass: 0.8 };
 
 export const EndScene: React.FC<{ props: HeroVslProps["end"] }> = ({ props }) => {
   const frame = useCurrentFrame();

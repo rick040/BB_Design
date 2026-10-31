@@ -15,7 +15,7 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
-**Hero VSL:** autoplays muted in a seamless loop; calm, one line and one object at a time, with the win on screen at about 5 seconds. Web-ready files (compressed MP4s and posters), the embed snippet for the WordPress/Oxygen hero and a local test page are in [`renders/hero-vsl/`](./renders/hero-vsl). How to place it is in [`HERO-VSL.md`](./HERO-VSL.md).
+**Hero VSL:** autoplays muted in a seamless loop; calm, one line and one object at a time. Three steps (win on screen at 3.7 s), three USPs, then the promise and the button. Web-ready files (compressed MP4s and posters), the embed snippet for the WordPress/Oxygen hero and a local test page are in [`renders/hero-vsl/`](./renders/hero-vsl). How to place it is in [`HERO-VSL.md`](./HERO-VSL.md).
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
 
@@ -80,7 +80,7 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
-  herovsl/            hero VSL: HeroVsl.tsx, schema.ts, layout.tsx (16:9 + 4:5), scenes/ (Steps · End),
+  herovsl/            hero VSL: HeroVsl.tsx, schema.ts, layout.tsx (16:9 + 4:5), scenes/ (Steps · USPs · End),
                       components/ui.tsx
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
