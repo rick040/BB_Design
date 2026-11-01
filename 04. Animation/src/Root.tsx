@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { RouteAd } from "./route/RouteAd";
+import { defaultRouteProps, type RouteProps, routeSchema, routeTotal } from "./route/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const routeMetadata: CalculateMetadataFunction<RouteProps> = ({ props }) => ({
+  durationInFrames: routeTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 39 · "Jij rijdt. Buddy navigeert." (CONCEPT-39.md) */}
+    <Folder name="Concept-39-Route">
+      <Composition
+        id="BB-Route-Reel"
+        component={RouteAd}
+        schema={routeSchema}
+        defaultProps={defaultRouteProps}
+        calculateMetadata={routeMetadata}
+        durationInFrames={routeTotal(defaultRouteProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Route-Feed"
+        component={RouteAd}
+        schema={routeSchema}
+        defaultProps={defaultRouteProps}
+        calculateMetadata={routeMetadata}
+        durationInFrames={routeTotal(defaultRouteProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
