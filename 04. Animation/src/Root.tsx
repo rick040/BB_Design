@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { PlantAd } from "./plant/PlantAd";
+import { defaultPlantProps, type PlantProps, plantSchema, plantTotal } from "./plant/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const plantMetadata: CalculateMetadataFunction<PlantProps> = ({ props }) => ({
+  durationInFrames: plantTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 40 · "Buddy denkt eraan. Niks verdort." (CONCEPT-40.md) */}
+    <Folder name="Concept-40-Plant">
+      <Composition
+        id="BB-Plant-Reel"
+        component={PlantAd}
+        schema={plantSchema}
+        defaultProps={defaultPlantProps}
+        calculateMetadata={plantMetadata}
+        durationInFrames={plantTotal(defaultPlantProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Plant-Feed"
+        component={PlantAd}
+        schema={plantSchema}
+        defaultProps={defaultPlantProps}
+        calculateMetadata={plantMetadata}
+        durationInFrames={plantTotal(defaultPlantProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

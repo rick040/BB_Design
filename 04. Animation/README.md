@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 40 · "Buddy denkt eraan. Niks verdort." ([`CONCEPT-40.md`](./CONCEPT-40.md)) | `BB-Plant-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.8 s |
+| | `BB-Plant-Feed` | 1080 × 1350 (4:5) | Feed | 13.8 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -40,7 +42,7 @@ The Studio opens in your browser. Pick a composition on the left (they are group
 
 Edits in the Props panel are **live**, and they are used when you click **Render** in the Studio. So edit → preview → render works directly.
 
-To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`) or `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
+To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`), `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`) or `src/plant/schema.ts` (concept 40, `defaultPlantProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
 
@@ -55,10 +57,13 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
+npm run render:plant           # concept 40 → out/BB-Plant-Reel.mp4     (9:16)
+npm run render:plant:feed      # concept 40 → out/BB-Plant-Feed.mp4     (4:5)
 npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:plant            # concept 40 cover → out/BB-Plant-Reel-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -74,10 +79,12 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
+  plant/              concept 40: PlantAd.tsx, schema.ts, scenes/ (Hook · Datum erbij · Op tijd water · CTA),
+                      components/ (HousePlant, WateringCan)
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …
-  lib/                animation helpers, layout per format, palette, focusPull (blur transition)
+  lib/                animation helpers, layout per format, palette, focusPull (blur transition), leafReveal (leaf-shaped reveal)
 public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
 ```
 
