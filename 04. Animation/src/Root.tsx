@@ -10,6 +10,13 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { NaambordAd } from "./naambord/NaambordAd";
+import {
+  defaultNaambordProps,
+  type NaambordProps,
+  naambordSchema,
+  naambordTotal,
+} from "./naambord/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const naambordMetadata: CalculateMetadataFunction<NaambordProps> = ({ props }) => ({
+  durationInFrames: naambordTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 37 · "Nu op jouw naam." (CONCEPT-37.md, rotatie-idee N01) */}
+    <Folder name="Concept-37-Naambord">
+      <Composition
+        id="BB-Naambord-Reel"
+        component={NaambordAd}
+        schema={naambordSchema}
+        defaultProps={defaultNaambordProps}
+        calculateMetadata={naambordMetadata}
+        durationInFrames={naambordTotal(defaultNaambordProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Naambord-Feed"
+        component={NaambordAd}
+        schema={naambordSchema}
+        defaultProps={defaultNaambordProps}
+        calculateMetadata={naambordMetadata}
+        durationInFrames={naambordTotal(defaultNaambordProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

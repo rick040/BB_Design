@@ -133,7 +133,7 @@ Pas je iets aan in `src/components` of `src/lib`, dan kan een bestaand concept o
 - **Lokaal** downloadt Remotion zelf Chrome Headless Shell.
 - **In een cloudomgeving** zonder internettoegang tot die download gebruik je de lokale Chromium:
   ```bash
-  B="--browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell | head -1)"
+  B="--browser-executable=$(ls -d /opt/pw-browsers/chromium_headless_shell-*/chrome-linux/headless_shell /opt/pw-browsers/chromium_headless_shell-*/chrome-headless-shell-linux64/chrome-headless-shell 2>/dev/null | head -1)"
   ```
 - `scripts/render_stills.cjs` zoekt deze browser zelf, of gebruikt `REMOTION_BROWSER`.
 

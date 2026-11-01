@@ -59,13 +59,13 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 ## 2. Product: wat waar is
 
 - **Doorsturen.** Je stuurt een rekening door naar je eigen doorstuuradres (op `in.betaalbuddy.nl`). Er is **geen** mailbox-koppeling en geen "inbox scannen".
-- **Wat Buddy leest:** bedrag, vervaldatum, betaallink en kenmerk uit de doorgestuurde mail.
+- **Wat Buddy leest:** bedrag en vervaldatum uit de doorgestuurde mail. Welke velden verder precies is nog open: de privacytekst noemt naam, bedrag, datum en rekeningnummer, de site ook de betaallink en de docs het kenmerk (changelog 31 oktober 2026). Noem in een ad alleen bedrag en vervaldatum, tenzij het bevestigd is.
 - **Herinneringen per mail** op **7 en 2 dagen** voor de vervaldatum (T-7 en T-2).
 - **Agenda:** een ICS-agendalink, zodat de vervaldatum in je agenda staat.
 - **Wekelijks overzicht.**
 - **Geen app, geen bankkoppeling.** Buddy ziet alleen wat jij doorstuurt; dat is ook een privacy-argument.
 - **Betaalmodel (sinds 5 oktober 2026):** je betaalt bij aanmelding en hebt dan de eerste maand. Er is **geen** proefperiode en niets gratis.
-- **Pakketten:** Basic, Standard en Premium. **Basic heeft geen agenda en geen herinneringen.** Premium noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
+- **Pakketten:** Basic, Buddy en Buddy pro (changelog 31 oktober 2026; eerder Basic, Standard en Premium). **Basic heeft geen agenda en geen herinneringen.** Herinneringen op T-7 en T-2, de agendalink en het weekoverzicht zitten in Buddy en Buddy pro. Buddy pro noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
 - **Kanalen niet beschikbaar:** WhatsApp, Telegram en Signal.
 
 ### Privacy en gegevens (belangrijk voor een privacy-invalshoek)
