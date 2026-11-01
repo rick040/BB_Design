@@ -9,53 +9,38 @@
   .hero { padding: 64px 24px 80px; text-align: center; }
   .hero h1 { font-size: clamp(34px, 5vw, 64px); line-height: 1.05; letter-spacing: -0.04em; font-weight: 500; margin: 0 auto 40px; max-width: 900px; }
   .hero p { color: #b6c7ff; font-size: clamp(18px, 2vw, 26px); margin: 40px auto 0; max-width: 760px; }
-  .note { color: #99b1ff; font-size: 14px; margin-top: 28px; }
 </style>
 </head>
 <body>
 <section class="hero">
-  <h1>Preview: de hero-VSL in een blauwe hero</h1>
+  <h1>Preview: de hero-video in een blauwe hero</h1>
 <!--
-  BetaalBuddy · hero-VSL voor de homepage
-  Plak dit hele blok in een Oxygen "Code Block" (HTML-tab), op de plek van de
-  drie zwevende kaartjes onder de kop. Upload eerst de zes bestanden (2 mp4 en 4 webp) uit
-  renders/hero-vsl/web naar de mediabibliotheek en zet hieronder de echte URL's.
-
-  Wat het doet:
-  · speelt automatisch, zonder geluid, in een lus (dat mag in elke browser alleen muted);
-  · kiest 16:9 op desktop en 4:5 op mobiel (onder 768 px), en laadt alleen die ene video;
-  · pauzeert als de video uit beeld is (scheelt batterij en CPU);
-  · bij "verminderde beweging" (prefers-reduced-motion) geen video: dan staat het
-    slotbeeld (belofte en knop) als stilstaand beeld;
-  · de hele video linkt naar de start-pagina (haal de <a> weg als je dat niet wilt).
+  BetaalBuddy · hero-video
+  Plak dit hele blok in de HTML-tab van een Oxygen "Code Block", op de plek van
+  de drie zwevende kaartjes onder de kop.
+  · speelt automatisch, zonder geluid, in een lus;
+  · desktop krijgt de 16:9-versie, mobiel (onder 768 px) de 4:5-versie;
+  · pauzeert als de video uit beeld is;
+  · bij "verminderde beweging" geen autoplay: dan staat het slotbeeld stil;
+  · de hele video linkt naar de startpagina (haal de <a> weg als je dat niet wilt).
 -->
 <a class="bb-vsl" href="/start-met-betaalbuddy/" aria-label="Start met BetaalBuddy">
   <video
     class="bb-vsl__video"
+    autoplay
     muted
     loop
     playsinline
-    preload="none"
-    poster="web/betaalbuddy-hero-desktop-poster.webp"
+    preload="auto"
     data-desktop="web/betaalbuddy-hero-desktop.mp4"
-    data-desktop-poster="web/betaalbuddy-hero-desktop-poster.webp"
-    data-desktop-summary="web/betaalbuddy-hero-desktop-summary.webp"
     data-mobile="web/betaalbuddy-hero-mobile.mp4"
-    data-mobile-poster="web/betaalbuddy-hero-mobile-poster.webp"
-    data-mobile-summary="web/betaalbuddy-hero-mobile-summary.webp"
-    aria-describedby="bb-vsl-text"
+    aria-label="Zo werkt BetaalBuddy: stuur je rekening door, Buddy seint je op tijd en jij betaalt op tijd. Werkt met elk mailprogramma, we bewaren je mail niet en er is geen AI die je mail leest."
   ></video>
-  <span id="bb-vsl-text" class="bb-vsl__sr">
-    Zo werkt BetaalBuddy. 1: stuur je rekening door naar Buddy. 2: Buddy seint je op tijd, voor de
-    vervaldatum. 3: jij betaalt op tijd, zonder extra kosten. Werkt met elk mailprogramma, we bewaren
-    je mail niet en er is geen AI die je mail leest. Nooit meer een rekening vergeten.
-  </span>
 </a>
 
 <style>
   .bb-vsl {
     display: block;
-    position: relative;
     width: 100%;
     max-width: 1120px;
     margin: 0 auto;
@@ -64,21 +49,12 @@
     overflow: hidden;
     background: #fafbff;
     box-shadow: 0 30px 80px rgba(0, 20, 120, 0.35);
-    -webkit-tap-highlight-color: transparent;
   }
   .bb-vsl__video {
     display: block;
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .bb-vsl__sr {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-    clip: rect(0 0 0 0);
-    white-space: nowrap;
   }
   @media (max-width: 767px) {
     .bb-vsl {
@@ -95,39 +71,41 @@
     if (!video) return;
     var mobile = window.matchMedia("(max-width: 767px)").matches;
     var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    var key = mobile ? "mobile" : "desktop";
 
-    // iOS only autoplays when muted is set as a property too.
+    // iOS only autoplays when muted is also set as a property.
     video.muted = true;
     video.defaultMuted = true;
-    video.poster = video.dataset[key + (reduced ? "Summary" : "Poster")];
-    // Reduced motion: no video at all; the end frame (promise + button) is shown.
+
+    if (reduced) {
+      // No autoplay; show the end frame (promise + button) as a still.
+      video.autoplay = false;
+      video.removeAttribute("autoplay");
+      video.addEventListener("loadedmetadata", function () { video.currentTime = 9.3; }, { once: true });
+    }
+
+    video.src = mobile ? video.dataset.mobile : video.dataset.desktop;
     if (reduced) return;
-    video.src = video.dataset[key];
 
     var play = function () {
       var p = video.play();
       if (p && p.catch) p.catch(function () {});
     };
+    play();
 
+    // Pause while scrolled out of view, resume when it comes back.
     if ("IntersectionObserver" in window) {
       new IntersectionObserver(
         function (entries) {
-          entries.forEach(function (e) {
-            if (e.isIntersecting) play();
-            else video.pause();
-          });
+          if (entries[0].isIntersecting) play();
+          else video.pause();
         },
         { threshold: 0.25 }
       ).observe(video);
-    } else {
-      play();
     }
   })();
 </script>
 
-  <p>Lokale testpagina. De kop en deze tekst zijn alleen voorbeeld; op de site blijven je eigen kop, tekst en knoppen staan.</p>
-  <p class="note">Open dit bestand in je browser (dubbelklik). Smaller dan 768 px toont de 4:5-versie; herlaad na het verkleinen.</p>
+  <p>Lokale testpagina met de bestanden uit web/. Smaller dan 768 px toont de 4:5-versie; herlaad na het verkleinen.</p>
 </section>
 </body>
 </html>

@@ -54,18 +54,21 @@ Waar de claims op rusten:
 <!-- copycheck:on -->
 
 ## Op de site zetten
-1. Upload de zes bestanden uit `renders/hero-vsl/web/` naar de WordPress-mediabibliotheek: `betaalbuddy-hero-desktop.mp4`, `betaalbuddy-hero-mobile.mp4`, en per formaat een `-poster.webp` en een `-summary.webp`. De jpg's zijn reserve.
-2. Open de homepage in Oxygen en zet een **Code Block** op de plek van de drie zwevende kaartjes (tussen de kop "Rekeningen vergeten is geen personality trait meer." en de regel eronder).
-3. Plak de inhoud van `embed-snippet.html` erin en vervang de zes URL's door die uit de mediabibliotheek.
-4. Controleer op telefoon en desktop, en meet PageSpeed mobiel opnieuw.
+De twee video's staan live in de mediabibliotheek:
+- `https://betaalbuddy.nl/wp-content/uploads/2026/11/betaalbuddy-hero-desktop.mp4`
+- `https://betaalbuddy.nl/wp-content/uploads/2026/11/betaalbuddy-hero-mobile.mp4`
 
-Wat de snippet doet:
-- `muted`, `loop`, `playsinline`: autoplay werkt in Chrome, Safari (ook iOS) en Firefox.
-- Laadt alleen het formaat dat past: onder 768 px de 4:5-versie, anders 16:9.
-- `preload="none"` met een poster van ~30 KB: de video telt niet mee voor de eerste paint. Pas als de video in beeld is, laadt hij (~0,6 MB) en speelt hij. Uit beeld pauzeert hij.
-- Bij "verminderde beweging" laadt er geen video en staat het slotbeeld (belofte en knop).
-- Een verborgen tekst beschrijft de video voor schermlezers.
+1. Open de homepage in Oxygen en zet een **Code Block** op de plek van de drie zwevende kaartjes (tussen de kop "Rekeningen vergeten is geen personality trait meer." en de regel eronder).
+2. Plak de hele inhoud van `renders/hero-vsl/embed-snippet.html` in de HTML-tab (met de `<style>` en `<script>` erin; de CSS- en JS-tabs mogen leeg blijven).
+3. Controleer op telefoon en desktop, en meet PageSpeed mobiel opnieuw.
+
+Wat de code doet (getest tegen de live URL's):
+- `autoplay`, `muted`, `loop`, `playsinline`: autoplay werkt in Chrome, Safari (ook iOS) en Firefox.
+- Desktop krijgt de 16:9-versie, mobiel (onder 768 px) de 4:5-versie; er wordt maar één video geladen.
+- Pauzeert als de video uit beeld is en speelt weer als hij terugkomt.
+- Bij "verminderde beweging" geen autoplay: dan staat het slotbeeld (belofte en knop) stil.
 - De hele video linkt naar `/start-met-betaalbuddy/`. Haal de `<a>` weg als je dat niet wilt.
+- Posters zijn niet nodig: de achtergrond van het blok heeft dezelfde lichte kleur als het eerste frame. Wil je er toch een (iets snellere eerste indruk), upload dan `betaalbuddy-hero-desktop-poster.webp` en zet `poster="…"` op de `<video>`.
 
 ## Aanpassen en exporteren
 - **Studio:** `npm run dev`, map **Hero-VSL-Homepage**. De drie regels, de voorbeeldrekening, het seintje, de Betaald-kaart, de drie USP's (tekst en icoon: `mail`, `privacy`, `noAi`), de slottekst (met een optionele subregel), kleuren en timings per scène zijn props. Blijvend aanpassen doe je in `src/herovsl/schema.ts` (`defaultHeroVslProps`); beide formaten delen die.
