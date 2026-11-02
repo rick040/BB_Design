@@ -11,6 +11,13 @@ import {
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
+import { VerjaardagAd } from "./verjaardag/VerjaardagAd";
+import {
+  defaultVerjaardagProps,
+  type VerjaardagProps,
+  verjaardagSchema,
+  verjaardagTotal,
+} from "./verjaardag/schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
   durationInFrames: totalFrames(props.timing),
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const verjaardagMetadata: CalculateMetadataFunction<VerjaardagProps> = ({ props }) => ({
+  durationInFrames: verjaardagTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 42 · "Tante Ria op tijd. Je rekening ook." (CONCEPT-42.md) */}
+    <Folder name="Concept-42-Verjaardag">
+      <Composition
+        id="BB-Verjaardag-Reel"
+        component={VerjaardagAd}
+        schema={verjaardagSchema}
+        defaultProps={defaultVerjaardagProps}
+        calculateMetadata={verjaardagMetadata}
+        durationInFrames={verjaardagTotal(defaultVerjaardagProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Verjaardag-Feed"
+        component={VerjaardagAd}
+        schema={verjaardagSchema}
+        defaultProps={defaultVerjaardagProps}
+        calculateMetadata={verjaardagMetadata}
+        durationInFrames={verjaardagTotal(defaultVerjaardagProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
