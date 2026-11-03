@@ -8,6 +8,13 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { PolaroidAd } from "./polaroid/PolaroidAd";
+import {
+  defaultPolaroidProps,
+  type PolaroidProps,
+  polaroidSchema,
+  polaroidTotal,
+} from "./polaroid/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const polaroidMetadata: CalculateMetadataFunction<PolaroidProps> = ({ props }) => ({
+  durationInFrames: polaroidTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 43 · "Scherp tot de vervaldatum." (CONCEPT-43.md) */}
+    <Folder name="Concept-43-Polaroid">
+      <Composition
+        id="BB-Polaroid-Reel"
+        component={PolaroidAd}
+        schema={polaroidSchema}
+        defaultProps={defaultPolaroidProps}
+        calculateMetadata={polaroidMetadata}
+        durationInFrames={polaroidTotal(defaultPolaroidProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Polaroid-Feed"
+        component={PolaroidAd}
+        schema={polaroidSchema}
+        defaultProps={defaultPolaroidProps}
+        calculateMetadata={polaroidMetadata}
+        durationInFrames={polaroidTotal(defaultPolaroidProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
