@@ -1,0 +1,172 @@
+import { base, bill, calendar, type Entry, notes, NOV_2026 } from "./helpers";
+
+// Pillar 4 · Geld en gevolgen. Every amount here is sourced in BACKLOG.md:
+// €40 = legal minimum for collection costs after the free 14-day letter;
+// +50% = a traffic fine after the first reminder.
+export const P4: Entry[] = [
+  {
+    id: "BB-P4-01",
+    num: 20,
+    pillar: "P4",
+    title: "€12 wordt €52",
+    template: "number",
+    feed: true,
+    cover: 145,
+    props: {
+      ...base({ line: "", bg: "blue" }),
+      headline: "Rekening van €12.\nVergeten.",
+      bg: "light",
+      steps: [
+        { prefix: "€", from: 12, to: 12, decimals: 0, suffix: "", finalText: "", label: "je rekening", badge: "", countSeconds: 0 },
+        { prefix: "€", from: 12, to: 52, decimals: 0, suffix: "", finalText: "", label: "als je ook de\nveertiendagenbrief laat liggen", badge: "+€40", countSeconds: 1.2 },
+      ],
+      stepSeconds: 2.7,
+      chips: [],
+      final: {
+        headline: "Incassokosten:\nminimaal €40.",
+        subline: "Ook bij een rekening van €12.\nBuddy seint je 7 en 2 dagen vooraf.",
+        seconds: 3.4,
+      },
+    },
+  },
+  {
+    id: "BB-P4-02",
+    num: 21,
+    pillar: "P4",
+    title: "Boete wordt duurder",
+    template: "number",
+    feed: false,
+    cover: 140,
+    props: {
+      ...base({ line: "Stuur naar een vriend\ndie altijd boetes heeft.", bg: "light" }),
+      headline: "Je boete wordt\nduurder. Echt.",
+      bg: "blue",
+      steps: [
+        { prefix: "", from: 100, to: 100, decimals: 0, suffix: "%", finalText: "", label: "je verkeersboete", badge: "", countSeconds: 0 },
+        { prefix: "", from: 100, to: 150, decimals: 0, suffix: "%", finalText: "", label: "na de eerste aanmaning", badge: "+50%", countSeconds: 1.0 },
+      ],
+      stepSeconds: 2.7,
+      chips: [],
+      final: {
+        headline: "Tweede aanmaning?\nDan nog meer.",
+        subline: "Komt je boete per mail? Stuur hem door.\nBuddy seint je op tijd.",
+        seconds: 3.4,
+      },
+    },
+  },
+  {
+    id: "BB-P4-03",
+    num: 22,
+    pillar: "P4",
+    title: "De hele afweging",
+    template: "split",
+    feed: true,
+    cover: 0,
+    props: {
+      ...base({ line: "", bg: "light" }),
+      headline: "Vergeten rekening?\nKan €40 kosten.",
+      bg: "light",
+      before: {
+        label: "Vergeten",
+        visual: bill({ sender: "Incassobureau", subject: "Aanmaning · Energie", amount: "€126,40", dueLabel: "Incl. €40 kosten", urgent: true }),
+      },
+      after: {
+        label: "Met Buddy",
+        visual: notes([
+          ["Nog 7 dagen · Energie €86,40", "warning", "15 nov"],
+          ["Nog 2 dagen · betaal op tijd", "alert", "20 nov"],
+        ], 0.7),
+      },
+      wipeAt: 2.6,
+      payoff: "Twee seintjes op tijd.\nDat is de hele afweging.",
+      seconds: 7,
+    },
+  },
+  {
+    id: "BB-P4-04",
+    num: 23,
+    pillar: "P4",
+    title: "Wat niemand je vertelt over aanmaningen",
+    template: "list",
+    feed: false,
+    cover: 230,
+    props: {
+      ...base({ line: "Stuur dit naar iemand die\nnet op zichzelf woont.", bg: "light" }),
+      title: "Niemand vertelt je\ndit over aanmaningen.",
+      bg: "blue",
+      items: [
+        { text: "Eerst krijg je een brief met 14 dagen de tijd. Zonder kosten.", tag: "", tagTone: "blue" },
+        { text: "Betaal je dan niet? Minimaal €40 incassokosten.", tag: "", tagTone: "blue" },
+        { text: "Ook als de rekening zelf maar €12 was.", tag: "", tagTone: "blue" },
+        { text: "Verkeersboete: +50% na de eerste aanmaning.", tag: "", tagTone: "blue" },
+        { text: "Je telefoonabonnement kan geblokkeerd worden.", tag: "", tagTone: "blue" },
+      ],
+      itemGap: 1.8,
+      hold: 1.6,
+      payoff: {
+        headline: "Bewaar dit.\nBuddy onthoudt.",
+        subline: "Rekening doorsturen =\nop tijd een seintje.",
+        seconds: 3,
+      },
+    },
+  },
+  {
+    id: "BB-P4-05",
+    num: 24,
+    pillar: "P4",
+    title: "Geen bereik",
+    template: "skit",
+    feed: false,
+    cover: 60,
+    props: {
+      ...base({ line: "", bg: "blue" }),
+      headline: "Je telefoon doet het\nineens niet meer.",
+      bg: "light",
+      chat: { title: "Huisgenoten", subtitle: "4 leden", avatar: "letter" },
+      messages: [
+        { side: "left", sender: "Sam", text: "Waar blijf je?", failed: false },
+        { side: "right", sender: "", text: "Bijna er!", failed: true },
+        { side: "right", sender: "", text: "Hallo??", failed: true },
+        { side: "system", sender: "", text: "Je abonnement is geblokkeerd. Openstaand: €24,50", failed: true },
+      ],
+      messageGap: 1.3,
+      hold: 1.5,
+      punch: {
+        headline: "Vergeten rekening.\nGeen bereik.",
+        subline: "Buddy seint je 7 en 2 dagen\nvoor de vervaldatum.",
+        seconds: 3.2,
+      },
+    },
+  },
+  {
+    id: "BB-P4-06",
+    num: 25,
+    pillar: "P4",
+    title: "Nog 5 dagen tot salaris",
+    template: "countdown",
+    feed: false,
+    cover: 0,
+    props: {
+      ...base({ line: "Koppel je agenda.", bg: "blue" }),
+      headline: "Nog 5 dagen tot\nje salaris.",
+      bg: "blue",
+      unit: "dagen tot je salaris",
+      steps: [
+        { value: "5", caption: "Wat valt er nog vóór?", noteTitle: "", noteText: "", noteTime: "", noteIcon: "new" },
+        { value: "3", caption: "Telefoon: €24,50", noteTitle: "BetaalBuddy", noteText: "Nog 2 dagen · betaal op tijd", noteTime: "nu", noteIcon: "alert" },
+        { value: "1", caption: "Energie: €86,40", noteTitle: "BetaalBuddy", noteText: "Nog 2 dagen · Energie €86,40", noteTime: "nu", noteIcon: "alert" },
+      ],
+      stepSeconds: 2.1,
+      final: {
+        headline: "Weet wat er vóór\nje salaris valt.",
+        subline: "Elke rekening op zijn vervaldatum,\nin je eigen agenda.",
+        visual: calendar(NOV_2026.month, NOV_2026.first, NOV_2026.days, [
+          [18, "Betalen: Zorgverzekeraar €128,95"],
+          [20, "Betalen: Telefoon €24,50"],
+          [22, "Betalen: Energie €86,40"],
+        ], 0.35),
+        seconds: 3.8,
+      },
+    },
+  },
+];

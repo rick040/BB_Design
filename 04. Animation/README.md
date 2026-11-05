@@ -15,6 +15,14 @@ All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
 
+## Backlog · 34 ready-to-post videos
+
+Besides the three ad concepts there is a backlog of 34 short videos (topics 1 to 34, six pillars) for days with nothing else to post. Everything about them is in [`BACKLOG.md`](./BACKLOG.md): on-screen text per scene, an ElevenLabs voice-over block, the caption with hashtags, the best moment to post, and a posting order that alternates the pillars.
+
+- **Data-driven:** each video is a set of props on one of eight templates in `src/backlog/templates/` (POV, list/tier list, before/after, countdown, myth vs fact, mini explainer, chat skit, number reveal). The props live in `src/backlog/videos/p1-…` to `p6-….ts`. Each template has a Zod schema, so every field is editable in the Studio's Props panel.
+- **In Studio:** the folders `Backlog-P1-Herkenning` to `Backlog-P6-Humor`, with IDs like `BB-P1-03-Reel` (9:16) and, for 8 of them, `BB-P1-05-Feed` (4:5).
+- **Render:** `npm run render:backlog` renders every MP4 plus a cover PNG to `renders/backlog/`. To render a few: `node scripts/render-backlog.cjs BB-P2-03,BB-P4-01`. Cover frames are in `renders/backlog/covers.json`.
+
 ## 1 · Install (once)
 
 You need [Node.js](https://nodejs.org) 18 or newer.
