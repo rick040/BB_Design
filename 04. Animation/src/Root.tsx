@@ -8,6 +8,13 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { BladwijzerAd } from "./bladwijzer/BladwijzerAd";
+import {
+  bladwijzerSchema,
+  bladwijzerTotal,
+  type BladwijzerProps,
+  defaultBladwijzerProps,
+} from "./bladwijzer/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const bladwijzerMetadata: CalculateMetadataFunction<BladwijzerProps> = ({ props }) => ({
+  durationInFrames: bladwijzerTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,31 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+    {/* Concept 48 · "Blader gerust. Buddy houdt de plek." (CONCEPT-48.md) */}
+    <Folder name="Concept-48-Bladwijzer">
+      <Composition
+        id="BB-Bladwijzer-Reel"
+        component={BladwijzerAd}
+        schema={bladwijzerSchema}
+        defaultProps={defaultBladwijzerProps}
+        calculateMetadata={bladwijzerMetadata}
+        durationInFrames={bladwijzerTotal(defaultBladwijzerProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Bladwijzer-Feed"
+        component={BladwijzerAd}
+        schema={bladwijzerSchema}
+        defaultProps={defaultBladwijzerProps}
+        calculateMetadata={bladwijzerMetadata}
+        durationInFrames={bladwijzerTotal(defaultBladwijzerProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
