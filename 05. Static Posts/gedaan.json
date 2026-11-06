@@ -403,5 +403,14 @@
     "idee": "mailrij Zorgverzekeraar met ongelezen-stip, Buddy gluurt",
     "datum": "2026-10-31",
     "bestand": "BB-Post-R44-niet-open.png"
+  },
+  {
+    "nr": "R27",
+    "slug": "wat-buddy-ziet",
+    "kop": "Buddy kijkt alleen naar wat jij doorstuurt.",
+    "hoek": "H5 privacy",
+    "idee": "Twee kolommen Buddy ziet en ziet niet, Buddy kijkt weg van de rechterkolom",
+    "datum": "2026-11-06",
+    "bestand": "BB-Post-R27-wat-buddy-ziet.png"
   }
 ]

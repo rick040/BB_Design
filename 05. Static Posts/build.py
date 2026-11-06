@@ -977,6 +977,28 @@ def pR44():
 <div class="sub" style="top:990px;font-size:40px">Doorsturen mag zonder hem te lezen.</div>""")
 
 
+def pR27():
+    """R27: wat Buddy wel en niet ziet. Licht, twee kolommen, Buddy kijkt weg van de rechterkolom."""
+    def row(txt, ok):
+        ic = (f'<svg width="40" height="40" viewBox="0 0 40 40" style="flex-shrink:0"><circle cx="20" cy="20" r="20" fill="{C["blue"] if ok else C["grey"]}"/>'
+              + ('<path d="M11 21l6 6 12-13" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' if ok else
+                 f'<path d="M13 13l14 14M27 13L13 27" fill="none" stroke="{C["greyText"]}" stroke-width="4" stroke-linecap="round"/>') + '</svg>')
+        col = C["ink"] if ok else "#8d95a8"
+        return (f'<div style="display:flex;align-items:center;gap:18px;font-family:Geist,sans-serif;font-size:28px;font-weight:500;color:{col};'
+                f'letter-spacing:-0.01em;line-height:1.15">{ic}<span>{txt}</span></div>')
+    left = "".join(row(t, True) for t in ["Je doorgestuurde mail", "Het bedrag", "De vervaldatum", "De afzender", "Het rekeningnummer"])
+    right = "".join(row(t, False) for t in ["De rest van je inbox", "Je bank", "Je wachtwoorden"])
+    head = lambda t, c: f'<div style="font-family:Geist,sans-serif;font-size:26px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:{c};margin-bottom:6px">{t}</div>'
+    return page("light", f"""
+<h1 class="s">Buddy kijkt alleen naar wat jij doorstuurt.</h1>
+<div class="abs card" style="left:90px;width:450px;top:520px;height:450px;border-radius:40px;padding:40px 34px;display:flex;flex-direction:column;gap:26px;border:3px solid {C['blue']}">
+  {head("Buddy ziet", C["blue"])}{left}</div>
+<div class="abs" style="left:564px;width:426px;top:520px;height:450px;border-radius:40px;padding:40px 34px;display:flex;flex-direction:column;gap:26px;background:#f1f4fb;border:2px dashed #c5cde6">
+  {head("Buddy ziet niet", "#8d95a8")}{right}</div>
+<div class="abs" style="left:810px;top:815px">{buddy(120, body=C["blue"], eye="#fff", look=(-1, 0.1), style="transform:rotate(-4deg)")}</div>
+<div class="sub" style="top:1020px;font-size:38px">De tekst van je mail bewaren we niet.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -1004,6 +1026,7 @@ POSTS = [
     ("R42", "sinterklaasgedicht", pR42),
     ("R11", "cadeaus-inpakken", pR11),
     ("R44", "niet-open", pR44),
+    ("R27", "wat-buddy-ziet", pR27),
 ]
 
 

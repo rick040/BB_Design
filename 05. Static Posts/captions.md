@@ -735,3 +735,22 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Blauwe post met de kop "Als ik hem niet open, bestaat hij niet." Een witte Buddy gluurt over de rand van een mailrij met een blauwe ongelezen-stip, afzender "Zorgverzekeraar", tekst "Er is een nieuwe nota voor je". Eronder: "Doorsturen mag zonder hem te lezen."
 Let op: ik-vorm, geen jij-taal over achterstand. "Lezen hoeft niet eerst" klopt volgens de producttaal (Buddy leest bedrag en datum uit de doorgestuurde mail). Overlap met Reel-backlog stond in de lijst op "Nog checken". Idee komt uit ideeen.csv in de repo (#44 t/m #63), niet uit de Google Sheet.
+
+## R27 · Wat Buddy wel en niet ziet (lijst #27, single)
+```
+Buddy kijkt alleen naar de mail die jij doorstuurt. 🔒
+
+Zo werkt het:
+1️⃣ Stuur een factuur of betaalmail door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag, vervaldatum, afzender en rekeningnummer en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+De rest van je inbox, je bank en je wachtwoorden zien we niet. Wil je weten wat we van je hebben? Dan kun je je gegevens opvragen en downloaden.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#privacy #geldzaken #rekeningen #betaalbuddy #twintiger
+```
+Alt: Lichte post met de kop "Buddy kijkt alleen naar wat jij doorstuurt." Twee kolommen. Links, "Buddy ziet", met vinkjes: je doorgestuurde mail, het bedrag, de vervaldatum, de afzender, het rekeningnummer. Rechts, "Buddy ziet niet", met kruisjes: de rest van je inbox, je bank, je wachtwoorden, met een blauwe Buddy onderin die van die kolom wegkijkt. Eronder: "De tekst van je mail bewaren we niet."
+Let op: de homepage van 31 oktober 2026 en de changelog (versie 2.0) beschrijven nu de doorstuurversie zonder Gmail-scan, dus de blokkade uit de lijst is opgeheven. Check wel: (1) "de tekst van je mail bewaren we niet" klopt met de homepage (tekst, onderwerp en bijlage worden nergens weggeschreven), maar bedrag, datum, afzender en rekeningnummer blijven tot 14 dagen na de vervaldatum bewaard, dus zeg niet "we bewaren niets"; (2) bevestig dat het gegevens-opvragen en downloaden (JSON of CSV) live staat, anders haal je die zin uit de caption; (3) lijkt inhoudelijk op R05 (privacy-doorsturen), is bewust een ander beeld.
