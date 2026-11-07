@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { ZakdoekAd } from "./zakdoek/ZakdoekAd";
+import { defaultZakdoekProps, type ZakdoekProps, zakdoekSchema, zakdoekTotal } from "./zakdoek/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const zakdoekMetadata: CalculateMetadataFunction<ZakdoekProps> = ({ props }) => ({
+  durationInFrames: zakdoekTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 50 · "Knoop eruit. Datum erin." (CONCEPT-50.md) */}
+    <Folder name="Concept-50-Zakdoek">
+      <Composition
+        id="BB-Zakdoek-Reel"
+        component={ZakdoekAd}
+        schema={zakdoekSchema}
+        defaultProps={defaultZakdoekProps}
+        calculateMetadata={zakdoekMetadata}
+        durationInFrames={zakdoekTotal(defaultZakdoekProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Zakdoek-Feed"
+        component={ZakdoekAd}
+        schema={zakdoekSchema}
+        defaultProps={defaultZakdoekProps}
+        calculateMetadata={zakdoekMetadata}
+        durationInFrames={zakdoekTotal(defaultZakdoekProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

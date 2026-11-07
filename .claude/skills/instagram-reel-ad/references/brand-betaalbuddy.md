@@ -1,6 +1,6 @@
 # BetaalBuddy: merk, product en copyregels
 
-Stand van 11 oktober 2026. Check de BetaalBuddy-changelog in Drive voor wijzigingen. Wint de changelog, werk dit bestand dan bij.
+Stand van 11 oktober 2026, productfeiten bijgewerkt naar onboarding v5.1 (4 november 2026). Check de BetaalBuddy-changelog in Drive voor wijzigingen. Wint de changelog, werk dit bestand dan bij.
 
 ## Inhoud
 1. Merk (kleuren, fonts, Buddy, assets)
@@ -60,12 +60,12 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 
 - **Doorsturen.** Je stuurt een rekening door naar je eigen doorstuuradres (op `in.betaalbuddy.nl`). Er is **geen** mailbox-koppeling en geen "inbox scannen".
 - **Wat Buddy leest:** bedrag, vervaldatum, betaallink en kenmerk uit de doorgestuurde mail.
-- **Herinneringen per mail** op **7 en 2 dagen** voor de vervaldatum (T-7 en T-2).
+- **Herinneringen (onboarding v5.1):** in pakket **Buddy** krijg je een herinnering **in je agenda op momenten die jij kiest**. Herinneringen **per mail** zitten alleen in **Buddy pro**. Beloof in een ad dus geen "mail op 7 en 2 dagen"; zeg "in je agenda, wanneer jij kiest". Welke momenten je kunt kiezen, is nog niet bevestigd.
 - **Agenda:** een ICS-agendalink, zodat de vervaldatum in je agenda staat.
 - **Wekelijks overzicht.**
 - **Geen app, geen bankkoppeling.** Buddy ziet alleen wat jij doorstuurt; dat is ook een privacy-argument.
 - **Betaalmodel (sinds 5 oktober 2026):** je betaalt bij aanmelding en hebt dan de eerste maand. Er is **geen** proefperiode en niets gratis.
-- **Pakketten:** Basic, Standard en Premium. **Basic heeft geen agenda en geen herinneringen.** Premium noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
+- **Pakketten (onboarding v5.1):** Basic = online overzicht en CSV-download, **geen agenda en geen herinneringen**; Buddy = plus herinnering in je agenda op zelfgekozen momenten; Buddy pro = plus herinnering per mail (sms/WhatsApp als "binnenkort", niet noemen).
 - **Kanalen niet beschikbaar:** WhatsApp, Telegram en Signal.
 
 ### Privacy en gegevens (belangrijk voor een privacy-invalshoek)

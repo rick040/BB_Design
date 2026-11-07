@@ -1,6 +1,6 @@
 # BetaalBuddy · Instagram ads (Remotion)
 
-Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Three concepts, each in two formats:
+Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Each concept comes in two formats (concepts 4 to 49 were built on separate branches):
 
 | Concept | Composition | Size | Use | Length |
 |---|---|---|---|---|
@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 50 · "Knoop eruit. Datum erin." ([`CONCEPT-50.md`](./CONCEPT-50.md)) | `BB-Zakdoek-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.4 s |
+| | `BB-Zakdoek-Feed` | 1080 × 1350 (4:5) | Feed | 13.4 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -40,7 +42,7 @@ The Studio opens in your browser. Pick a composition on the left (they are group
 
 Edits in the Props panel are **live**, and they are used when you click **Render** in the Studio. So edit → preview → render works directly.
 
-To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`) or `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
+To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`), `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`) or `src/zakdoek/schema.ts` (concept 50, `defaultZakdoekProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
 
@@ -55,9 +57,12 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:zakdoek         # concept 50 → out/BB-Zakdoek-Reel.mp4  (9:16)
+npm run render:zakdoek:feed    # concept 50 → out/BB-Zakdoek-Feed.mp4  (4:5)
+npm run render:all             # all eight
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
+npm run still:zakdoek          # concept 50 cover → out/BB-Zakdoek-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
 ```
 
