@@ -754,3 +754,20 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Lichte post met de kop "Buddy kijkt alleen naar wat jij doorstuurt." Twee kolommen. Links, "Buddy ziet", met vinkjes: je doorgestuurde mail, het bedrag, de vervaldatum, de afzender, het rekeningnummer. Rechts, "Buddy ziet niet", met kruisjes: de rest van je inbox, je bank, je wachtwoorden, met een blauwe Buddy onderin die van die kolom wegkijkt. Eronder: "De tekst van je mail bewaren we niet."
 Let op: de homepage van 31 oktober 2026 en de changelog (versie 2.0) beschrijven nu de doorstuurversie zonder Gmail-scan, dus de blokkade uit de lijst is opgeheven. Check wel: (1) "de tekst van je mail bewaren we niet" klopt met de homepage (tekst, onderwerp en bijlage worden nergens weggeschreven), maar bedrag, datum, afzender en rekeningnummer blijven tot 14 dagen na de vervaldatum bewaard, dus zeg niet "we bewaren niets"; (2) bevestig dat het gegevens-opvragen en downloaden (JSON of CSV) live staat, anders haal je die zin uit de caption; (3) lijkt inhoudelijk op R05 (privacy-doorsturen), is bewust een ander beeld.
+
+## R45 · 4 minuten vs 3 weken (lijst #45, single)
+```
+Het werk is nooit het probleem. Het beginnen wel. ⏱️
+
+Zo maak je het klein:
+1️⃣ Factuur of betaalmail in je mail? Stuur hem door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#geldzaken #rekeningen #uitstelgedrag #betaalbuddy #twintiger
+```
+Alt: Blauwe post met de kop "Rekening betalen: 4 minuten. Erover piekeren: 3 weken." Eronder twee balken: een klein wit streepje met "4 minuten" en een lange lichtblauwe balk met "3 weken", waar een witte Buddy tegenaan duwt. Daaronder: "Het begin is het zware stuk. Doorsturen is een klein begin."
+Let op: de 4 minuten en 3 weken zijn een illustratie, geen cijfers uit onderzoek en geen bron in de post. Ik-vorm is hier de kop zelf, geen jij-taal over achterstand. Idee komt uit ideeen.csv in de repo (#44 t/m #63), niet uit de Google Sheet. Rick: de lijst zegt "Nog checken" bij overlap met de Reel-backlog.

@@ -999,6 +999,20 @@ def pR27():
 <div class="sub" style="top:1020px;font-size:38px">De tekst van je mail bewaren we niet.</div>""")
 
 
+def pR45():
+    """R45: 4 minuten vs 3 weken. Blauw, twee balken (kort wit, lang lichtblauw), Buddy duwt tegen de lange balk."""
+    lab = "position:absolute;left:100px;font-weight:500;font-size:46px;letter-spacing:-0.03em;color:#fff"
+    return page("dark", f"""
+<h1 style="top:96px;font-size:92px">Rekening betalen:<br>4 minuten.<br>Erover piekeren:<br>3 weken.</h1>
+<div style="{lab};top:560px">Rekening betalen</div>
+<div class="abs" style="left:100px;top:630px;width:34px;height:84px;border-radius:18px;background:#fff"></div>
+<div class="abs" style="left:160px;top:650px;font-family:'Geist',sans-serif;font-weight:600;font-size:40px;color:#fff">4 minuten</div>
+<div style="{lab};top:790px">Erover piekeren</div>
+<div class="abs" style="left:100px;top:860px;width:640px;height:84px;border-radius:42px;background:{C['blueSoft']};display:flex;align-items:center;justify-content:flex-end;padding-right:44px;font-family:'Geist',sans-serif;font-weight:600;font-size:40px;color:{C['blue']}">3 weken</div>
+<div class="abs" style="left:760px;top:812px;transform:rotate(-7deg);transform-origin:20% 100%">{buddy(190, look=(-1, 0.2))}</div>
+<div class="sub" style="top:1030px;font-size:42px">Het begin is het zware stuk.<br>Doorsturen is een klein begin.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -1027,6 +1041,7 @@ POSTS = [
     ("R11", "cadeaus-inpakken", pR11),
     ("R44", "niet-open", pR44),
     ("R27", "wat-buddy-ziet", pR27),
+    ("R45", "vier-minuten", pR45),
 ]
 
 
