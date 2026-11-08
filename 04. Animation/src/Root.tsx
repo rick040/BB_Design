@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { BordjesAd } from "./bordjes/BordjesAd";
+import { bordjesSchema, bordjesTotal, type BordjesProps, defaultBordjesProps } from "./bordjes/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const bordjesMetadata: CalculateMetadataFunction<BordjesProps> = ({ props }) => ({
+  durationInFrames: bordjesTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 51 · "Alles draait. Niks valt." (CONCEPT-51.md) */}
+    <Folder name="Concept-51-Bordjes">
+      <Composition
+        id="BB-Bordjes-Reel"
+        component={BordjesAd}
+        schema={bordjesSchema}
+        defaultProps={defaultBordjesProps}
+        calculateMetadata={bordjesMetadata}
+        durationInFrames={bordjesTotal(defaultBordjesProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Bordjes-Feed"
+        component={BordjesAd}
+        schema={bordjesSchema}
+        defaultProps={defaultBordjesProps}
+        calculateMetadata={bordjesMetadata}
+        durationInFrames={bordjesTotal(defaultBordjesProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
