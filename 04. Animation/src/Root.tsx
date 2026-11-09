@@ -8,6 +8,13 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { BordspelAd } from "./bordspel/BordspelAd";
+import {
+  type BordspelProps,
+  bordspelSchema,
+  bordspelTotal,
+  defaultBordspelProps,
+} from "./bordspel/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const bordspelMetadata: CalculateMetadataFunction<BordspelProps> = ({ props }) => ({
+  durationInFrames: bordspelTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 53 · "Geen dobbelsteen. Een datum." (CONCEPT-53.md) */}
+    <Folder name="Concept-53-Bordspel">
+      <Composition
+        id="BB-Bordspel-Reel"
+        component={BordspelAd}
+        schema={bordspelSchema}
+        defaultProps={defaultBordspelProps}
+        calculateMetadata={bordspelMetadata}
+        durationInFrames={bordspelTotal(defaultBordspelProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Bordspel-Feed"
+        component={BordspelAd}
+        schema={bordspelSchema}
+        defaultProps={defaultBordspelProps}
+        calculateMetadata={bordspelMetadata}
+        durationInFrames={bordspelTotal(defaultBordspelProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

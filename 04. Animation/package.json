@@ -11,10 +11,13 @@
     "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed",
+    "render:bordspel": "remotion render BB-Bordspel-Reel out/BB-Bordspel-Reel.mp4",
+    "render:bordspel:feed": "remotion render BB-Bordspel-Feed out/BB-Bordspel-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:bordspel && npm run render:bordspel:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:bordspel": "remotion still BB-Bordspel-Reel out/BB-Bordspel-Reel-cover.png --frame=72",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
