@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { RadioAd } from "./radio/RadioAd";
+import { defaultRadioProps, type RadioProps, radioSchema, radioTotal } from "./radio/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const radioMetadata: CalculateMetadataFunction<RadioProps> = ({ props }) => ({
+  durationInFrames: radioTotal(props.cues),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 59 · "Ruis eruit. Datum erin." (CONCEPT-59.md) */}
+    <Folder name="Concept-59-Radio">
+      <Composition
+        id="BB-Radio-Reel"
+        component={RadioAd}
+        schema={radioSchema}
+        defaultProps={defaultRadioProps}
+        calculateMetadata={radioMetadata}
+        durationInFrames={radioTotal(defaultRadioProps.cues)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Radio-Feed"
+        component={RadioAd}
+        schema={radioSchema}
+        defaultProps={defaultRadioProps}
+        calculateMetadata={radioMetadata}
+        durationInFrames={radioTotal(defaultRadioProps.cues)}
         fps={FPS}
         width={1080}
         height={1350}

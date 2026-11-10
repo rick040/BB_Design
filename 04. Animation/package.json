@@ -11,10 +11,15 @@
     "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed",
+    "render:radio": "remotion render BB-Radio-Reel out/BB-Radio-Reel.mp4",
+    "render:radio:feed": "remotion render BB-Radio-Feed out/BB-Radio-Feed.mp4",
+    "render:radio:stil": "remotion render BB-Radio-Reel out/BB-Radio-Reel-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "render:radio:feed:stil": "remotion render BB-Radio-Feed out/BB-Radio-Feed-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:radio && npm run render:radio:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:radio": "remotion still BB-Radio-Reel out/BB-Radio-Reel-cover.png --frame=85",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -1,0 +1,46 @@
+{
+  "fps": 30,
+  "text": "Tussen alle ruis mis je die rekening, tot de aanmaning komt. Dus stuur hem door naar Buddy, dan staat de vervaldatum in je agenda, met een herinnering wanneer jij wilt. Activeer Buddy.",
+  "voice_id": "7qdUFMklKPaaAVMsBTBt",
+  "model": "eleven_multilingual_v2",
+  "scenes": {
+    "S1": {
+      "char": 0,
+      "seconds": 0.0,
+      "frame": 0,
+      "words": "Tussen alle ruis mis je die rekening, tot de aanmaning komt."
+    },
+    "S2": {
+      "char": 61,
+      "seconds": 3.379,
+      "frame": 101,
+      "words": "Dus stuur hem door naar Buddy,"
+    },
+    "S3": {
+      "char": 92,
+      "seconds": 4.853,
+      "frame": 146,
+      "words": "dan staat de vervaldatum in je agenda, met een herinnering wanneer jij wilt."
+    },
+    "S4": {
+      "char": 169,
+      "seconds": 8.754,
+      "frame": 263,
+      "words": "Activeer Buddy."
+    }
+  },
+  "speechEndSeconds": 9.892,
+  "speechEndFrame": 297,
+  "words": {
+    "ruis": 22,
+    "rekening": 45,
+    "aanmaning": 72,
+    "stuur": 107,
+    "Buddy": 134,
+    "vervaldatum": 162,
+    "agenda": 192,
+    "herinnering": 217,
+    "wanneer": 234,
+    "Activeer": 263
+  }
+}
