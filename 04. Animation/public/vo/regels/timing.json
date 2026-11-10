@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  84,
+  173,
+  343
+ ],
+ "voiceEnd": 466,
+ "durationInFrames": 496,
+ "words": [
+  {
+   "w": "Dus",
+   "start": 0,
+   "end": 5
+  },
+  {
+   "w": "Buddy",
+   "start": 7,
+   "end": 23
+  },
+  {
+   "w": "leest",
+   "start": 24,
+   "end": 32
+  },
+  {
+   "w": "je",
+   "start": 34,
+   "end": 36
+  },
+  {
+   "w": "rekening",
+   "start": 38,
+   "end": 48
+  },
+  {
+   "w": "met",
+   "start": 50,
+   "end": 53
+  },
+  {
+   "w": "AI?",
+   "start": 55,
+   "end": 77
+  },
+  {
+   "w": "Nee.",
+   "start": 84,
+   "end": 98
+  },
+  {
+   "w": "Er",
+   "start": 103,
+   "end": 106
+  },
+  {
+   "w": "gaat",
+   "start": 107,
+   "end": 113
+  },
+  {
+   "w": "geen",
+   "start": 115,
+   "end": 122
+  },
+  {
+   "w": "AI",
+   "start": 125,
+   "end": 137
+  },
+  {
+   "w": "over",
+   "start": 139,
+   "end": 144
+  },
+  {
+   "w": "je",
+   "start": 146,
+   "end": 149
+  },
+  {
+   "w": "mail.",
+   "start": 154,
+   "end": 166
+  },
+  {
+   "w": "Buddy",
+   "start": 173,
+   "end": 180
+  },
+  {
+   "w": "leest",
+   "start": 182,
+   "end": 190
+  },
+  {
+   "w": "met",
+   "start": 192,
+   "end": 194
+  },
+  {
+   "w": "vaste",
+   "start": 199,
+   "end": 209
+  },
+  {
+   "w": "regels:",
+   "start": 212,
+   "end": 235
+  },
+  {
+   "w": "bedrag,",
+   "start": 238,
+   "end": 257
+  },
+  {
+   "w": "vervaldatum,",
+   "start": 259,
+   "end": 286
+  },
+  {
+   "w": "betaallink",
+   "start": 290,
+   "end": 310
+  },
+  {
+   "w": "en",
+   "start": 311,
+   "end": 312
+  },
+  {
+   "w": "kenmerk.",
+   "start": 314,
+   "end": 337
+  },
+  {
+   "w": "Geen",
+   "start": 343,
+   "end": 350
+  },
+  {
+   "w": "AI.",
+   "start": 353,
+   "end": 370
+  },
+  {
+   "w": "Gewoon",
+   "start": 374,
+   "end": 386
+  },
+  {
+   "w": "vaste",
+   "start": 394,
+   "end": 401
+  },
+  {
+   "w": "regels.",
+   "start": 403,
+   "end": 426
+  },
+  {
+   "w": "Activeer",
+   "start": 432,
+   "end": 446
+  },
+  {
+   "w": "Buddy.",
+   "start": 449,
+   "end": 466
+  }
+ ]
+}
