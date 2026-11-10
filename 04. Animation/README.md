@@ -55,7 +55,10 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:geenapp        # concept 67 → out/geenapp-reel-vo.mp4  (9:16, met stem; daarna loudnorm)
+npm run render:geenapp:feed   # concept 67 → out/geenapp-feed-vo.mp4  (4:5, met stem)
+npm run render:geenapp:stil   # concept 67 zonder stem (ook :feed:stil)
+npm run render:all             # alles
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png

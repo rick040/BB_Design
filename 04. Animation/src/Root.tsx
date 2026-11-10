@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { GeenAppAd } from "./geenapp/GeenAppAd";
+import { defaultGeenAppProps, geenAppSchema, TOTAL_FRAMES as GEENAPP_TOTAL } from "./geenapp/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 67 · "Geen app. Je mail is genoeg." (CONCEPT-67.md) · met stem */}
+    <Folder name="Concept-67-Geen-app">
+      <Composition
+        id="BB-GeenApp-Reel"
+        component={GeenAppAd}
+        schema={geenAppSchema}
+        defaultProps={defaultGeenAppProps}
+        durationInFrames={GEENAPP_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-GeenApp-Feed"
+        component={GeenAppAd}
+        schema={geenAppSchema}
+        defaultProps={defaultGeenAppProps}
+        durationInFrames={GEENAPP_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
