@@ -1,0 +1,162 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  50,
+  106,
+  190,
+  312
+ ],
+ "voiceEnd": 353,
+ "durationInFrames": 383,
+ "words": [
+  {
+   "w": "Wat",
+   "start": 0,
+   "end": 7
+  },
+  {
+   "w": "weet",
+   "start": 11,
+   "end": 14
+  },
+  {
+   "w": "Buddy",
+   "start": 16,
+   "end": 22
+  },
+  {
+   "w": "van",
+   "start": 24,
+   "end": 26
+  },
+  {
+   "w": "jou?",
+   "start": 29,
+   "end": 38
+  },
+  {
+   "w": "Alleen",
+   "start": 50,
+   "end": 60
+  },
+  {
+   "w": "wat",
+   "start": 62,
+   "end": 67
+  },
+  {
+   "w": "jij",
+   "start": 70,
+   "end": 74
+  },
+  {
+   "w": "doorstuurt.",
+   "start": 77,
+   "end": 101
+  },
+  {
+   "w": "Wil",
+   "start": 106,
+   "end": 110
+  },
+  {
+   "w": "je",
+   "start": 112,
+   "end": 113
+  },
+  {
+   "w": "het",
+   "start": 114,
+   "end": 115
+  },
+  {
+   "w": "zien?",
+   "start": 118,
+   "end": 131
+  },
+  {
+   "w": "Mail",
+   "start": 137,
+   "end": 144
+  },
+  {
+   "w": "naar",
+   "start": 145,
+   "end": 151
+  },
+  {
+   "w": "gegevens.",
+   "start": 154,
+   "end": 184
+  },
+  {
+   "w": "En",
+   "start": 190,
+   "end": 192
+  },
+  {
+   "w": "daarna?",
+   "start": 193,
+   "end": 214
+  },
+  {
+   "w": "Veertien",
+   "start": 221,
+   "end": 230
+  },
+  {
+   "w": "dagen",
+   "start": 233,
+   "end": 242
+  },
+  {
+   "w": "na",
+   "start": 245,
+   "end": 250
+  },
+  {
+   "w": "de",
+   "start": 251,
+   "end": 252
+  },
+  {
+   "w": "vervaldatum",
+   "start": 254,
+   "end": 276
+  },
+  {
+   "w": "is",
+   "start": 281,
+   "end": 283
+  },
+  {
+   "w": "het",
+   "start": 286,
+   "end": 288
+  },
+  {
+   "w": "weg.",
+   "start": 293,
+   "end": 305
+  },
+  {
+   "w": "Activeer",
+   "start": 312,
+   "end": 329
+  },
+  {
+   "w": "Buddy.",
+   "start": 334,
+   "end": 353
+  }
+ ]
+}

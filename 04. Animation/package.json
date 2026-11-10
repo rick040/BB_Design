@@ -12,11 +12,12 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:glasla",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:glasla": "remotion render BB-Glasla-Reel out/glasla-reel-vo.mp4"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

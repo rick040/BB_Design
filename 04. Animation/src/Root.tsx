@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { GlaslaAd } from "./glasla/GlaslaAd";
+import { defaultGlaslaProps, glaslaSchema, TOTAL_FRAMES as GLASLA_TOTAL } from "./glasla/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 65 · "Niks verstopt. Alles in zicht." (CONCEPT-65.md) · Reel met stem */}
+    <Folder name="Concept-65-Glazen-la">
+      <Composition
+        id="BB-Glasla-Reel"
+        component={GlaslaAd}
+        schema={glaslaSchema}
+        defaultProps={defaultGlaslaProps}
+        durationInFrames={GLASLA_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
