@@ -10,6 +10,13 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { SneeuwbolAd } from "./sneeuwbol/SneeuwbolAd";
+import {
+  defaultSneeuwbolProps,
+  type SneeuwbolProps,
+  sneeuwbolSchema,
+  sneeuwbolTotal,
+} from "./sneeuwbol/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +29,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const sneeuwbolMetadata: CalculateMetadataFunction<SneeuwbolProps> = ({ props }) => ({
+  durationInFrames: sneeuwbolTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +109,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 62 · "Laat de rest maar dwarrelen." (CONCEPT-62.md) */}
+    <Folder name="Concept-62-Sneeuwbol">
+      <Composition
+        id="BB-Sneeuwbol-Reel"
+        component={SneeuwbolAd}
+        schema={sneeuwbolSchema}
+        defaultProps={defaultSneeuwbolProps}
+        calculateMetadata={sneeuwbolMetadata}
+        durationInFrames={sneeuwbolTotal(defaultSneeuwbolProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Sneeuwbol-Feed"
+        component={SneeuwbolAd}
+        schema={sneeuwbolSchema}
+        defaultProps={defaultSneeuwbolProps}
+        calculateMetadata={sneeuwbolMetadata}
+        durationInFrames={sneeuwbolTotal(defaultSneeuwbolProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
