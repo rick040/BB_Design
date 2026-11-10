@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { ZeefAd } from "./zeef/ZeefAd";
+import { defaultZeefProps, type ZeefProps, zeefSchema, zeefTotal } from "./zeef/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const zeefMetadata: CalculateMetadataFunction<ZeefProps> = ({ props }) => ({
+  durationInFrames: zeefTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,31 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+    {/* Concept 55 · "Geheugen lekt? Buddy niet." (CONCEPT-55.md) */}
+    <Folder name="Concept-55-Zeef">
+      <Composition
+        id="BB-Zeef-Reel"
+        component={ZeefAd}
+        schema={zeefSchema}
+        defaultProps={defaultZeefProps}
+        calculateMetadata={zeefMetadata}
+        durationInFrames={zeefTotal(defaultZeefProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Zeef-Feed"
+        component={ZeefAd}
+        schema={zeefSchema}
+        defaultProps={defaultZeefProps}
+        calculateMetadata={zeefMetadata}
+        durationInFrames={zeefTotal(defaultZeefProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
