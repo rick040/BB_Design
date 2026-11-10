@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 61 · "Van dun ijs naar vaste grond." ([`CONCEPT-61.md`](./CONCEPT-61.md)) | `BB-Ijs-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 10.3 s, voice-over |
+| | `BB-Ijs-Feed` | 1080 × 1350 (4:5) | Feed | 10.3 s, voice-over |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -59,6 +61,10 @@ npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run render:ijs             # concept 61 → out/ijs-reel-vo.mp4 (9:16, with voice)
+npm run render:ijs:feed        # concept 61 → out/ijs-feed-vo.mp4 (4:5, with voice)
+npm run render:ijs:stil        # concept 61 without voice (also :feed:stil)
+npm run still:ijs              # concept 61 cover → out/ijs-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -72,6 +78,7 @@ src/
   schema.ts           concept 1: ALL editable props + defaults  ← start here for copy changes
   scenes/             concept 1: Hook · Buddy · Forward · Remind · CTA
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
+  ijs/                concept 61: IjsAd.tsx, schema.ts, vo.ts (reads public/vo/ijs/timing.json), scenes/, components/
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
   theme.ts            brand colors + fonts

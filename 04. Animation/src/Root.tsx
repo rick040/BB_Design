@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { IjsAd } from "./ijs/IjsAd";
+import { defaultIjsProps, type IjsProps, ijsSchema, ijsTotal } from "./ijs/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const ijsMetadata: CalculateMetadataFunction<IjsProps> = ({ props }) => ({
+  durationInFrames: ijsTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,31 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+    {/* Concept 61 · "Van dun ijs naar vaste grond." (CONCEPT-61.md) */}
+    <Folder name="Concept-61-Dun-ijs">
+      <Composition
+        id="BB-Ijs-Reel"
+        component={IjsAd}
+        schema={ijsSchema}
+        defaultProps={defaultIjsProps}
+        calculateMetadata={ijsMetadata}
+        durationInFrames={ijsTotal(defaultIjsProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Ijs-Feed"
+        component={IjsAd}
+        schema={ijsSchema}
+        defaultProps={defaultIjsProps}
+        calculateMetadata={ijsMetadata}
+        durationInFrames={ijsTotal(defaultIjsProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

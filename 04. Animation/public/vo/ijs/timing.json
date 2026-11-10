@@ -1,0 +1,226 @@
+{
+ "fps": 30,
+ "text": "Sta jij met die rekening op dun ijs, tot het kraakt? Stuur hem door naar Buddy, en hij zet hem met een herinnering in je agenda. Zo sta je op vaste grond.",
+ "scenes": [
+  {
+   "id": "S1",
+   "phrase": "Sta jij",
+   "start_s": 0.0,
+   "frame": 0
+  },
+  {
+   "id": "S2",
+   "phrase": "Stuur hem",
+   "start_s": 3.44,
+   "frame": 103
+  },
+  {
+   "id": "S3",
+   "phrase": "en hij zet",
+   "start_s": 4.76,
+   "frame": 142
+  },
+  {
+   "id": "S4",
+   "phrase": "Zo sta",
+   "start_s": 7.44,
+   "frame": 223
+  }
+ ],
+ "words": [
+  {
+   "w": "Sta",
+   "start": 0.0,
+   "end": 0.24,
+   "frame": 0
+  },
+  {
+   "w": "jij",
+   "start": 0.32,
+   "end": 0.48,
+   "frame": 9
+  },
+  {
+   "w": "met",
+   "start": 0.56,
+   "end": 0.64,
+   "frame": 16
+  },
+  {
+   "w": "die",
+   "start": 0.72,
+   "end": 0.8,
+   "frame": 21
+  },
+  {
+   "w": "rekening",
+   "start": 0.88,
+   "end": 1.2,
+   "frame": 26
+  },
+  {
+   "w": "op",
+   "start": 1.32,
+   "end": 1.44,
+   "frame": 39
+  },
+  {
+   "w": "dun",
+   "start": 1.48,
+   "end": 1.68,
+   "frame": 44
+  },
+  {
+   "w": "ijs",
+   "start": 1.76,
+   "end": 2.08,
+   "frame": 52
+  },
+  {
+   "w": "tot",
+   "start": 2.187,
+   "end": 2.24,
+   "frame": 65
+  },
+  {
+   "w": "het",
+   "start": 2.32,
+   "end": 2.4,
+   "frame": 69
+  },
+  {
+   "w": "kraakt",
+   "start": 2.48,
+   "end": 2.96,
+   "frame": 74
+  },
+  {
+   "w": "Stuur",
+   "start": 3.44,
+   "end": 3.68,
+   "frame": 103
+  },
+  {
+   "w": "hem",
+   "start": 3.72,
+   "end": 3.76,
+   "frame": 111
+  },
+  {
+   "w": "door",
+   "start": 3.84,
+   "end": 3.92,
+   "frame": 115
+  },
+  {
+   "w": "naar",
+   "start": 3.96,
+   "end": 4.08,
+   "frame": 118
+  },
+  {
+   "w": "Buddy",
+   "start": 4.16,
+   "end": 4.48,
+   "frame": 124
+  },
+  {
+   "w": "en",
+   "start": 4.76,
+   "end": 4.8,
+   "frame": 142
+  },
+  {
+   "w": "hij",
+   "start": 4.88,
+   "end": 5.04,
+   "frame": 146
+  },
+  {
+   "w": "zet",
+   "start": 5.16,
+   "end": 5.28,
+   "frame": 154
+  },
+  {
+   "w": "hem",
+   "start": 5.32,
+   "end": 5.36,
+   "frame": 159
+  },
+  {
+   "w": "met",
+   "start": 5.44,
+   "end": 5.52,
+   "frame": 163
+  },
+  {
+   "w": "een",
+   "start": 5.6,
+   "end": 5.68,
+   "frame": 168
+  },
+  {
+   "w": "herinnering",
+   "start": 5.76,
+   "end": 6.24,
+   "frame": 172
+  },
+  {
+   "w": "in",
+   "start": 6.28,
+   "end": 6.32,
+   "frame": 188
+  },
+  {
+   "w": "je",
+   "start": 6.4,
+   "end": 6.48,
+   "frame": 192
+  },
+  {
+   "w": "agenda",
+   "start": 6.72,
+   "end": 6.96,
+   "frame": 201
+  },
+  {
+   "w": "Zo",
+   "start": 7.44,
+   "end": 7.6,
+   "frame": 223
+  },
+  {
+   "w": "sta",
+   "start": 7.76,
+   "end": 7.92,
+   "frame": 232
+  },
+  {
+   "w": "je",
+   "start": 7.96,
+   "end": 8.0,
+   "frame": 238
+  },
+  {
+   "w": "op",
+   "start": 8.08,
+   "end": 8.24,
+   "frame": 242
+  },
+  {
+   "w": "vaste",
+   "start": 8.28,
+   "end": 8.56,
+   "frame": 248
+  },
+  {
+   "w": "grond",
+   "start": 8.64,
+   "end": 9.04,
+   "frame": 259
+  }
+ ],
+ "voice_end_s": 9.28,
+ "voice_end_frame": 279
+}

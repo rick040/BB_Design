@@ -11,10 +11,15 @@
     "render:countdown:feed": "remotion render BB-Countdown-Feed out/BB-Countdown-Feed.mp4",
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed",
+    "render:ijs": "remotion render BB-Ijs-Reel out/ijs-reel-vo.mp4",
+    "render:ijs:feed": "remotion render BB-Ijs-Feed out/ijs-feed-vo.mp4",
+    "render:ijs:stil": "remotion render BB-Ijs-Reel out/ijs-reel-stil.mp4 --props={\"withVoice\":false} --muted",
+    "render:ijs:feed:stil": "remotion render BB-Ijs-Feed out/ijs-feed-stil.mp4 --props={\"withVoice\":false} --muted",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:ijs && npm run render:ijs:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:ijs": "remotion still BB-Ijs-Reel out/ijs-cover.png --frame=92",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
