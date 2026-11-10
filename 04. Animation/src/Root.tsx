@@ -9,6 +9,8 @@ import {
   defaultCountdownProps,
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
+import { TheeAd } from "./thee/TheeAd";
+import { defaultTheeProps, type TheeProps, theeSchema, theeTotal } from "./thee/schema";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
@@ -18,6 +20,10 @@ const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
 
 const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props }) => ({
   durationInFrames: countdownTotal(props.timing),
+});
+
+const theeMetadata: CalculateMetadataFunction<TheeProps> = ({ props }) => ({
+  durationInFrames: theeTotal(props.timing),
 });
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
@@ -98,6 +104,31 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    <Folder name="Concept-58-Thee">
+      <Composition
+        id="BB-Thee-Reel"
+        component={TheeAd}
+        schema={theeSchema}
+        defaultProps={defaultTheeProps}
+        calculateMetadata={theeMetadata}
+        durationInFrames={theeTotal(defaultTheeProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Thee-Feed"
+        component={TheeAd}
+        schema={theeSchema}
+        defaultProps={defaultTheeProps}
+        calculateMetadata={theeMetadata}
+        durationInFrames={theeTotal(defaultTheeProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

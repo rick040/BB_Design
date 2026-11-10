@@ -1,0 +1,31 @@
+{
+ "fps": 30,
+ "cues": [
+  {
+   "scene": 1,
+   "text_start": "Een rekening is net thee,",
+   "t": 0.0,
+   "frame": 0
+  },
+  {
+   "scene": 2,
+   "text_start": "Dus stuur hem door, dan z",
+   "t": 3.878,
+   "frame": 116
+  },
+  {
+   "scene": 3,
+   "text_start": "dan zet Buddy hem op tijd",
+   "t": 4.969,
+   "frame": 149
+  },
+  {
+   "scene": 4,
+   "text_start": "Thee laat je trekken, rek",
+   "t": 6.931,
+   "frame": 208
+  }
+ ],
+ "voice_end_s": 9.102,
+ "voice_end_frame": 273
+}
