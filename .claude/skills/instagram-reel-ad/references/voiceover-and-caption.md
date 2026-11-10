@@ -71,7 +71,7 @@ Geen app. Geen bankkoppeling. Buddy ziet alleen wat jij doorstuurt.
 
 **Regels:**
 - De hook sluit aan op de hook van de video, maar is geen letterlijke kopie.
-- Elke claim moet kloppen met `brand-betaalbuddy.md` §2 en §3, zoals "kan uitlopen op €40" en "7 en 2 dagen van tevoren".
+- Elke claim moet kloppen met `brand-betaalbuddy.md` §2 en §3, zoals "kan uitlopen op €40" en "jij kiest wanneer je een herinnering krijgt".
 - Gebruik 5 hashtags. Mag er één wisselen naar de invalshoek (bijvoorbeeld `#privacy` of `#zorgnota`)? Ja, maar houd `#betaalbuddy`.
 - Gebruik geen "gratis", geen prijs en geen andere merknamen.
 
