@@ -10,6 +10,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { WeegschaalAd } from "./weegschaal/WeegschaalAd";
+import { defaultWeegschaalProps, TOTAL_FRAMES as WEEGSCHAAL_TOTAL, weegschaalSchema } from "./weegschaal/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 66 · "Reken maar uit." (CONCEPT-66.md) · Reel met stem */}
+    <Folder name="Concept-66-Weegschaal">
+      <Composition
+        id="BB-Weegschaal-Reel"
+        component={WeegschaalAd}
+        schema={weegschaalSchema}
+        defaultProps={defaultWeegschaalProps}
+        durationInFrames={WEEGSCHAAL_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
