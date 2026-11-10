@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { OverzichtAd } from "./overzicht/OverzichtAd";
+import { defaultOverzichtProps, overzichtSchema, TOTAL_FRAMES as OVERZICHT_TOTAL } from "./overzicht/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 68 · "Alles op één lijst." (CONCEPT-68.md) · Reel met stem */}
+    <Folder name="Concept-68-Overzicht">
+      <Composition
+        id="BB-Overzicht-Reel"
+        component={OverzichtAd}
+        schema={overzichtSchema}
+        defaultProps={defaultOverzichtProps}
+        durationInFrames={OVERZICHT_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
