@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { EenplekAd } from "./eenplek/EenplekAd";
+import { defaultEenplekProps, eenplekSchema, TOTAL_FRAMES as EENPLEK_TOTAL } from "./eenplek/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 68 · "Alles op één plek." (CONCEPT-68.md) · Reel met stem */}
+    <Folder name="Concept-68-Eenplek">
+      <Composition
+        id="BB-Eenplek-Reel"
+        component={EenplekAd}
+        schema={eenplekSchema}
+        defaultProps={defaultEenplekProps}
+        durationInFrames={EENPLEK_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
