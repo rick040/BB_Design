@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { VloedAd } from "./vloed/VloedAd";
+import { defaultVloedProps, type VloedProps, vloedSchema, vloedTotal } from "./vloed/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const vloedMetadata: CalculateMetadataFunction<VloedProps> = ({ props }) => ({
+  durationInFrames: vloedTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 57 · "Vloed komt. Jij staat droog." (CONCEPT-57.md) */}
+    <Folder name="Concept-57-Vloed">
+      <Composition
+        id="BB-Vloed-Reel"
+        component={VloedAd}
+        schema={vloedSchema}
+        defaultProps={defaultVloedProps}
+        calculateMetadata={vloedMetadata}
+        durationInFrames={vloedTotal(defaultVloedProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Vloed-Feed"
+        component={VloedAd}
+        schema={vloedSchema}
+        defaultProps={defaultVloedProps}
+        calculateMetadata={vloedMetadata}
+        durationInFrames={vloedTotal(defaultVloedProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
