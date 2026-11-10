@@ -10,7 +10,7 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
-| 59 · "Ruis eruit. Datum erin." ([`CONCEPT-59.md`](./CONCEPT-59.md)) | `BB-Radio-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 11.0 s |
+| 60 · "Ruis eruit. Datum erin." ([`CONCEPT-60.md`](./CONCEPT-60.md)) | `BB-Radio-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 11.0 s |
 | | `BB-Radio-Feed` | 1080 × 1350 (4:5) | Feed | 11.0 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
@@ -57,9 +57,9 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:radio           # concept 59 → out/BB-Radio-Reel.mp4  (9:16, with voice)
-npm run render:radio:feed      # concept 59 → out/BB-Radio-Feed.mp4  (4:5, with voice)
-npm run render:radio:stil      # concept 59 without voice (also :feed:stil)
+npm run render:radio           # concept 60 → out/BB-Radio-Reel.mp4  (9:16, with voice)
+npm run render:radio:feed      # concept 60 → out/BB-Radio-Feed.mp4  (4:5, with voice)
+npm run render:radio:stil      # concept 60 without voice (also :feed:stil)
 npm run render:all             # all eight
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png

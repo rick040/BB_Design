@@ -1,4 +1,4 @@
-# BetaalBuddy · Instagram ad, concept 59
+# BetaalBuddy · Instagram ad, concept 60
 
 ## "Ruis eruit. Datum erin."
 
@@ -12,7 +12,7 @@
 | Geluid | Werkt zonder geluid (alle tekst staat in beeld). Voice-over is één doorlopende ElevenLabs-take; de animatie is op de stem gebouwd |
 
 ### Hoe dit verschilt van de eerdere concepten
-In deze repo staan concept 1 tot 3; concept 4 tot 58 staan op losse branches en in de changelog. Radio, ruis, afstemmen en een antenne komen in geen van de 58 concepten voor. Het dichtst in de buurt: concept 22 (natuurdocumentaire, "uit het oog") en 39 (navigatie-app); beide gebruiken een ander beeld, een andere rol voor Buddy en andere overgangen.
+In deze repo staan concept 1 tot 3; concept 4 tot 59 staan op losse branches en in de changelog. Bij de start van deze run (changelog gelezen rond 20:20) kwamen radio, ruis, afstemmen en een antenne in geen van de 58 concepten voor. **Let op:** een parallelle run van de dagelijkse taak heeft om 20:36 concept 59 'Geen ruis. Gewoon op tijd.' (branch claude/admiring-bell-kqkc18) toegevoegd, ook een radio met ruis en een afstemknop. Dit concept is daarom hernummerd naar 60 en is op invalshoek en visueel systeem niet uniek ten opzichte van 59; kies één van de twee. Het dichtst in de buurt: concept 22 (natuurdocumentaire, "uit het oog") en 39 (navigatie-app); beide gebruiken een ander beeld, een andere rol voor Buddy en andere overgangen.
 
 | | Concept 1 | Concept 2 | Concept 3 | **Dit concept** |
 |---|---|---|---|---|
@@ -106,7 +106,7 @@ Geen app. Geen bankkoppeling. Buddy ziet alleen wat jij doorstuurt.
 - Knop: "Aanmelden"
 
 ## Aanpassen en exporteren
-- Studio: `npm run dev`, map **Concept-59-Radio**. Teksten, kleuren en cues in `src/radio/schema.ts` (`defaultRadioProps`).
+- Studio: `npm run dev`, map **Concept-60-Radio**. Teksten, kleuren en cues in `src/radio/schema.ts` (`defaultRadioProps`).
 - Nieuwe take? Zet `vo.json` en `voice-over.mp3` in `public/vo/radio/`, maak `timing.json` opnieuw; de cues volgen vanzelf.
 - `npm run render:radio`, `render:radio:feed`, `render:radio:stil`, `render:radio:feed:stil`, `still:radio` (cover frame 85).
 
@@ -115,3 +115,4 @@ Geen app. Geen bankkoppeling. Buddy ziet alleen wat jij doorstuurt.
 - Bevestigen welke herinnermomenten je in pakket Buddy kunt kiezen; "ma 14" is een voorbeeld. Datums staan op december.
 - Take beluisteren op de uitspraak van "Buddy".
 - Video is 11,0 s: 32 woorden duren bij deze stem 9,9 s. Voor 13 s zijn ongeveer 40 woorden nodig.
+- Overlap met concept 59 (parallelle run, ook radio en ruis): kies welke van de twee doorgaat. Twee runs van de dagelijkse taak liepen tegelijk; zorg dat de routine niet overlappend start.

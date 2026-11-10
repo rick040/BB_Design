@@ -3,7 +3,7 @@ import { z } from "zod";
 import { brand } from "../theme";
 import voTiming from "../../public/vo/radio/timing.json";
 
-// Concept 59 · "Ruis eruit. Datum erin." (radio)
+// Concept 60 · "Ruis eruit. Datum erin." (radio)
 // The animation follows the voice-over: scene starts come from
 // public/vo/radio/timing.json (measured from the ElevenLabs take with
 // timestamps). Every field below is editable in Remotion Studio.
