@@ -1,0 +1,33 @@
+{
+ "fps": 30,
+ "text": "Tussen al je mail raakt je energierekening zoek, tot er een aanmaning ligt. Stuur hem dus door naar Buddy, want die zet hem in je agenda. Geen ruis, gewoon op tijd.",
+ "scenes": {
+  "S1": {
+   "char": 0,
+   "word": "Tussen al je",
+   "t": 0.0,
+   "frame": 0
+  },
+  "S2": {
+   "char": 76,
+   "word": "Stuur hem du",
+   "t": 4.47,
+   "frame": 134
+  },
+  "S3": {
+   "char": 107,
+   "word": "want die zet",
+   "t": 5.956,
+   "frame": 179
+  },
+  "S4": {
+   "char": 138,
+   "word": "Geen ruis, g",
+   "t": 7.5,
+   "frame": 225
+  }
+ },
+ "firstWord": 0.0,
+ "lastWordEnd": 9.33,
+ "voFrames": 280
+}

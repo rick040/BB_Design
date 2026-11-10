@@ -10,6 +10,8 @@ import {
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
+import { RuisAd } from "./ruis/RuisAd";
+import { defaultRuisProps, type RuisProps, ruisSchema, ruisTotal } from "./ruis/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
 const adMetadata: CalculateMetadataFunction<AdProps> = ({ props }) => ({
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const ruisMetadata: CalculateMetadataFunction<RuisProps> = ({ props }) => ({
+  durationInFrames: ruisTotal(props.voice, props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 59 · "Geen ruis. Gewoon op tijd." (CONCEPT-59.md) */}
+    <Folder name="Concept-59-Ruis">
+      <Composition
+        id="BB-Ruis-Reel"
+        component={RuisAd}
+        schema={ruisSchema}
+        defaultProps={defaultRuisProps}
+        calculateMetadata={ruisMetadata}
+        durationInFrames={ruisTotal(defaultRuisProps.voice, defaultRuisProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Ruis-Feed"
+        component={RuisAd}
+        schema={ruisSchema}
+        defaultProps={defaultRuisProps}
+        calculateMetadata={ruisMetadata}
+        durationInFrames={ruisTotal(defaultRuisProps.voice, defaultRuisProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
