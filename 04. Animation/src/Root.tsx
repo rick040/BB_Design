@@ -1,6 +1,8 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -101,6 +103,20 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1350}
+      />
+    </Folder>
+
+    {/* Concept 62 · "Nu komt hij op tijd terug." (CONCEPT-62.md) · Reel met stem */}
+    <Folder name="Concept-62-Boemerang">
+      <Composition
+        id="BB-Boemerang-Reel"
+        component={BoemerangAd}
+        schema={boemerangSchema}
+        defaultProps={defaultBoemerangProps}
+        durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
       />
     </Folder>
   </>

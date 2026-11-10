@@ -1,6 +1,6 @@
 # BetaalBuddy: merk, product en copyregels
 
-Stand van 11 oktober 2026. Check de BetaalBuddy-changelog in Drive voor wijzigingen. Wint de changelog, werk dit bestand dan bij.
+Stand van 10 november 2026 (prijzen, 'geen AI' en USP-rotatie toegevoegd). Check de BetaalBuddy-changelog in Drive voor wijzigingen. Wint de changelog, werk dit bestand dan bij.
 
 ## Inhoud
 1. Merk (kleuren, fonts, Buddy, assets)
@@ -60,12 +60,21 @@ Nederlands, plat en gesproken. Spreek de lezer aan met je/jij, in korte zinnen. 
 
 - **Doorsturen.** Je stuurt een rekening door naar je eigen doorstuuradres (op `in.betaalbuddy.nl`). Er is **geen** mailbox-koppeling en geen "inbox scannen".
 - **Wat Buddy leest:** bedrag, vervaldatum, betaallink en kenmerk uit de doorgestuurde mail.
-- **Herinneringen per mail** op **7 en 2 dagen** voor de vervaldatum (T-7 en T-2).
+- **Geen AI.** Buddy leest je rekening met vaste, standaard regels. Er gaat geen AI-model over je mail. Bevestigd door Rick op 10 november 2026.
+- **Herinnering in je agenda**, op een moment dat jij kiest (onboarding v5.1, changelog november 2026). Noem in ads niet meer "mail op 7 en 2 dagen".
 - **Agenda:** een ICS-agendalink, zodat de vervaldatum in je agenda staat.
 - **Wekelijks overzicht.**
 - **Geen app, geen bankkoppeling.** Buddy ziet alleen wat jij doorstuurt; dat is ook een privacy-argument.
 - **Betaalmodel (sinds 5 oktober 2026):** je betaalt bij aanmelding en hebt dan de eerste maand. Er is **geen** proefperiode en niets gratis.
-- **Pakketten:** Basic, Standard en Premium. **Basic heeft geen agenda en geen herinneringen.** Premium noemt alleen "melding op je telefoon naast de mail", en dat is nog niet live.
+- **Pakketten en prijzen** (prijspagina, bevestigd door Rick op 10 november 2026):
+
+  | Pakket | Prijs | Wat erin zit |
+  |---|---|---|
+  | Buddy lite | €2,99 per maand | Al je rekeningen in één overzicht, export naar CSV of JSON. **Geen automatische reminder.** |
+  | Buddy | €3,49 per maand | Alles uit Lite plus **reminder in je agenda** |
+  | Buddy pro | €4,99 per maand | Alles uit Buddy plus prioriteit support. De pagina noemt ook WhatsApp/Telegram-meldingen, maar die zijn **niet live**: noem ze nooit |
+
+  Gaat een ad over herinneringen of de agenda, dan is de prijs **€3,49 per maand (Buddy)**, nooit "vanaf €2,99".
 - **Kanalen niet beschikbaar:** WhatsApp, Telegram en Signal.
 
 ### Privacy en gegevens (belangrijk voor een privacy-invalshoek)
@@ -97,7 +106,8 @@ Ze staan in het EmailTool-project onder `landingspaginas/`. Waar ze live komen t
 | "gratis", "probeer gratis", "proefperiode", "X dagen gratis" | Er is geen gratis periode meer; de conversiecampagne mag de site niet tegenspreken |
 | WhatsApp, Telegram, Signal | Niet beschikbaar |
 | "scant je inbox", "koppel je Gmail", "labelt je mails" | Oude versie; het product werkt nu met doorsturen |
-| Prijs in een herinnerings-ad ("vanaf €2,99") | Basic heeft geen herinneringen, dus dat is misleidend |
+| "vanaf €2,99" of €2,99 in een ad over herinneringen of de agenda | Lite heeft geen reminder; gebruik €3,49 (pakket Buddy) |
+| "AI", "slimme AI", "AI-gestuurd" als eigenschap van Buddy | Buddy werkt met vaste regels; alleen "geen AI" mag |
 | "30 dagen geld terug" | Staat nog open in de changelog; niet gebruiken tot het bevestigd is |
 | Logo's of namen van andere merken (Gmail, Netflix, PostNL, Klarna…) | Merkrecht; gebruik generieke afzenders |
 | Buddy "betaalt voor je" | Buddy herinnert; jij betaalt |
@@ -117,18 +127,29 @@ Ze staan in het EmailTool-project onder `landingspaginas/`. Waar ze live komen t
 
 `references/copy-rules.txt` is de machineleesbare versie van deze tabel voor `scripts/check_copy.py`.
 
-## 4. Invalshoeken
+## 4. USP's en invalshoeken (rotatie)
 
-**Wat al gemaakt is, staat in de CONCEPT-bestanden** (`04. Animation/CONCEPT*.md`), elk met een vergelijkingstabel: invalshoek, visueel systeem, rol van Buddy, einde, slotbeeld en overgangen. Lees die altijd. Deze lijst houdt bewust niet bij wat al gemaakt is, zodat hij niet veroudert.
+Een concept begint bij **één USP**, niet bij een beeld. Bijna alle eerdere concepten vertellen hetzelfde verhaal (rekening vergeten, doorsturen, in je agenda). Kies daarom eerst de USP en pas daarna de metafoor.
 
-Invalshoeken uit de landingspagina's en de Meta-strategie (sla over wat al in een CONCEPT-bestand staat):
-- **Overzicht:** een volle inbox, een aanmaning.
-- **Timing:** "heb ik dat betaald?", aftellen naar de vervaldatum.
-- **Privacy:** "Buddy leest alleen wat jij doorstuurt", geen mailboxkoppeling.
-- **Mental load:** "Je hoofd is geen agenda."
-- **Net op jezelf wonen:** de eerste eigen rekeningen.
-- **Kosten eerst:** één vergeten rekening kan uitlopen op €40 incassokosten.
-- **Achteraf betalen:** zonder merknamen.
-- **Zorgnota's:** van tandarts en fysio.
-- **Wekelijks overzicht:** rust op maandagochtend.
-- **Verkeersboetes:** alleen digitale boetes, en alleen met de WAHV-volgorde zoals op de landingspagina.
+**Rotatieregel:** kijk in de kolom USP van `04. Animation/CONCEPTEN.md` en kies de USP die **het langst niet** gebruikt is (nooit gebruikt telt als langst). Bij gelijkspel: de bovenste in deze tabel. Het verhaal van de ad gaat dan over die USP; de agenda mag hooguit een bijrol hebben.
+
+| Code | USP | Feit (§2) | Mag in copy | Mag niet | Vormideeën |
+|---|---|---|---|---|---|
+| `geen-ai` | Geen AI | Buddy leest met vaste regels | "Geen AI. Gewoon vaste regels.", "Er gaat geen AI over je mail." | "slimme AI", Buddy als AI-assistent | Mythe tegenover feit; regel-voor-regel uitlezen als checklist |
+| `inzage` | Je ziet altijd wat er bewaard is | Inzage via gegevens@, bewaard tot 14 dagen na de vervaldatum, verwijderen via stop@ | "Mail gegevens@ en je ziet precies wat Buddy van je heeft.", "Na veertien dagen na de vervaldatum is het weg." | "Buddy bewaart niets", "direct verwijderd" | Glazen la of doorzichtige doos; een bon met alles wat bewaard is; een timer van 14 dagen |
+| `prijs` | Prijs tegenover een aanmaning | Buddy €3,49 per maand met reminder in je agenda; aanmaning kan uitlopen op €40 | "€3,49 per maand. Een aanmaning kan uitlopen op €40." | "vanaf €2,99", "gratis", Lite of Pro noemen bij reminders | Rekensom of kassabon; weegschaal; twee prijskaartjes naast elkaar |
+| `geen-koppeling` | Geen mailbox- of bankkoppeling | Alleen wat jij doorstuurt; geen app, geen bank | "Buddy ziet alleen wat jij doorstuurt." | "scant je inbox" | Toestemmingsscherm dat je niet hoeft te klikken |
+| `geen-app` | Geen app | Werkt via doorsturen en je agenda | "Geen app. Je mail en je agenda zijn genoeg." | | Volle telefoon met apps tegenover één doorgestuurde mail |
+| `overzicht` | Alles in één overzicht, export naar CSV of JSON | Lite en hoger | "Al je rekeningen in één overzicht." | | Spreadsheet die zichzelf vult; lade die netjes sorteert |
+| `agenda` | Herinnering in je agenda, wanneer jij kiest | Buddy en Pro | "Jij kiest wanneer je een herinnering krijgt." | "mail op 7 en 2 dagen" | Wordt nu al veel gebruikt; kies alleen als de rest recent aan bod was |
+| `doelgroep` | Een doelgroep: net op jezelf, achteraf betalen, zorgnota's, verkeersboetes | Instappagina's per doelgroep | Generieke afzenders | Merknamen, getallen zonder bron | Eerste eigen sleutel; stapel nota's van tandarts en fysio |
+
+**Verhaalvormen.** Wissel ook de vorm af, niet alleen het beeld. Kies een andere vorm dan de laatste drie concepten in de index:
+- probleem, doorsturen, uitkomst (de standaard; nu overgebruikt);
+- mythe tegenover feit ("Dus Buddy gebruikt AI?" "Nee.");
+- rekensom of kassabon (prijs);
+- vraag en antwoord in drie korte vragen;
+- twee schermen naast elkaar (met en zonder Buddy);
+- één doorlopend shot zonder scènewissel, met tekst op de stem.
+
+De instappagina's per invalshoek staan in §2. Noem in de oplevering welke pagina het best bij de USP past.

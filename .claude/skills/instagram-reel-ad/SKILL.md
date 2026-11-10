@@ -32,17 +32,22 @@ In deze tekst staat `$SK` voor de basismap van deze skill en `$P` voor `<repo>/0
 - **Omgeving.** Renderen vraagt Node 18+ en een headless Chrome. Dat werkt in Claude Code, lokaal of in de cloud. Kun je niet renderen, zoals in een gewone chat zonder shell? Lever dan code, concept, voice-over en caption, reken de beeldtijden uit met `timeline.py`, en zeg eerlijk dat de MP4 lokaal gerenderd moet worden met `npm run render:<slug>`.
 - **Merk en product.** Lees `references/brand-betaalbuddy.md`. Daar staan de kleuren, fonts, Buddy, de assets, de producttaal, de privacyfeiten en de copyregels.
 - **Changelog.** Lees de actuele stand in de BetaalBuddy-changelog in Drive, via de changelog-skill als die er is. Het product verandert snel: een proefperiode, WhatsApp, prijzen en pakketten zijn al eens veranderd. Botst de changelog met het referentiebestand over een **productfeit**, dan wint de changelog. Noem de afwijking in je antwoord, zodat het referentiebestand bijgewerkt kan worden. Wat er gebouwd is, zie je aan git en de CONCEPT-bestanden; de changelog loopt daar soms op achter.
-- **Bestaande concepten.** Lees alle `$P/CONCEPT*.md`-bestanden. Daar staat per concept de invalshoek, het visuele systeem, wat Buddy doet, het einde en de overgangen. Dit is de enige actuele lijst van wat er al gemaakt is.
+- **Bestaande concepten.** Lees `$P/CONCEPTEN.md`: één regel per concept met USP, verhaalvorm, visueel systeem, wat Buddy doet, einde en overgangen. Lees een los CONCEPT-bestand alleen als je dat concept aanpast. Voeg na elke nieuwe ad één regel toe.
 - **Ander merk?** De skill is gebouwd op BetaalBuddy. Vraag bij een ander merk om de merkbestanden en de producttaal, en maak eerst een eigen `references/brand-<merk>.md` voordat je bouwt.
 
 ## Stap 1 · Concept
 
 **Met een idee van de gebruiker:** scherp het aan tot één heldere gedachte, met een pijn of hook, een visueel systeem, de rol van Buddy en een uitkomst. Past iets niet bij het product of de copyregels, zeg dat en stel een eerlijk alternatief voor.
 
-**Zonder idee ("bedenk er een"):** bedenk in stilte drie richtingen, kies de richting die het meest verschilt van de bestaande concepten, en noem in één zin waarom. In het referentiebestand (§4) staan invalshoeken om uit te kiezen; sla de invalshoeken over die al in een CONCEPT-bestand staan.
+**Zonder idee ("bedenk er een"):** werk in deze volgorde.
+1. **USP.** Kies met de rotatieregel uit §4 van het referentiebestand de USP die in `CONCEPTEN.md` het langst niet gebruikt is. De hele ad gaat over die USP; de agenda mag een bijrol hebben, maar is niet de boodschap (behalve als de USP `agenda` is).
+2. **Verhaalvorm.** Kies een vorm uit §4 die niet in de laatste drie concepten van de index zit.
+3. **Beeld.** Bedenk pas dan in stilte drie metaforen die de USP laten zien, en kies de metafoor die het meest verschilt van de index.
+
+Noem in één zin welke USP, vorm en metafoor je koos en waarom.
 
 **Toets het concept op uniciteit.** Vergelijk met elk bestaand concept op zes punten:
-1. invalshoek;
+1. invalshoek (USP);
 2. visueel systeem (UI-gedreven, typografisch, personage-gedreven, focus…);
 3. wat Buddy doet;
 4. het soort einde;
