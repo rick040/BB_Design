@@ -3,7 +3,7 @@ import { z } from "zod";
 import { brand } from "../theme";
 import vo from "../../public/vo/overzicht/timing.json";
 
-// Concept 68 · "Alles op één lijst." (overzicht, twee schermen naast elkaar)
+// Concept 69 · "Alles op één lijst." (overzicht, twee schermen naast elkaar)
 // The animation follows the voice-over: scene starts and beats come from
 // public/vo/overzicht/timing.json (measured from the ElevenLabs alignment).
 // Every text and colour below is editable in Remotion Studio.

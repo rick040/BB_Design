@@ -11,7 +11,7 @@ import "../theme";
 import { type OverzichtProps, SCENE_STARTS, VO_FILE, VOICE_END, wordAt } from "./schema";
 import { Chip, ListRow, LooseNote, NOTE_H, NOTE_W, ROW_H, SplitHeadline } from "./scenes/Parts";
 
-// Concept 68 · "Alles op één lijst." (overzicht)
+// Concept 69 · "Alles op één lijst." (overzicht)
 // Twee schermen naast elkaar: links "zonder Buddy" (losse rekeningen overal),
 // rechts "met Buddy" (één lijst). Eén doorlopende compositie op absolute
 // frames; elke beat hangt aan een gesproken woord uit timing.json.

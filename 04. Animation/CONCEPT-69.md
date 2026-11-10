@@ -1,4 +1,4 @@
-# BetaalBuddy · Instagram ad, concept 68
+# BetaalBuddy · Instagram ad, concept 69
 
 ## "Alles op één lijst." (overzicht, twee schermen naast elkaar)
 
@@ -15,7 +15,9 @@
 | Render | `npm run render:overzicht`, daarna loudnorm (I -14, TP -1, LRA 11) naar `renders/overzicht-reel-vo.mp4` |
 
 ### Uniciteit (zie CONCEPTEN.md)
-Verschilt op 6 van 6 punten (USP, visueel systeem, Buddy, einde, slotbeeld, overgangen) met elk concept in de index: niemand gebruikte `overzicht`, een split screen, Buddy als doorgever op een scheidslijn, een slot op een opgevouwen stapel, of de overgangen divider-slide en list-fold.
+**Let op, bijna-dubbel:** een parallelle run maakte tegelijk concept 68 'Alles op één plek.' (src/eenplek, branch claude/peaceful-planck-nrqhwd) met dezelfde USP, dezelfde vorm en ook een split screen met losse briefjes, sorteren, CSV/JSON en een inklappend overzicht. Dit concept is daarom hernummerd naar 69. Het verschilt van 68 alleen in wat Buddy doet (doorgever op de scheidslijn, springt op de stapel), het slotbeeld en de details van de overgangen; daarmee haalt het de uniciteitstoets tegenover 68 niet. Kies één van de twee.
+
+Tegenover 1 tot en met 67: verschilt op 6 van 6 punten (USP, visueel systeem, Buddy, einde, slotbeeld, overgangen) met elk concept in de index: niemand gebruikte `overzicht`, een split screen, Buddy als doorgever op een scheidslijn, een slot op een opgevouwen stapel, of de overgangen divider-slide en list-fold.
 
 ## Storyboard (scènestarts = eerste gesproken woord per marker)
 
