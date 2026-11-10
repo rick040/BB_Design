@@ -10,7 +10,7 @@ import { HookScene } from "./scenes/HookScene";
 import { NeeScene } from "./scenes/NeeScene";
 import { RulesScene } from "./scenes/RulesScene";
 
-// Concept 63 · "Geen AI. Gewoon vaste regels." (sjabloon)
+// Concept 64 · "Geen AI. Gewoon vaste regels." (sjabloon)
 // Scenes run on absolute frames so each scene start sits exactly on its
 // spoken cue; every transition is centred on that cue.
 export const GeenAiAd: React.FC<GeenAiProps> = (props) => {

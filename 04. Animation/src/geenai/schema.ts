@@ -3,7 +3,7 @@ import { z } from "zod";
 import { brand } from "../theme";
 import vo from "../../public/vo/geenai/timing.json";
 
-// Concept 63 · "Geen AI. Gewoon vaste regels." (sjabloon)
+// Concept 64 · "Geen AI. Gewoon vaste regels." (sjabloon)
 // USP geen-ai, verhaalvorm mythe tegenover feit.
 // The animation follows the voice-over: scene starts and beats come from
 // public/vo/geenai/timing.json (measured from the ElevenLabs alignment).

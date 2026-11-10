@@ -1,6 +1,6 @@
 import type React from "react";
 
-// Three CSS-only transitions for concept 63 (no WebGL).
+// Three CSS-only transitions for concept 64 (no WebGL).
 const c01 = (p: number) => Math.max(0, Math.min(1, p));
 const easeOut = (p: number) => 1 - Math.pow(1 - p, 3);
 

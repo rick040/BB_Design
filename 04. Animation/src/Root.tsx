@@ -122,8 +122,8 @@ export const RemotionRoot: React.FC = () => (
       />
     </Folder>
 
-    {/* Concept 63 · "Geen AI. Gewoon vaste regels." (CONCEPT-63.md) · Reel met stem */}
-    <Folder name="Concept-63-Geen-AI">
+    {/* Concept 64 · "Geen AI. Gewoon vaste regels." (CONCEPT-64.md) · Reel met stem */}
+    <Folder name="Concept-64-Geen-AI-sjabloon">
       <Composition
         id="BB-GeenAi-Reel"
         component={GeenAiAd}

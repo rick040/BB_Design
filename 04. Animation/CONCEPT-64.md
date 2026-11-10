@@ -1,4 +1,4 @@
-# BetaalBuddy · Instagram ad, concept 63
+# BetaalBuddy · Instagram ad, concept 64
 
 ## "Geen AI. Gewoon vaste regels."
 
@@ -15,7 +15,7 @@
 
 ### Hoe dit verschilt van de index (CONCEPTEN.md)
 
-| | 1, 2, 62 (agenda) | 3 (geen-koppeling) | **63** |
+| | 1, 2, 62 (agenda) | 3 (geen-koppeling) | **64** |
 |---|---|---|---|
 | Invalshoek | Rekening vergeten, agenda | Privacy, geen mailboxkoppeling | Geen AI, vaste regels |
 | Vorm | Probleem, doorsturen, uitkomst | Probleem, doorsturen, uitkomst | Mythe tegenover feit |
@@ -58,3 +58,4 @@ Zie `renders/geenai-caption.md`.
 ## Open controles
 - Take op eleven_v4 beluisteren, vooral "AI" en "Buddy".
 - Instappagina voor knop en link in bio: de privacypagina (zonder mailboxkoppeling) past het best.
+- Dubbel met concept 63 "Geen AI. Gewoon vaste regels." (liniaal, branch claude/peaceful-planck-9g9vlj): een parallelle run koos dezelfde USP, vorm en tagline. Dit concept is daarom 64; het verschilt in visueel systeem (sjabloon met gaten), Buddy, slotbeeld en overgangen. Kies er één.
