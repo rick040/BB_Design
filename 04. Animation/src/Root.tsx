@@ -8,6 +8,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { KleedAd } from "./kleed/KleedAd";
+import { defaultKleedProps, type KleedProps, kleedSchema, kleedTotal } from "./kleed/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -22,6 +24,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const kleedMetadata: CalculateMetadataFunction<KleedProps> = ({ props }) => ({
+  durationInFrames: kleedTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -98,6 +104,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultPrivacyProps}
         calculateMetadata={privacyMetadata}
         durationInFrames={privacyTotal(defaultPrivacyProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Concept 56 · "Niks onder het kleed." (CONCEPT-56.md) */}
+    <Folder name="Concept-56-Kleed">
+      <Composition
+        id="BB-Kleed-Reel"
+        component={KleedAd}
+        schema={kleedSchema}
+        defaultProps={defaultKleedProps}
+        calculateMetadata={kleedMetadata}
+        durationInFrames={kleedTotal(defaultKleedProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Kleed-Feed"
+        component={KleedAd}
+        schema={kleedSchema}
+        defaultProps={defaultKleedProps}
+        calculateMetadata={kleedMetadata}
+        durationInFrames={kleedTotal(defaultKleedProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

@@ -1,6 +1,6 @@
 # BetaalBuddy · Instagram ads (Remotion)
 
-Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Three concepts, each in two formats:
+Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → MP4). Four concepts in this branch, each in two formats:
 
 | Concept | Composition | Size | Use | Length |
 |---|---|---|---|---|
@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 56 · "Niks onder het kleed." ([`CONCEPT-56.md`](./CONCEPT-56.md)) | `BB-Kleed-Reel` | 1080 × 1920 (9:16) | Reels + Stories, with ElevenLabs voice-over | 13.4 s |
+| | `BB-Kleed-Feed` | 1080 × 1350 (4:5) | Feed, with ElevenLabs voice-over | 13.4 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,10 +57,14 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:kleed          # concept 56 → out/kleed-reel-vo.mp4 (9:16, with voice-over)
+npm run render:kleed:feed     # concept 56 → out/kleed-feed-vo.mp4 (4:5, with voice-over)
+npm run render:kleed:stil     # concept 56 without voice (also :feed:stil)
+npm run render:all             # all of them
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:kleed            # concept 56 cover → out/kleed-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.
@@ -74,10 +80,12 @@ src/
   countdown/          concept 2: CountdownAd.tsx, schema.ts, scenes/ (Hook · Aftellen · Betaald · CTA)
   privacy/            concept 3: PrivacyAd.tsx, schema.ts, scenes/ (Hook · Kijkt niet mee · Alleen doorgestuurd · CTA),
                       components/ (PermissionDialog, PrivateMailCard, ForwardedMail)
+  kleed/              concept 56: KleedAd.tsx, schema.ts (incl. withVoice + voiceCues), scenes/ (Hook · Kleed op · Agenda · CTA),
+                      components/ (Rug, Broom, Slip)
   theme.ts            brand colors + fonts
   components/         shared: Buddy (mascot), AppIcon, Notification, CtaPill, Wordmark,
                       BillCard, RollingNumber, Checkmark, SleepMask (Buddy accessory), …
-  lib/                animation helpers, layout per format, palette, focusPull (blur transition)
+  lib/                animation helpers, layout per format, palette, focusPull (blur transition), broomSweep + unroll (concept 56)
 public/fonts/         Space Grotesk + Geist (SIL OFL, bundled so renders work offline)
 ```
 
