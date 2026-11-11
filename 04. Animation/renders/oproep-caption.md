@@ -1,4 +1,4 @@
-# Caption · concept 70 wachtkamer
+# Caption · concept 71 oproep
 
 ```
 Tandarts, fysio en dan ook nog je eigen risico. Altijd tegelijk, en dan vergeet je er net een. 🦷

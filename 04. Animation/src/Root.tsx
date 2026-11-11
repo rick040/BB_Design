@@ -1,8 +1,8 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
-import { WachtkamerAd } from "./wachtkamer/WachtkamerAd";
-import { defaultWachtkamerProps, TOTAL_FRAMES as WACHTKAMER_TOTAL, wachtkamerSchema } from "./wachtkamer/schema";
+import { OproepAd } from "./oproep/OproepAd";
+import { defaultOproepProps, TOTAL_FRAMES as OPROEP_TOTAL, oproepSchema } from "./oproep/schema";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
@@ -121,23 +121,23 @@ export const RemotionRoot: React.FC = () => (
         height={1920}
       />
     </Folder>
-    <Folder name="Concept-70-Wachtkamer">
+    <Folder name="Concept-71-Oproep">
       <Composition
-        id="BB-Wachtkamer-Reel"
-        component={WachtkamerAd}
-        schema={wachtkamerSchema}
-        defaultProps={defaultWachtkamerProps}
-        durationInFrames={WACHTKAMER_TOTAL}
+        id="BB-Oproep-Reel"
+        component={OproepAd}
+        schema={oproepSchema}
+        defaultProps={defaultOproepProps}
+        durationInFrames={OPROEP_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
       />
       <Composition
-        id="BB-Wachtkamer-Feed"
-        component={WachtkamerAd}
-        schema={wachtkamerSchema}
-        defaultProps={defaultWachtkamerProps}
-        durationInFrames={WACHTKAMER_TOTAL}
+        id="BB-Oproep-Feed"
+        component={OproepAd}
+        schema={oproepSchema}
+        defaultProps={defaultOproepProps}
+        durationInFrames={OPROEP_TOTAL}
         fps={FPS}
         width={1080}
         height={1350}

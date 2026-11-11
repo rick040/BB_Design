@@ -6,7 +6,7 @@ import { pop, shake, springs } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
 import { fonts } from "../../theme";
 import { Board, Chair, NOTA_H, NOTA_W, NotaCard } from "../components/Parts";
-import { type WachtkamerProps, wordAt } from "../schema";
+import { type OproepProps, wordAt } from "../schema";
 
 // Absolute frames; each nota drops on its spoken word, they crowd on "tegelijk".
 export const HOOK_T = {
@@ -23,8 +23,8 @@ const CROWD_ROT = [-9, 3, 11];
 const CARD_TOP = 250;
 
 export const HookScene: React.FC<{
-  props: WachtkamerProps["hook"];
-  notas: WachtkamerProps["notas"];
+  props: OproepProps["hook"];
+  notas: OproepProps["notas"];
 }> = ({ props, notas }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

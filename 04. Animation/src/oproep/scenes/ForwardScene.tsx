@@ -7,7 +7,7 @@ import { blinkScale, clamp, pop, springs } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
 import { fonts } from "../../theme";
 import { NOTA_H, NOTA_W, NotaCard, Ticket } from "../components/Parts";
-import { SCENE_STARTS, type WachtkamerProps, wordAt } from "../schema";
+import { SCENE_STARTS, type OproepProps, wordAt } from "../schema";
 
 const S = SCENE_STARTS[1];
 // The tap lands on "door"; Buddy swallows the three notas, then reads each
@@ -32,8 +32,8 @@ const ROW_TOP = 250;
 const SCALE = 0.86;
 
 export const ForwardScene: React.FC<{
-  props: WachtkamerProps["forward"];
-  notas: WachtkamerProps["notas"];
+  props: OproepProps["forward"];
+  notas: OproepProps["notas"];
 }> = ({ props, notas }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

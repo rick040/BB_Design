@@ -9,7 +9,7 @@ import { useLayout } from "../../lib/layout";
 import { usePalette } from "../../lib/palette";
 import { fonts, headlineTracking } from "../../theme";
 import { Ticket, TicketMachine } from "../components/Parts";
-import { SCENE_STARTS, VOICE_END, type WachtkamerProps, wordAt } from "../schema";
+import { SCENE_STARTS, VOICE_END, type OproepProps, wordAt } from "../schema";
 
 const S = SCENE_STARTS[3];
 // Buddy tears a ticket off the machine on "Activeer"; the ticket flies down
@@ -31,7 +31,7 @@ const SLOT_Y = MACHINE.top + MACHINE.w * 1.15 - MACHINE.w * 0.12;
 const BUDDY = 170;
 const BTN_TOP = 430;
 
-export const CtaScene: React.FC<{ props: WachtkamerProps["cta"] }> = ({ props }) => {
+export const CtaScene: React.FC<{ props: OproepProps["cta"] }> = ({ props }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const p = usePalette();

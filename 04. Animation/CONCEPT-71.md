@@ -1,6 +1,6 @@
-# BetaalBuddy · Instagram ad, concept 70
+# BetaalBuddy · Instagram ad, concept 71
 
-## "Elke nota op zijn beurt." (wachtkamer)
+## "Elke nota op zijn beurt." (oproep)
 
 **In één zin:** tandarts, fysio en eigen risico komen tegelijk binnen en schuiven als drie nota's in een wachtkamer zonder dat iemand weet wie wanneer moet; je stuurt ze door, Buddy leest van elke nota de vervaldatum en hangt er een nummertje aan, op tijd springt hij op de oproepknop zodat het bord "Fysio €37,00" omklapt en de herinnering in je agenda staat; aan het eind scheurt Buddy een nummertje van de automaat dat de knop wordt.
 
@@ -9,11 +9,11 @@
 | USP | `doelgroep` (zorgnota's), de enige USP die nog nooit gebruikt was (rotatieregel brand §4) |
 | Vorm | vraag en antwoord (niet in de laatste drie: 67 één shot, 68 en 69 twee schermen) |
 | Metafoor | wachtkamer met nummertjesautomaat en oproepbord (gekozen boven "stapel op de mat" en "medicijnkastje", die te dicht bij 56 en 65 lagen) |
-| Formaat | Reel 1080×1920 (`BB-Wachtkamer-Reel`) en Feed 1080×1350 (`BB-Wachtkamer-Feed`) |
+| Formaat | Reel 1080×1920 (`BB-Oproep-Reel`) en Feed 1080×1350 (`BB-Oproep-Feed`) |
 | Lengte | 13,90 s (417 frames, 30 fps): stem 12,90 s plus 1 s CTA |
 | Stem | ElevenLabs, voice uit `ELEVENLABS_VOICE_ID` (7qdUFMklKPaaAVMsBTBt), model eleven_v4, stability 0,5, similarity 0,75, één take via `/with-timestamps` (API) |
-| Aanpassen | `src/wachtkamer/schema.ts` (teksten, bedragen, datums, kleuren, `withVoice`, `transitionFrames`); timing uit `public/vo/wachtkamer/timing.json` |
-| Render | `npm run render:wachtkamer` / `render:wachtkamer:feed` (met stem), `render:wachtkamer:stil` / `render:wachtkamer:feed:stil`, cover `npm run still:wachtkamer` (frame 150); daarna loudnorm (I -14, TP -1, LRA 11) met `-c:v copy` |
+| Aanpassen | `src/oproep/schema.ts` (teksten, bedragen, datums, kleuren, `withVoice`, `transitionFrames`); timing uit `public/vo/oproep/timing.json` |
+| Render | `npm run render:oproep` / `render:oproep:feed` (met stem), `render:oproep:stil` / `render:oproep:feed:stil`, cover `npm run still:oproep` (frame 150); daarna loudnorm (I -14, TP -1, LRA 11) met `-c:v copy` |
 
 ### Uniciteit (zie CONCEPTEN.md)
 <!-- copycheck:off -->
@@ -27,7 +27,9 @@
 | Overgangen | iris, slide, wipe, swing... | flip, slam | lade, wisser | kantel | screen-dive | sweep, fold | **ticket-tear (geperforeerde scheurrand), split-flap (bord klapt om)** |
 <!-- copycheck:on -->
 
-Verschilt op 6 van 6 punten met elk concept in de index.
+Verschilt op 6 van 6 punten met concepten 1 tot 69.
+
+**Bijna-dubbel van concept 70 "Wie is de volgende?"** (parallelle run van dezelfde ochtend, branch `claude/sweet-wright-vo2usk`): zelfde USP, vorm en wachtkamer-metafoor, en ook daar wordt een nummertje uit de automaat de knop. Pas na het bouwen gezien; daarom hernummerd van 70 naar 71 en slug `oproep` in plaats van `wachtkamer`, zodat de branches en Drive-mappen niet botsen. Verschil met 70: hook "komen ze tegelijk" in plaats van "ze wachten tot de aanmaning", Buddy leest de vervaldatum en springt op een oproepknop, split-flap oproepbord, overgangen ticket-tear en split-flap (70: schuifdeur en nummerrol). Kies één van de twee om in te plannen.
 
 ## Storyboard (scènestarts = eerste gesproken woord per marker)
 
@@ -54,7 +56,7 @@ Verschilt op 6 van 6 punten met elk concept in de index.
 Luistertoets: langste pauze tussen woorden 0,40 s (alignment), 0,49 s (silencedetect -35 dB). Eerste take goed, niet versneld. Voice-over-mp3 genormaliseerd met loudnorm.
 
 ## Caption
-Zie `renders/wachtkamer-caption.md`.
+Zie `renders/oproep-caption.md`.
 
 ## Ads Manager
 - Primaire tekst: Tandarts, fysio, eigen risico. Stuur je zorgnota's door, Buddy zet elke vervaldatum op tijd in je agenda.
@@ -68,6 +70,7 @@ Volgt onboarding v5.1 uit de changelog: herinnering in je agenda wanneer jij kie
 <!-- copycheck:on -->
 
 ## Open punten
+- Kiezen tussen concept 70 (wachtkamer) en 71 (oproep); niet allebei inplannen.
 - Instappagina voor knop en link in bio: "zorgnota's" past precies.
 - Datums staan op december 2026 (do 17, vr 18, di 22, ma 28); "do 17" als herinnermoment is een voorbeeld.
 - Bedragen zijn voorbeelden; €385,00 is het wettelijk eigen risico 2026, maar staat er alleen als voorbeeldnota.

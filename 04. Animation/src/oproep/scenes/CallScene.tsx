@@ -8,7 +8,7 @@ import { useLayout } from "../../lib/layout";
 import { usePalette } from "../../lib/palette";
 import { fonts, headlineTracking } from "../../theme";
 import { AgendaCard, Board, CallButton, FlapRow } from "../components/Parts";
-import { SCENE_STARTS, type WachtkamerProps, wordAt } from "../schema";
+import { SCENE_STARTS, type OproepProps, wordAt } from "../schema";
 
 const S = SCENE_STARTS[2];
 // Headline words land on "En je bent op tijd aan de beurt"; Buddy hits the
@@ -27,8 +27,8 @@ const BUDDY = 170;
 const BTN = { x: 860, y: 420 };
 
 export const CallScene: React.FC<{
-  props: WachtkamerProps["call"];
-  notas: WachtkamerProps["notas"];
+  props: OproepProps["call"];
+  notas: OproepProps["notas"];
 }> = ({ props, notas }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();

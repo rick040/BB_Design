@@ -4,17 +4,17 @@ import { SafeZones } from "../components/SafeZones";
 import { PaletteProvider } from "../lib/palette";
 import { splitFlap, ticketTear } from "../lib/ticketWipes";
 import "../theme";
-import { SCENE_STARTS, TOTAL_FRAMES, VO_FILE, type WachtkamerProps } from "./schema";
+import { SCENE_STARTS, TOTAL_FRAMES, VO_FILE, type OproepProps } from "./schema";
 import { CallScene } from "./scenes/CallScene";
 import { CtaScene } from "./scenes/CtaScene";
 import { ForwardScene } from "./scenes/ForwardScene";
 import { HookScene } from "./scenes/HookScene";
 
-// Concept 70 · "Elke nota op zijn beurt." (wachtkamer)
+// Concept 71 · "Elke nota op zijn beurt." (oproep)
 // Scenes run on absolute frames so each scene start sits on its spoken cue;
 // every transition is centred on that cue. Transitions: ticket tear
 // (perforated zig-zag edge) and split-flap (departure-board flip).
-export const WachtkamerAd: React.FC<WachtkamerProps> = (props) => {
+export const OproepAd: React.FC<OproepProps> = (props) => {
   const frame = useCurrentFrame();
   const T = props.transitionFrames;
   const half = T / 2;
