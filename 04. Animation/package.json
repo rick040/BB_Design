@@ -12,10 +12,14 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:broodrooster": "remotion render BB-Broodrooster-Reel out/broodrooster-reel-vo-raw.mp4",
+    "render:broodrooster:feed": "remotion render BB-Broodrooster-Feed out/broodrooster-feed-vo-raw.mp4",
+    "render:broodrooster:stil": "remotion render BB-Broodrooster-Reel out/broodrooster-reel-stil.mp4 --props='{\"withVoice\":false}' && remotion render BB-Broodrooster-Feed out/broodrooster-feed-stil.mp4 --props='{\"withVoice\":false}'",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:broodrooster && npm run render:broodrooster:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:broodrooster": "remotion still BB-Broodrooster-Reel out/broodrooster-cover.png --frame=75",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

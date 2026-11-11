@@ -1,6 +1,12 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { BroodroosterAd } from "./broodrooster/BroodroosterAd";
+import {
+  broodroosterSchema,
+  defaultBroodroosterProps,
+  TOTAL_FRAMES as BROODROOSTER_TOTAL,
+} from "./broodrooster/schema";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
@@ -117,6 +123,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 73 · "Jij kiest het moment." (CONCEPT-73.md) · Reel en Feed met stem (prop withVoice) */}
+    <Folder name="Concept-73-Broodrooster">
+      <Composition
+        id="BB-Broodrooster-Reel"
+        component={BroodroosterAd}
+        schema={broodroosterSchema}
+        defaultProps={defaultBroodroosterProps}
+        durationInFrames={BROODROOSTER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Broodrooster-Feed"
+        component={BroodroosterAd}
+        schema={broodroosterSchema}
+        defaultProps={defaultBroodroosterProps}
+        durationInFrames={BROODROOSTER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
