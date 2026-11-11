@@ -12,10 +12,13 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:wedstrijd": "remotion render BB-Wedstrijd-Reel out/wedstrijd-reel-vo.mp4",
+    "render:wedstrijd:feed": "remotion render BB-Wedstrijd-Feed out/wedstrijd-feed-vo.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:wedstrijd && npm run render:wedstrijd:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:wedstrijd": "remotion still BB-Wedstrijd-Reel out/wedstrijd-cover.png --frame=52",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

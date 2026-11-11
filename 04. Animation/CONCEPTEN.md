@@ -10,5 +10,8 @@ Aangemaakt op 2026-11-10 uit de eerste 40 regels van CONCEPT.md, CONCEPT-2.md en
 | 3 | Jij kiest wat Buddy ziet. | geen-koppeling | probleem, doorsturen, uitkomst | Privacy, geen mailboxkoppeling | Focus: wazig tegenover scherp, toestemmingsvenster | Slaapmasker omlaag voor je mailbox, omhoog voor wat jij stuurt | Regie | wipe, focus pull |
 | 62 | Nu komt hij op tijd terug. | agenda | probleem, doorsturen, uitkomst | Wegleggen werkt niet: een genegeerde rekening komt terug als aanmaning | Vluchtbanen: rekening vliegt als boemerang een lus met stippelspoor | Vangt de terugkerende rekening in een sprong en gooit hem op de vervaldatum; gooit aan het eind zelf een boemerang rond de knop | Omkering: hij komt nog steeds terug, maar nu op tijd | swing (arm om een hoek, CSS-masker), spin-return (scène draait terug in beeld) |
 
+| 77 | Klaar voordat die app laadt. | geen-app | twee banen naast elkaar (wedstrijd) | Geen app: je bent al klaar terwijl een app nog installeert | Twee racebanen met finishlijn, laadring op 1 tot 7% | Slikt de doorgestuurde rekening, sprint over de finish, spuugt hem op de vervaldatum in je agenda; springt als winnaar op de knop | Podium: Buddy staat op de knop | baanstrepen (lanes sprinten in), finishvlag (dambordreveal) |
 
 Overige concepten (4 tot 61, op andere branches) gebruiken volgens de changelog vrijwel allemaal USP `agenda` met de vorm probleem, doorsturen, uitkomst. Concepten 3 en eerdere privacyvarianten dekken `geen-koppeling`. Nog nooit gebruikt: `geen-ai`, `inzage`, `prijs`, `geen-app`, `overzicht`.
+
+Laatste USP-gebruik volgens de changelog (63 tot 77): 63, 64, 73 geen-ai; 65, 75 inzage; 66, 76 prijs; 67, 77 geen-app; 68, 69 overzicht; 70, 71 doelgroep; 72 geen-koppeling; 74 agenda.

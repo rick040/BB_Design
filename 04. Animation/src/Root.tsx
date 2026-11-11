@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { WedstrijdAd } from "./wedstrijd/WedstrijdAd";
+import { defaultWedstrijdProps, TOTAL_FRAMES as WEDSTRIJD_TOTAL, wedstrijdSchema } from "./wedstrijd/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 77 · "Klaar voordat die app laadt." (CONCEPT-77.md) · Reel en Feed met stem */}
+    <Folder name="Concept-77-Wedstrijd">
+      <Composition
+        id="BB-Wedstrijd-Reel"
+        component={WedstrijdAd}
+        schema={wedstrijdSchema}
+        defaultProps={defaultWedstrijdProps}
+        durationInFrames={WEDSTRIJD_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Wedstrijd-Feed"
+        component={WedstrijdAd}
+        schema={wedstrijdSchema}
+        defaultProps={defaultWedstrijdProps}
+        durationInFrames={WEDSTRIJD_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
