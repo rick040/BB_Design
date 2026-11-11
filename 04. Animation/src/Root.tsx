@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { WachtkamerAd } from "./wachtkamer/WachtkamerAd";
+import { defaultWachtkamerProps, TOTAL_FRAMES as WACHTKAMER_TOTAL, wachtkamerSchema } from "./wachtkamer/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -117,6 +119,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 69 · "Wie is de volgende?" (CONCEPT-69.md) · Reel en Feed met stem */}
+    <Folder name="Concept-69-Wachtkamer">
+      <Composition
+        id="BB-Wachtkamer-Reel"
+        component={WachtkamerAd}
+        schema={wachtkamerSchema}
+        defaultProps={defaultWachtkamerProps}
+        durationInFrames={WACHTKAMER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Wachtkamer-Feed"
+        component={WachtkamerAd}
+        schema={wachtkamerSchema}
+        defaultProps={defaultWachtkamerProps}
+        durationInFrames={WACHTKAMER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
