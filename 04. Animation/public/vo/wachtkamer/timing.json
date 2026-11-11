@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  158,
+  259,
+  348
+ ],
+ "voiceEnd": 387,
+ "durationInFrames": 417,
+ "words": [
+  {
+   "w": "Tandarts,",
+   "start": 0,
+   "end": 22
+  },
+  {
+   "w": "fysio,",
+   "start": 24,
+   "end": 48
+  },
+  {
+   "w": "eigen",
+   "start": 49,
+   "end": 58
+  },
+  {
+   "w": "risico,",
+   "start": 61,
+   "end": 86
+  },
+  {
+   "w": "komen",
+   "start": 88,
+   "end": 94
+  },
+  {
+   "w": "die",
+   "start": 95,
+   "end": 96
+  },
+  {
+   "w": "zorgnota's",
+   "start": 98,
+   "end": 118
+  },
+  {
+   "w": "altijd",
+   "start": 120,
+   "end": 127
+  },
+  {
+   "w": "tegelijk?",
+   "start": 130,
+   "end": 146
+  },
+  {
+   "w": "Stuur",
+   "start": 158,
+   "end": 166
+  },
+  {
+   "w": "ze",
+   "start": 168,
+   "end": 170
+  },
+  {
+   "w": "door",
+   "start": 173,
+   "end": 175
+  },
+  {
+   "w": "naar",
+   "start": 176,
+   "end": 180
+  },
+  {
+   "w": "Buddy,",
+   "start": 182,
+   "end": 197
+  },
+  {
+   "w": "want",
+   "start": 199,
+   "end": 204
+  },
+  {
+   "w": "hij",
+   "start": 206,
+   "end": 211
+  },
+  {
+   "w": "leest",
+   "start": 214,
+   "end": 221
+  },
+  {
+   "w": "de",
+   "start": 222,
+   "end": 223
+  },
+  {
+   "w": "vervaldatum.",
+   "start": 226,
+   "end": 254
+  },
+  {
+   "w": "En",
+   "start": 259,
+   "end": 262
+  },
+  {
+   "w": "je",
+   "start": 263,
+   "end": 264
+  },
+  {
+   "w": "bent",
+   "start": 266,
+   "end": 269
+  },
+  {
+   "w": "op",
+   "start": 271,
+   "end": 274
+  },
+  {
+   "w": "tijd",
+   "start": 276,
+   "end": 283
+  },
+  {
+   "w": "aan",
+   "start": 284,
+   "end": 286
+  },
+  {
+   "w": "de",
+   "start": 288,
+   "end": 290
+  },
+  {
+   "w": "beurt,",
+   "start": 292,
+   "end": 307
+  },
+  {
+   "w": "via",
+   "start": 310,
+   "end": 317
+  },
+  {
+   "w": "je",
+   "start": 318,
+   "end": 319
+  },
+  {
+   "w": "agenda.",
+   "start": 322,
+   "end": 342
+  },
+  {
+   "w": "Activeer",
+   "start": 348,
+   "end": 362
+  },
+  {
+   "w": "Buddy.",
+   "start": 367,
+   "end": 386
+  }
+ ]
+}

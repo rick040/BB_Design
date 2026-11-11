@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 70 · "Elke nota op zijn beurt." ([`CONCEPT-70.md`](./CONCEPT-70.md)) | `BB-Wachtkamer-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.9 s |
+| | `BB-Wachtkamer-Feed` | 1080 × 1350 (4:5) | Feed | 13.9 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -58,6 +60,10 @@ npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
 npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
+npm run render:wachtkamer       # concept 70 → out/wachtkamer-reel-raw.mp4 (9:16, met stem; daarna loudnorm)
+npm run render:wachtkamer:feed  # concept 70 → out/wachtkamer-feed-raw.mp4 (4:5, met stem)
+npm run render:wachtkamer:stil  # concept 70 zonder stem (ook :feed:stil)
+npm run still:wachtkamer        # concept 70 cover → out/wachtkamer-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
 ```
 
