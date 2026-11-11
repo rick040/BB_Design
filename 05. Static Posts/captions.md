@@ -771,3 +771,29 @@ Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
 ```
 Alt: Blauwe post met de kop "Rekening betalen: 4 minuten. Erover piekeren: 3 weken." Eronder twee balken: een klein wit streepje met "4 minuten" en een lange lichtblauwe balk met "3 weken", waar een witte Buddy tegenaan duwt. Daaronder: "Het begin is het zware stuk. Doorsturen is een klein begin."
 Let op: de 4 minuten en 3 weken zijn een illustratie, geen cijfers uit onderzoek en geen bron in de post. Ik-vorm is hier de kop zelf, geen jij-taal over achterstand. Idee komt uit ideeen.csv in de repo (#44 t/m #63), niet uit de Google Sheet. Rick: de lijst zegt "Nog checken" bij overlap met de Reel-backlog.
+
+## R38 · Achteraf betalen, fabels en feiten (lijst #38, carrousel 6)
+```
+Achteraf betalen voelt als gewoon afrekenen. De cijfers laten iets anders zien. 👀
+
+Meer dan de helft van de 18- tot 27-jarigen gebruikt het soms (Nibud, 2026). En uiterlijk 20 november 2026 vallen deze diensten onder de regels voor consumentenkrediet. Geen preek, wel de feiten, swipe maar door.
+
+Gebruik je achteraf betalen? Zo houd je het overzicht:
+1️⃣ Stuur elke betaalmail door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+Bronnen: Nibud (2026), AFM marktupdate BNPL (2025, cijfers over 2024, geteld per aanbieder), Rijksoverheid (31 oktober 2025).
+
+#achterafbetalen #geldzaken #rekeningen #betaalbuddy #twintiger
+```
+Alt slide 1: Lichte post met de kop "Achteraf betalen: fabels en feiten." en een blauwe Buddy. Eronder: "Geen preek. Wel even de feiten."
+Alt slide 2: Twee blauwe kaarten. Bovenste met label FABEL: "Het is gewoon een betaalmethode." Onderste met label FEIT: "Je betaalt later wat je nu al hebt. Dat is krediet."
+Alt slide 3: Blauwe kaart met label FEIT: "Meer dan de helft van de 18- tot 27-jarigen gebruikt het soms." Bron: Nibud, 2026.
+Alt slide 4: Blauwe kaart met label FEIT: "42% van de gebruikers onder de 25 kreeg een ingebrekestelling. Gemiddeld is dat 38%." Uitleg van het woord en bron: AFM, cijfers over 2024, geteld per aanbieder.
+Alt slide 5: Blauwe kaart met label NIEUW: "Uiterlijk 20 november 2026 vallen deze diensten onder de regels voor consumentenkrediet." Bron: Rijksoverheid.
+Alt slide 6: Kop "Gebruik je het? Stuur elke betaalmail door." met blauwe Buddy en de tekst "Buddy zet de vervaldatum in je agenda."
+Let op: (1) AFM-cijfers gecontroleerd in het AFM-rapport (42% onder 25, 38% gemiddeld, over 2024, per aanbieder geteld, dus een persoon kan dubbel meetellen); (2) de lijst zei "het Nibud noemt het een lening", dat kon ik niet bevestigen, dus die fabel/feit-slide is herschreven naar "Dat is krediet" zonder Nibud als bron, check of je dat wilt; (3) Nibud 2026: "meer dan de helft gebruikt het soms" volgt uit een persbericht via NL Times, geen exact totaalpercentage; (4) Rijksoverheid zegt "uiterlijk vanaf 20 november 2026", niet "vanaf november". Post liefst rond 20 november.

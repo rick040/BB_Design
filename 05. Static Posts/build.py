@@ -1013,6 +1013,33 @@ def pR45():
 <div class="sub" style="top:1030px;font-size:42px">Het begin is het zware stuk.<br>Doorsturen is een klein begin.</div>""")
 
 
+def pR38():
+    """Carrousel R38: achteraf betalen, fabels en feiten. Licht, blauwe kaarten met label."""
+    n = 6
+    bg = "#e8eeff"
+    def pill(txt):
+        return (f'<div style="display:inline-block;background:#fff;color:{C["blue"]};border-radius:40px;padding:12px 34px;font-family:Geist,sans-serif;'
+                f'font-size:34px;font-weight:600;letter-spacing:0.04em;margin-bottom:34px">{txt}</div>')
+    def card(label, txt, src="", top=250, h=700, size=70, extra=""):
+        s2 = f'<div style="font-family:Geist,sans-serif;font-size:32px;font-weight:500;color:{C["blueSoft"]};margin-top:36px;letter-spacing:0">{src}</div>' if src else ""
+        return (f'<div class="abs" style="left:90px;right:90px;top:{top}px;height:{h}px;border-radius:48px;background:{C["blue"]};color:#fff;padding:0 64px;display:flex;flex-direction:column;justify-content:center">'
+                f'<div>{pill(label)}</div><div style="font-size:{size}px;font-weight:500;letter-spacing:-0.05em;line-height:1.05">{txt}</div>{extra}{s2}</div>')
+    def bd(x=100, top=1000, w=170, **k):
+        return f'<div class="abs" style="left:{x}px;top:{top}px">{buddy(w, body=C["blue"], eye="#fff", **k)}</div>'
+    sl = []
+    sl.append(pageC("light", _t("Achteraf betalen:<br>fabels en feiten.", 106, 170, C["blue"]) + f'<div class="abs" style="left:380px;top:620px">{buddy(320, body=C["blue"], eye="#fff")}</div>'
+                    + _s("Geen preek. Wel even de feiten.", 1050, 44, C["blue"]), 1, n, bg=bg))
+    sl.append(pageC("light", card("FABEL", "Het is gewoon een betaalmethode.", h=330, top=230, size=72)
+                    + card("FEIT", "Je betaalt later wat je nu al hebt. Dat is krediet.", h=390, top=600, size=64) + bd(100, 1040, 130, look=(0.5, 0)), 2, n, bg=bg))
+    sl.append(pageC("light", card("FEIT", "Meer dan de helft van de 18- tot 27-jarigen gebruikt het soms.", "Bron: Nibud, 2026", 250, 700, 74) + bd(), 3, n, bg=bg))
+    sl.append(pageC("light", card("FEIT", "42% van de gebruikers onder de 25 kreeg een ingebrekestelling. Gemiddeld is dat 38%.", "Bron: AFM, cijfers over 2024, geteld per aanbieder", 250, 760, 66,
+                                  extra=f'<div style="font-size:36px;font-weight:400;opacity:.85;margin-top:26px;letter-spacing:-0.02em;line-height:1.15">Een ingebrekestelling is de formele melding dat een betaling te laat is.</div>') + bd(100, 1040, 130, look=(0.5, 0)), 4, n, bg=bg))
+    sl.append(pageC("light", card("NIEUW", "Uiterlijk 20 november 2026 vallen deze diensten onder de regels voor consumentenkrediet.", "Bron: Rijksoverheid", 250, 760, 66) + bd(100, 1040, 130), 5, n, bg=bg))
+    sl.append(pageC("light", _t("Gebruik je het?<br>Stuur elke betaalmail door.", 92, 160, C["blue"]) + f'<div class="abs" style="left:380px;top:620px">{buddy(320, body=C["blue"], eye="#fff")}</div>'
+                    + _s("Buddy zet de vervaldatum in je agenda.", 1030, 44, C["blue"]), 6, n, last=True, bg=bg))
+    return sl
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -1042,6 +1069,7 @@ POSTS = [
     ("R44", "niet-open", pR44),
     ("R27", "wat-buddy-ziet", pR27),
     ("R45", "vier-minuten", pR45),
+    ("R38", "fabel-feit-achteraf", pR38),
 ]
 
 
