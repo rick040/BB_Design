@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  94,
+  214,
+  318
+ ],
+ "voiceEnd": 425,
+ "durationInFrames": 455,
+ "words": [
+  {
+   "w": "Weer",
+   "start": 0,
+   "end": 10
+  },
+  {
+   "w": "een",
+   "start": 12,
+   "end": 14
+  },
+  {
+   "w": "abonnement?",
+   "start": 17,
+   "end": 40
+  },
+  {
+   "w": "Zonde",
+   "start": 46,
+   "end": 55
+  },
+  {
+   "w": "van",
+   "start": 58,
+   "end": 60
+  },
+  {
+   "w": "je",
+   "start": 62,
+   "end": 65
+  },
+  {
+   "w": "geld.",
+   "start": 66,
+   "end": 86
+  },
+  {
+   "w": "Zonde?",
+   "start": 94,
+   "end": 114
+  },
+  {
+   "w": "Een",
+   "start": 120,
+   "end": 125
+  },
+  {
+   "w": "aanmaning",
+   "start": 127,
+   "end": 144
+  },
+  {
+   "w": "kan",
+   "start": 148,
+   "end": 151
+  },
+  {
+   "w": "uitlopen",
+   "start": 155,
+   "end": 166
+  },
+  {
+   "w": "op",
+   "start": 168,
+   "end": 173
+  },
+  {
+   "w": "veertig",
+   "start": 174,
+   "end": 182
+  },
+  {
+   "w": "euro.",
+   "start": 187,
+   "end": 211
+  },
+  {
+   "w": "Buddy",
+   "start": 214,
+   "end": 221
+  },
+  {
+   "w": "zet",
+   "start": 224,
+   "end": 228
+  },
+  {
+   "w": "een",
+   "start": 229,
+   "end": 230
+  },
+  {
+   "w": "herinnering",
+   "start": 233,
+   "end": 247
+  },
+  {
+   "w": "in",
+   "start": 250,
+   "end": 252
+  },
+  {
+   "w": "je",
+   "start": 253,
+   "end": 254
+  },
+  {
+   "w": "agenda.",
+   "start": 263,
+   "end": 278
+  },
+  {
+   "w": "Wanneer",
+   "start": 282,
+   "end": 288
+  },
+  {
+   "w": "jij",
+   "start": 290,
+   "end": 295
+  },
+  {
+   "w": "wilt.",
+   "start": 298,
+   "end": 317
+  },
+  {
+   "w": "Drie",
+   "start": 318,
+   "end": 322
+  },
+  {
+   "w": "euro",
+   "start": 324,
+   "end": 331
+  },
+  {
+   "w": "negenenveertig",
+   "start": 336,
+   "end": 358
+  },
+  {
+   "w": "per",
+   "start": 360,
+   "end": 362
+  },
+  {
+   "w": "maand.",
+   "start": 365,
+   "end": 386
+  },
+  {
+   "w": "Activeer",
+   "start": 392,
+   "end": 403
+  },
+  {
+   "w": "Buddy.",
+   "start": 406,
+   "end": 425
+  }
+ ]
+}

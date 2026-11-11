@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { SpaarpotAd } from "./spaarpot/SpaarpotAd";
+import { defaultSpaarpotProps, spaarpotSchema, TOTAL_FRAMES as SPAARPOT_TOTAL } from "./spaarpot/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 76 · "Zonde? Reken even mee." (CONCEPT-76.md) · Reel met stem */}
+    <Folder name="Concept-76-Spaarpot">
+      <Composition
+        id="BB-Spaarpot-Reel"
+        component={SpaarpotAd}
+        schema={spaarpotSchema}
+        defaultProps={defaultSpaarpotProps}
+        durationInFrames={SPAARPOT_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
