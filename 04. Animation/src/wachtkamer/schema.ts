@@ -3,7 +3,7 @@ import { z } from "zod";
 import { brand } from "../theme";
 import vo from "../../public/vo/wachtkamer/timing.json";
 
-// Concept 69 · "Wie is de volgende?" (wachtkamer, USP doelgroep: zorgnota's)
+// Concept 70 · "Wie is de volgende?" (wachtkamer, USP doelgroep: zorgnota's)
 // The animation follows the voice-over: scene starts and beats come from
 // public/vo/wachtkamer/timing.json (measured from the ElevenLabs alignment).
 // Every text and colour below is editable in Remotion Studio.

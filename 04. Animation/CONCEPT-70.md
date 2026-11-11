@@ -1,4 +1,4 @@
-# BetaalBuddy · Instagram ad, concept 69
+# BetaalBuddy · Instagram ad, concept 70
 
 ## "Wie is de volgende?" (wachtkamer)
 
@@ -8,7 +8,7 @@
 
 | | |
 |---|---|
-| Formaat | `BB-Wachtkamer-Reel` (1080×1920) en `BB-Wachtkamer-Feed` (1080×1350), map `Concept-69-Wachtkamer` |
+| Formaat | `BB-Wachtkamer-Reel` (1080×1920) en `BB-Wachtkamer-Feed` (1080×1350), map `Concept-70-Wachtkamer` |
 | Lengte | 12,83 s (385 frames, 30 fps): stem 11,83 s plus 1 s CTA |
 | Stem | ElevenLabs, voice uit `ELEVENLABS_VOICE_ID` (7qdUFMklKPaaAVMsBTBt), model eleven_v4, stability 0,5, similarity 0,75, één take via `/with-timestamps` |
 | Aanpassen | `src/wachtkamer/schema.ts` (teksten, nota's, kleuren, `withVoice`, `transitionFrames`); timing uit `public/vo/wachtkamer/timing.json` |
@@ -16,7 +16,7 @@
 | Instappagina | "zorgnota's" |
 
 ### Uniciteit (zie CONCEPTEN.md)
-| | Dichtstbij (62, 66, 68) | **69** |
+| | Dichtstbij (62, 66, 68, 69) | **70** |
 |---|---|---|
 | Invalshoek | agenda, prijs, overzicht | **doelgroep: zorgnota's die blijven liggen** |
 | Visueel systeem | vluchtbanen, weegschaal, split screen | **wachtkamer: stoelen, LED-wachtnummerdisplay, nummertjesautomaat** |
@@ -25,7 +25,7 @@
 | Slotbeeld | boemerang, zit op prijs, leunt tegen kaart | **trekt een kaartje dat de knop wordt** |
 | Overgangen | swing, kantel, schuifgreep | **schuifdeur, nummerrol** (CSS, `src/lib/wachtkamerWipes.ts`) |
 
-Verschilt op 6 van 6 punten met elk concept in de index.
+Verschilt op 6 van 6 punten met elk concept in de index, ook met 69 "Alles op één lijst." (overzicht, split screen) van een parallelle run. Eerst als 69 gebouwd en hernummerd naar 70 toen bleek dat die run 69 al had gebruikt.
 
 ## Storyboard (scènestarts = eerste gesproken woord per marker)
 

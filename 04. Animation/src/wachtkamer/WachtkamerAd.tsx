@@ -10,7 +10,7 @@ import { CtaScene } from "./scenes/CtaScene";
 import { ForwardScene } from "./scenes/ForwardScene";
 import { HookScene } from "./scenes/HookScene";
 
-// Concept 69 · "Wie is de volgende?" (wachtkamer)
+// Concept 70 · "Wie is de volgende?" (wachtkamer)
 // Scenes run on absolute frames so each scene start sits exactly on its
 // spoken cue; every transition is centred on that cue.
 export const WachtkamerAd: React.FC<WachtkamerProps> = (props) => {

@@ -2,7 +2,7 @@ import React from "react";
 import { usePalette } from "../../lib/palette";
 import { fonts } from "../../theme";
 
-// Concept-own parts for the waiting room (concept 69).
+// Concept-own parts for the waiting room (concept 70).
 
 const LED = "#ff5a3c";
 const LED_BG = "#15161c";

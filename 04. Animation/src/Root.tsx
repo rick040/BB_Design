@@ -122,8 +122,8 @@ export const RemotionRoot: React.FC = () => (
       />
     </Folder>
 
-    {/* Concept 69 · "Wie is de volgende?" (CONCEPT-69.md) · Reel en Feed met stem */}
-    <Folder name="Concept-69-Wachtkamer">
+    {/* Concept 70 · "Wie is de volgende?" (CONCEPT-70.md) · Reel en Feed met stem */}
+    <Folder name="Concept-70-Wachtkamer">
       <Composition
         id="BB-Wachtkamer-Reel"
         component={WachtkamerAd}
