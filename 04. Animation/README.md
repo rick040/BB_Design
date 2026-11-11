@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 72 · "Geen sleutel nodig." ([`CONCEPT-72.md`](./CONCEPT-72.md)) · met stem | `BB-Sleutel-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 12.2 s |
+| | `BB-Sleutel-Feed` | 1080 × 1350 (4:5) | Feed | 12.2 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,7 +57,10 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:sleutel         # concept 72 → out/sleutel-reel-vo.mp4  (9:16, met stem; daarna loudnorm)
+npm run render:sleutel:feed    # concept 72 → out/sleutel-feed-vo.mp4  (4:5, met stem)
+npm run render:sleutel:stil    # concept 72 zonder stem (ook :feed:stil)
+npm run render:all             # all
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png

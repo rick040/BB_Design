@@ -10,6 +10,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { SleutelAd } from "./sleutel/SleutelAd";
+import { defaultSleutelProps, sleutelSchema, TOTAL_FRAMES as SLEUTEL_TOTAL } from "./sleutel/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -117,6 +119,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 72 · "Geen sleutel nodig." (CONCEPT-72.md) · Reel en Feed met stem */}
+    <Folder name="Concept-72-Sleutel">
+      <Composition
+        id="BB-Sleutel-Reel"
+        component={SleutelAd}
+        schema={sleutelSchema}
+        defaultProps={defaultSleutelProps}
+        durationInFrames={SLEUTEL_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Sleutel-Feed"
+        component={SleutelAd}
+        schema={sleutelSchema}
+        defaultProps={defaultSleutelProps}
+        durationInFrames={SLEUTEL_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
