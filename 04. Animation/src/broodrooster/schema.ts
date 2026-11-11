@@ -3,7 +3,7 @@ import { z } from "zod";
 import { brand } from "../theme";
 import vo from "../../public/vo/broodrooster/timing.json";
 
-// Concept 73 · "Jij kiest het moment." (broodrooster)
+// Concept 74 · "Jij kiest het moment." (broodrooster)
 // One continuous shot of a toaster. The animation follows the voice-over:
 // scene starts and beats come from public/vo/broodrooster/timing.json
 // (measured from the ElevenLabs alignment). Texts and colours are editable.

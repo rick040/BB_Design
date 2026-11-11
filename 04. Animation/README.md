@@ -10,7 +10,7 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
-| 73 · "Jij kiest het moment." ([`CONCEPT-73.md`](./CONCEPT-73.md)), with voice-over | `BB-Broodrooster-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 11.0 s |
+| 74 · "Jij kiest het moment." ([`CONCEPT-74.md`](./CONCEPT-74.md)), with voice-over | `BB-Broodrooster-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 11.0 s |
 | | `BB-Broodrooster-Feed` | 1080 × 1350 (4:5) | Feed | 11.0 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
@@ -57,14 +57,14 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:broodrooster       # concept 73 → out/broodrooster-reel-vo-raw.mp4 (9:16, with voice; then loudnorm, see CONCEPT-73.md)
-npm run render:broodrooster:feed  # concept 73 → out/broodrooster-feed-vo-raw.mp4 (4:5, with voice)
-npm run render:broodrooster:stil  # concept 73 → both formats without voice (prop withVoice=false)
+npm run render:broodrooster       # concept 74 → out/broodrooster-reel-vo-raw.mp4 (9:16, with voice; then loudnorm, see CONCEPT-74.md)
+npm run render:broodrooster:feed  # concept 74 → out/broodrooster-feed-vo-raw.mp4 (4:5, with voice)
+npm run render:broodrooster:stil  # concept 74 → both formats without voice (prop withVoice=false)
 npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
-npm run still:broodrooster     # concept 73 cover → out/broodrooster-cover.png (frame 75)
+npm run still:broodrooster     # concept 74 cover → out/broodrooster-cover.png (frame 75)
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.

@@ -1,4 +1,4 @@
-# Concept 73 · Jij kiest het moment. · caption en Ads Manager
+# Concept 74 · Jij kiest het moment. · caption en Ads Manager
 
 ## Caption (Reels, organisch)
 ```

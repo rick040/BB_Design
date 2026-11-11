@@ -16,7 +16,7 @@ import { AgendaStrip, tileCenter } from "./components/AgendaStrip";
 import { DIAL, dialAngle, LEVER, SLOT, Smoke, TOASTER, ToasterBody } from "./components/Toaster";
 import { type BroodroosterProps, SCENE_STARTS, VO_FILE, VOICE_END, wordAt } from "./schema";
 
-// Concept 73 · "Jij kiest het moment." (broodrooster)
+// Concept 74 · "Jij kiest het moment." (broodrooster)
 // One continuous shot: no scene cuts. The camera pushes in on the dial and
 // the background breathes light/blue on each spoken scene start.
 // All beats are absolute frames hung on spoken words (timing.json).

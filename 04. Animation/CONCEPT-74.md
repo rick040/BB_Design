@@ -1,4 +1,4 @@
-# BetaalBuddy · Instagram ad, concept 73
+# BetaalBuddy · Instagram ad, concept 74
 
 ## "Jij kiest het moment." (broodrooster)
 
@@ -16,8 +16,10 @@
 ### Waarom deze keuze
 Rotatieregel: de laatste concepten (63 tot 72) gebruikten geen-ai, inzage, prijs, geen-app, overzicht, doelgroep en geen-koppeling; `agenda` (laatst 62) is het langst niet gebruikt. Binnen agenda kiest dit concept de nieuwe invalshoek uit onboarding v5.1: **jij kiest het moment**. Vorm: één doorlopend shot (laatste drie waren vraag en antwoord, vraag en antwoord, mythe tegenover feit). Metafoor: de lift met knoppenpaneel was al concept 44; de broodrooster met draaiknop is nooit gebruikt.
 
+**Nummer:** eerst als 73 gebouwd. Een parallelle run maakte tegelijk concept 73 'Geen gok. Elke keer dezelfde baan.' (knikkerbaan, USP geen-ai, branch claude/sweet-wright-xe971s), ook als één doorlopend shot. Daarom hernummerd naar 74. Andere USP, metafoor, rol van Buddy en slotbeeld; alleen de vorm (één shot) is gelijk.
+
 ### Uniciteit
-| | 44 Lift | 62 Boemerang | 72 Sleutel | **73 Broodrooster** |
+| | 44 Lift | 62 Boemerang | 72 Sleutel | **74 Broodrooster** |
 |---|---|---|---|---|
 | Invalshoek | Stap uit vóór de aanmaning | Weggelegd komt terug | Geen koppeling | **Te lang laten liggen brandt aan; jij draait de knop** |
 | Visueel systeem | Liftschacht, knoppenpaneel | Vluchtbanen | Deur, sloten, brievenbus | **Eén vast shot van een broodrooster, camera duwt in en kantelt** |
