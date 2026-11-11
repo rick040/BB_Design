@@ -12,11 +12,15 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:knikkerbaan && npm run render:knikkerbaan:feed",
+    "render:knikkerbaan": "remotion render BB-Knikkerbaan-Reel out/knikkerbaan-reel-raw.mp4",
+    "render:knikkerbaan:feed": "remotion render BB-Knikkerbaan-Feed out/knikkerbaan-feed-raw.mp4",
+    "render:knikkerbaan:stil": "remotion render BB-Knikkerbaan-Reel out/knikkerbaan-reel-stil.mp4 --props={\\\"withVoice\\\":false} --muted && remotion render BB-Knikkerbaan-Feed out/knikkerbaan-feed-stil.mp4 --props={\\\"withVoice\\\":false} --muted",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "still:knikkerbaan": "remotion still BB-Knikkerbaan-Reel out/knikkerbaan-cover.png --frame=0"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

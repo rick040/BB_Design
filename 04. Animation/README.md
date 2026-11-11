@@ -10,6 +10,9 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 62 · "Nu komt hij op tijd terug." ([`CONCEPT-62.md`](./CONCEPT-62.md)) | `BB-Boemerang-Reel` | 1080 × 1920 (9:16) | Reels + Stories, met stem | 11.7 s |
+| 73 · "Geen gok. Elke keer dezelfde baan." ([`CONCEPT-73.md`](./CONCEPT-73.md)) | `BB-Knikkerbaan-Reel` | 1080 × 1920 (9:16) | Reels + Stories, met stem (`withVoice`) | 13.7 s |
+| | `BB-Knikkerbaan-Feed` | 1080 × 1350 (4:5) | Feed, met stem (`withVoice`) | 13.7 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 

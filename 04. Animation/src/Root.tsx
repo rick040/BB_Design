@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { KnikkerbaanAd } from "./knikkerbaan/KnikkerbaanAd";
+import { defaultKnikkerbaanProps, knikkerbaanSchema, TOTAL_FRAMES as KNIKKERBAAN_TOTAL } from "./knikkerbaan/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 73 · "Geen gok. Elke keer dezelfde baan." (CONCEPT-73.md) · één doorlopend shot met stem */}
+    <Folder name="Concept-73-Knikkerbaan">
+      <Composition
+        id="BB-Knikkerbaan-Reel"
+        component={KnikkerbaanAd}
+        schema={knikkerbaanSchema}
+        defaultProps={defaultKnikkerbaanProps}
+        durationInFrames={KNIKKERBAAN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Knikkerbaan-Feed"
+        component={KnikkerbaanAd}
+        schema={knikkerbaanSchema}
+        defaultProps={defaultKnikkerbaanProps}
+        durationInFrames={KNIKKERBAAN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
