@@ -149,6 +149,8 @@
 .bbr-calc__result { margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.18); display: flex; flex-direction: column; }
 .bbr-calc__small { color: var(--bb-blue-text); font-size: .95rem; }
 .bbr-calc__total { font-family: var(--bb-display); font-weight: 500; letter-spacing: -0.05em; font-size: clamp(3rem, 6vw, 4.4rem); line-height: 1.05; }
+.bbr-calc__total { font-size: clamp(1.4rem, 2.4vw, 1.9rem); letter-spacing: -0.03em; }
+.bbr-calc__total b { font-weight: 500; font-size: clamp(3.2rem, 6vw, 4.6rem); letter-spacing: -0.05em; margin-right: .12em; }
 .bbr-calc__fine { color: var(--bb-blue-text); font-size: .85rem; margin-top: 12px; }
 
 /* why cards */

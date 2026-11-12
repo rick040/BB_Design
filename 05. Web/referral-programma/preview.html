@@ -154,6 +154,8 @@
 .bbr-calc__result { margin-top: 30px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,.18); display: flex; flex-direction: column; }
 .bbr-calc__small { color: var(--bb-blue-text); font-size: .95rem; }
 .bbr-calc__total { font-family: var(--bb-display); font-weight: 500; letter-spacing: -0.05em; font-size: clamp(3rem, 6vw, 4.4rem); line-height: 1.05; }
+.bbr-calc__total { font-size: clamp(1.4rem, 2.4vw, 1.9rem); letter-spacing: -0.03em; }
+.bbr-calc__total b { font-weight: 500; font-size: clamp(3.2rem, 6vw, 4.6rem); letter-spacing: -0.05em; margin-right: .12em; }
 .bbr-calc__fine { color: var(--bb-blue-text); font-size: .85rem; margin-top: 12px; }
 
 /* why cards */
@@ -234,7 +236,7 @@
 <!--
   BetaalBuddy · Referral-programma
   Oxygen Builder > Code Block > tab "HTML"
-  Zoek op "✏️" voor alles wat je nog moet invullen (beloning, links, voorwaarden).
+  Zoek op "✏️" voor de links die je nog moet controleren.
 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -247,11 +249,10 @@
     <div class="bbr-wrap bbr-hero__grid">
       <div class="bbr-hero__copy">
         <p class="bbr-eyebrow bbr-eyebrow--light">BetaalBuddy referral-programma</p>
-        <h1 id="bbr-h1" class="bbr-h1">Deel Buddy met je vrienden. Jullie krijgen allebei een beloning.</h1>
+        <h1 id="bbr-h1" class="bbr-h1">Deel Buddy met je vrienden. Jullie krijgen allebei een maand gratis.</h1>
         <p class="bbr-lead">
           Ken je iemand die wel eens een rekening vergeet? Stuur je persoonlijke link. Activeert je vriend Buddy,
-          dan krijg jij <strong class="bbr-reward">✏️ [BELONING VOOR JOU]</strong> en je vriend
-          <strong class="bbr-reward">✏️ [BELONING VOOR VRIEND]</strong>.
+          dan krijgen jullie <strong class="bbr-reward">allebei 1 maand gratis</strong>.
         </p>
         <div class="bbr-actions">
           <!-- ✏️ Link naar de plek waar ingelogde gebruikers hun persoonlijke deellink zien -->
@@ -281,7 +282,7 @@
             <span class="bbr-notif__time">nu</span>
           </div>
         </div>
-        <div class="bbr-chip bbr-chip--a">Beloning ontvangen</div>
+        <div class="bbr-chip bbr-chip--a">+1 maand gratis</div>
         <div class="bbr-chip bbr-chip--b">+1 vriend</div>
       </div>
     </div>
@@ -305,15 +306,15 @@
         </li>
         <li class="bbr-step bbr-reveal">
           <span class="bbr-step__num">3</span>
-          <h3 class="bbr-h3">Jullie krijgen allebei een beloning</h3>
-          <p>Zodra je vriend Buddy activeert, ontvang jij <strong>✏️ [BELONING VOOR JOU]</strong> en je vriend <strong>✏️ [BELONING VOOR VRIEND]</strong>.</p>
+          <h3 class="bbr-h3">Jullie krijgen allebei 1 maand gratis</h3>
+          <p>Zodra je vriend Buddy activeert, krijg jij <strong>1 maand gratis</strong> en je vriend ook.</p>
         </li>
       </ol>
     </div>
   </section>
 
   <!-- ============ REKENTOOL ============ -->
-  <!-- ✏️ data-reward = beloning per vriend (getal). data-unit = "euro" of een woord zoals "maanden". data-max = max. aantal vrienden. -->
+  <!-- data-reward = beloning per vriend (getal). data-unit / data-unit-plural = eenheid (of data-unit="euro" voor een bedrag). data-suffix = tekst erachter. data-max = max. aantal vrienden op de schuif. -->
   <section class="bbr-section" aria-labelledby="bbr-h2-calc">
     <div class="bbr-wrap bbr-calc-grid">
       <div>
@@ -321,14 +322,14 @@
         <h2 id="bbr-h2-calc" class="bbr-h2">Hoeveel levert delen jou op?</h2>
         <p class="bbr-body">Elke vriend die Buddy activeert, telt mee. Schuif om te zien wat jouw vrienden je opleveren.</p>
       </div>
-      <div class="bbr-calc bbr-reveal" id="bbr-calc" data-reward="0" data-unit="euro" data-max="10">
+      <div class="bbr-calc bbr-reveal" id="bbr-calc" data-reward="1" data-unit="maand" data-unit-plural="maanden" data-suffix="gratis" data-max="10">
         <label class="bbr-calc__label" for="bbr-range">Aantal vrienden: <output id="bbr-count" for="bbr-range">3</output></label>
         <input class="bbr-range" id="bbr-range" type="range" min="1" max="10" step="1" value="3">
         <div class="bbr-calc__result">
           <span class="bbr-calc__small">Jouw beloning</span>
-          <span class="bbr-calc__total" id="bbr-total" aria-live="polite">✏️</span>
+          <span class="bbr-calc__total" id="bbr-total" aria-live="polite"><b>3</b> maanden gratis</span>
         </div>
-        <p class="bbr-calc__fine">✏️ [Bijv. "Maximaal 10 vrienden per jaar." Zie de voorwaarden.]</p>
+        <p class="bbr-calc__fine">1 maand gratis per vriend die Buddy activeert. Zie de voorwaarden.</p>
       </div>
     </div>
   </section>
@@ -373,7 +374,7 @@
       </div>
       <!-- ✏️ data-url = link die mee wordt gedeeld (vervang door de persoonlijke link als je die hier dynamisch kunt invullen) -->
       <div class="bbr-share bbr-reveal" id="bbr-share" data-url="https://betaalbuddy.nl/">
-        <p class="bbr-share__msg" id="bbr-msg">Ik gebruik BetaalBuddy: je stuurt je rekeningen door en Buddy herinnert je op tijd. Geen app, geen bankkoppeling. Via mijn link krijg jij ook een beloning 👉</p>
+        <p class="bbr-share__msg" id="bbr-msg">Ik gebruik BetaalBuddy: je stuurt je rekeningen door en Buddy herinnert je op tijd. Geen app, geen bankkoppeling. Via mijn link krijg jij 1 maand gratis 👉</p>
         <div class="bbr-share__btns">
           <button type="button" class="bbr-btn bbr-btn--blue bbr-copy" id="bbr-copy">
             <span class="bbr-btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V5a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h3"/></svg></span>
@@ -394,9 +395,9 @@
       <!-- ✏️ Vul aan of pas aan naar jullie echte voorwaarden -->
       <ul class="bbr-checks">
         <li>Je vriend gebruikt BetaalBuddy nog niet en meldt zich aan via jouw persoonlijke link.</li>
-        <li>De beloning volgt zodra je vriend Buddy heeft geactiveerd. ✏️ [Na hoeveel dagen / na eerste betaling?]</li>
-        <li>✏️ [Maximum aantal vrienden of beloningen]</li>
-        <li>✏️ [Hoe de beloning wordt uitgekeerd: korting, tegoed, uitbetaling]</li>
+        <li>De beloning volgt zodra je vriend Buddy heeft geactiveerd.</li>
+        <li>Je kunt meerdere vrienden uitnodigen; elke vriend die Buddy activeert, telt apart.</li>
+        <li>Jij en je vriend krijgen allebei 1 maand gratis Buddy.</li>
       </ul>
       <!-- ✏️ Link naar de volledige voorwaarden -->
       <a class="bbr-link" href="/voorwaarden/">Lees de volledige voorwaarden</a>
@@ -411,19 +412,19 @@
       <div class="bbr-faq">
         <details class="bbr-faq__item" open>
           <summary>Hoe werkt het BetaalBuddy referral-programma?</summary>
-          <div class="bbr-faq__a"><p>Je deelt je persoonlijke link met vrienden. Activeert een vriend Buddy via jouw link, dan krijg jij ✏️ [BELONING VOOR JOU] en je vriend ✏️ [BELONING VOOR VRIEND].</p></div>
+          <div class="bbr-faq__a"><p>Je deelt je persoonlijke link met vrienden. Activeert een vriend Buddy via jouw link, dan krijgen jullie allebei 1 maand gratis.</p></div>
         </details>
         <details class="bbr-faq__item">
           <summary>Waar vind ik mijn persoonlijke deellink?</summary>
-          <div class="bbr-faq__a"><p>✏️ [Bijv. "In je account onder Vrienden uitnodigen."]</p></div>
+          <div class="bbr-faq__a"><p>In je BetaalBuddy-account vind je je persoonlijke deellink.</p></div>
         </details>
         <details class="bbr-faq__item">
           <summary>Wanneer krijg ik mijn beloning?</summary>
-          <div class="bbr-faq__a"><p>✏️ [Bijv. "Zodra je vriend Buddy heeft geactiveerd. Je krijgt een mail als de beloning binnen is."]</p></div>
+          <div class="bbr-faq__a"><p>Zodra je vriend Buddy via jouw link heeft geactiveerd, krijgen jullie allebei 1 maand gratis.</p></div>
         </details>
         <details class="bbr-faq__item">
           <summary>Hoeveel vrienden mag ik uitnodigen?</summary>
-          <div class="bbr-faq__a"><p>✏️ [Bijv. "Zoveel als je wilt. Je ontvangt maximaal X beloningen per jaar."]</p></div>
+          <div class="bbr-faq__a"><p>Zoveel als je wilt. Elke vriend die Buddy activeert, levert jou 1 maand gratis op. Zie de voorwaarden voor de details.</p></div>
         </details>
         <details class="bbr-faq__item">
           <summary>Heeft mijn vriend een app of bankkoppeling nodig?</summary>
@@ -453,13 +454,13 @@
   "@type": "FAQPage",
   "mainEntity": [
     {"@type": "Question", "name": "Hoe werkt het BetaalBuddy referral-programma?",
-     "acceptedAnswer": {"@type": "Answer", "text": "Je deelt je persoonlijke link met vrienden. Activeert een vriend Buddy via jouw link, dan krijg jij [BELONING VOOR JOU] en je vriend [BELONING VOOR VRIEND]."}},
+     "acceptedAnswer": {"@type": "Answer", "text": "Je deelt je persoonlijke link met vrienden. Activeert een vriend Buddy via jouw link, dan krijgen jullie allebei 1 maand gratis."}},
     {"@type": "Question", "name": "Waar vind ik mijn persoonlijke deellink?",
-     "acceptedAnswer": {"@type": "Answer", "text": "[ANTWOORD]"}},
+     "acceptedAnswer": {"@type": "Answer", "text": "In je BetaalBuddy-account vind je je persoonlijke deellink."}},
     {"@type": "Question", "name": "Wanneer krijg ik mijn beloning?",
-     "acceptedAnswer": {"@type": "Answer", "text": "[ANTWOORD]"}},
+     "acceptedAnswer": {"@type": "Answer", "text": "Zodra je vriend Buddy via jouw link heeft geactiveerd, krijgen jullie allebei 1 maand gratis."}},
     {"@type": "Question", "name": "Hoeveel vrienden mag ik uitnodigen?",
-     "acceptedAnswer": {"@type": "Answer", "text": "[ANTWOORD]"}},
+     "acceptedAnswer": {"@type": "Answer", "text": "Zoveel als je wilt. Elke vriend die Buddy activeert, levert jou 1 maand gratis op. Zie de voorwaarden voor de details."}},
     {"@type": "Question", "name": "Heeft mijn vriend een app of bankkoppeling nodig?",
      "acceptedAnswer": {"@type": "Answer", "text": "Nee. BetaalBuddy werkt zonder app en zonder bankkoppeling. Je stuurt je rekening door en Buddy herinnert je op tijd, in je mail en je agenda."}}
   ]
@@ -498,6 +499,8 @@
     if (calc && range && count && total) {
       var reward = parseFloat(String(calc.dataset.reward || '0').replace(',', '.')) || 0;
       var unit = (calc.dataset.unit || 'euro').trim();
+      var plural = (calc.dataset.unitPlural || unit).trim();
+      var suffix = (calc.dataset.suffix || '').trim();
       var max = parseInt(calc.dataset.max, 10) || 10;
       range.max = max;
       var euro = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: reward % 1 ? 2 : 0 });
@@ -506,9 +509,19 @@
         var n = parseInt(range.value, 10);
         count.textContent = n;
         range.style.setProperty('--bbr-fill', ((n - range.min) / (range.max - range.min)) * 100 + '%');
-        if (!reward) { total.textContent = '€ ✏️'; return; }
-        var sum = n * reward;
-        total.textContent = unit === 'euro' ? euro.format(sum) : sum + ' ' + unit;
+        var sum = n * (reward || 1);
+        var big = document.createElement('b');
+        var rest = '';
+        if (unit === 'euro') {
+          big.textContent = euro.format(sum);
+        } else {
+          big.textContent = sum;
+          rest = ' ' + (sum === 1 ? unit : plural);
+        }
+        if (suffix) rest += ' ' + suffix;
+        total.textContent = '';
+        total.appendChild(big);
+        if (rest) total.appendChild(document.createTextNode(rest));
       };
       range.addEventListener('input', update);
       update();

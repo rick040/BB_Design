@@ -29,6 +29,8 @@
     if (calc && range && count && total) {
       var reward = parseFloat(String(calc.dataset.reward || '0').replace(',', '.')) || 0;
       var unit = (calc.dataset.unit || 'euro').trim();
+      var plural = (calc.dataset.unitPlural || unit).trim();
+      var suffix = (calc.dataset.suffix || '').trim();
       var max = parseInt(calc.dataset.max, 10) || 10;
       range.max = max;
       var euro = new Intl.NumberFormat('nl-NL', { style: 'currency', currency: 'EUR', maximumFractionDigits: reward % 1 ? 2 : 0 });
@@ -37,9 +39,19 @@
         var n = parseInt(range.value, 10);
         count.textContent = n;
         range.style.setProperty('--bbr-fill', ((n - range.min) / (range.max - range.min)) * 100 + '%');
-        if (!reward) { total.textContent = '€ ✏️'; return; }
-        var sum = n * reward;
-        total.textContent = unit === 'euro' ? euro.format(sum) : sum + ' ' + unit;
+        var sum = n * (reward || 1);
+        var big = document.createElement('b');
+        var rest = '';
+        if (unit === 'euro') {
+          big.textContent = euro.format(sum);
+        } else {
+          big.textContent = sum;
+          rest = ' ' + (sum === 1 ? unit : plural);
+        }
+        if (suffix) rest += ' ' + suffix;
+        total.textContent = '';
+        total.appendChild(big);
+        if (rest) total.appendChild(document.createTextNode(rest));
       };
       range.addEventListener('input', update);
       update();
