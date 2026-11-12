@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 80 · "Alleen wat jij toespeelt." ([`CONCEPT-80.md`](./CONCEPT-80.md)) | `BB-Tafeltennis-Reel` | 1080 × 1920 (9:16) | Reels + Stories, met stem (`withVoice`) | 11.9 s |
+| | `BB-Tafeltennis-Feed` | 1080 × 1350 (4:5) | Feed, met stem (`withVoice`) | 11.9 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,10 +57,13 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
+npm run render:tafeltennis      # concept 80 → out/tafeltennis-reel-vo.mp4 (9:16, met stem; daarna loudnorm)
+npm run render:tafeltennis:feed # concept 80 → out/tafeltennis-feed-vo.mp4 (4:5, met stem; daarna loudnorm)
 npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:tafeltennis      # concept 80 cover → out/tafeltennis-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.

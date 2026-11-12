@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { TafeltennisAd } from "./tafeltennis/TafeltennisAd";
+import { defaultTafeltennisProps, tafeltennisSchema, TOTAL_FRAMES as TAFELTENNIS_TOTAL } from "./tafeltennis/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,28 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    <Folder name="Concept-80-Tafeltennis">
+      <Composition
+        id="BB-Tafeltennis-Reel"
+        component={TafeltennisAd}
+        schema={tafeltennisSchema}
+        defaultProps={defaultTafeltennisProps}
+        durationInFrames={TAFELTENNIS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Tafeltennis-Feed"
+        component={TafeltennisAd}
+        schema={tafeltennisSchema}
+        defaultProps={defaultTafeltennisProps}
+        durationInFrames={TAFELTENNIS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

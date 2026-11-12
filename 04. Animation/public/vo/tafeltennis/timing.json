@@ -1,0 +1,175 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  65,
+  143,
+  288
+ ],
+ "voiceEnd": 327,
+ "durationInFrames": 357,
+ "words": [
+  {
+   "w": "Kijkt",
+   "start": 0,
+   "end": 7
+  },
+  {
+   "w": "Buddy",
+   "start": 10,
+   "end": 17
+  },
+  {
+   "w": "mee",
+   "start": 19,
+   "end": 24
+  },
+  {
+   "w": "in",
+   "start": 26,
+   "end": 29
+  },
+  {
+   "w": "je",
+   "start": 30,
+   "end": 31
+  },
+  {
+   "w": "mailbox?",
+   "start": 34,
+   "end": 58
+  },
+  {
+   "w": "Nee,",
+   "start": 65,
+   "end": 82
+  },
+  {
+   "w": "je",
+   "start": 84,
+   "end": 86
+  },
+  {
+   "w": "mailbox",
+   "start": 95,
+   "end": 103
+  },
+  {
+   "w": "blijft",
+   "start": 106,
+   "end": 115
+  },
+  {
+   "w": "van",
+   "start": 118,
+   "end": 120
+  },
+  {
+   "w": "jou.",
+   "start": 122,
+   "end": 142
+  },
+  {
+   "w": "Je",
+   "start": 143,
+   "end": 144
+  },
+  {
+   "w": "speelt",
+   "start": 146,
+   "end": 154
+  },
+  {
+   "w": "Buddy",
+   "start": 155,
+   "end": 163
+  },
+  {
+   "w": "alleen",
+   "start": 167,
+   "end": 173
+  },
+  {
+   "w": "de",
+   "start": 175,
+   "end": 178
+  },
+  {
+   "w": "rekening",
+   "start": 180,
+   "end": 192
+  },
+  {
+   "w": "toe",
+   "start": 193,
+   "end": 197
+  },
+  {
+   "w": "die",
+   "start": 199,
+   "end": 202
+  },
+  {
+   "w": "jij",
+   "start": 204,
+   "end": 211
+  },
+  {
+   "w": "kiest,",
+   "start": 212,
+   "end": 230
+  },
+  {
+   "w": "en",
+   "start": 234,
+   "end": 238
+  },
+  {
+   "w": "hij",
+   "start": 240,
+   "end": 242
+  },
+  {
+   "w": "zet",
+   "start": 245,
+   "end": 250
+  },
+  {
+   "w": "hem",
+   "start": 251,
+   "end": 252
+  },
+  {
+   "w": "in",
+   "start": 253,
+   "end": 254
+  },
+  {
+   "w": "je",
+   "start": 256,
+   "end": 257
+  },
+  {
+   "w": "agenda.",
+   "start": 259,
+   "end": 281
+  },
+  {
+   "w": "Activeer",
+   "start": 288,
+   "end": 305
+  },
+  {
+   "w": "Buddy.",
+   "start": 307,
+   "end": 326
+  }
+ ]
+}
