@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { EigenHuisAd } from "./eigenhuis/EigenHuisAd";
+import { defaultEigenHuisProps, eigenHuisSchema, TOTAL_FRAMES as EIGENHUIS_TOTAL } from "./eigenhuis/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 79 · "Je eigen huis. Meteen op orde." (CONCEPT-79.md) · Reel met stem */}
+    <Folder name="Concept-79-EigenHuis">
+      <Composition
+        id="BB-EigenHuis-Reel"
+        component={EigenHuisAd}
+        schema={eigenHuisSchema}
+        defaultProps={defaultEigenHuisProps}
+        durationInFrames={EIGENHUIS_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}

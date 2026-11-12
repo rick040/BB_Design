@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  101,
+  204,
+  252,
+  377
+ ],
+ "voiceEnd": 416,
+ "durationInFrames": 448,
+ "words": [
+  {
+   "w": "Net",
+   "start": 0,
+   "end": 7
+  },
+  {
+   "w": "op",
+   "start": 8,
+   "end": 10
+  },
+  {
+   "w": "jezelf?",
+   "start": 12,
+   "end": 34
+  },
+  {
+   "w": "Dan",
+   "start": 38,
+   "end": 43
+  },
+  {
+   "w": "zijn",
+   "start": 44,
+   "end": 48
+  },
+  {
+   "w": "de",
+   "start": 50,
+   "end": 53
+  },
+  {
+   "w": "rekeningen",
+   "start": 55,
+   "end": 70
+  },
+  {
+   "w": "ook",
+   "start": 72,
+   "end": 77
+  },
+  {
+   "w": "van",
+   "start": 79,
+   "end": 82
+  },
+  {
+   "w": "jou.",
+   "start": 84,
+   "end": 96
+  },
+  {
+   "w": "Huur,",
+   "start": 101,
+   "end": 115
+  },
+  {
+   "w": "energie,",
+   "start": 118,
+   "end": 142
+  },
+  {
+   "w": "internet,",
+   "start": 150,
+   "end": 163
+  },
+  {
+   "w": "zorgverzekering.",
+   "start": 166,
+   "end": 198
+  },
+  {
+   "w": "Stuur",
+   "start": 204,
+   "end": 211
+  },
+  {
+   "w": "ze",
+   "start": 214,
+   "end": 216
+  },
+  {
+   "w": "door",
+   "start": 220,
+   "end": 223
+  },
+  {
+   "w": "naar",
+   "start": 224,
+   "end": 228
+  },
+  {
+   "w": "Buddy.",
+   "start": 230,
+   "end": 246
+  },
+  {
+   "w": "Elke",
+   "start": 252,
+   "end": 259
+  },
+  {
+   "w": "vervaldatum",
+   "start": 262,
+   "end": 281
+  },
+  {
+   "w": "in",
+   "start": 282,
+   "end": 283
+  },
+  {
+   "w": "je",
+   "start": 286,
+   "end": 288
+  },
+  {
+   "w": "agenda.",
+   "start": 295,
+   "end": 312
+  },
+  {
+   "w": "Met",
+   "start": 313,
+   "end": 314
+  },
+  {
+   "w": "een",
+   "start": 317,
+   "end": 319
+  },
+  {
+   "w": "seintje",
+   "start": 322,
+   "end": 334
+  },
+  {
+   "w": "wanneer",
+   "start": 336,
+   "end": 346
+  },
+  {
+   "w": "jij",
+   "start": 347,
+   "end": 353
+  },
+  {
+   "w": "wilt.",
+   "start": 354,
+   "end": 371
+  },
+  {
+   "w": "Activeer",
+   "start": 377,
+   "end": 391
+  },
+  {
+   "w": "Buddy.",
+   "start": 396,
+   "end": 415
+  }
+ ]
+}
