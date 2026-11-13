@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { RolmaatAd } from "./rolmaat/RolmaatAd";
+import { defaultRolmaatProps, rolmaatSchema, TOTAL_FRAMES as ROLMAAT_TOTAL } from "./rolmaat/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -114,6 +116,18 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    <Folder name="Concept-83-Rolmaat">
+      <Composition
+        id="BB-Rolmaat-Reel"
+        component={RolmaatAd}
+        schema={rolmaatSchema}
+        defaultProps={defaultRolmaatProps}
+        durationInFrames={ROLMAAT_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}

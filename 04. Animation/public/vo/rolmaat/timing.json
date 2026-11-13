@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  65,
+  143,
+  228,
+  324
+ ],
+ "voiceEnd": 362,
+ "durationInFrames": 392,
+ "words": [
+  {
+   "w": "Hoe",
+   "start": 0,
+   "end": 5
+  },
+  {
+   "w": "lang",
+   "start": 7,
+   "end": 10
+  },
+  {
+   "w": "bewaart",
+   "start": 12,
+   "end": 22
+  },
+  {
+   "w": "Buddy",
+   "start": 24,
+   "end": 31
+  },
+  {
+   "w": "jouw",
+   "start": 32,
+   "end": 37
+  },
+  {
+   "w": "rekening?",
+   "start": 38,
+   "end": 60
+  },
+  {
+   "w": "Hij",
+   "start": 65,
+   "end": 70
+  },
+  {
+   "w": "meet",
+   "start": 73,
+   "end": 77
+  },
+  {
+   "w": "het",
+   "start": 78,
+   "end": 79
+  },
+  {
+   "w": "af.",
+   "start": 82,
+   "end": 96
+  },
+  {
+   "w": "Tot",
+   "start": 101,
+   "end": 103
+  },
+  {
+   "w": "de",
+   "start": 106,
+   "end": 108
+  },
+  {
+   "w": "vervaldatum,",
+   "start": 110,
+   "end": 139
+  },
+  {
+   "w": "plus",
+   "start": 143,
+   "end": 146
+  },
+  {
+   "w": "veertien",
+   "start": 151,
+   "end": 161
+  },
+  {
+   "w": "dagen.",
+   "start": 163,
+   "end": 180
+  },
+  {
+   "w": "Daarna",
+   "start": 185,
+   "end": 197
+  },
+  {
+   "w": "is",
+   "start": 199,
+   "end": 202
+  },
+  {
+   "w": "het",
+   "start": 204,
+   "end": 206
+  },
+  {
+   "w": "weg.",
+   "start": 211,
+   "end": 222
+  },
+  {
+   "w": "Wat",
+   "start": 228,
+   "end": 233
+  },
+  {
+   "w": "hij",
+   "start": 234,
+   "end": 238
+  },
+  {
+   "w": "nu",
+   "start": 240,
+   "end": 242
+  },
+  {
+   "w": "heeft?",
+   "start": 245,
+   "end": 260
+  },
+  {
+   "w": "E\u00e9n",
+   "start": 266,
+   "end": 271
+  },
+  {
+   "w": "mailtje,",
+   "start": 275,
+   "end": 293
+  },
+  {
+   "w": "en",
+   "start": 294,
+   "end": 295
+  },
+  {
+   "w": "je",
+   "start": 298,
+   "end": 300
+  },
+  {
+   "w": "ziet",
+   "start": 301,
+   "end": 307
+  },
+  {
+   "w": "het.",
+   "start": 310,
+   "end": 314
+  },
+  {
+   "w": "Activeer",
+   "start": 324,
+   "end": 341
+  },
+  {
+   "w": "Buddy.",
+   "start": 343,
+   "end": 362
+  }
+ ]
+}
