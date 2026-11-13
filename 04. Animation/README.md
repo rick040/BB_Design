@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 84 · "Laat hem niet opblazen." ([`CONCEPT-84.md`](./CONCEPT-84.md)), voice-over in `public/vo/ballon/` (prop `withVoice`) | `BB-Ballon-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
+| | `BB-Ballon-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -59,6 +61,9 @@ npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run render:ballon          # concept 84 → out/ballon-reel-vo.mp4 (9:16, with voice; add --props='{"withVoice":false}' for silent)
+npm run render:ballon:feed     # concept 84 → out/ballon-feed-vo.mp4 (4:5)
+npm run still:ballon           # concept 84 cover → out/ballon-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.

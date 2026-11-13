@@ -1,6 +1,8 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { BallonAd } from "./ballon/BallonAd";
+import { ballonSchema, defaultBallonProps, TOTAL_FRAMES as BALLON_TOTAL } from "./ballon/schema";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 84 · "Laat hem niet opblazen." (CONCEPT-84.md) */}
+    <Folder name="Concept-84-Ballon">
+      <Composition
+        id="BB-Ballon-Reel"
+        component={BallonAd}
+        schema={ballonSchema}
+        defaultProps={defaultBallonProps}
+        durationInFrames={BALLON_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Ballon-Feed"
+        component={BallonAd}
+        schema={ballonSchema}
+        defaultProps={defaultBallonProps}
+        durationInFrames={BALLON_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
