@@ -1040,6 +1040,22 @@ def pR38():
     return sl
 
 
+def pR46():
+    """R46: twee soorten tijd, nu en niet nu. Blauw, typografisch, Buddy in het midden met een agendablaadje."""
+    leaf = (f'<div class="abs" style="left:490px;top:790px;width:120px;height:132px;border-radius:18px;background:#fff;transform:rotate(7deg);'
+            f'box-shadow:0 14px 34px rgba(0,20,120,.28);overflow:hidden;font-family:Geist,sans-serif;z-index:2">'
+            f'<div style="height:36px;background:{C["blueSoft"]}"></div>'
+            f'<div style="text-align:center;font-weight:700;font-size:58px;line-height:1;color:{C["blue"]};margin-top:10px">14</div>'
+            f'<div style="text-align:center;font-weight:500;font-size:22px;color:{C["greyText"]};margin-top:4px">dec</div></div>')
+    return page("dark", f"""
+<h1 style="top:110px;font-size:104px">Ik ken maar<br>twee tijden.</h1>
+<div class="abs" style="left:110px;width:290px;top:520px;text-align:center;font-weight:500;font-size:158px;letter-spacing:-0.06em;line-height:0.92;color:#fff">nu</div>
+<div class="abs" style="left:680px;width:290px;top:520px;text-align:center;font-weight:500;font-size:158px;letter-spacing:-0.06em;line-height:0.92;color:{C['blueSoft']}">niet<br>nu</div>
+<div class="abs" style="left:430px;top:640px;z-index:1">{buddy(210, look=(0.2, 0.5))}</div>
+{leaf}
+<div class="sub" style="top:1000px;font-size:42px">Buddy maakt van &lsquo;niet nu&rsquo;<br>een datum in je agenda.</div>""")
+
+
 POSTS = [
     ("01", "op-jezelf", p01), ("02", "hoofd-geen-agenda", p02), ("03", "vergeten-kost-geld", p03),
     ("04", "betaal-ik-morgen", p04), ("05", "privacy-doorsturen", p05), ("06", "zeven-twee", p06),
@@ -1070,6 +1086,7 @@ POSTS = [
     ("R27", "wat-buddy-ziet", pR27),
     ("R45", "vier-minuten", pR45),
     ("R38", "fabel-feit-achteraf", pR38),
+    ("R46", "twee-tijden", pR46),
 ]
 
 

@@ -797,3 +797,20 @@ Alt slide 4: Blauwe kaart met label FEIT: "42% van de gebruikers onder de 25 kre
 Alt slide 5: Blauwe kaart met label NIEUW: "Uiterlijk 20 november 2026 vallen deze diensten onder de regels voor consumentenkrediet." Bron: Rijksoverheid.
 Alt slide 6: Kop "Gebruik je het? Stuur elke betaalmail door." met blauwe Buddy en de tekst "Buddy zet de vervaldatum in je agenda."
 Let op: (1) AFM-cijfers gecontroleerd in het AFM-rapport (42% onder 25, 38% gemiddeld, over 2024, per aanbieder geteld, dus een persoon kan dubbel meetellen); (2) de lijst zei "het Nibud noemt het een lening", dat kon ik niet bevestigen, dus die fabel/feit-slide is herschreven naar "Dat is krediet" zonder Nibud als bron, check of je dat wilt; (3) Nibud 2026: "meer dan de helft gebruikt het soms" volgt uit een persbericht via NL Times, geen exact totaalpercentage; (4) Rijksoverheid zegt "uiterlijk vanaf 20 november 2026", niet "vanaf november". Post liefst rond 20 november.
+
+## R46 · Twee soorten tijd (lijst #46, single)
+```
+"Vervalt over 14 dagen" voelt als volgend jaar. Tot het morgen is. ⏳
+
+Zo wordt "niet nu" een datum:
+1️⃣ Stuur de factuur of betaalmail door naar je eigen Betaalbuddy-adres.
+2️⃣ Buddy leest bedrag en vervaldatum en zet het in je agenda.
+3️⃣ Je krijgt een mail 7 en 2 dagen vooraf. Betalen doe je zelf.
+
+Geen app. Geen bankkoppeling.
+Link in bio 👆 betaalbuddy.nl/probeer-betaalbuddy/
+
+#geldzaken #rekeningen #tijdsgevoel #betaalbuddy #twintiger
+```
+Alt: Blauwe post met de kop "Ik ken maar twee tijden." Daaronder links het woord "nu" in wit en rechts "niet nu" in lichtblauw, met in het midden een witte Buddy met een klein agendablaadje (14 dec). Onderaan: "Buddy maakt van 'niet nu' een datum in je agenda."
+Let op: ik-vorm, geen jij-taal over achterstand. De datum 14 dec op het agendablaadje is een illustratie. Idee komt uit ideeen.csv in de repo (#44 t/m #63), niet uit de Google Sheet. Rick: de lijst zegt "Nog checken" bij overlap met de Reel-backlog.
