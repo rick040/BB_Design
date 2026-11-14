@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { LaterAd } from "./later/LaterAd";
+import { defaultLaterProps, laterSchema, TOTAL_FRAMES as LATER_TOTAL } from "./later/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 87 · "Later is gewoon een datum." (CONCEPT-87.md) */}
+    <Folder name="Concept-87-Later">
+      <Composition
+        id="BB-Later-Reel"
+        component={LaterAd}
+        schema={laterSchema}
+        defaultProps={defaultLaterProps}
+        durationInFrames={LATER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Later-Feed"
+        component={LaterAd}
+        schema={laterSchema}
+        defaultProps={defaultLaterProps}
+        durationInFrames={LATER_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

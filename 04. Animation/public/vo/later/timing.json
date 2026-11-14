@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  140,
+  192,
+  236,
+  329
+ ],
+ "voiceEnd": 368,
+ "durationInFrames": 398,
+ "words": [
+  {
+   "w": "Je",
+   "start": 0,
+   "end": 5
+  },
+  {
+   "w": "bestelt",
+   "start": 8,
+   "end": 17
+  },
+  {
+   "w": "iets",
+   "start": 19,
+   "end": 29
+  },
+  {
+   "w": "en",
+   "start": 30,
+   "end": 31
+  },
+  {
+   "w": "betaalt",
+   "start": 35,
+   "end": 46
+  },
+  {
+   "w": "later,",
+   "start": 53,
+   "end": 70
+  },
+  {
+   "w": "maar",
+   "start": 72,
+   "end": 82
+  },
+  {
+   "w": "later",
+   "start": 86,
+   "end": 101
+  },
+  {
+   "w": "heeft",
+   "start": 102,
+   "end": 108
+  },
+  {
+   "w": "geen",
+   "start": 110,
+   "end": 115
+  },
+  {
+   "w": "datum,",
+   "start": 118,
+   "end": 139
+  },
+  {
+   "w": "dus",
+   "start": 140,
+   "end": 146
+  },
+  {
+   "w": "komt",
+   "start": 149,
+   "end": 155
+  },
+  {
+   "w": "er",
+   "start": 156,
+   "end": 158
+  },
+  {
+   "w": "een",
+   "start": 160,
+   "end": 161
+  },
+  {
+   "w": "aanmaning.",
+   "start": 163,
+   "end": 186
+  },
+  {
+   "w": "Stuur",
+   "start": 192,
+   "end": 199
+  },
+  {
+   "w": "de",
+   "start": 200,
+   "end": 202
+  },
+  {
+   "w": "betaalmail",
+   "start": 205,
+   "end": 218
+  },
+  {
+   "w": "door,",
+   "start": 221,
+   "end": 235
+  },
+  {
+   "w": "en",
+   "start": 236,
+   "end": 238
+  },
+  {
+   "w": "Buddy",
+   "start": 240,
+   "end": 250
+  },
+  {
+   "w": "maakt",
+   "start": 251,
+   "end": 257
+  },
+  {
+   "w": "van",
+   "start": 259,
+   "end": 262
+  },
+  {
+   "w": "later",
+   "start": 264,
+   "end": 278
+  },
+  {
+   "w": "een",
+   "start": 281,
+   "end": 283
+  },
+  {
+   "w": "datum",
+   "start": 289,
+   "end": 295
+  },
+  {
+   "w": "in",
+   "start": 296,
+   "end": 298
+  },
+  {
+   "w": "je",
+   "start": 300,
+   "end": 302
+  },
+  {
+   "w": "agenda.",
+   "start": 310,
+   "end": 323
+  },
+  {
+   "w": "Activeer",
+   "start": 329,
+   "end": 346
+  },
+  {
+   "w": "Buddy.",
+   "start": 348,
+   "end": 367
+  }
+ ]
+}

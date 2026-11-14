@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 87 · "Later is gewoon een datum." ([`CONCEPT-87.md`](./CONCEPT-87.md)) | `BB-Later-Reel` | 1080 × 1920 (9:16) | Reels + Stories, met stem | 13.3 s |
+| | `BB-Later-Feed` | 1080 × 1350 (4:5) | Feed, met stem | 13.3 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,7 +57,10 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:later           # concept 87 → out/later-reel-vo.mp4     (9:16, add --props='{"withVoice":false}' for the silent version)
+npm run render:later:feed      # concept 87 → out/later-feed-vo.mp4     (4:5)
+npm run still:later            # concept 87 cover → out/later-cover.png
+npm run render:all             # all of the above
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
