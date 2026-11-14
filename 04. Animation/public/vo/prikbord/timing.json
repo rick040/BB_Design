@@ -1,0 +1,183 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  118,
+  142,
+  266,
+  346
+ ],
+ "voiceEnd": 384,
+ "durationInFrames": 414,
+ "maxPauseSeconds": 0.42,
+ "words": [
+  {
+   "w": "Overzicht",
+   "start": 0,
+   "end": 14
+  },
+  {
+   "w": "van",
+   "start": 17,
+   "end": 19
+  },
+  {
+   "w": "je",
+   "start": 20,
+   "end": 22
+  },
+  {
+   "w": "rekeningen?",
+   "start": 24,
+   "end": 43
+  },
+  {
+   "w": "Dan",
+   "start": 53,
+   "end": 55
+  },
+  {
+   "w": "moet",
+   "start": 56,
+   "end": 60
+  },
+  {
+   "w": "je",
+   "start": 64,
+   "end": 67
+  },
+  {
+   "w": "alles",
+   "start": 72,
+   "end": 77
+  },
+  {
+   "w": "zelf",
+   "start": 79,
+   "end": 86
+  },
+  {
+   "w": "bijhouden.",
+   "start": 89,
+   "end": 108
+  },
+  {
+   "w": "Hoeft",
+   "start": 118,
+   "end": 125
+  },
+  {
+   "w": "niet.",
+   "start": 127,
+   "end": 137
+  },
+  {
+   "w": "Stuur",
+   "start": 142,
+   "end": 149
+  },
+  {
+   "w": "ze",
+   "start": 151,
+   "end": 154
+  },
+  {
+   "w": "door.",
+   "start": 158,
+   "end": 169
+  },
+  {
+   "w": "Buddy",
+   "start": 175,
+   "end": 185
+  },
+  {
+   "w": "zet",
+   "start": 187,
+   "end": 192
+  },
+  {
+   "w": "ze",
+   "start": 193,
+   "end": 194
+  },
+  {
+   "w": "op",
+   "start": 198,
+   "end": 202
+  },
+  {
+   "w": "één",
+   "start": 203,
+   "end": 206
+  },
+  {
+   "w": "lijst,",
+   "start": 209,
+   "end": 226
+  },
+  {
+   "w": "op",
+   "start": 227,
+   "end": 228
+  },
+  {
+   "w": "vervaldatum.",
+   "start": 230,
+   "end": 260
+  },
+  {
+   "w": "Liever",
+   "start": 266,
+   "end": 274
+  },
+  {
+   "w": "in",
+   "start": 275,
+   "end": 276
+  },
+  {
+   "w": "je",
+   "start": 278,
+   "end": 281
+  },
+  {
+   "w": "eigen",
+   "start": 282,
+   "end": 290
+  },
+  {
+   "w": "sheet?",
+   "start": 295,
+   "end": 302
+  },
+  {
+   "w": "Exporteer",
+   "start": 312,
+   "end": 329
+  },
+  {
+   "w": "hem.",
+   "start": 331,
+   "end": 341
+  },
+  {
+   "w": "Activeer",
+   "start": 346,
+   "end": 362
+  },
+  {
+   "w": "Buddy.",
+   "start": 365,
+   "end": 384
+  }
+ ]
+}
