@@ -10,10 +10,14 @@ Opdracht: PM-149. Budget €2 per dag per campagne, maximaal €8 per dag (maxim
 
 - **Het Meta-account, de pixel, Events Manager en Instagram heb ik niet zelf kunnen bekijken.** In deze sessie werkt Chrome niet, de Facebook Ads-connector is niet afgemaakt, en betaalbuddy.nl en instagram.com worden door het netwerk geblokkeerd. Wat ik daarover schrijf, komt uit de changelog en van Rick, of staat als "onbekend". Niets is ingevuld wat niemand heeft gezien.
 - **Blokkade 1:** het advertentieaccount staat sinds 11 november stil door een mislukte betaling ("Payment required"). Volgens de changelog en Rick op 15 november is dat nog zo.
-- **Blokkade 2:** nergens is gemeld dat de pixel werkt. Het laatste open punt (5 november) is: "pixel met PageView, InitiateCheckout en Purchase testen".
-- **Blokkade 3:** bijna alle kant-en-klare Reels hebben een rood-roze chip ("Kan uitlopen op €40", "Te laat"). Volgens de merkregels mag er geen rood in. Van de gekozen creatives is alleen "sleutel" schoon. De rest is met één kleurtoken in Remotion te repareren, gevolgd door een nieuwe render.
+- **Blokkade 2: betalen in de Instagram-browser.** Elke klik op een Instagram-advertentie opent in de browser van Instagram zelf. Volgens Clarity (12 t/m 19 oktober) kwam 32% van de bezoekers via die browser, gaf de checkout daar een JS-fout (postMessage), en leverden 20 gestarte aanmeldingen 0 betalingen op. Nergens staat dat dit is opgelost. Zonder een geslaagde testbetaling in de Instagram-browser op iPhone en Android (poort G0 uit het decemberplan) is elke euro aan advertenties waarschijnlijk weg.
+- **Blokkade 3:** nergens in de changelog staat dat de pixel werkt. Volgens het Notion-logboek (5 nov, één bron) stond "pixel met PageView, InitiateCheckout en Purchase testen" nog open.
+- **Blokkade 4:** bijna alle kant-en-klare Reels hebben een rood-roze chip ("Kan uitlopen op €40", "Te laat") of een rode stempel. Volgens de merkregels mag er geen rood in. Van de gekozen creatives is alleen "sleutel" schoon. De rest is met één kleurtoken in Remotion te repareren, gevolgd door een nieuwe render.
 - **Eerlijke verwachting:**
-  - Met €8 per dag (ongeveer €240 tot 19 december) leveren de advertenties in het middenscenario **ongeveer 3 betalende klanten** op, dus rond €10 MRR. Als alles tegelijk meezit, kunnen het er ongeveer 18 zijn.
+  - Met de 3 campagnes waarmee we starten (€6 per dag, ongeveer €180 tot 19 december) leveren de advertenties in het middenscenario **2 à 3 betalende klanten** op, dus rond €9 MRR.
+  - Ligt de CPM in Q4 op €12 in plaats van €8, dan zijn het er 1 à 2.
+  - Als alles tegelijk meezit, kunnen het er ongeveer 14 zijn. Dat is een plafond, geen verwachting.
+  - De 4e campagne (€240 in totaal) gaat waarschijnlijk niet draaien: op 19 oktober had het Instagram-profiel 14 volgers, dus de warme doelgroep is te klein.
   - Het masterplan rekende op ongeveer 13 klanten uit "funnel plus Meta" (met €508). Dat haal je met dit budget niet.
   - Je eigen netwerk (bet 1, ongeveer 16 klanten) en doorverwijzingen (bet 3) moeten dus meer dragen dan gepland.
 - **Voorstel:**
@@ -45,7 +49,13 @@ Opdracht: PM-149. Budget €2 per dag per campagne, maximaal €8 per dag (maxim
 
 ### 1.2 Instagram
 
-Niet bekeken, dus geen top 3 en bottom 3. Ik ga geen posts verzinnen. Wat ik wel weet uit de changelog: vanaf 15 november staat er elke avond om 19:00 een Reel ingepland, t/m 13 december (lijst in 1.5). Daarvóór draaide vooral oud materiaal.
+Niet bekeken, dus geen top 3 en bottom 3. Ik ga geen posts verzinnen.
+
+Wat ik wel weet uit de changelog:
+
+- Op 19 oktober had het profiel **14 volgers**.
+- De bio en de posts beloofden toen nog "gratis proberen" en "inbox checken". Controleer of dat inmiddels weg is: koud verkeer kijkt vaak eerst naar je profiel.
+- Vanaf 15 november staat er elke avond om 19:00 een Reel ingepland, t/m 13 december (lijst in 1.5).
 
 Zo vul je het in 5 minuten zelf in (of geef mij toegang, zie hoofdstuk 6):
 
@@ -61,10 +71,21 @@ Zo vul je het in 5 minuten zelf in (of geef mij toegang, zie hoofdstuk 6):
 | Accountstatus | **Payment required** sinds 11 nov, na een mislukte betaling | Changelog vervolg en vervolg 2; Rick op 15 nov. Niet door mij gezien |
 | Land, valuta, tijdzone | Onbekend | Controleer: Ads Manager > Instellingen advertentieaccount. Verwacht NL, EUR, Europe/Amsterdam |
 | Betaalmethode | Mislukt (gemeld) | Billing hub |
-| Concept-campagne "Verkoop" | Onbekend of die bestaat | Op 5 nov lukte bouwen niet; Rick zou hem "volgens de invulkaart bouwen en als concept laten staan tot de pixel werkt" (Notion-logboek). Nergens bevestigd |
+| Concept-campagne "Verkoop" | Onbekend of die bestaat | Op 5 nov lukte bouwen niet; Rick zou hem "volgens de invulkaart bouwen en als concept laten staan tot de pixel werkt". Bron: alleen het Notion-logboek, niet in de changelog. Nergens bevestigd |
 | Historische resultaten | Waarschijnlijk geen | Rick heeft volgens het logboek nooit een campagne gedraaid. Wel telde GA4 in sep/okt 28 gebruikers via Paid Social. Dat botst; zie 6.2 |
 
-**Cold start:** account waarschijnlijk koud (niet geverifieerd), pixel onbekend (behandelen als koud), conversies koud. Laatste bekende stand klanten: één klant met toegang tot 4 november; op 19 oktober "geen aanmeldingen" en in GA4 (21 sep t/m 18 okt) 58 gebruikers en 0 aankopen. Het scorebord in de 100 MRR-tracker is leeg. Er is dus geen data om op te optimaliseren. Daarom: eerst meting valideren, kleine omkeerbare tests, geen benchmarks van volwassen accounts.
+**Cold start:**
+
+- Account: waarschijnlijk koud (niet geverifieerd).
+- Pixel: onbekend, dus behandelen als koud.
+- Conversies: koud.
+  - Op 19 oktober waren er "geen aanmeldingen".
+  - GA4 telde van 21 sep t/m 18 okt 58 gebruikers en 0 aankopen.
+  - Clarity telde van 12 t/m 19 okt 20 gestarte aanmeldingen en 0 gelukte betalingen.
+  - Er was één account met toegang tot 4 november, maar dat was compensatie van Rick, geen betalende klant.
+  - Het scorebord in de 100 MRR-tracker is leeg.
+
+Er is dus geen data om op te optimaliseren. Daarom eerst de meting valideren, dan kleine tests die je kunt terugdraaien, en geen benchmarks van volwassen accounts.
 
 ### 1.4 Tracking
 
@@ -82,17 +103,26 @@ Wat er volgens de docs staat: Complianz met Consent Mode v2, Google Tag Manager 
 
 **Let op met cookies:** met Consent Mode vuurt de pixel alleen als een bezoeker cookies accepteert. Meta ziet dus minder dan er echt gebeurt. Vergelijk altijd met je echte aanmeldingen.
 
+**Eigen data over de checkout** (changelog, 19 okt):
+
+- Clarity (12 t/m 19 okt): 100 sessies, waarvan 23 bots.
+- 20 gestarte aanmeldingen leverden 0 gelukte betalingen op.
+- 32% van het verkeer kwam via de Instagram-browser, en daarin gaf de checkout een JS-fout (postMessage).
+- 14% van de klikken was een dode klik.
+
+De conclusie in de changelog was: "de pagina's zelf zijn het probleem". Poort G0 uit het decemberplan was een echte betaling via de Instagram-browser op iOS en Android vóór 11 november. Nergens staat dat die is gehaald. Omdat alle advertentieklikken in de Instagram-browser openen, is dit de belangrijkste test vóór livegang.
+
 **/start-met-betaalbuddy/** draait de onboarding (v4/v5.1) met vragen en daarna het Mollie-formulier. Het is dus een werkende pagina en geen kale betaalpagina. Toch is die pagina minder geschikt als eerste kennismaking voor koud verkeer dan een hoekpagina, en de beleidsaudit ziet een risico op "slechte landingspagina-ervaring" als er direct een betaalstap opent. Daarom: **hoekpagina als die live staat, anders /start-met-betaalbuddy/** (zoals al besloten in het masterplan). Niet /probeer-betaalbuddy/: volgens het masterplan is dat de oude Gmail/WhatsApp-versie die moet doorsturen.
 
 ### 1.5 Creatives
 
 Drive-map **"BetaalBuddy Ads"** ([link](https://drive.google.com/drive/folders/1oE8WWR14ag2QoWokd23J8hOFB5TpCxgK)): 29 conceptmappen van 10 t/m 14 november, meestal met een reel-vo (9:16), een feed-vo (4:5), stille versies, mp3, cover en caption. In 04 staat alleen oud materiaal (gratis, Gmail, WhatsApp, verloop, nep-reviews): **niet gebruiken**. In 05 staat alleen Domino (concept 82). Let op: de map-id voor 04 in de opdracht (`1UGSWbEf...`) is eigenlijk "01 Strategie & Onderzoek"; 04 is `1X0X9aMqSY6L8yHV8h-jttyMd9zDPZACF`.
 
-**Klaar of bijna klaar, per hoek** (bron: Drive-inventaris, plus eigen frames waar aangegeven):
+**Klaar of bijna klaar, per hoek** (bron: Drive-inventaris, plus eigen frames waar "zelf gezien" staat; die contactbladen staan in `docs/bewijs-meta-ads-2026-11/`):
 
 | Hoek | Bruikbaar | Gekozen voor de campagnes | Probleem |
 |---|---|---|---|
-| Aanmaning en incassokosten | 9 Reels: weegschaal, boemerang, radio, ijs, spaarpot, vloed, sneeuwbol, thee, ballon | **weegschaal** (€40 tegen €3,49), **boemerang** | Rode chips "Te laat" en "Kan uitlopen op €40" (zelf gezien). Allebei alleen 9:16, dus een 4:5-feedversie moet nog gerenderd worden |
+| Aanmaning en incassokosten | 9 Reels: weegschaal, boemerang, radio, ijs, spaarpot, vloed, sneeuwbol, thee, ballon | **weegschaal** (€40 tegen €3,49), **boemerang** | Boemerang: rode chips "Te laat" en "Kan uitlopen op €40". Weegschaal: rode stempel "Aanmaning" (beide zelf gezien). Allebei alleen 9:16, dus een 4:5-feedversie moet nog gerenderd worden |
 | Achteraf betalen | 1: later | **later** | Roze scène en rode chip "Kan uitlopen op €40" (zelf gezien). 4:5 is er |
 | Net op jezelf wonen | 0 als video. Eigenhuis (concept 79) heeft alleen caption en mp3 in Drive | **eigenhuis** (opnieuw renderen vanaf branch `claude/peaceful-planck-5nk07m`) | Video ontbreekt; rood nog niet gecontroleerd |
 | Privacy zonder mailboxkoppeling | 9, waarvan alleen sleutel en tafeltennis echt over "geen mailbox" gaan | **sleutel** (retargeting), tafeltennis als tweede | Sleutel: **geen rood** (zelf gezien), wel een gele sleutel. Alle privacy-Reels openen met een bezwaar, niet met pijn; daarom alleen voor retargeting |
@@ -101,7 +131,7 @@ Drive-map **"BetaalBuddy Ads"** ([link](https://drive.google.com/drive/folders/1
 
 **Oudere animaties in de repo** (`04. Animation/renders`): BB-Ad (rood, "BetaalBuddy" in meldingen, herinneringen op 7 en 2 dagen), BB-Privacy (rood), BB-Countdown (draait helemaal om de 7-en-2-dagen-claim, dus niet meer bruikbaar). Die zijn vervangen door de nieuwe reeks.
 
-**Ingeplande 19:00-reeks** (organisch, uit de changelog): 15 nov weegschaal, 19 boemerang, 21 radio, 22 eenplek, 24 geenai, 25 overzicht, 26 glasla, 27 doorlicht, 28 ijs, 29 spaarpot, 30 bon, 1 dec regels, 2 gelezen, 3 vloed, 4 rolmaat, 5 sneeuwbol, 6 prikbord, 7 geenapp, 8 thee, 9 wachtkamer, 10 oproep, 11 sleutel, 12 knikkerbaan, 13 broodrooster. Klaar maar niet ingepland: wedstrijd, tafeltennis, ballon, puzzel, later. In beeld staan december-datums ("do 17 dec"): na half december ogen ze verouderd, maar de campagne stopt op 19 december.
+**Ingeplande 19:00-reeks** (organisch; 15 nov t/m 8 dec uit changelog "vervolg", 9 t/m 13 dec uit "vervolg 2" volgens de Drive-agent, die de laatste niet zelf als export bij het bewijs heeft): 15 nov weegschaal, 19 boemerang, 21 radio, 22 eenplek, 24 geenai, 25 overzicht, 26 glasla, 27 doorlicht, 28 ijs, 29 spaarpot, 30 bon, 1 dec regels, 2 gelezen, 3 vloed, 4 rolmaat, 5 sneeuwbol, 6 prikbord, 7 geenapp, 8 thee, 9 wachtkamer, 10 oproep, 11 sleutel, 12 knikkerbaan, 13 broodrooster. Klaar maar niet ingepland: wedstrijd, tafeltennis, ballon, puzzel, later. In beeld staan december-datums ("do 17 dec"): na half december ogen ze verouderd, maar de campagne stopt op 19 december.
 
 **Wat ontbreekt:** statics en carrousels in de nieuwe stijl, een tweede variant voor achteraf betalen en op jezelf wonen, en alles voor verkeersboetes. Een creative-audit door een aparte agent heb ik niet gedraaid. De Drive-inventaris en mijn eigen framecontroles dekken hetzelfde: wat klaar is, wat rood heeft en wat per hoek ontbreekt.
 
@@ -118,7 +148,7 @@ Geen enkel getal hieronder is een resultaat van Betaalbuddy. Er is nog geen data
 | CPM Instagram NL (kosten per 1.000 vertoningen) | €12 | €8 | €5 | Searchlab 2026 (verwijst naar Hootsuite): gemiddeld ~€7,50, bandbreedte €5 tot €12; Reels ~€5,80, Feed ~€8,40. Leveranciersschatting, methode onbekend. Rond Black Friday (vr 27 nov) en in december ligt de CPM meestal hoger |
 | Link-CTR | 0,6% | 1,0% | 1,5% | Vuistregel koud verkeer, geen bron |
 | Landingspaginaweergave per klik | 60% | 75% | 85% | Vuistregel mobiel, geen bron |
-| Aankoop per landingspaginaweergave | 0,5% | 1,5% | 3% | Vuistregel betaald abonnement zonder proefperiode, geen bron |
+| Aankoop per landingspaginaweergave | 0,5% | 1,5% | 3% | Vuistregel betaald abonnement zonder proefperiode, geen bron. Eigen data tot nu toe: 0 betalingen uit 20 gestarte aanmeldingen (Clarity, okt). Bij dit kleine aantal is dat geen bewijs, maar het ondersteunt ook het centrale getal niet. Het werkt pas als de checkout in de Instagram-browser werkt |
 | Transactiekosten per maandbetaling | | €0,30 | | Aanname; echte Mollie-kosten onbekend |
 | Opzeggers per maand | 15% | 10% | 7% | Aanname, geen data |
 
@@ -140,7 +170,8 @@ Geen enkel getal hieronder is een resultaat van Betaalbuddy. Er is nog geen data
 | | Pessimistisch | Centraal | Alles zit mee |
 |---|---|---|---|
 | 3 campagnes (€180) | 0 klanten | 2 à 3 klanten (~€9 MRR met btw) | ~14 klanten (~€48 MRR) |
-| 4 campagnes (€240) | 0 klanten | ~3 klanten (~€12 MRR met btw, ~€10 zonder) | ~18 klanten (~€64 MRR) |
+| 4 campagnes (€240), alleen als C4 draait | 0 klanten | ~3 klanten (~€12 MRR met btw, ~€10 zonder) | ~18 klanten (~€64 MRR) |
+| **Gevoeligheid:** 3 campagnes, centraal maar met CPM €12 (Q4) | | 1 à 2 klanten (~€6 MRR); kosten per landingspaginaweergave €1,60, kosten per koper ~€107 | |
 
 ### 2.4 €100 MRR en het CAC-plafond
 
@@ -222,6 +253,7 @@ Kill/keep-regels per campagne: zie hoofdstuk 5. Ze gelden voor alle vier hetzelf
   - Conversielocatie Website.
   - Prestatiedoel Aantal landingspaginaweergaven maximaliseren.
   - Budget €2 per dag, geen einddatum (je pauzeert zelf).
+  - Let op: Meta mag op een losse dag meer uitgeven dan het dagbudget (volgens Meta's helpcentrum tot 75% meer), maar per kalenderweek niet meer dan 7x het dagbudget. Met 3 campagnes kan een dag dus ruim €8 kosten, terwijl de week onder €42 blijft. Controleer dit getal vóór livegang in Meta's helpcentrum, want ik heb het niet in deze sessie nagekeken.
   - Biedstrategie Hoogste volume.
 - **Doelgroep:**
   - Nederland, met de leeftijdsband als **harde grens**. Zet daarvoor Advantage+-doelgroep uit en kies "Oorspronkelijke doelgroepopties". Bij Advantage+-doelgroep is de maximumleeftijd alleen een suggestie, en dan overlappen de campagnes weer.
@@ -338,14 +370,14 @@ Buddy kost €3,49 per maand. Geen app, geen bankkoppeling.
 - Primaire tekst:
 
 ```
-Wat kost een rekening die je vergeet? Eén aanmaning kan al uitlopen op €40 aan incassokosten.
+Wat kost een vergeten rekening? Eén aanmaning kan al uitlopen op €40 aan incassokosten.
 
 Buddy kost €3,49 per maand. Je stuurt je rekening door, Buddy haalt het bedrag en de vervaldatum eruit en zet ze in je agenda. Jij kiest wanneer je een herinnering krijgt.
 
 Reken maar uit.
 ```
 
-- Kop: `€3,49 per maand of €40 aan incasso`
+- Kop: `€3,49 per maand. Een aanmaning kan €40 kosten.`
 - Beschrijving: `Geen app. Geen bankkoppeling.`
 - Knop: Aanmelden
 - Website-URL: hoekpagina "aanmaning en incassokosten" (staat die niet live: `https://betaalbuddy.nl/start-met-betaalbuddy/`)
@@ -409,6 +441,8 @@ Buddy kost €3,49 per maand.
 
 ### Reserve · Zorgnota's (plan B voor C2)
 
+Let op: tandarts, fysio en eigen risico raken aan gezondheid. Dat ligt gevoeliger bij Meta's regel over persoonlijke kenmerken dan de andere hoeken. Houd de tekst daarom bij "de nota" en niet bij "jouw behandeling", en verwacht een strengere controle.
+
 **R-A1 · wachtkamer** (concept 70; [reel](https://drive.google.com/file/d/1A822JcRqYSj9Dhlgw66aQ4ZsG-VgJD1l/view) en feed; niet zelf op rood gecontroleerd)
 
 - Primaire tekst:
@@ -430,7 +464,7 @@ Buddy kost €3,49 per maand. Geen app, geen bankkoppeling.
 
 | Creative | Wat | Waar |
 |---|---|---|
-| weegschaal | Rood (stempel en €40-chip) naar merkkleur; 4:5-feed renderen | branch `claude/peaceful-planck-whri2n` |
+| weegschaal | Rode stempel "Aanmaning" naar merkkleur; 4:5-feed renderen; controleren dat de kleine tekst onder de eindsom "€3,49 < €40" het woord "kan" bevat | branch `claude/peaceful-planck-whri2n` |
 | boemerang | Rode chips "Te laat" en "Kan uitlopen op €40" naar merkkleur; 4:5-feed renderen | main, `04. Animation` |
 | later | Roze scène en rode chip naar merkkleur | branch `claude/sweet-wright-oa0jgj` |
 | eigenhuis | MP4 reel en feed renderen, op rood controleren | branch `claude/peaceful-planck-5nk07m` |
@@ -463,7 +497,7 @@ Black Friday valt rond dag 7 (vr 27 november). Het decemberplan wilde daarom pas
 ### 5.3 Dag 7 (rond 27 november)
 
 - Per advertentie: vertoningen, link-CTR, kosten per landingspaginaweergave, en bij video het percentage dat 3 seconden kijkt.
-- **Eerste schifting (hypothese):** heeft een advertentie minstens 600 vertoningen en een link-CTR onder 0,5%, en doet een tweede advertentie in dezelfde set het beter? Pauzeer dan de zwakke. 0,5% is de helft van de centrale aanname (1,0%), geen benchmark.
+- **Eerste schifting (hypothese):** heeft een advertentie minstens 1.500 vertoningen en een link-CTR onder 0,5% (dus hooguit 7 klikken), en doet een tweede advertentie in dezelfde set het duidelijk beter? Pauzeer dan de zwakke. 0,5% is de helft van de centrale aanname (1,0%), geen benchmark. Met minder vertoningen is het verschil toeval; laat dan staan.
 - Nul linkklikken na ongeveer 1.500 vertoningen in een campagne betekent dat de creative niet haakt. Vervang hem door de volgende Reel in dezelfde hoek.
 - Nog niets aan budget of doelgroep veranderen.
 
@@ -494,13 +528,14 @@ Voorwaarde: minstens €28 uitgegeven en ongeveer 3.000 vertoningen per campagne
 ### 6.1 Blokkades, in volgorde
 
 1. **Betaling.** Het account staat op "Payment required". Los dit zelf op via de billing hub; ik pas geen betaalgegevens aan. Controleer daarna dat het account "Actief" is.
-2. **Pixel en events.** Doorloop de tabel in 1.4.
+2. **Betalen in de Instagram-browser.** Open een link naar de landingspagina via een DM of je bio in Instagram, op een iPhone en een Android-telefoon. Doorloop daarna de hele aanmelding met een echte betaling, waarvoor je 30 dagen geld terug hebt. Lukt het niet (bijvoorbeeld door de postMessage-fout uit oktober), dan geen advertenties tot het is opgelost.
+3. **Pixel en events.** Doorloop de tabel in 1.4.
    - Minimaal nodig: PageView op de landingspagina's.
    - Gewenst: InitiateCheckout bij de eerste stap in de checkout, en Purchase één keer per betaling, met waarde en EUR.
    - Werkt de pixel helemaal niet, dan starten we op linkklikken en meten we via UTM in GA4.
-3. **Rood in de creatives.** Eén renderronde (zie de tabel aan het eind van hoofdstuk 4). Alleen sleutel is nu schoon.
-4. **Landingspagina's live?** Volgens de merkreferentie (10 nov) was nog niet besloten waar de zes hoekpagina's live komen. De pagina's noemen nog prijzen en "30 dagen geld terug", en de pagina over achteraf betalen noemt ook merknamen. Zonder live hoekpagina gaan de advertenties naar /start-met-betaalbuddy/.
-5. **Bouwen.** In deze sessie kan ik niet in Ads Manager bouwen. Er zijn drie opties:
+4. **Rood in de creatives.** Eén renderronde (zie de tabel aan het eind van hoofdstuk 4). Alleen sleutel is nu schoon.
+5. **Landingspagina's live?** Volgens de merkreferentie (10 nov) was nog niet besloten waar de zes hoekpagina's live komen. De pagina's noemen nog prijzen en "30 dagen geld terug", en de pagina over achteraf betalen noemt ook merknamen. Zonder live hoekpagina gaan de advertenties naar /start-met-betaalbuddy/.
+6. **Bouwen.** In deze sessie kan ik niet in Ads Manager bouwen. Er zijn drie opties:
    - (a) Facebook Ads-connector in claude.ai afmaken en een nieuwe sessie starten;
    - (b) dezelfde stap in Cowork met Chrome doen;
    - (c) je bouwt zelf, met hoofdstuk 3 en 4 als invulkaart (alles staat klaar om te plakken).
@@ -571,4 +606,18 @@ De merkregels uit de opdracht gaan voor. Deze bronnen wijken af:
 
 **Audits in deze run:** Meta-gereedheid, budget, beleid (claude-ads-agents), Drive-inventaris en projectcontext (agents), plus framecontroles van 7 video's.
 
-**Screenshots:** geen. Chrome was in deze sessie niet beschikbaar.
+**Controle (15 nov):** een aparte agent die de opbouw niet had gezien, toetste dit document aan het bewijs.
+
+- De rekensommen klopten.
+- Aangepast na de controle:
+  - de verwachting gaat nu uit van 3 campagnes (€180);
+  - Q4-gevoeligheid toegevoegd;
+  - eigen Clarity-data en het probleem met betalen in de Instagram-browser toegevoegd;
+  - de compensatieklant correct beschreven;
+  - bronnen die alleen uit Notion komen gemarkeerd;
+  - kop C3-A1 kreeg "kan";
+  - drempel op dag 7 verhoogd naar 1.500 vertoningen;
+  - zorgnota's krijgen een waarschuwing over gezondheid;
+  - uitleg dat Meta op een losse dag meer kan uitgeven dan het dagbudget.
+
+**Bewijs:** contactbladen van de gecontroleerde video's in [`docs/bewijs-meta-ads-2026-11/`](bewijs-meta-ads-2026-11/). Screenshots van Meta of Instagram zijn er niet, omdat Chrome in deze sessie niet beschikbaar was.
