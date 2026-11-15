@@ -1,6 +1,8 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { AdventAd } from "./advent/AdventAd";
+import { adventSchema, defaultAdventProps, TOTAL_FRAMES as ADVENT_TOTAL } from "./advent/schema";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 90 · "Geen verrassingen. Gewoon je agenda." (CONCEPT-90.md) · met stem */}
+    <Folder name="Concept-90-Advent">
+      <Composition
+        id="BB-Advent-Reel"
+        component={AdventAd}
+        schema={adventSchema}
+        defaultProps={defaultAdventProps}
+        durationInFrames={ADVENT_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Advent-Feed"
+        component={AdventAd}
+        schema={adventSchema}
+        defaultProps={defaultAdventProps}
+        durationInFrames={ADVENT_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

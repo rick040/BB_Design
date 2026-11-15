@@ -12,11 +12,16 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:advent && npm run render:advent:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:advent": "remotion render BB-Advent-Reel out/advent-reel-vo.mp4",
+    "render:advent:feed": "remotion render BB-Advent-Feed out/advent-feed-vo.mp4",
+    "render:advent:stil": "remotion render BB-Advent-Reel out/advent-reel-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "render:advent:feed:stil": "remotion render BB-Advent-Feed out/advent-feed-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "still:advent": "remotion still BB-Advent-Reel out/advent-cover.png --frame=140"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
