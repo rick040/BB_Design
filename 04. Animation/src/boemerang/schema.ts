@@ -117,7 +117,7 @@ export const defaultBoemerangProps: BoemerangProps = {
     light: brand.light,
     softBlue: brand.blueSoft,
     bodyOnBlue: brand.blueText,
-    alert: brand.red,
+    alert: "#111827", // waarschuwingskleur: donker merkpalet in plaats van rood (PM-149, 15 nov 2026)
   },
   transitionFrames: 12,
   withVoice: true,

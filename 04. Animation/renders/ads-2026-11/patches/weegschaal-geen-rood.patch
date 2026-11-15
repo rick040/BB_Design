@@ -1,0 +1,13 @@
+diff --git a/04. Animation/src/weegschaal/schema.ts b/04. Animation/src/weegschaal/schema.ts
+index 3b5be51..706626f 100644
+--- a/04. Animation/src/weegschaal/schema.ts	
++++ b/04. Animation/src/weegschaal/schema.ts	
+@@ -78,7 +78,7 @@ export const defaultWeegschaalProps: WeegschaalProps = {
+     light: brand.light,
+     softBlue: brand.blueSoft,
+     bodyOnBlue: brand.blueText,
+-    alert: brand.red,
++    alert: "#111827", // waarschuwingskleur: donker merkpalet in plaats van rood (PM-149, 15 nov 2026)
+   },
+   transitionFrames: 14,
+   withVoice: true,

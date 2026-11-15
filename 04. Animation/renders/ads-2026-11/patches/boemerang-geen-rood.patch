@@ -1,0 +1,26 @@
+diff --git a/04. Animation/src/boemerang/scenes/HookScene.tsx b/04. Animation/src/boemerang/scenes/HookScene.tsx
+index 1935553..0a29312 100644
+--- a/04. Animation/src/boemerang/scenes/HookScene.tsx	
++++ b/04. Animation/src/boemerang/scenes/HookScene.tsx	
+@@ -94,7 +94,7 @@ export const HookScene: React.FC<{ props: BoemerangProps["hook"]; bill: Boemeran
+               fontSize: 46,
+               padding: "20px 40px",
+               borderRadius: 50,
+-              boxShadow: "0 20px 50px rgba(255, 90, 121, 0.35)",
++              boxShadow: "0 20px 50px rgba(17, 24, 39, 0.25)",
+             }}
+           >
+             {props.costChip}
+diff --git a/04. Animation/src/boemerang/schema.ts b/04. Animation/src/boemerang/schema.ts
+index d55c451..1ee52e4 100644
+--- a/04. Animation/src/boemerang/schema.ts	
++++ b/04. Animation/src/boemerang/schema.ts	
+@@ -117,7 +117,7 @@ export const defaultBoemerangProps: BoemerangProps = {
+     light: brand.light,
+     softBlue: brand.blueSoft,
+     bodyOnBlue: brand.blueText,
+-    alert: brand.red,
++    alert: "#111827", // waarschuwingskleur: donker merkpalet in plaats van rood (PM-149, 15 nov 2026)
+   },
+   transitionFrames: 12,
+   withVoice: true,

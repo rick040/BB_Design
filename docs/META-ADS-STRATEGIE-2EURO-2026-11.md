@@ -1,6 +1,17 @@
 # Meta Ads-strategie Betaalbuddy: €2 per dag per campagne
 
-Stand: 15 november 2026. Status: **concept, wacht op goedkeuring (Gate 1)**. Er is nog niets gebouwd en er staat niets live.
+Stand: 15 november 2026. Status: **goedgekeurd door Rick (Gate 1, 15 nov)**. Er is nog niets gebouwd en er staat niets live.
+
+### Besluit Gate 1 (15 november 2026)
+
+| Vraag | Keuze van Rick |
+|---|---|
+| Strategie | **Goedkeuren en opzetten** (alles gepauzeerd; live pas na Gate 2) |
+| Rood in de creatives | **Eerst repareren.** Gedaan op 15 nov: weegschaal, boemerang, later en eigenhuis opnieuw gerenderd zonder rood, zie `04. Animation/renders/ads-2026-11/` |
+| Tracking | **Eerst testen, dan live.** Rick doet een testbetaling in de Instagram-browser (iPhone en Android) en checkt PageView en Purchase in Events Manager vóór Gate 2 |
+| Bouwen | **In Cowork met Chrome.** De bouwopdracht staat klaar in `docs/META-ADS-BOUWOPDRACHT-COWORK-2026-11.md` |
+
+Aanpassing na Gate 1: plaatsingen **alleen Instagram Stories en Reels**, voorlopig zonder Feed. Reden: weegschaal en boemerang bestaan alleen in 9:16. Een 4:5-versie vraagt layoutwerk per scène, en in de Feed zou Meta de kop eraf snijden. Met dezelfde plaatsingen voor elke campagne blijft de hoek het enige verschil. Feed komt na dag 14 terug voor de winnende hoek, met een 4:5-versie.
 
 Opdracht: PM-149. Budget €2 per dag per campagne, maximaal €8 per dag (maximaal 4 campagnes). Bedrijfsdoel: minimaal €100 MRR op 19 december 2026 (masterplan: 35 betalende abonnees zonder btw, 29 met btw). Ad account act=918691302133961, business 2250437052095585.
 
@@ -12,7 +23,7 @@ Opdracht: PM-149. Budget €2 per dag per campagne, maximaal €8 per dag (maxim
 - **Blokkade 1:** het advertentieaccount staat sinds 11 november stil door een mislukte betaling ("Payment required"). Volgens de changelog en Rick op 15 november is dat nog zo.
 - **Blokkade 2: betalen in de Instagram-browser.** Elke klik op een Instagram-advertentie opent in de browser van Instagram zelf. Volgens Clarity (12 t/m 19 oktober) kwam 32% van de bezoekers via die browser, gaf de checkout daar een JS-fout (postMessage), en leverden 20 gestarte aanmeldingen 0 betalingen op. Nergens staat dat dit is opgelost. Zonder een geslaagde testbetaling in de Instagram-browser op iPhone en Android (poort G0 uit het decemberplan) is elke euro aan advertenties waarschijnlijk weg.
 - **Blokkade 3:** nergens in de changelog staat dat de pixel werkt. Volgens het Notion-logboek (5 nov, één bron) stond "pixel met PageView, InitiateCheckout en Purchase testen" nog open.
-- **Blokkade 4:** bijna alle kant-en-klare Reels hebben een rood-roze chip ("Kan uitlopen op €40", "Te laat") of een rode stempel. Volgens de merkregels mag er geen rood in. Van de gekozen creatives is alleen "sleutel" schoon. De rest is met één kleurtoken in Remotion te repareren, gevolgd door een nieuwe render.
+- **Blokkade 4 (opgelost op 15 nov):** bijna alle kant-en-klare Reels hadden een rood-roze chip ("Kan uitlopen op €40", "Te laat") of een rode stempel. De vier gekozen creatives zijn opnieuw gerenderd met `#111827` in plaats van rood. Sleutel was al schoon.
 - **Eerlijke verwachting:**
   - Met de 3 campagnes waarmee we starten (€6 per dag, ongeveer €180 tot 19 december) leveren de advertenties in het middenscenario **2 à 3 betalende klanten** op, dus rond €9 MRR.
   - Ligt de CPM in Q4 op €12 in plaats van €8, dan zijn het er 1 à 2.
@@ -129,6 +140,8 @@ Drive-map **"BetaalBuddy Ads"** ([link](https://drive.google.com/drive/folders/1
 | Zorgnota's | 2: wachtkamer, oproep (bijna dubbel) | Reserve (plan B voor C2) | Oproep heeft rood |
 | Verkeersboetes | 0 | Geen | Alleen ideeën; bedragen eerst juridisch checken (WAHV) |
 
+**Stand na Gate 1 (15 nov):** weegschaal, boemerang en later zijn opnieuw gerenderd zonder rood, en eigenhuis is voor het eerst als video gerenderd. Alle vier staan in `04. Animation/renders/ads-2026-11/`.
+
 **Oudere animaties in de repo** (`04. Animation/renders`): BB-Ad (rood, "BetaalBuddy" in meldingen, herinneringen op 7 en 2 dagen), BB-Privacy (rood), BB-Countdown (draait helemaal om de 7-en-2-dagen-claim, dus niet meer bruikbaar). Die zijn vervangen door de nieuwe reeks.
 
 **Ingeplande 19:00-reeks** (organisch; 15 nov t/m 8 dec uit changelog "vervolg", 9 t/m 13 dec uit "vervolg 2" volgens de Drive-agent, die de laatste niet zelf als export bij het bewijs heeft): 15 nov weegschaal, 19 boemerang, 21 radio, 22 eenplek, 24 geenai, 25 overzicht, 26 glasla, 27 doorlicht, 28 ijs, 29 spaarpot, 30 bon, 1 dec regels, 2 gelezen, 3 vloed, 4 rolmaat, 5 sneeuwbol, 6 prikbord, 7 geenapp, 8 thee, 9 wachtkamer, 10 oproep, 11 sleutel, 12 knikkerbaan, 13 broodrooster. Klaar maar niet ingepland: wedstrijd, tafeltennis, ballon, puzzel, later. In beeld staan december-datums ("do 17 dec"): na half december ogen ze verouderd, maar de campagne stopt op 19 december.
@@ -233,9 +246,9 @@ Eén campagne van €8 met drie hoeken als losse advertenties geeft Meta vier ke
 
 | # | Naam | Hoek | Doel / event | Budget | Doelgroep | Uitsluitingen | Plaatsingen | Advertenties | Landingspagina | KPI | Start |
 |---|---|---|---|---|---|---|---|---|---|---|---|
-| C1 | `BB_Verkeer_OpJezelf_LPV_2611` | Net op jezelf wonen | Verkeer / landingspaginaweergaven | €2/dag | NL, 21 t/m 24, breed | Kopers 180d, checkout-starters 14d | IG Feed, Stories, Reels | C1-A1 eigenhuis (na render) | Hoekpagina "net op jezelf wonen", anders /start-met-betaalbuddy/ | Kosten per LPV, link-CTR, 3-sec-kijkers | Na blokkades |
-| C2 | `BB_Verkeer_Achteraf_LPV_2611` | Achteraf betalen | Verkeer / landingspaginaweergaven | €2/dag | NL, 25 t/m 28, breed | Idem | Idem | C2-A1 later (na rood-fix) | Hoekpagina "achteraf betalen", anders /start-met-betaalbuddy/ | Idem | Na blokkades |
-| C3 | `BB_Verkeer_Aanmaning_LPV_2611` | Aanmaning en incassokosten | Verkeer / landingspaginaweergaven | €2/dag | NL, 29 t/m 34, breed | Idem | Idem | C3-A1 weegschaal, C3-A2 boemerang (beide na rood-fix en 4:5-render) | Hoekpagina "aanmaning en incassokosten", anders /start-met-betaalbuddy/ | Idem | Na blokkades |
+| C1 | `BB_Verkeer_OpJezelf_LPV_2611` | Net op jezelf wonen | Verkeer / landingspaginaweergaven | €2/dag | NL, 21 t/m 24, breed | Kopers 180d, checkout-starters 14d | IG Stories, Reels | C1-A1 eigenhuis (gerenderd) | Hoekpagina "net op jezelf wonen", anders /start-met-betaalbuddy/ | Kosten per LPV, link-CTR, 3-sec-kijkers | Na blokkades |
+| C2 | `BB_Verkeer_Achteraf_LPV_2611` | Achteraf betalen | Verkeer / landingspaginaweergaven | €2/dag | NL, 25 t/m 28, breed | Idem | Idem | C2-A1 later (zonder rood) | Hoekpagina "achteraf betalen", anders /start-met-betaalbuddy/ | Idem | Na blokkades |
+| C3 | `BB_Verkeer_Aanmaning_LPV_2611` | Aanmaning en incassokosten | Verkeer / landingspaginaweergaven | €2/dag | NL, 29 t/m 34, breed | Idem | Idem | C3-A1 weegschaal, C3-A2 boemerang (beide zonder rood) | Hoekpagina "aanmaning en incassokosten", anders /start-met-betaalbuddy/ | Idem | Na blokkades |
 | C4 | `BB_Verkeer_RetargetPrivacy_LPV_2612` | Privacy zonder mailboxkoppeling (bezwaar wegnemen) | Verkeer / landingspaginaweergaven | €2/dag | Warm: IG-interactie 90d + websitebezoekers 30d, NL, 21 t/m 44 | Kopers 180d | Idem | C4-A1 sleutel (klaar), C4-A2 tafeltennis | Hoekpagina "privacy zonder mailboxkoppeling", anders /start-met-betaalbuddy/ | Idem + InitiateCheckout | **Alleen als de warme doelgroep minstens ~1.000 mensen telt** (aanname). Anders blijft deze €2 in reserve |
 
 Totaal bij start: **€6 per dag** (C1 t/m C3). Met C4: €8 per dag.
@@ -273,13 +286,17 @@ Kill/keep-regels per campagne: zie hoofdstuk 5. Ze gelden voor alle vier hetzelf
   - Werkt de pixel nog niet, dan kunnen deze uitsluitingen niet. Bij bijna nul klanten scheelt dat nu weinig, maar zet ze wel klaar.
 - **Uitsluitingen (C4):** kopers laatste 180 dagen.
 - **Plaatsingen:**
-  - Handmatig: alleen Instagram Feed, Instagram Stories en Instagram Reels. Facebook, Audience Network, Messenger en Threads uit.
-  - Waarom: de creatives zijn gemaakt als Reels, de doelgroep zit op Instagram, en Audience Network levert veel per ongeluk klikken op.
-  - Dit wijkt af van het decemberplan (Advantage+-plaatsingen zonder Audience Network en Messenger). De opdracht PM-149 is nieuwer.
-  - Nadeel: de CPM kan iets hoger zijn. Na dag 14 kun je Facebook Reels toevoegen als de CPM tegenvalt.
+  - Handmatig: alleen **Instagram Stories en Instagram Reels** (aangepast na Gate 1). Instagram Feed, Facebook, Audience Network, Messenger en Threads uit.
+  - Waarom:
+    - alle gekozen creatives zijn 9:16 Reels, en weegschaal en boemerang hebben geen 4:5-versie;
+    - de doelgroep zit op Instagram;
+    - Audience Network levert veel per ongeluk klikken op;
+    - met dezelfde plaatsingen voor elke campagne blijft de hoek het enige verschil.
+  - Dit wijkt af van de opdracht (Feed, Stories, Reels) en van het decemberplan (Advantage+-plaatsingen zonder Audience Network en Messenger).
+  - Nadeel: minder plaatsingen kan een iets hogere CPM geven. Reels is volgens de leveranciersschatting wel de goedkoopste plaatsing (~€5,80). Na dag 14 voeg je Feed toe voor de winnende hoek, met een 4:5-versie.
 - **Advertentie:**
   - 1 à 2 advertenties per advertentieset, maximaal 3. Meer advertenties betekent bij €2 per dag dat geen enkele genoeg data krijgt.
-  - Gebruik "Plaatsing-assets aanpassen": 9:16 voor Stories en Reels, 4:5 voor Feed.
+  - Upload de 9:16-video uit `04. Animation/renders/ads-2026-11/` (voor sleutel en tafeltennis: de reel-vo uit Drive).
   - Zet Advantage+-creatieve verbeteringen uit (geen automatische muziek, tekst of filters), zodat je merkregels heel blijven. Dat was ook het besluit in het decemberplan.
 - **Toeschrijving:** standaard laten staan (7 dagen na klik, 1 dag na weergave).
 - **Instagram-account:** controleer dat het Instagram-account gekoppeld is aan de Facebook-pagina en aan het advertentieaccount (Bedrijfsinstellingen > Accounts > Instagram-accounts).
@@ -316,9 +333,9 @@ De beleidsaudit wees op Meta's regel over persoonlijke kenmerken: een advertenti
 
 ### C1 · Net op jezelf wonen · 21 t/m 24
 
-**C1-A1 · eigenhuis** (concept 79, plattegrond; MP4 opnieuw renderen, reel + feed)
+**C1-A1 · eigenhuis** (concept 79, plattegrond)
 
-- Bestand: nog te renderen vanaf branch `claude/peaceful-planck-5nk07m` (Drive-map [2026-11-12 eigenhuis](https://drive.google.com/drive/folders/1ScaOiO4s-Ev0fwYii33heoTWx7QYOfBH) heeft alleen caption en mp3)
+- Bestand: `04. Animation/renders/ads-2026-11/eigenhuis-reel-vo.mp4` (gerenderd op 15 nov, 9:16, 14,9 s, met voice-over, geen rood)
 - Primaire tekst:
 
 ```
@@ -341,7 +358,9 @@ Buddy kost €3,49 per maand. Geen app, geen bankkoppeling.
 
 ### C2 · Achteraf betalen · 25 t/m 28
 
-**C2-A1 · later** (concept 87, twee schermen; [reel](https://drive.google.com/file/d/12PPrnICFsPsRnGeRDzrlQSgcw7AubmIZ/view) en feed in Drive-map 2026-11-14 later; eerst rood-fix)
+**C2-A1 · later** (concept 87, twee schermen)
+
+- Bestand: `04. Animation/renders/ads-2026-11/later-reel-vo.mp4` (zonder rood). Niet de versie in Drive gebruiken, want die heeft nog rood.
 
 - Primaire tekst:
 
@@ -365,7 +384,9 @@ Buddy kost €3,49 per maand. Geen app, geen bankkoppeling.
 
 ### C3 · Aanmaning en incassokosten · 29 t/m 34
 
-**C3-A1 · weegschaal** (concept 66, rekensom; [reel](https://drive.google.com/file/d/1NzkqHpmpR6R1_ebYe8BH3bGgNaRZvPaL/view); eerst rood-fix en een 4:5-render)
+**C3-A1 · weegschaal** (concept 66, rekensom)
+
+- Bestand: `04. Animation/renders/ads-2026-11/weegschaal-reel-vo.mp4` (zonder rood). Niet de versie in Drive of de ingeplande post gebruiken, want die hebben nog rood.
 
 - Primaire tekst:
 
@@ -383,7 +404,9 @@ Reken maar uit.
 - Website-URL: hoekpagina "aanmaning en incassokosten" (staat die niet live: `https://betaalbuddy.nl/start-met-betaalbuddy/`)
 - URL-parameters: `utm_source=meta&utm_medium=paid_social&utm_campaign=bb_verkeer_aanmaning_lpv_2611&utm_content=c3-a1_weegschaal`
 
-**C3-A2 · boemerang** (concept 62; [reel](https://drive.google.com/file/d/1hgln-z4mzpSVI5l1zdZ3LIrHjEb7MvMU/view) en repo `04. Animation/renders/boemerang-reel-vo.mp4`; eerst rood-fix en een 4:5-render)
+**C3-A2 · boemerang** (concept 62)
+
+- Bestand: `04. Animation/renders/ads-2026-11/boemerang-reel-vo.mp4` (zonder rood). Niet `04. Animation/renders/boemerang-reel-vo.mp4` of de ingeplande post gebruiken, want die hebben nog rood.
 
 - Primaire tekst:
 
@@ -462,6 +485,8 @@ Buddy kost €3,49 per maand. Geen app, geen bankkoppeling.
 
 ### Creative-reparatie vóór livegang (één renderronde)
 
+**Status: klaar op 15 november.** De vier video's staan in `04. Animation/renders/ads-2026-11/`, met een README en patches. De controle (contactbladen `na-fix-*.jpg` in `docs/bewijs-meta-ads-2026-11/`) laat zien dat er geen rood meer in zit. Gebruikte vervangkleur: `#111827` met witte tekst. In "later" is de roze tint een lichte tint van `#0026a8` geworden. Feedversies zijn niet gemaakt (zie 3.2).
+
 | Creative | Wat | Waar |
 |---|---|---|
 | weegschaal | Rode stempel "Aanmaning" naar merkkleur; 4:5-feed renderen; controleren dat de kleine tekst onder de eindsom "€3,49 < €40" het woord "kan" bevat | branch `claude/peaceful-planck-whri2n` |
@@ -533,9 +558,9 @@ Voorwaarde: minstens €28 uitgegeven en ongeveer 3.000 vertoningen per campagne
    - Minimaal nodig: PageView op de landingspagina's.
    - Gewenst: InitiateCheckout bij de eerste stap in de checkout, en Purchase één keer per betaling, met waarde en EUR.
    - Werkt de pixel helemaal niet, dan starten we op linkklikken en meten we via UTM in GA4.
-4. **Rood in de creatives.** Eén renderronde (zie de tabel aan het eind van hoofdstuk 4). Alleen sleutel is nu schoon.
+4. ~~**Rood in de creatives.**~~ Opgelost op 15 nov (zie het eind van hoofdstuk 4).
 5. **Landingspagina's live?** Volgens de merkreferentie (10 nov) was nog niet besloten waar de zes hoekpagina's live komen. De pagina's noemen nog prijzen en "30 dagen geld terug", en de pagina over achteraf betalen noemt ook merknamen. Zonder live hoekpagina gaan de advertenties naar /start-met-betaalbuddy/.
-6. **Bouwen.** In deze sessie kan ik niet in Ads Manager bouwen. Er zijn drie opties:
+6. **Bouwen.** Gekozen: Cowork met Chrome (bouwopdracht in `docs/META-ADS-BOUWOPDRACHT-COWORK-2026-11.md`). In deze cloudsessie kan ik niet in Ads Manager bouwen. Er zijn drie opties:
    - (a) Facebook Ads-connector in claude.ai afmaken en een nieuwe sessie starten;
    - (b) dezelfde stap in Cowork met Chrome doen;
    - (c) je bouwt zelf, met hoofdstuk 3 en 4 als invulkaart (alles staat klaar om te plakken).

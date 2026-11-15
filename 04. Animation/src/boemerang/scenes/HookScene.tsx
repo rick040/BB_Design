@@ -94,7 +94,7 @@ export const HookScene: React.FC<{ props: BoemerangProps["hook"]; bill: Boemeran
               fontSize: 46,
               padding: "20px 40px",
               borderRadius: 50,
-              boxShadow: "0 20px 50px rgba(255, 90, 121, 0.35)",
+              boxShadow: "0 20px 50px rgba(17, 24, 39, 0.25)",
             }}
           >
             {props.costChip}

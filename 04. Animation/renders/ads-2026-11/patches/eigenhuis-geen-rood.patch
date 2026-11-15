@@ -1,0 +1,13 @@
+diff --git a/04. Animation/src/eigenhuis/schema.ts b/04. Animation/src/eigenhuis/schema.ts
+index ff0c5f2..040c27b 100644
+--- a/04. Animation/src/eigenhuis/schema.ts	
++++ b/04. Animation/src/eigenhuis/schema.ts	
+@@ -115,7 +115,7 @@ export const defaultEigenHuisProps: EigenHuisProps = {
+     light: brand.light,
+     softBlue: brand.blueSoft,
+     bodyOnBlue: brand.blueText,
+-    alert: brand.red,
++    alert: "#111827", // waarschuwingskleur: donker merkpalet in plaats van rood (PM-149, 15 nov 2026)
+   },
+   withVoice: true,
+   voiceVolume: 1,
