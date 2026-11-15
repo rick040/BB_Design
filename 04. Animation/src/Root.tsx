@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { MetronoomAd } from "./metronoom/MetronoomAd";
+import { defaultMetronoomProps, metronoomSchema, TOTAL_FRAMES as METRONOOM_TOTAL } from "./metronoom/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 89 · "Geen AI. Gewoon op de maat." (CONCEPT-89.md) */}
+    <Folder name="Concept-89-Metronoom">
+      <Composition
+        id="BB-Metronoom-Reel"
+        component={MetronoomAd}
+        schema={metronoomSchema}
+        defaultProps={defaultMetronoomProps}
+        durationInFrames={METRONOOM_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}

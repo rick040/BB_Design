@@ -1,0 +1,1 @@
+[S1] Leest er een AI mee met je rekening? [S2] Nee. Buddy leest op de maat. [S3] Bedrag. Vervaldatum. Betaallink. Kenmerk. [S4] Elke rekening, dezelfde vier tikken. [S5] Geen AI. Gewoon op de maat. Activeer Buddy.

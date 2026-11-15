@@ -1,0 +1,177 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  74,
+  149,
+  276,
+  355
+ ],
+ "voiceEnd": 466,
+ "durationInFrames": 496,
+ "words": [
+  {
+   "w": "Leest",
+   "start": 0,
+   "end": 8
+  },
+  {
+   "w": "er",
+   "start": 10,
+   "end": 11
+  },
+  {
+   "w": "een",
+   "start": 12,
+   "end": 18
+  },
+  {
+   "w": "AI",
+   "start": 19,
+   "end": 26
+  },
+  {
+   "w": "mee",
+   "start": 31,
+   "end": 36
+  },
+  {
+   "w": "met",
+   "start": 38,
+   "end": 42
+  },
+  {
+   "w": "je",
+   "start": 43,
+   "end": 45
+  },
+  {
+   "w": "rekening?",
+   "start": 46,
+   "end": 62
+  },
+  {
+   "w": "Nee.",
+   "start": 74,
+   "end": 84
+  },
+  {
+   "w": "Buddy",
+   "start": 96,
+   "end": 106
+  },
+  {
+   "w": "leest",
+   "start": 108,
+   "end": 115
+  },
+  {
+   "w": "op",
+   "start": 118,
+   "end": 120
+  },
+  {
+   "w": "de",
+   "start": 121,
+   "end": 122
+  },
+  {
+   "w": "maat.",
+   "start": 125,
+   "end": 137
+  },
+  {
+   "w": "Bedrag.",
+   "start": 149,
+   "end": 169
+  },
+  {
+   "w": "Vervaldatum.",
+   "start": 175,
+   "end": 206
+  },
+  {
+   "w": "Betaallink.",
+   "start": 211,
+   "end": 239
+  },
+  {
+   "w": "Kenmerk.",
+   "start": 245,
+   "end": 264
+  },
+  {
+   "w": "Elke",
+   "start": 276,
+   "end": 283
+  },
+  {
+   "w": "rekening,",
+   "start": 286,
+   "end": 305
+  },
+  {
+   "w": "dezelfde",
+   "start": 308,
+   "end": 322
+  },
+  {
+   "w": "vier",
+   "start": 324,
+   "end": 331
+  },
+  {
+   "w": "tikken.",
+   "start": 334,
+   "end": 349
+  },
+  {
+   "w": "Geen",
+   "start": 355,
+   "end": 362
+  },
+  {
+   "w": "AI.",
+   "start": 365,
+   "end": 377
+  },
+  {
+   "w": "Gewoon",
+   "start": 384,
+   "end": 396
+  },
+  {
+   "w": "op",
+   "start": 401,
+   "end": 403
+  },
+  {
+   "w": "de",
+   "start": 404,
+   "end": 406
+  },
+  {
+   "w": "maat.",
+   "start": 408,
+   "end": 424
+  },
+  {
+   "w": "Activeer",
+   "start": 430,
+   "end": 446
+  },
+  {
+   "w": "Buddy.",
+   "start": 449,
+   "end": 466
+  }
+ ]
+}
