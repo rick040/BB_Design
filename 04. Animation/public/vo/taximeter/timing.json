@@ -1,0 +1,181 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  96,
+  187,
+  271
+ ],
+ "voiceEnd": 374,
+ "mp3Frames": 373,
+ "durationInFrames": 403,
+ "words": [
+  {
+   "w": "Een",
+   "start": 0,
+   "end": 2
+  },
+  {
+   "w": "vergeten",
+   "start": 5,
+   "end": 17
+  },
+  {
+   "w": "rekening",
+   "start": 19,
+   "end": 34
+  },
+  {
+   "w": "is",
+   "start": 36,
+   "end": 38
+  },
+  {
+   "w": "een",
+   "start": 41,
+   "end": 43
+  },
+  {
+   "w": "taxi",
+   "start": 48,
+   "end": 55
+  },
+  {
+   "w": "met",
+   "start": 58,
+   "end": 60
+  },
+  {
+   "w": "de",
+   "start": 61,
+   "end": 62
+  },
+  {
+   "w": "meter",
+   "start": 65,
+   "end": 74
+  },
+  {
+   "w": "aan.",
+   "start": 77,
+   "end": 90
+  },
+  {
+   "w": "Een",
+   "start": 96,
+   "end": 101
+  },
+  {
+   "w": "aanmaning",
+   "start": 104,
+   "end": 120
+  },
+  {
+   "w": "kan",
+   "start": 124,
+   "end": 127
+  },
+  {
+   "w": "uitlopen",
+   "start": 131,
+   "end": 144
+  },
+  {
+   "w": "op",
+   "start": 146,
+   "end": 149
+  },
+  {
+   "w": "veertig",
+   "start": 151,
+   "end": 161
+  },
+  {
+   "w": "euro.",
+   "start": 163,
+   "end": 181
+  },
+  {
+   "w": "Stuur",
+   "start": 187,
+   "end": 192
+  },
+  {
+   "w": "hem",
+   "start": 194,
+   "end": 197
+  },
+  {
+   "w": "door.",
+   "start": 202,
+   "end": 212
+  },
+  {
+   "w": "Buddy",
+   "start": 218,
+   "end": 226
+  },
+  {
+   "w": "herinnert",
+   "start": 228,
+   "end": 240
+  },
+  {
+   "w": "je",
+   "start": 241,
+   "end": 242
+  },
+  {
+   "w": "op",
+   "start": 245,
+   "end": 247
+  },
+  {
+   "w": "tijd.",
+   "start": 248,
+   "end": 265
+  },
+  {
+   "w": "Drie",
+   "start": 271,
+   "end": 276
+  },
+  {
+   "w": "euro",
+   "start": 278,
+   "end": 286
+  },
+  {
+   "w": "negenenveertig",
+   "start": 288,
+   "end": 310
+  },
+  {
+   "w": "per",
+   "start": 312,
+   "end": 314
+  },
+  {
+   "w": "maand.",
+   "start": 317,
+   "end": 329
+  },
+  {
+   "w": "Activeer",
+   "start": 338,
+   "end": 353
+  },
+  {
+   "w": "Buddy.",
+   "start": 355,
+   "end": 374
+  }
+ ]
+}

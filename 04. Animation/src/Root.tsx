@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { TaximeterAd } from "./taximeter/TaximeterAd";
+import { defaultTaximeterProps, taximeterSchema, TOTAL_FRAMES as TAXIMETER_TOTAL } from "./taximeter/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 92 · "Vast tarief. Geen meter." (CONCEPT-92.md) · Reel met stem */}
+    <Folder name="Concept-92-Taximeter">
+      <Composition
+        id="BB-Taximeter-Reel"
+        component={TaximeterAd}
+        schema={taximeterSchema}
+        defaultProps={defaultTaximeterProps}
+        durationInFrames={TAXIMETER_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
