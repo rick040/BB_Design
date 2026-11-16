@@ -12,11 +12,16 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:zakmes": "remotion render BB-Zakmes-Reel out/zakmes-reel-vo.mp4",
+    "render:zakmes:feed": "remotion render BB-Zakmes-Feed out/zakmes-feed-vo.mp4",
+    "render:zakmes:stil": "remotion render BB-Zakmes-Reel out/zakmes-reel-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "render:zakmes:feed:stil": "remotion render BB-Zakmes-Feed out/zakmes-feed-stil.mp4 --props='{\"withVoice\":false}' --muted",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:zakmes && npm run render:zakmes:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "still:zakmes": "remotion still BB-Zakmes-Reel out/zakmes-cover.png --frame=40"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",
