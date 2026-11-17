@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { VliegtuigAd } from "./vliegtuig/VliegtuigAd";
+import { defaultVliegtuigProps, TOTAL_FRAMES as VLIEGTUIG_TOTAL, vliegtuigSchema } from "./vliegtuig/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 96 · "Alleen wat jij doorstuurt." (CONCEPT-96.md) · Reel en Feed met stem */}
+    <Folder name="Concept-96-Vliegtuig">
+      <Composition
+        id="BB-Vliegtuig-Reel"
+        component={VliegtuigAd}
+        schema={vliegtuigSchema}
+        defaultProps={defaultVliegtuigProps}
+        durationInFrames={VLIEGTUIG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Vliegtuig-Feed"
+        component={VliegtuigAd}
+        schema={vliegtuigSchema}
+        defaultProps={defaultVliegtuigProps}
+        durationInFrames={VLIEGTUIG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
