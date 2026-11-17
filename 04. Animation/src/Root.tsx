@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { WeekdoosAd } from "./weekdoos/WeekdoosAd";
+import { defaultWeekdoosProps, TOTAL_FRAMES as WEEKDOOS_TOTAL, weekdoosSchema } from "./weekdoos/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 95 · "Elke nota op zijn dag." (CONCEPT-95.md) · Reel met stem */}
+    <Folder name="Concept-95-Weekdoos">
+      <Composition
+        id="BB-Weekdoos-Reel"
+        component={WeekdoosAd}
+        schema={weekdoosSchema}
+        defaultProps={defaultWeekdoosProps}
+        durationInFrames={WEEKDOOS_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}

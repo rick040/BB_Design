@@ -1,0 +1,170 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  101,
+  245,
+  379
+ ],
+ "voiceEnd": 418,
+ "durationInFrames": 448,
+ "words": [
+  {
+   "w": "Mythe:",
+   "start": 0,
+   "end": 26
+  },
+  {
+   "w": "zorgnota's",
+   "start": 29,
+   "end": 50
+  },
+  {
+   "w": "onthoud",
+   "start": 54,
+   "end": 62
+  },
+  {
+   "w": "je",
+   "start": 64,
+   "end": 65
+  },
+  {
+   "w": "vanzelf.",
+   "start": 67,
+   "end": 84
+  },
+  {
+   "w": "Feit:",
+   "start": 101,
+   "end": 127
+  },
+  {
+   "w": "tandarts,",
+   "start": 128,
+   "end": 149
+  },
+  {
+   "w": "fysio",
+   "start": 150,
+   "end": 163
+  },
+  {
+   "w": "en",
+   "start": 166,
+   "end": 168
+  },
+  {
+   "w": "apotheek",
+   "start": 170,
+   "end": 187
+  },
+  {
+   "w": "hebben",
+   "start": 188,
+   "end": 197
+  },
+  {
+   "w": "elk",
+   "start": 199,
+   "end": 204
+  },
+  {
+   "w": "een",
+   "start": 206,
+   "end": 209
+  },
+  {
+   "w": "andere",
+   "start": 211,
+   "end": 218
+  },
+  {
+   "w": "datum.",
+   "start": 221,
+   "end": 238
+  },
+  {
+   "w": "Stuur",
+   "start": 245,
+   "end": 252
+  },
+  {
+   "w": "ze",
+   "start": 253,
+   "end": 254
+  },
+  {
+   "w": "door.",
+   "start": 257,
+   "end": 275
+  },
+  {
+   "w": "Buddy",
+   "start": 283,
+   "end": 293
+  },
+  {
+   "w": "zet",
+   "start": 295,
+   "end": 302
+  },
+  {
+   "w": "elke",
+   "start": 305,
+   "end": 312
+  },
+  {
+   "w": "nota",
+   "start": 317,
+   "end": 322
+  },
+  {
+   "w": "op",
+   "start": 324,
+   "end": 326
+  },
+  {
+   "w": "zijn",
+   "start": 329,
+   "end": 336
+  },
+  {
+   "w": "dag",
+   "start": 338,
+   "end": 346
+  },
+  {
+   "w": "in",
+   "start": 347,
+   "end": 348
+  },
+  {
+   "w": "je",
+   "start": 350,
+   "end": 352
+  },
+  {
+   "w": "agenda.",
+   "start": 353,
+   "end": 373
+  },
+  {
+   "w": "Activeer",
+   "start": 379,
+   "end": 396
+  },
+  {
+   "w": "Buddy.",
+   "start": 398,
+   "end": 418
+  }
+ ]
+}

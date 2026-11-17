@@ -21,8 +21,10 @@ const findBrowser = () => {
   if (!fs.existsSync(root)) return undefined;
   for (const dir of fs.readdirSync(root).sort().reverse()) {
     if (!dir.startsWith("chromium_headless_shell")) continue;
-    const p = path.join(root, dir, "chrome-linux", "headless_shell");
-    if (fs.existsSync(p)) return p;
+    for (const rel of [["chrome-linux", "headless_shell"], ["chrome-headless-shell-linux64", "chrome-headless-shell"]]) {
+      const p = path.join(root, dir, ...rel);
+      if (fs.existsSync(p)) return p;
+    }
   }
   return undefined;
 };
