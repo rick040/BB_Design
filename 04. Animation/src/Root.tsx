@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { ZakdoekAd } from "./zakdoek/ZakdoekAd";
+import { defaultZakdoekProps, TOTAL_FRAMES as ZAKDOEK_TOTAL, zakdoekSchema } from "./zakdoek/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 98 · "Geen knopen meer." (CONCEPT-98.md) · Reel met stem */}
+    <Folder name="Concept-98-Zakdoek">
+      <Composition
+        id="BB-Zakdoek-Reel"
+        component={ZakdoekAd}
+        schema={zakdoekSchema}
+        defaultProps={defaultZakdoekProps}
+        durationInFrames={ZAKDOEK_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
