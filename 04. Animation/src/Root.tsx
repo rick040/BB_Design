@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { WaslijnAd } from "./waslijn/WaslijnAd";
+import { defaultWaslijnProps, TOTAL_FRAMES as WASLIJN_TOTAL, waslijnSchema } from "./waslijn/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 99 · "Alles in het zicht." (CONCEPT-99.md) · Reel en Feed met stem */}
+    <Folder name="Concept-99-Waslijn">
+      <Composition
+        id="BB-Waslijn-Reel"
+        component={WaslijnAd}
+        schema={waslijnSchema}
+        defaultProps={defaultWaslijnProps}
+        durationInFrames={WASLIJN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Waslijn-Feed"
+        component={WaslijnAd}
+        schema={waslijnSchema}
+        defaultProps={defaultWaslijnProps}
+        durationInFrames={WASLIJN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

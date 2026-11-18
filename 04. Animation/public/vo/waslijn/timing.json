@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "alignment.character_start_times_seconds",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  70,
+  252,
+  350
+ ],
+ "voiceEnd": 389,
+ "durationInFrames": 419,
+ "words": [
+  {
+   "w": "Wat",
+   "start": 0,
+   "end": 7
+  },
+  {
+   "w": "bewaart",
+   "start": 10,
+   "end": 17
+  },
+  {
+   "w": "een",
+   "start": 20,
+   "end": 24
+  },
+  {
+   "w": "app",
+   "start": 26,
+   "end": 29
+  },
+  {
+   "w": "van",
+   "start": 31,
+   "end": 34
+  },
+  {
+   "w": "je",
+   "start": 36,
+   "end": 38
+  },
+  {
+   "w": "rekening?",
+   "start": 41,
+   "end": 64
+  },
+  {
+   "w": "Bij",
+   "start": 70,
+   "end": 72
+  },
+  {
+   "w": "Buddy",
+   "start": 74,
+   "end": 84
+  },
+  {
+   "w": "zie",
+   "start": 86,
+   "end": 89
+  },
+  {
+   "w": "je",
+   "start": 91,
+   "end": 94
+  },
+  {
+   "w": "precies",
+   "start": 98,
+   "end": 108
+  },
+  {
+   "w": "wat",
+   "start": 110,
+   "end": 113
+  },
+  {
+   "w": "er",
+   "start": 115,
+   "end": 118
+  },
+  {
+   "w": "hangt:",
+   "start": 121,
+   "end": 137
+  },
+  {
+   "w": "bedrag,",
+   "start": 139,
+   "end": 161
+  },
+  {
+   "w": "vervaldatum,",
+   "start": 163,
+   "end": 192
+  },
+  {
+   "w": "betaallink",
+   "start": 196,
+   "end": 214
+  },
+  {
+   "w": "en",
+   "start": 216,
+   "end": 218
+  },
+  {
+   "w": "kenmerk.",
+   "start": 221,
+   "end": 250
+  },
+  {
+   "w": "En",
+   "start": 252,
+   "end": 254
+  },
+  {
+   "w": "veertien",
+   "start": 257,
+   "end": 266
+  },
+  {
+   "w": "dagen",
+   "start": 269,
+   "end": 278
+  },
+  {
+   "w": "na",
+   "start": 281,
+   "end": 286
+  },
+  {
+   "w": "de",
+   "start": 287,
+   "end": 288
+  },
+  {
+   "w": "vervaldatum",
+   "start": 290,
+   "end": 312
+  },
+  {
+   "w": "haalt",
+   "start": 314,
+   "end": 322
+  },
+  {
+   "w": "hij",
+   "start": 322,
+   "end": 324
+  },
+  {
+   "w": "het",
+   "start": 326,
+   "end": 329
+  },
+  {
+   "w": "weg.",
+   "start": 334,
+   "end": 344
+  },
+  {
+   "w": "Activeer",
+   "start": 350,
+   "end": 365
+  },
+  {
+   "w": "Buddy.",
+   "start": 370,
+   "end": 389
+  }
+ ]
+}
