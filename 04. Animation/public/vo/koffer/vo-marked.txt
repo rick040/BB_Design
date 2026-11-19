@@ -1,0 +1,1 @@
+[S1] Mythe: voor rekeningen heb je een app nodig. [S2] Feit: mail en agenda staan al op je telefoon. [S3] Doorsturen is genoeg: Buddy zet de datum in je agenda. [S4] Geen app erbij. Activeer Buddy.

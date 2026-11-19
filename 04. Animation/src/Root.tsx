@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { KofferAd } from "./koffer/KofferAd";
+import { defaultKofferProps, kofferSchema, TOTAL_FRAMES as KOFFER_TOTAL } from "./koffer/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 101 · "Geen app erbij." (CONCEPT-101.md) · Reel met stem */}
+    <Folder name="Concept-101-Koffer">
+      <Composition
+        id="BB-Koffer-Reel"
+        component={KofferAd}
+        schema={kofferSchema}
+        defaultProps={defaultKofferProps}
+        durationInFrames={KOFFER_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
