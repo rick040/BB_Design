@@ -12,10 +12,14 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:kralen": "remotion render BB-Kralen-Reel out/kralen-reel-vo.mp4",
+    "render:kralen:feed": "remotion render BB-Kralen-Feed out/kralen-feed-vo.mp4",
+    "render:kralen:stil": "remotion render BB-Kralen-Reel out/kralen-reel-stil.mp4 --props={\\\"withVoice\\\":false}",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:kralen && npm run render:kralen:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:kralen": "remotion still BB-Kralen-Reel out/kralen-cover.png --frame=70",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

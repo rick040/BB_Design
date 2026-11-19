@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { KralenAd } from "./kralen/KralenAd";
+import { defaultKralenProps, kralenSchema, TOTAL_FRAMES as KRALEN_TOTAL } from "./kralen/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 102 · "Alles aan één draad." (CONCEPT-102.md) · met stem (prop withVoice) */}
+    <Folder name="Concept-102-Kralen">
+      <Composition
+        id="BB-Kralen-Reel"
+        component={KralenAd}
+        schema={kralenSchema}
+        defaultProps={defaultKralenProps}
+        durationInFrames={KRALEN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Kralen-Feed"
+        component={KralenAd}
+        schema={kralenSchema}
+        defaultProps={defaultKralenProps}
+        durationInFrames={KRALEN_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

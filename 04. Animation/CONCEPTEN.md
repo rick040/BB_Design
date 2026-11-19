@@ -12,3 +12,4 @@ Aangemaakt op 2026-11-10 uit de eerste 40 regels van CONCEPT.md, CONCEPT-2.md en
 
 
 Overige concepten (4 tot 61, op andere branches) gebruiken volgens de changelog vrijwel allemaal USP `agenda` met de vorm probleem, doorsturen, uitkomst. Concepten 3 en eerdere privacyvarianten dekken `geen-koppeling`. Nog nooit gebruikt: `geen-ai`, `inzage`, `prijs`, `geen-app`, `overzicht`.
+| 102 | Alles aan één draad. | overzicht | vraag en antwoord | Losse rekeningen zonder volgorde: wat moet je betalen, en wanneer? | Kralen en draad: rekeningen als kralen met hun vervaldatum, aan een doorhangende draad; daarna een tabel met de draad als kantlijn | Rijgt de kralen aan de draad en trekt bij elke kraal; duwt op Exporteer; draagt aan het eind de ketting om | Ketting om: Buddy draagt de vijf kralen trots boven de knop | draad (golvende rand, clip-path), kraalrol (ronde kraal rolt in en groeit) |
