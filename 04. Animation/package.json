@@ -12,10 +12,15 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:gelukskoekje": "remotion render BB-Gelukskoekje-Reel out/gelukskoekje-reel-vo.mp4",
+    "render:gelukskoekje:feed": "remotion render BB-Gelukskoekje-Feed out/gelukskoekje-feed-vo.mp4",
+    "render:gelukskoekje:stil": "remotion render BB-Gelukskoekje-Reel out/gelukskoekje-reel-stil.mp4 --props='{\"withVoice\":false}'",
+    "render:gelukskoekje:feed:stil": "remotion render BB-Gelukskoekje-Feed out/gelukskoekje-feed-stil.mp4 --props='{\"withVoice\":false}'",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:gelukskoekje && npm run render:gelukskoekje:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
+    "still:gelukskoekje": "remotion still BB-Gelukskoekje-Reel out/gelukskoekje-cover.png --frame=82",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

@@ -3,6 +3,12 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { GelukskoekjeAd } from "./gelukskoekje/GelukskoekjeAd";
+import {
+  defaultGelukskoekjeProps,
+  gelukskoekjeSchema,
+  TOTAL_FRAMES as GELUKSKOEKJE_TOTAL,
+} from "./gelukskoekje/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -117,6 +123,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 105 · "Geen AI. Geen gok." (CONCEPT-105.md) */}
+    <Folder name="Concept-105-Gelukskoekje">
+      <Composition
+        id="BB-Gelukskoekje-Reel"
+        component={GelukskoekjeAd}
+        schema={gelukskoekjeSchema}
+        defaultProps={defaultGelukskoekjeProps}
+        durationInFrames={GELUKSKOEKJE_TOTAL}
+        fps={30}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Gelukskoekje-Feed"
+        component={GelukskoekjeAd}
+        schema={gelukskoekjeSchema}
+        defaultProps={defaultGelukskoekjeProps}
+        durationInFrames={GELUKSKOEKJE_TOTAL}
+        fps={30}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
