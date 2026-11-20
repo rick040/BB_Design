@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { BrievenbusAd } from "./brievenbus/BrievenbusAd";
+import { brievenbusSchema, defaultBrievenbusProps, TOTAL_FRAMES as BRIEVENBUS_TOTAL } from "./brievenbus/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,20 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+
+    {/* Concept 104 · "De rest ziet hij niet." (CONCEPT-104.md) */}
+    <Folder name="Concept-104-Brievenbus">
+      <Composition
+        id="BB-Brievenbus-Reel"
+        component={BrievenbusAd}
+        schema={brievenbusSchema}
+        defaultProps={defaultBrievenbusProps}
+        durationInFrames={BRIEVENBUS_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
