@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { DoosAd } from "./doos/DoosAd";
+import { defaultDoosProps, doosSchema, TOTAL_FRAMES as DOOS_TOTAL } from "./doos/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,18 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    <Folder name="Concept-119-Doos">
+      <Composition
+        id="BB-Doos-Reel"
+        component={DoosAd}
+        schema={doosSchema}
+        defaultProps={defaultDoosProps}
+        durationInFrames={DOOS_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
