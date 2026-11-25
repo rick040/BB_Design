@@ -4,6 +4,8 @@ import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
+import { SleutelbosAd } from "./sleutelbos/SleutelbosAd";
+import { defaultSleutelbosProps, sleutelbosSchema, TOTAL_FRAMES as SLEUTELBOS_TOTAL } from "./sleutelbos/schema";
 import {
   type CountdownProps,
   countdownSchema,
@@ -117,6 +119,30 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Concept 120 · "Houd je sleutels." (CONCEPT-120.md) · timing volgt public/vo/sleutelbos/timing.json */}
+    <Folder name="Concept-120-Sleutelbos">
+      <Composition
+        id="BB-Sleutelbos-Reel"
+        component={SleutelbosAd}
+        schema={sleutelbosSchema}
+        defaultProps={defaultSleutelbosProps}
+        durationInFrames={SLEUTELBOS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Sleutelbos-Feed"
+        component={SleutelbosAd}
+        schema={sleutelbosSchema}
+        defaultProps={defaultSleutelbosProps}
+        durationInFrames={SLEUTELBOS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

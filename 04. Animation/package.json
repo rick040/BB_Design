@@ -12,11 +12,16 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:sleutelbos:stil && npm run render:sleutelbos:feed:stil",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:sleutelbos": "remotion render BB-Sleutelbos-Reel out/sleutelbos-reel-vo.mp4 --props='{\"withVoice\":true}'",
+    "render:sleutelbos:feed": "remotion render BB-Sleutelbos-Feed out/sleutelbos-feed-vo.mp4 --props='{\"withVoice\":true}'",
+    "render:sleutelbos:stil": "remotion render BB-Sleutelbos-Reel out/sleutelbos-reel-stil.mp4",
+    "render:sleutelbos:feed:stil": "remotion render BB-Sleutelbos-Feed out/sleutelbos-feed-stil.mp4",
+    "still:sleutelbos": "remotion still BB-Sleutelbos-Reel out/sleutelbos-cover.png --frame=30"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "schatting (geen audio; vervang door alignment)",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  107,
+  213,
+  272
+ ],
+ "voiceEnd": 343,
+ "durationInFrames": 373,
+ "words": [
+  {
+   "w": "Je",
+   "start": 0,
+   "end": 6
+  },
+  {
+   "w": "mailbox",
+   "start": 6,
+   "end": 18
+  },
+  {
+   "w": "koppelen",
+   "start": 18,
+   "end": 36
+  },
+  {
+   "w": "is",
+   "start": 36,
+   "end": 42
+  },
+  {
+   "w": "je",
+   "start": 42,
+   "end": 48
+  },
+  {
+   "w": "hele",
+   "start": 48,
+   "end": 60
+  },
+  {
+   "w": "sleutelbos",
+   "start": 60,
+   "end": 78
+  },
+  {
+   "w": "afgeven.",
+   "start": 78,
+   "end": 96
+  },
+  {
+   "w": "Buddy",
+   "start": 107,
+   "end": 118
+  },
+  {
+   "w": "hoeft",
+   "start": 118,
+   "end": 125
+  },
+  {
+   "w": "geen",
+   "start": 125,
+   "end": 131
+  },
+  {
+   "w": "sleutels,",
+   "start": 131,
+   "end": 143
+  },
+  {
+   "w": "want",
+   "start": 148,
+   "end": 154
+  },
+  {
+   "w": "jij",
+   "start": 154,
+   "end": 160
+  },
+  {
+   "w": "stuurt",
+   "start": 160,
+   "end": 166
+  },
+  {
+   "w": "alleen",
+   "start": 166,
+   "end": 178
+  },
+  {
+   "w": "de",
+   "start": 178,
+   "end": 184
+  },
+  {
+   "w": "rekening",
+   "start": 184,
+   "end": 202
+  },
+  {
+   "w": "door,",
+   "start": 202,
+   "end": 208
+  },
+  {
+   "w": "en",
+   "start": 213,
+   "end": 219
+  },
+  {
+   "w": "hij",
+   "start": 219,
+   "end": 225
+  },
+  {
+   "w": "leest",
+   "start": 225,
+   "end": 231
+  },
+  {
+   "w": "bedrag",
+   "start": 231,
+   "end": 243
+  },
+  {
+   "w": "en",
+   "start": 243,
+   "end": 249
+  },
+  {
+   "w": "datum.",
+   "start": 249,
+   "end": 261
+  },
+  {
+   "w": "Dus",
+   "start": 272,
+   "end": 278
+  },
+  {
+   "w": "houd",
+   "start": 278,
+   "end": 284
+  },
+  {
+   "w": "je",
+   "start": 284,
+   "end": 290
+  },
+  {
+   "w": "sleutels,",
+   "start": 290,
+   "end": 302
+  },
+  {
+   "w": "en",
+   "start": 307,
+   "end": 313
+  },
+  {
+   "w": "activeer",
+   "start": 313,
+   "end": 331
+  },
+  {
+   "w": "Buddy.",
+   "start": 331,
+   "end": 343
+  }
+ ]
+}

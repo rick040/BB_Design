@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 120 · "Houd je sleutels." ([`CONCEPT-120.md`](./CONCEPT-120.md)) | `BB-Sleutelbos-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 12.4 s (timing geschat, zie concept) |
+| | `BB-Sleutelbos-Feed` | 1080 × 1350 (4:5) | Feed | 12.4 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -43,6 +45,9 @@ Edits in the Props panel are **live**, and they are used when you click **Render
 To make an edit **permanent** (and apply it to both formats at once), change the defaults in `src/schema.ts` (concept 1, `defaultAdProps`), `src/countdown/schema.ts` (concept 2, `defaultCountdownProps`) or `src/privacy/schema.ts` (concept 3, `defaultPrivacyProps`). Both compositions share that one source on purpose, so the Reel and Feed copy can never drift apart. Because of this, the Studio's own "Save props" button is greyed out. Tip: switch the Props panel to **JSON** to copy your edited values over in one go.
 
 ## 3 · Export to MP4
+
+Concept 120 (sleutelbos): `npm run render:sleutelbos:stil` en `render:sleutelbos:feed:stil` (zonder stem); `render:sleutelbos` en `render:sleutelbos:feed` met stem zodra `public/vo/sleutelbos/voice-over.mp3` bestaat. `npm run still:sleutelbos` voor de cover.
+
 
 From the Studio: click **Render** in the top right, choose MP4 (H.264), and press Render. The file lands in `out/`.
 
