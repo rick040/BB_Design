@@ -1,0 +1,167 @@
+{
+ "fps": 30,
+ "source": "estimate (geen audio; ~5 lettergrepen/s)",
+ "text": "Springt jouw rekening eruit wanneer het hem uitkomt? Zonder Buddy? Als aanmaning. Met Buddy kies jij het moment. In je agenda. Hij springt pas als jij draait. Activeer Buddy.",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  98,
+  170,
+  280
+ ],
+ "voiceEnd": 365,
+ "durationInFrames": 395,
+ "maxGapSeconds": 0.4,
+ "words": [
+  {
+   "w": "Springt",
+   "start": 0,
+   "end": 6
+  },
+  {
+   "w": "jouw",
+   "start": 8,
+   "end": 13
+  },
+  {
+   "w": "rekening",
+   "start": 15,
+   "end": 32
+  },
+  {
+   "w": "eruit",
+   "start": 34,
+   "end": 45
+  },
+  {
+   "w": "wanneer",
+   "start": 47,
+   "end": 59
+  },
+  {
+   "w": "het",
+   "start": 60,
+   "end": 66
+  },
+  {
+   "w": "hem",
+   "start": 68,
+   "end": 74
+  },
+  {
+   "w": "uitkomt?",
+   "start": 75,
+   "end": 87
+  },
+  {
+   "w": "Zonder",
+   "start": 98,
+   "end": 110
+  },
+  {
+   "w": "Buddy?",
+   "start": 111,
+   "end": 123
+  },
+  {
+   "w": "Als",
+   "start": 134,
+   "end": 140
+  },
+  {
+   "w": "aanmaning.",
+   "start": 142,
+   "end": 159
+  },
+  {
+   "w": "Met",
+   "start": 170,
+   "end": 176
+  },
+  {
+   "w": "Buddy",
+   "start": 178,
+   "end": 189
+  },
+  {
+   "w": "kies",
+   "start": 191,
+   "end": 197
+  },
+  {
+   "w": "jij",
+   "start": 198,
+   "end": 204
+  },
+  {
+   "w": "het",
+   "start": 206,
+   "end": 212
+  },
+  {
+   "w": "moment.",
+   "start": 213,
+   "end": 225
+  },
+  {
+   "w": "In",
+   "start": 236,
+   "end": 242
+  },
+  {
+   "w": "je",
+   "start": 244,
+   "end": 249
+  },
+  {
+   "w": "agenda.",
+   "start": 251,
+   "end": 268
+  },
+  {
+   "w": "Hij",
+   "start": 280,
+   "end": 285
+  },
+  {
+   "w": "springt",
+   "start": 287,
+   "end": 293
+  },
+  {
+   "w": "pas",
+   "start": 295,
+   "end": 300
+  },
+  {
+   "w": "als",
+   "start": 302,
+   "end": 308
+  },
+  {
+   "w": "jij",
+   "start": 310,
+   "end": 315
+  },
+  {
+   "w": "draait.",
+   "start": 317,
+   "end": 323
+  },
+  {
+   "w": "Activeer",
+   "start": 334,
+   "end": 351
+  },
+  {
+   "w": "Buddy.",
+   "start": 353,
+   "end": 365
+  }
+ ]
+}

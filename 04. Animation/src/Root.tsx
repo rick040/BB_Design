@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { DuveltjeAd } from "./duveltje/DuveltjeAd";
+import { defaultDuveltjeProps, duveltjeSchema, TOTAL_FRAMES as DUVELTJE_TOTAL } from "./duveltje/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 122 · "Hij springt pas als jij draait." (CONCEPT-122.md) */}
+    <Folder name="Concept-122-Duveltje">
+      <Composition
+        id="BB-Duveltje-Reel"
+        component={DuveltjeAd}
+        schema={duveltjeSchema}
+        defaultProps={defaultDuveltjeProps}
+        durationInFrames={DUVELTJE_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
