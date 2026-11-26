@@ -12,12 +12,16 @@
     "render:privacy": "remotion render BB-Privacy-Reel out/BB-Privacy-Reel.mp4",
     "render:privacy:feed": "remotion render BB-Privacy-Feed out/BB-Privacy-Feed.mp4",
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:duveltje",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:duveltje && npm run render:rugzak && npm run render:rugzak:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
     "typecheck": "tsc --noEmit",
-    "render:duveltje": "remotion render BB-Duveltje-Reel out/duveltje-reel-vo.mp4"
+    "render:duveltje": "remotion render BB-Duveltje-Reel out/duveltje-reel-vo.mp4",
+    "render:rugzak": "remotion render BB-Rugzak-Reel out/rugzak-reel-stil.mp4",
+    "render:rugzak:feed": "remotion render BB-Rugzak-Feed out/rugzak-feed-stil.mp4",
+    "render:rugzak:vo": "remotion render BB-Rugzak-Reel out/rugzak-reel-vo.mp4 --props='{\"withVoice\":true}' && remotion render BB-Rugzak-Feed out/rugzak-feed-vo.mp4 --props='{\"withVoice\":true}'",
+    "still:rugzak": "remotion still BB-Rugzak-Reel out/rugzak-cover.png --frame=40"
   },
   "dependencies": {
     "@remotion/cli": "4.0.534",

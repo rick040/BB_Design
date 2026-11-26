@@ -4,6 +4,8 @@ import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { DuveltjeAd } from "./duveltje/DuveltjeAd";
+import { RugzakAd } from "./rugzak/RugzakAd";
+import { defaultRugzakProps, rugzakSchema, TOTAL_FRAMES as RUGZAK_TOTAL } from "./rugzak/schema";
 import { defaultDuveltjeProps, duveltjeSchema, TOTAL_FRAMES as DUVELTJE_TOTAL } from "./duveltje/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -132,6 +134,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 123 · "Alles op tafel." (CONCEPT-123.md) · USP inzage */}
+    <Folder name="Concept-123-Rugzak">
+      <Composition
+        id="BB-Rugzak-Reel"
+        component={RugzakAd}
+        schema={rugzakSchema}
+        defaultProps={defaultRugzakProps}
+        durationInFrames={RUGZAK_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Rugzak-Feed"
+        component={RugzakAd}
+        schema={rugzakSchema}
+        defaultProps={defaultRugzakProps}
+        durationInFrames={RUGZAK_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

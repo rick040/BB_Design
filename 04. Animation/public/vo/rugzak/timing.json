@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "source": "estimate (geen audio; ~5 lettergrepen/s)",
+ "text": "Wat heeft Buddy van je? Eén mailtje en hij keert zijn rugzak om, dus je ziet bedrag, datum, link en kenmerk. Veertien dagen na de vervaldatum is hij weer leeg. Activeer Buddy.",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  53,
+  224,
+  330
+ ],
+ "voiceEnd": 360,
+ "durationInFrames": 390,
+ "maxGapSeconds": 0.4,
+ "words": [
+  {
+   "w": "Wat",
+   "start": 0,
+   "end": 6
+  },
+  {
+   "w": "heeft",
+   "start": 8,
+   "end": 13
+  },
+  {
+   "w": "Buddy",
+   "start": 15,
+   "end": 26
+  },
+  {
+   "w": "van",
+   "start": 28,
+   "end": 34
+  },
+  {
+   "w": "je?",
+   "start": 36,
+   "end": 41
+  },
+  {
+   "w": "Eén",
+   "start": 53,
+   "end": 58
+  },
+  {
+   "w": "mailtje",
+   "start": 60,
+   "end": 72
+  },
+  {
+   "w": "en",
+   "start": 73,
+   "end": 79
+  },
+  {
+   "w": "hij",
+   "start": 81,
+   "end": 87
+  },
+  {
+   "w": "keert",
+   "start": 88,
+   "end": 94
+  },
+  {
+   "w": "zijn",
+   "start": 96,
+   "end": 102
+  },
+  {
+   "w": "rugzak",
+   "start": 103,
+   "end": 115
+  },
+  {
+   "w": "om,",
+   "start": 117,
+   "end": 122
+  },
+  {
+   "w": "dus",
+   "start": 129,
+   "end": 134
+  },
+  {
+   "w": "je",
+   "start": 136,
+   "end": 142
+  },
+  {
+   "w": "ziet",
+   "start": 144,
+   "end": 149
+  },
+  {
+   "w": "bedrag,",
+   "start": 151,
+   "end": 163
+  },
+  {
+   "w": "datum,",
+   "start": 169,
+   "end": 180
+  },
+  {
+   "w": "link",
+   "start": 187,
+   "end": 192
+  },
+  {
+   "w": "en",
+   "start": 194,
+   "end": 200
+  },
+  {
+   "w": "kenmerk.",
+   "start": 202,
+   "end": 213
+  },
+  {
+   "w": "Veertien",
+   "start": 224,
+   "end": 236
+  },
+  {
+   "w": "dagen",
+   "start": 238,
+   "end": 249
+  },
+  {
+   "w": "na",
+   "start": 251,
+   "end": 257
+  },
+  {
+   "w": "de",
+   "start": 258,
+   "end": 264
+  },
+  {
+   "w": "vervaldatum",
+   "start": 266,
+   "end": 289
+  },
+  {
+   "w": "is",
+   "start": 290,
+   "end": 296
+  },
+  {
+   "w": "hij",
+   "start": 298,
+   "end": 304
+  },
+  {
+   "w": "weer",
+   "start": 305,
+   "end": 311
+  },
+  {
+   "w": "leeg.",
+   "start": 313,
+   "end": 319
+  },
+  {
+   "w": "Activeer",
+   "start": 330,
+   "end": 347
+  },
+  {
+   "w": "Buddy.",
+   "start": 349,
+   "end": 360
+  }
+ ]
+}
