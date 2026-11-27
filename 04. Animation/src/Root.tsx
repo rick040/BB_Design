@@ -26,6 +26,8 @@ import {
   eigenHuisSchema,
   eigenHuisTotal,
 } from "./eigen-huis/schema";
+import { ZoWerktAd } from "./zo-werkt-het/ZoWerktAd";
+import { defaultZoWerktProps, type ZoWerktProps, zoWerktSchema, zoWerktTotal } from "./zo-werkt-het/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -52,6 +54,10 @@ const twaalfMetadata: CalculateMetadataFunction<TwaalfProps> = ({ props }) => ({
 
 const eigenHuisMetadata: CalculateMetadataFunction<EigenHuisProps> = ({ props }) => ({
   durationInFrames: eigenHuisTotal(props.timing),
+});
+
+const zoWerktMetadata: CalculateMetadataFunction<ZoWerktProps> = ({ props }) => ({
+  durationInFrames: zoWerktTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -220,6 +226,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultEigenHuisProps}
         calculateMetadata={eigenHuisMetadata}
         durationInFrames={eigenHuisTotal(defaultEigenHuisProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Meta-campagne 2612 · W1 "Zo werkt het" (CONCEPT-W1.md) */}
+    <Folder name="Campagne2612-W1-ZoWerktHet">
+      <Composition
+        id="BB-W1ZoWerkt-Reel"
+        component={ZoWerktAd}
+        schema={zoWerktSchema}
+        defaultProps={defaultZoWerktProps}
+        calculateMetadata={zoWerktMetadata}
+        durationInFrames={zoWerktTotal(defaultZoWerktProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-W1ZoWerkt-Feed"
+        component={ZoWerktAd}
+        schema={zoWerktSchema}
+        defaultProps={defaultZoWerktProps}
+        calculateMetadata={zoWerktMetadata}
+        durationInFrames={zoWerktTotal(defaultZoWerktProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}
