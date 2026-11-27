@@ -1,0 +1,94 @@
+<!-- ===================== BETAALBUDDY PRIJSBLOK v1 (27 nov 2026) =====================
+  Plak dit in Oxygen in een Code Block, op de plek van het huidige blok "Kies de buddy die bij je past".
+  De sectie heet id="prijzen", zodat de menulink #prijzen blijft werken. Verwijder het oude blok met die id.
+
+  Eén abonnement, en alleen wat het product echt doet (zie EmailTool: herinneringen 7 en 2 dagen, agenda-feed,
+  weekoverzicht, "al betaald"-knop, inzage en export). Geen WhatsApp, geen proefperiode.
+  Klikken gaan als 'site_cta' naar de dataLayer, met cta (try/direct) en where (prijs).
+================================================================================ -->
+<style>
+#prijzen.bbp{
+  --bbp-blue:#013bff;--bbp-blue-d:#0026a8;--bbp-ink:#111827;--bbp-muted:#646b78;--bbp-line:#e6e8ee;--bbp-tint:#e8eeff;--bbp-tint2:#f1f4ff;
+  background:#f6f7f9;color:var(--bbp-ink);padding:56px 20px;box-sizing:border-box;
+  font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;scroll-margin-top:90px
+}
+#prijzen.bbp *,#prijzen.bbp *::before,#prijzen.bbp *::after{box-sizing:border-box}
+#prijzen .bbp-wrap{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+#prijzen .bbp-intro{display:flex;flex-direction:column;gap:12px;max-width:480px}
+#prijzen .bbp-eyebrow{align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--bbp-blue);background:var(--bbp-tint);border-radius:999px;padding:5px 12px}
+#prijzen h2{margin:0;font-size:clamp(30px,7.4vw,44px);line-height:1.08;font-weight:600;letter-spacing:-.04em}
+#prijzen .bbp-sub{margin:0;font-size:17px;line-height:1.5;color:var(--bbp-muted)}
+#prijzen .bbp-sum{display:flex;gap:12px;align-items:flex-start;margin:6px 0 0;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid var(--bbp-line);font-size:15px;line-height:1.45}
+#prijzen .bbp-sum b{font-weight:600}
+#prijzen .bbp-sum i{flex:none;width:30px;height:30px;border-radius:10px;background:#fff4cc;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;color:#8a6500}
+
+#prijzen .bbp-card{background:#fff;border:2px solid var(--bbp-blue);border-radius:24px;padding:22px 20px 20px;box-shadow:0 18px 44px rgba(1,59,255,.12);display:flex;flex-direction:column;gap:18px}
+#prijzen .bbp-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+#prijzen .bbp-name{display:flex;flex-direction:column;gap:3px}
+#prijzen .bbp-name b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+#prijzen .bbp-name span{font-size:14px;color:var(--bbp-muted)}
+#prijzen .bbp-price{text-align:right;white-space:nowrap}
+#prijzen .bbp-price b{display:block;font-size:40px;line-height:1;font-weight:700;letter-spacing:-.04em;color:var(--bbp-blue);font-variant-numeric:tabular-nums}
+#prijzen .bbp-price span{font-size:13px;color:var(--bbp-muted)}
+#prijzen .bbp-feats{list-style:none;margin:0;padding:16px 0 0;border-top:1px solid var(--bbp-line);display:flex;flex-direction:column;gap:11px}
+#prijzen .bbp-feats li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+#prijzen .bbp-feats li i{flex:none;width:22px;height:22px;margin-top:-1px;border-radius:50%;background:var(--bbp-tint);color:var(--bbp-blue);display:flex;align-items:center;justify-content:center}
+#prijzen .bbp-feats li b{font-weight:600}
+#prijzen .bbp-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;border-radius:16px;background:var(--bbp-blue);color:#fff!important;font-size:16px;font-weight:600;text-decoration:none!important;box-shadow:0 8px 20px rgba(1,59,255,.28);transition:background-color .15s,transform .15s}
+#prijzen .bbp-btn:hover{background:var(--bbp-blue-d)}
+#prijzen .bbp-btn:active{transform:scale(.985)}
+#prijzen .bbp-try{align-self:center;font-size:14.5px;font-weight:500;color:var(--bbp-blue)!important;text-decoration:underline!important;text-underline-offset:3px}
+#prijzen .bbp-fine{margin:0;font-size:12.5px;line-height:1.5;color:var(--bbp-muted);text-align:center}
+#prijzen .bbp-pills{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+#prijzen .bbp-pills span{font-size:11px;font-weight:600;border:1px solid var(--bbp-line);border-radius:6px;padding:3px 7px;color:var(--bbp-ink);background:#fff}
+
+@media (min-width:900px){
+  #prijzen.bbp{padding:88px 32px}
+  #prijzen .bbp-wrap{grid-template-columns:1fr 440px;gap:64px}
+  #prijzen .bbp-card{padding:28px 28px 24px}
+}
+</style>
+
+<section id="prijzen" class="bbp" aria-labelledby="bbp-title">
+  <div class="bbp-wrap">
+    <div class="bbp-intro">
+      <span class="bbp-eyebrow">Prijs</span>
+      <h2 id="bbp-title">Eén abonnement. Alles erin.</h2>
+      <p class="bbp-sub">Geen pakketten om uit te kiezen en geen kleine lettertjes. Je krijgt alles wat Buddy kan, voor één prijs.</p>
+      <p class="bbp-sum"><i aria-hidden="true">€</i><span>Eén vergeten rekening kost al snel <b>€40</b> aan incassokosten. Een heel jaar Buddy kost <b>€41,88</b>.</span></p>
+    </div>
+
+    <div class="bbp-card">
+      <div class="bbp-head">
+        <div class="bbp-name"><b>Buddy</b><span>Per maand opzegbaar</span></div>
+        <div class="bbp-price"><b>€3,49</b><span>per maand · €0,81 per week</span></div>
+      </div>
+
+      <ul class="bbp-feats">
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span><b>Een mail 7 en 2 dagen vooraf</b>, of op de dagen die jij kiest</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Elke rekening vanzelf <b>in je agenda</b>: Google, Apple of Outlook</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Eén tik op <b>"al betaald"</b> en hij is weg</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Elke week een overzicht van wat eraan komt</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Twijfelt Buddy over een datum? <b>Dan vraagt hij het je</b>, hij gokt niet</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span>Altijd inzien wat er bewaard is, en downloaden als CSV of JSON</span></li>
+        <li><i aria-hidden="true"><svg width="11" height="11" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg></i><span><b>30 dagen niet blij? Geld terug.</b> Opzeggen met één mailtje</span></li>
+      </ul>
+
+      <a class="bbp-btn" data-bb-cta="direct" href="/start-met-betaalbuddy/?utm_source=site&amp;utm_medium=prijs&amp;utm_content=direct">Start voor €3,49 per maand</a>
+      <a class="bbp-try" data-bb-cta="try" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=prijs&amp;utm_content=try">Eerst gratis proberen met je eigen rekening</a>
+      <p class="bbp-fine">Je betaalt de eerste maand bij het aanmelden. Daarna elke maand een factuur per mail, geen automatische incasso. 14 dagen bedenktijd.</p>
+      <div class="bbp-pills" aria-label="Betalen via Mollie"><span>iDEAL | Wero</span><span>PayPal</span><span>Bancontact</span><span>via Mollie</span></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var el = document.getElementById('prijzen'); if (!el) return;
+  el.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-bb-cta]'); if (!a) return;
+    try { (window.dataLayer = window.dataLayer || []).push({ event: 'site_cta', cta: a.getAttribute('data-bb-cta'), where: 'prijs' }); } catch (x) {}
+  });
+})();
+</script>
+<!-- ===================== EINDE PRIJSBLOK ===================== -->
