@@ -24,16 +24,17 @@ Elk event krijgt automatisch mee: `funnel` (versie), `screen`, `step` (vraag 1, 
 | — | `ob_exit` (nieuw) | Pagina verlaten of weggeklikt: `last_event`, `step`, `engaged`, `seconds`, `email_typed`, `email_ok`, `try_opened`, `paying` |
 | — | `retry_start` (nieuw) | Binnengekomen via `?retry=1` |
 | site | `site_cta` | Klik op een knop in het eerste scherm, het prijsblok of het slotblok van de homepage: `cta` (try of direct) en `where` (hero, prijs, slot) |
+| site | `faq_open` / `demo_paid` | Homepage: een vraag geopend (`q` = welke vraag) / op "al betaald" getikt in het voorbeeld |
 | zijpad | `tryout_open`, `bill_form_start`, `bill_form_complete`, `ics_delivered`, `tryout_to_checkout` | Gratis uitproberen |
 
 ## 2. Google Tag Manager (één keer instellen)
 
 Het script zet alles in `dataLayer`. Zonder een trigger in Tag Manager komt een event **niet** in GA4.
 
-1. **Variabelen** → Nieuw → *Gegevenslaagvariabele*, één per naam: `funnel`, `screen`, `step`, `plan`, `inapp`, `device`, `type`, `status`, `how`, `seconds`, `last_event`, `engaged`, `email_typed`, `email_ok`, `try_opened`, `paying`, `method`, `value`, `currency`, `transaction_id`, `source`, `plan_known`, `message`, `cta`, `where`.
+1. **Variabelen** → Nieuw → *Gegevenslaagvariabele*, één per naam: `funnel`, `screen`, `step`, `plan`, `inapp`, `device`, `type`, `status`, `how`, `seconds`, `last_event`, `engaged`, `email_typed`, `email_ok`, `try_opened`, `paying`, `method`, `value`, `currency`, `transaction_id`, `source`, `plan_known`, `message`, `cta`, `where`, `q`.
 2. **Trigger** → *Aangepaste gebeurtenis* → gebeurtenisnaam (vink *Regex gebruiken* aan):
    ```
-   ^(onboarding_start|ob_engaged|begin_checkout|select_plan|checkout_step|email_valid|email_typo_shown|email_typo_fixed|select_method|pay_click|add_payment_info|checkout_error|purchase|payment_failed|ob_exit|retry_start|tryout_open|bill_form_start|bill_form_complete|ics_delivered|tryout_to_checkout|due_chip|upsell_click|site_cta)$
+   ^(onboarding_start|ob_engaged|begin_checkout|select_plan|checkout_step|email_valid|email_typo_shown|email_typo_fixed|select_method|pay_click|add_payment_info|checkout_error|purchase|payment_failed|ob_exit|retry_start|tryout_open|bill_form_start|bill_form_complete|ics_delivered|tryout_to_checkout|due_chip|upsell_click|site_cta|faq_open|demo_paid)$
    ```
 3. **Tag** → *Google Analytics: GA4-gebeurtenis* → gebeurtenisnaam `{{Event}}` → voeg alle variabelen uit stap 1 toe als parameters → trigger uit stap 2.
 4. Test met *Voorbeeld* (Tag Assistant): doorloop de pagina en kijk of elk event één keer afgaat.
