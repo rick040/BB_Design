@@ -1,0 +1,439 @@
+<!-- ===================== BETAALBUDDY HOMEPAGE v1 (28 nov 2026) =====================
+  Eén Code Block (HTML-tab) voor de hele homepage, in dezelfde stijl als de checkout (onboarding v5.3)
+  en de blokken in 07. Groei/website. Alles staat onder #bb-home; het raakt de rest van de site niet.
+
+  Plaatsen
+  - Zet dit in een leeg Code Block op de homepage en haal de oude secties weg.
+  - Heeft je Oxygen-template al een eigen menubalk en footer? Verwijder dan de delen tussen de
+    commentaarregels MENU en /MENU, en tussen FOOTER en /FOOTER. Of andersom: zet de
+    template-header en -footer voor deze pagina uit en gebruik deze.
+  - Ankers blijven werken: #hoehetwerkt, #privacy, #prijzen, #faq.
+
+  Inhoud
+  - Alleen beloftes die het product waarmaakt (één abonnement €3,49, mail 7 en 2 dagen vooraf, agenda,
+    weekoverzicht, inzage en export, geen AI, geen proefperiode, geen WhatsApp).
+  - CHECK voor livegang: de bedragen in "Wat een vergeten rekening kost" (CJIB +50%, BKR) zijn niet
+    door ons geverifieerd. Controleer ze bij CJIB.nl en BKR.nl of haal de kaart weg.
+
+  Meten (Google Tag Manager)
+  - site_cta  bij elke knop: cta = try of direct, where = menu, hero, stappen, prijs, slot
+  - faq_open  bij het openen van een vraag: q = korte naam van de vraag
+================================================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+#bb-home{
+  --blue:#013bff;--blue-d:#0026a8;--soft:#b6c7ff;--onblue:#dfe6ff;--ink:#111827;--muted:#646b78;--faint:#9aa1ad;
+  --bg:#f6f7f9;--line:#e6e8ee;--tint:#e8eeff;--tint2:#f1f4ff;--yellow:#ffce31;--red:#c2185b;
+  font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;color:var(--ink);background:#fff;
+  font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%
+}
+#bb-home *,#bb-home *::before,#bb-home *::after{box-sizing:border-box}
+#bb-home h1,#bb-home h2,#bb-home h3,#bb-home p,#bb-home ul,#bb-home ol{margin:0}
+#bb-home a{color:inherit}
+#bb-home :is(a,button,summary):focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+#bb-home .w{max-width:1120px;margin:0 auto;padding:0 20px}
+#bb-home section{scroll-margin-top:84px}
+#bb-home .sec{padding:64px 0}
+#bb-home .eyebrow{display:inline-block;align-self:flex-start;font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:var(--tint);border-radius:999px;padding:5px 12px}
+#bb-home .h2{font-size:clamp(30px,7vw,46px);line-height:1.07;font-weight:600;letter-spacing:-.04em}
+#bb-home .h2 span{color:var(--blue)}
+#bb-home .lead{font-size:17px;color:var(--muted);max-width:34em}
+#bb-home .head{display:flex;flex-direction:column;gap:12px;margin-bottom:32px}
+#bb-home .ck{flex:none;width:22px;height:22px;border-radius:50%;background:var(--tint);color:var(--blue);display:inline-flex;align-items:center;justify-content:center}
+
+/* Knoppen */
+#bb-home .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 22px;border-radius:16px;font-size:16px;font-weight:600;letter-spacing:-.01em;text-align:center;text-decoration:none!important;transition:background-color .15s,transform .15s,border-color .15s}
+#bb-home .btn:active{transform:scale(.985)}
+#bb-home .btn--white{background:#fff;color:var(--blue)!important;box-shadow:0 10px 28px rgba(0,16,90,.28)}
+#bb-home .btn--white:hover{background:#f1f4ff}
+#bb-home .btn--line{background:transparent;color:#fff!important;border:1.5px solid rgba(255,255,255,.45);font-weight:500;min-height:52px}
+#bb-home .btn--line:hover{background:rgba(255,255,255,.08);border-color:#fff}
+#bb-home .btn--line b{font-weight:700}
+#bb-home .btn--blue{background:var(--blue);color:#fff!important;box-shadow:0 8px 20px rgba(1,59,255,.28)}
+#bb-home .btn--blue:hover{background:var(--blue-d)}
+#bb-home .link{font-weight:500;color:var(--blue)!important;text-decoration:underline!important;text-underline-offset:3px}
+
+/* MENU */
+#bb-home .nav{position:sticky;top:0;z-index:50;background:var(--blue);padding:10px 10px 0}
+#bb-home .nav-in{max-width:1120px;margin:0 auto;height:60px;background:#fff;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 10px 0 14px;box-shadow:0 6px 20px rgba(0,16,90,.18)}
+#bb-home .logo{display:flex;align-items:center;gap:8px;text-decoration:none!important;color:var(--ink)!important;font-weight:700;font-size:18px;letter-spacing:-.05em;line-height:.95}
+#bb-home .logo svg{width:28px;height:30px}
+#bb-home .logo small{display:block;font-size:inherit;font-weight:700;color:var(--blue)}
+#bb-home .nav-links{display:none;gap:22px;font-size:15px;font-weight:500}
+#bb-home .nav-links a{text-decoration:none!important;color:var(--ink)!important}
+#bb-home .nav-links a:hover{color:var(--blue)!important}
+#bb-home .nav-cta{min-height:42px;padding:0 18px;border-radius:999px;font-size:15px}
+
+/* HERO */
+#bb-home .hero{background:var(--blue);color:#fff;padding:32px 0 48px;overflow:hidden}
+#bb-home .hero-in{display:grid;grid-template-columns:1fr;gap:34px;align-items:center}
+#bb-home .hero-copy{display:flex;flex-direction:column;gap:18px;max-width:560px}
+#bb-home .hero h1{font-size:clamp(34px,8.6vw,60px);line-height:1.04;font-weight:600;letter-spacing:-.045em}
+#bb-home .hero h1 span{display:block;color:var(--soft)}
+#bb-home .hero-lead{font-size:clamp(16px,4.2vw,19px);color:var(--onblue)}
+#bb-home .hero-lead b{color:#fff;font-weight:600}
+#bb-home .ctas{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+#bb-home .micro{font-size:13px;color:var(--onblue);text-align:center;margin-top:-4px}
+#bb-home .anchor{display:flex;gap:10px;align-items:flex-start;padding:11px 14px;border-radius:14px;background:rgba(0,16,90,.22);font-size:14px;line-height:1.4}
+#bb-home .anchor i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--yellow);color:var(--ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;font-size:13px}
+#bb-home .trust{list-style:none;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+#bb-home .trust li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--onblue)}
+#bb-home .visual{position:relative;max-width:420px;width:100%;margin:0 auto;padding-top:62px}
+#bb-home .card{position:relative;z-index:2;background:#fff;color:var(--ink);border-radius:18px;padding:13px 14px;display:flex;gap:12px;align-items:center;box-shadow:0 14px 36px rgba(0,16,90,.30)}
+#bb-home .card + .card{margin-top:10px}
+#bb-home .card--in{margin-left:22px}
+#bb-home .ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--tint);color:var(--blue);display:flex;align-items:center;justify-content:center}
+#bb-home .ic--cal{background:var(--blue);color:#fff;flex-direction:column;line-height:1;font-weight:700}
+#bb-home .ic--cal small{font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.85}
+#bb-home .ic--cal span{font-size:16px}
+#bb-home .ct{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+#bb-home .ct b{font-size:14.5px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bb-home .ct span{font-size:13px;color:var(--muted)}
+#bb-home .ct em{font-style:normal;color:var(--red);font-weight:600}
+#bb-home .time{flex:none;align-self:flex-start;font-size:12px;color:var(--faint)}
+#bb-home .mascot{position:absolute;z-index:1;right:22px;top:0;width:82px;transform:rotate(6deg)}
+
+/* KOSTEN */
+#bb-home .cost{background:var(--bg)}
+#bb-home .grid3{display:grid;grid-template-columns:1fr;gap:12px}
+#bb-home .tile{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:8px}
+#bb-home .tile b.big{font-size:40px;line-height:1;font-weight:700;letter-spacing:-.04em;color:var(--blue)}
+#bb-home .tile h3{font-size:18px;font-weight:600;letter-spacing:-.02em}
+#bb-home .tile p{font-size:15px;color:var(--muted)}
+#bb-home .note{margin-top:18px;font-size:15px;color:var(--muted)}
+#bb-home .note b{color:var(--ink)}
+
+/* STAPPEN */
+#bb-home .steps{display:grid;grid-template-columns:1fr;gap:12px;list-style:none;padding:0}
+#bb-home .step{position:relative;background:var(--bg);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:10px}
+#bb-home .step .n{position:absolute;right:18px;top:12px;font-size:44px;font-weight:700;letter-spacing:-.05em;color:var(--soft)}
+#bb-home .step .si{width:48px;height:48px;border-radius:50%;background:var(--blue);color:#fff;display:flex;align-items:center;justify-content:center}
+#bb-home .step h3{font-size:19px;font-weight:600;letter-spacing:-.02em}
+#bb-home .step p{font-size:15px;color:var(--muted)}
+#bb-home .addr{align-self:flex-start;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;color:var(--blue);background:#fff;border:1px solid var(--soft);border-radius:10px;padding:6px 10px}
+#bb-home .steps-cta{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:28px}
+
+/* PRIVACY */
+#bb-home .priv{background:var(--tint2)}
+#bb-home .cmp{display:grid;grid-template-columns:1fr;gap:12px;margin-bottom:28px}
+#bb-home .cmp-c{border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:12px}
+#bb-home .cmp-c h3{font-size:17px;font-weight:600}
+#bb-home .cmp-c ul{list-style:none;padding:0;display:flex;flex-direction:column;gap:9px;font-size:15px}
+#bb-home .cmp-c li{display:flex;gap:10px;align-items:flex-start}
+#bb-home .cmp-them{background:#fff;border:1px solid var(--line);color:var(--muted)}
+#bb-home .cmp-them .x{flex:none;width:22px;height:22px;border-radius:50%;background:#eef0f4;color:#8f96a3;display:inline-flex;align-items:center;justify-content:center}
+#bb-home .cmp-us{background:var(--blue);color:#fff}
+#bb-home .cmp-us .ck{background:rgba(255,255,255,.18);color:#fff}
+#bb-home .grid4{display:grid;grid-template-columns:1fr;gap:12px}
+#bb-home .pc{background:#fff;border:1px solid var(--line);border-radius:20px;padding:20px;display:flex;flex-direction:column;gap:10px}
+#bb-home .pc .num{font-size:13px;font-weight:600;color:var(--blue)}
+#bb-home .pc h3{font-size:18px;font-weight:600;letter-spacing:-.02em}
+#bb-home .pc p{font-size:15px;color:var(--muted)}
+#bb-home .pc ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+#bb-home .pc li{font-size:12.5px;font-weight:500;color:var(--ink);background:var(--tint2);border-radius:999px;padding:4px 10px}
+
+/* PRIJS */
+#bb-home .price{background:var(--bg)}
+#bb-home .price-in{display:grid;grid-template-columns:1fr;gap:28px;align-items:center}
+#bb-home .sum{display:flex;gap:12px;align-items:flex-start;margin-top:6px;padding:14px 16px;border-radius:16px;background:#fff;border:1px solid var(--line);font-size:15px}
+#bb-home .sum i{flex:none;width:30px;height:30px;border-radius:10px;background:#fff4cc;display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;color:#8a6500}
+#bb-home .plan{background:#fff;border:2px solid var(--blue);border-radius:24px;padding:22px 20px 20px;box-shadow:0 18px 44px rgba(1,59,255,.12);display:flex;flex-direction:column;gap:18px}
+#bb-home .plan-top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+#bb-home .plan-top b{font-size:20px;font-weight:600}
+#bb-home .plan-top .pp{text-align:right;white-space:nowrap}
+#bb-home .plan-top .pp b{display:block;font-size:40px;line-height:1;font-weight:700;letter-spacing:-.04em;color:var(--blue)}
+#bb-home .plan-top span{font-size:13px;color:var(--muted)}
+#bb-home .feats{list-style:none;padding:16px 0 0;border-top:1px solid var(--line);display:flex;flex-direction:column;gap:11px}
+#bb-home .feats li{display:flex;gap:10px;align-items:flex-start;font-size:15px;line-height:1.4}
+#bb-home .fine{font-size:12.5px;color:var(--muted);text-align:center}
+#bb-home .pills{display:flex;justify-content:center;gap:6px;flex-wrap:wrap}
+#bb-home .pills span{font-size:11px;font-weight:600;border:1px solid var(--line);border-radius:6px;padding:3px 7px;background:#fff}
+
+/* FAQ */
+#bb-home .faq-list{display:flex;flex-direction:column;gap:10px;max-width:780px}
+#bb-home details{background:var(--bg);border-radius:16px;padding:0 18px}
+#bb-home summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;min-height:60px;font-size:16.5px;font-weight:600;letter-spacing:-.01em}
+#bb-home summary::-webkit-details-marker{display:none}
+#bb-home summary::after{content:"";flex:none;width:10px;height:10px;border-right:2px solid var(--blue);border-bottom:2px solid var(--blue);transform:rotate(45deg) translateY(-3px);transition:transform .2s}
+#bb-home details[open] summary::after{transform:rotate(225deg) translateY(-2px)}
+#bb-home details p{padding:0 0 18px;font-size:15.5px;color:var(--muted);max-width:44em}
+
+/* SLOT */
+#bb-home .end{background:var(--blue);color:#fff;text-align:center}
+#bb-home .end-in{max-width:620px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:16px}
+#bb-home .end h2{font-size:clamp(30px,7.6vw,46px);line-height:1.06;font-weight:600;letter-spacing:-.04em}
+#bb-home .end h2 span{color:var(--soft)}
+#bb-home .end p{font-size:17px;color:var(--onblue)}
+#bb-home .end .ctas{width:100%;max-width:420px}
+
+/* FOOTER */
+#bb-home .foot{background:var(--blue-d);color:var(--onblue);padding:44px 0 32px;font-size:14.5px}
+#bb-home .foot-in{display:grid;grid-template-columns:1fr;gap:28px}
+#bb-home .foot .logo{color:#fff!important}
+#bb-home .foot .logo small{color:var(--soft)}
+#bb-home .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
+#bb-home .foot-links a{text-decoration:none!important;color:var(--onblue)!important}
+#bb-home .foot-links a:hover{color:#fff!important}
+#bb-home .foot-legal{border-top:1px solid rgba(255,255,255,.18);margin-top:28px;padding-top:18px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--soft)}
+#bb-home .foot-legal a{color:var(--soft)!important}
+
+@media (min-width:900px){
+  #bb-home .w{padding:0 32px}
+  #bb-home .sec{padding:96px 0}
+  #bb-home .nav-links{display:flex}
+  #bb-home .hero{padding:64px 0 80px}
+  #bb-home .hero-in{grid-template-columns:1.15fr .85fr;gap:56px}
+  #bb-home .ctas{flex-direction:row;flex-wrap:wrap}
+  #bb-home .hero .btn--white{flex:1 1 300px}
+  #bb-home .micro{text-align:left}
+  #bb-home .trust{grid-template-columns:repeat(2,max-content);gap:10px 28px}
+  #bb-home .visual{padding-top:84px;max-width:440px}
+  #bb-home .mascot{width:110px;right:30px}
+  #bb-home .grid3,#bb-home .steps{grid-template-columns:repeat(3,1fr)}
+  #bb-home .cmp{grid-template-columns:1fr 1fr}
+  #bb-home .grid4{grid-template-columns:repeat(4,1fr)}
+  #bb-home .price-in{grid-template-columns:1fr 440px;gap:64px}
+  #bb-home .plan{padding:28px 28px 24px}
+  #bb-home .end .ctas{max-width:680px;justify-content:center}
+  #bb-home .end .btn{flex:1 1 auto;white-space:nowrap}
+  #bb-home .foot-in{grid-template-columns:1.2fr 1fr}
+  #bb-home .foot-legal{flex-direction:row;justify-content:space-between}
+}
+@media (prefers-reduced-motion:no-preference){
+  #bb-home .card{animation:bbIn .6s cubic-bezier(.32,.72,0,1) both}
+  #bb-home .card--in{animation-delay:.25s}
+  @keyframes bbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="bbh-buddy" viewBox="0 0 79.31 86.43"><path d="M33.57,49.27c11.39-2.07,17.36-9.46,20.14-19.93,12.46-2.24,24.74,8.68,25.54,22.51,1.14,19.63-12.1,34.1-31.77,34.46-11.47.21-22.96.11-34.43.02-7.69-.06-12.78-4.81-12.86-12.47C-.02,55.16-.07,36.47.12,17.78.2,9.47,4.79,4.17,12.93,1.96c9.39-2.55,18.73-3.07,27.81,1.24,9.72,4.61,11.44,13.31,11,22.72-.36,7.81-6.4,10.87-12.69,13.31-6.69,2.59-6.71,2.53-5.49,10.05Z"/></symbol>
+  <symbol id="bbh-ck" viewBox="0 0 24 24"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="bbh-x" viewBox="0 0 24 24"><path d="M7 7l10 10M17 7L7 17" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></symbol>
+  <symbol id="bbh-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="bbh-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/></symbol>
+</svg>
+
+<div id="bb-home">
+
+<!-- MENU -->
+<header class="nav">
+  <div class="nav-in">
+    <a class="logo" href="/" aria-label="Betaalbuddy, naar de homepage"><svg aria-hidden="true" fill="#013bff"><use href="#bbh-buddy"/></svg><span>betaal<small>buddy</small></span></a>
+    <nav class="nav-links" aria-label="Hoofdmenu">
+      <a href="#hoehetwerkt">Hoe het werkt</a><a href="#privacy">Privacy</a><a href="#prijzen">Prijs</a><a href="#faq">Vragen</a>
+    </nav>
+    <a class="btn btn--blue nav-cta" data-bb-cta="try" data-where="menu" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=menu&amp;utm_content=try">Probeer gratis</a>
+  </div>
+</header>
+<!-- /MENU -->
+
+<main>
+<!-- HERO -->
+<section class="hero" aria-labelledby="bbh-title">
+  <div class="w hero-in">
+    <div class="hero-copy">
+      <h1 id="bbh-title">Je rekeningen op tijd betaald. <span>Zonder dat iemand je inbox leest.</span></h1>
+      <p class="hero-lead">Stuur je rekening door naar je eigen Buddy-adres. Je krijgt <b>7 en 2 dagen vooraf een mail</b>, en de datum staat in je agenda.</p>
+      <div class="ctas">
+        <a class="btn btn--white" data-bb-cta="try" data-where="hero" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=hero&amp;utm_content=try"><span>Probeer gratis met je rekening</span><svg width="18" height="18" aria-hidden="true"><use href="#bbh-arrow"/></svg></a>
+        <a class="btn btn--line" data-bb-cta="direct" data-where="hero" href="/start-met-betaalbuddy/?utm_source=site&amp;utm_medium=hero&amp;utm_content=direct"><span>Direct starten · <b>€3,49</b> per maand</span></a>
+      </div>
+      <p class="micro">Gratis proberen duurt 30 seconden en kost niets.</p>
+      <p class="anchor"><i aria-hidden="true">!</i><span>Eén vergeten rekening kost al snel <b>€40</b> aan incassokosten.</span></p>
+      <ul class="trust" aria-label="Wat Buddy niet doet">
+        <li><svg width="16" height="16" aria-hidden="true"><use href="#bbh-ck"/></svg>Geen app of account</li>
+        <li><svg width="16" height="16" aria-hidden="true"><use href="#bbh-ck"/></svg>Geen toegang tot je inbox</li>
+        <li><svg width="16" height="16" aria-hidden="true"><use href="#bbh-ck"/></svg>Geen AI die meeleest</li>
+        <li><svg width="16" height="16" aria-hidden="true"><use href="#bbh-ck"/></svg>30 dagen geld terug</li>
+      </ul>
+    </div>
+    <div class="visual" aria-hidden="true">
+      <div class="card"><span class="ic"><svg width="20" height="20"><use href="#bbh-mail"/></svg></span><span class="ct"><b>Buddy · Verhuurder</b><span><em>Nog 2 dagen</em> · €64,50 · vervalt 27 nov</span></span><span class="time">nu</span></div>
+      <div class="card card--in"><span class="ic ic--cal"><small>nov</small><span>27</span></span><span class="ct"><b>Verhuurder betalen</b><span>€64,50 · staat in je agenda</span></span></div>
+      <svg class="mascot" viewBox="0 0 79.31 86.43"><use href="#bbh-buddy" fill="#fff"/><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- WAT HET KOST -->
+<section class="sec cost" id="oplost" aria-labelledby="bbh-cost">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Waarom</span>
+      <h2 class="h2" id="bbh-cost">Een gemiste rekening is een gemiste mail. <span>Maar wel een dure.</span></h2>
+      <p class="lead">Rekeningen komen tussen nieuwsbrieven en bestelmails binnen, met de vervaldatum ergens onderaan. Vergeten is geen karakterfout. Het kost alleen snel geld.</p>
+    </div>
+    <div class="grid3">
+      <div class="tile"><b class="big">€40</b><h3>Incassokosten</h3><p>Zoveel komt er minimaal bij als een vergeten rekening naar een incassobureau gaat, ook als het om €12 ging.</p></div>
+      <!-- CHECK: verifieer bij CJIB.nl voor livegang -->
+      <div class="tile"><b class="big">+50%</b><h3>Verkeersboete</h3><p>Een boete van het CJIB wordt na de eerste herinnering met de helft verhoogd.</p></div>
+      <!-- CHECK: verifieer bij BKR.nl voor livegang -->
+      <div class="tile"><b class="big">BKR</b><h3>Achteraf betalen</h3><p>Een achterstand bij Klarna, Riverty of in3 kost extra en kan bij het BKR terechtkomen.</p></div>
+    </div>
+    <p class="note"><b>Een heel jaar Buddy kost €41,88.</b> Ongeveer evenveel als één keer incassokosten.</p>
+  </div>
+</section>
+
+<!-- HOE HET WERKT -->
+<section class="sec" id="hoehetwerkt" aria-labelledby="bbh-how">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Hoe het werkt</span>
+      <h2 class="h2" id="bbh-how">Doorsturen. <span>De rest doet Buddy.</span></h2>
+      <p class="lead">Je stelt het één keer in. Geen app, geen inlog, geen bankkoppeling.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><span class="n" aria-hidden="true">1</span><span class="si"><svg width="22" height="22" aria-hidden="true" fill="#fff"><use href="#bbh-buddy"/></svg></span><h3>Meld je aan</h3><p>Betaal op deze site. Je krijgt meteen je eigen doorstuuradres en een agendalink.</p><span class="addr">a8f3k@in.betaalbuddy.nl</span></li>
+      <li class="step"><span class="n" aria-hidden="true">2</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-mail"/></svg></span><h3>Stuur je rekening door</h3><p>Met de hand, drie tikken. Of automatisch: één filter in je mail voor je vaste afzenders.</p></li>
+      <li class="step"><span class="n" aria-hidden="true">3</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-ck"/></svg></span><h3>Krijg op tijd een seintje</h3><p>Een mail 7 en 2 dagen voor de vervaldatum, en de datum in je agenda. Betaald? Eén tik op "al betaald" en hij is weg.</p></li>
+    </ol>
+    <div class="steps-cta">
+      <a class="btn btn--blue" data-bb-cta="try" data-where="stappen" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=stappen&amp;utm_content=try"><span>Probeer het met je eigen rekening</span><svg width="18" height="18" aria-hidden="true"><use href="#bbh-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACY -->
+<section class="sec priv" id="privacy" aria-labelledby="bbh-priv">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Onder de motorkap</span>
+      <h2 class="h2" id="bbh-priv">We kunnen niet lekken <span>wat we nooit bewaren.</span></h2>
+      <p class="lead">Dit doet Buddy met je rekening. En wat hij níet doet.</p>
+    </div>
+    <div class="cmp">
+      <div class="cmp-c cmp-them">
+        <h3>Een AI-inboxassistent</h3>
+        <ul>
+          <li><span class="x"><svg width="10" height="10" aria-hidden="true"><use href="#bbh-x"/></svg></span>Wil toegang tot al je mail</li>
+          <li><span class="x"><svg width="10" height="10" aria-hidden="true"><use href="#bbh-x"/></svg></span>Laat een taalmodel je mail lezen</li>
+          <li><span class="x"><svg width="10" height="10" aria-hidden="true"><use href="#bbh-x"/></svg></span>Bewaart wat hij nodig denkt te hebben</li>
+        </ul>
+      </div>
+      <div class="cmp-c cmp-us">
+        <h3>Betaalbuddy</h3>
+        <ul>
+          <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span>Ziet alleen wat jij doorstuurt</li>
+          <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span>Leest met vaste regels, zonder AI</li>
+          <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span>Bewaart alleen wat nodig is, 14 dagen na de vervaldatum weg</li>
+        </ul>
+      </div>
+    </div>
+    <div class="grid4">
+      <div class="pc"><span class="num">01 · Doorsturen</span><h3>Geen koppeling met je mail</h3><p>Je krijgt een eigen adres en stuurt zelf door. Stuur je niets, dan ziet Buddy niets.</p><ul><li>Geen inlog</li><li>Geen inbox-toegang</li></ul></div>
+      <div class="pc"><span class="num">02 · Uitlezen</span><h3>Vaste regels, geen AI</h3><p>Onze eigen code zoekt het bedrag, de vervaldatum, de betaallink en het rekeningnummer. Je mail gaat niet langs een AI-dienst.</p><ul><li>Geen AI</li><li>Eigen code</li></ul></div>
+      <div class="pc"><span class="num">03 · Controleren</span><h3>Twijfelt hij? Dan vraagt hij het</h3><p>Is het bedrag of de datum niet zeker, dan zet Buddy niets in je agenda en vraagt hij het je per mail. Een verkeerde datum is erger dan geen datum.</p><ul><li>Geen gokwerk</li></ul></div>
+      <div class="pc"><span class="num">04 · Bewaren</span><h3>Je mail bewaren we niet</h3><p>Geen tekst, geen onderwerp, geen bijlagen. Wat overblijft ruimen we 14 dagen na de vervaldatum op, of meteen als je op "al betaald" tikt. Je ziet altijd wat er bewaard is.</p><ul><li>Na 14 dagen weg</li><li>Altijd in te zien</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIJS -->
+<section class="sec price" id="prijzen" aria-labelledby="bbh-price">
+  <div class="w price-in">
+    <div class="head" style="margin-bottom:0">
+      <span class="eyebrow">Prijs</span>
+      <h2 class="h2" id="bbh-price">Eén abonnement. <span>Alles erin.</span></h2>
+      <p class="lead">Geen pakketten om uit te kiezen en geen kleine lettertjes. Je krijgt alles wat Buddy kan, voor één prijs.</p>
+      <p class="sum"><i aria-hidden="true">€</i><span>Eén vergeten rekening kost al snel <b>€40</b> aan incassokosten. Een heel jaar Buddy kost <b>€41,88</b>.</span></p>
+    </div>
+    <div class="plan">
+      <div class="plan-top">
+        <div><b>Buddy</b><br><span>Per maand opzegbaar</span></div>
+        <div class="pp"><b>€3,49</b><span>per maand · €0,81 per week</span></div>
+      </div>
+      <ul class="feats">
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span><b>Een mail 7 en 2 dagen vooraf</b>, of op de dagen die jij kiest</span></li>
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span>Elke rekening vanzelf <b>in je agenda</b>: Google, Apple of Outlook</span></li>
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span>Eén tik op <b>"al betaald"</b> en hij is weg</span></li>
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span>Elke week een overzicht van wat eraan komt</span></li>
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span>Altijd inzien wat er bewaard is, en downloaden als CSV of JSON</span></li>
+        <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span><span><b>30 dagen niet blij? Geld terug.</b> Opzeggen met één mailtje</span></li>
+      </ul>
+      <a class="btn btn--blue" data-bb-cta="direct" data-where="prijs" href="/start-met-betaalbuddy/?utm_source=site&amp;utm_medium=prijs&amp;utm_content=direct">Start voor €3,49 per maand</a>
+      <a class="link" style="align-self:center;font-size:14.5px" data-bb-cta="try" data-where="prijs" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=prijs&amp;utm_content=try">Eerst gratis proberen met je eigen rekening</a>
+      <p class="fine">Je betaalt de eerste maand bij het aanmelden. Daarna elke maand een factuur per mail, geen automatische incasso. 14 dagen bedenktijd.</p>
+      <div class="pills" aria-label="Betalen via Mollie"><span>iDEAL | Wero</span><span>PayPal</span><span>Bancontact</span><span>via Mollie</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- VRAGEN -->
+<section class="sec" id="faq" aria-labelledby="bbh-faq">
+  <div class="w">
+    <div class="head">
+      <span class="eyebrow">Vragen</span>
+      <h2 class="h2" id="bbh-faq">Wat mensen <span>meestal vragen.</span></h2>
+    </div>
+    <div class="faq-list">
+      <details data-q="delen"><summary>Moet ik mijn bankgegevens of inlog delen?</summary><p>Nee. Betaalbuddy koppelt niet met je bank en vraagt geen inlog of PSD2-toestemming. Je stuurt zelf een mail door naar je eigen Buddy-adres. Dat is het enige wat wij zien.</p></details>
+      <details data-q="mailprogramma"><summary>Werkt het met Gmail, Outlook, iCloud of Proton?</summary><p>Ja, met elk mailprogramma dat kan doorsturen.</p></details>
+      <details data-q="fout_lezen"><summary>Wat als Buddy mijn rekening niet goed leest?</summary><p>Dan zetten we niets in je agenda, maar krijg je een korte mail met de vraag of je het bedrag of de datum zelf wilt doorgeven. Je antwoordt gewoon op die mail. We raden nooit.</p></details>
+      <details data-q="app"><summary>Moet ik een app installeren of een account maken?</summary><p>Nee. Er is geen app, geen inlogscherm en geen wachtwoord. Alles gaat per mail.</p></details>
+      <details data-q="agenda"><summary>Hoe komt het in mijn agenda?</summary><p>Bij je aanmelding krijg je een agendalink. Die voeg je één keer toe in Google Agenda, Apple Agenda of Outlook. Daarna verschijnen de vervaldatums er vanzelf in, ook op je telefoon.</p></details>
+      <details data-q="automatisch"><summary>Moet ik elke rekening met de hand doorsturen?</summary><p>Dat kan, het zijn drie tikken. Wil je het automatisch, zet dan in je mailprogramma één filter die mails van je vaste afzenders doorstuurt naar je Buddy-adres.</p></details>
+      <details data-q="ai"><summary>Leest er een AI mee?</summary><p>Nee. Een vast regelsysteem zoekt naar het bedrag en de vervaldatum. Het doet elke dag hetzelfde en verzint niets. Je mail gaat nooit naar een externe AI- of OCR-dienst.</p></details>
+      <details data-q="opzeggen"><summary>Wat kost het, en hoe zeg ik op?</summary><p>€3,49 per maand. Je betaalt de eerste maand bij het aanmelden, daarna krijg je elke maand een factuur per mail. Opzeggen doe je met één mailtje. Ben je binnen 30 dagen niet tevreden, dan krijg je je geld terug.</p></details>
+      <details data-q="bewaren"><summary>Wat bewaren jullie van mij?</summary><p>Van een rekening alleen wat nodig is voor de herinnering: afzender, bedrag, vervaldatum, betaallink, rekeningnummer en betalingskenmerk, tot 14 dagen na de vervaldatum. Van jou alleen je mailadres en je voorkeuren, geen naam of adres. In elke mail staat een link naar een pagina met alles wat er bewaard is.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- SLOT -->
+<section class="sec end" aria-labelledby="bbh-end">
+  <div class="w end-in">
+    <svg width="64" height="70" viewBox="0 0 79.31 86.43" aria-hidden="true"><use href="#bbh-buddy" fill="#fff"/><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></svg>
+    <h2 id="bbh-end">Klaar met aanmaningen? <span>Stuur je eerste rekening door.</span></h2>
+    <p>Probeer het met een rekening die je nu hebt openstaan. Binnen 30 seconden zie je hoe Buddy je herinnert. Gratis, zonder aanmelden.</p>
+    <div class="ctas">
+      <a class="btn btn--white" data-bb-cta="try" data-where="slot" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=slot&amp;utm_content=try"><span>Probeer gratis met je rekening</span><svg width="18" height="18" aria-hidden="true"><use href="#bbh-arrow"/></svg></a>
+      <a class="btn btn--line" data-bb-cta="direct" data-where="slot" href="/start-met-betaalbuddy/?utm_source=site&amp;utm_medium=slot&amp;utm_content=direct"><span>Direct starten · <b>€3,49</b> per maand</span></a>
+    </div>
+    <span class="micro" style="text-align:center">Geen app · geen account · 30 dagen geld terug</span>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="w">
+    <div class="foot-in">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <a class="logo" href="/" aria-label="Betaalbuddy"><svg aria-hidden="true" fill="#fff"><use href="#bbh-buddy"/></svg><span>betaal<small>buddy</small></span></a>
+        <p>Nooit meer een rekening vergeten. Zonder dat iemand je inbox leest.</p>
+      </div>
+      <nav class="foot-links" aria-label="Footer">
+        <a href="#hoehetwerkt">Hoe het werkt</a><a href="#privacy">Privacy</a>
+        <a href="#prijzen">Prijs</a><a href="#faq">Vragen</a>
+        <a href="/docs/">Documentatie</a><a href="/changelog">Changelog</a>
+        <a href="https://www.instagram.com/betaalbuddy/" rel="noopener" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/betaal-buddy/" rel="noopener" target="_blank">LinkedIn</a>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 Betaalbuddy · een product van PRJCT Agency, Geldrop · KvK 89078802 · betalen via Mollie</span>
+      <span><a href="/privacy-policy/">Privacybeleid</a> · <a href="/terms-of-service/">Algemene voorwaarden</a></span>
+    </div>
+  </div>
+</footer>
+<!-- /FOOTER -->
+
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById('bb-home'); if (!root) return;
+  function push(o) { try { (window.dataLayer = window.dataLayer || []).push(o); } catch (e) {} }
+  root.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-bb-cta]'); if (!a) return;
+    push({ event: 'site_cta', cta: a.getAttribute('data-bb-cta'), where: a.getAttribute('data-where') || '' });
+  });
+  Array.prototype.forEach.call(root.querySelectorAll('details[data-q]'), function (d) {
+    d.addEventListener('toggle', function () { if (d.open) push({ event: 'faq_open', q: d.getAttribute('data-q') }); });
+  });
+})();
+</script>
+<!-- ===================== EINDE HOMEPAGE ===================== -->
