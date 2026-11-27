@@ -1,6 +1,13 @@
 import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
+import { AchterafAd } from "./achteraf-bf/AchterafAd";
+import {
+  type AchterafProps,
+  achterafSchema,
+  achterafTotal,
+  defaultAchterafProps,
+} from "./achteraf-bf/schema";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
@@ -24,6 +31,10 @@ const countdownMetadata: CalculateMetadataFunction<CountdownProps> = ({ props })
 
 const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => ({
   durationInFrames: privacyTotal(props.timing),
+});
+
+const achterafMetadata: CalculateMetadataFunction<AchterafProps> = ({ props }) => ({
+  durationInFrames: achterafTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -117,6 +128,32 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+
+    {/* Meta-campagne 2612 · K1 "Eén dag gekocht, negen dagen betalen" (CONCEPT-K1.md) */}
+    <Folder name="Campagne2612-K1-Achteraf">
+      <Composition
+        id="BB-K1Achteraf-Reel"
+        component={AchterafAd}
+        schema={achterafSchema}
+        defaultProps={defaultAchterafProps}
+        calculateMetadata={achterafMetadata}
+        durationInFrames={achterafTotal(defaultAchterafProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-K1Achteraf-Feed"
+        component={AchterafAd}
+        schema={achterafSchema}
+        defaultProps={defaultAchterafProps}
+        calculateMetadata={achterafMetadata}
+        durationInFrames={achterafTotal(defaultAchterafProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

@@ -11,6 +11,17 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
 
+### Meta-campagne 2612 (betaalde Reels, `adSafeZone` aan)
+
+Advertentienamen voor Ads Manager staan tussen haakjes; de MP4's en covers in `renders/` hebben die naam als bestandsnaam.
+
+| Code | Concept | Composition | Size | Length |
+|---|---|---|---|---|
+| K1 · koud | "Eén dag gekocht, negen dagen betalen" ([`CONCEPT-K1.md`](./CONCEPT-K1.md)) (`BB_K1_Achteraf`) | `BB-K1Achteraf-Reel` / `BB-K1Achteraf-Feed` | 9:16 / 4:5 | 11.0 s |
+<!-- campagne2612-rows -->
+
+**adSafeZone** (prop in deze concepten, default aan): in een betaalde Reel legt Meta de CTA-knop en de advertentietekst over de onderkant van het beeld. Met `adSafeZone` aan blijven koppen, bedragen en de knop in 9:16 tussen y=280 en y=1250. Zet hem uit voor een organische Reel. De Feed-versie verandert niet.
+
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
@@ -55,7 +66,10 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
-npm run render:all             # all six
+npm run render:achteraf-bf       # K1 → out/BB-K1Achteraf-Reel.mp4  (9:16)
+npm run render:achteraf-bf:feed  # K1 → out/BB-K1Achteraf-Feed.mp4  (4:5)
+npm run still:achteraf-bf        # K1 cover → out/BB-K1Achteraf-Reel-cover.png
+npm run render:all             # everything
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
