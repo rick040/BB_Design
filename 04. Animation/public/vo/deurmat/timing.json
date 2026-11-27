@@ -1,0 +1,180 @@
+{
+ "fps": 30,
+ "source": "estimate (geen stem: ElevenLabs-quota op 0)",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  168,
+  261,
+  354
+ ],
+ "voiceEnd": 375,
+ "durationInFrames": 405,
+ "words": [
+  {
+   "w": "Net",
+   "start": 0,
+   "end": 6
+  },
+  {
+   "w": "op",
+   "start": 7,
+   "end": 11
+  },
+  {
+   "w": "jezelf?",
+   "start": 12,
+   "end": 22
+  },
+  {
+   "w": "Dan",
+   "start": 29,
+   "end": 34
+  },
+  {
+   "w": "komen",
+   "start": 35,
+   "end": 44
+  },
+  {
+   "w": "de",
+   "start": 45,
+   "end": 49
+  },
+  {
+   "w": "rekeningen.",
+   "start": 50,
+   "end": 65
+  },
+  {
+   "w": "Huur.",
+   "start": 71,
+   "end": 79
+  },
+  {
+   "w": "Energie.",
+   "start": 85,
+   "end": 96
+  },
+  {
+   "w": "Internet.",
+   "start": 103,
+   "end": 115
+  },
+  {
+   "w": "Zorgverzekering.",
+   "start": 122,
+   "end": 143
+  },
+  {
+   "w": "Gemeente.",
+   "start": 149,
+   "end": 161
+  },
+  {
+   "w": "Vijf",
+   "start": 168,
+   "end": 175
+  },
+  {
+   "w": "rekeningen.",
+   "start": 176,
+   "end": 191
+  },
+  {
+   "w": "Vijf",
+   "start": 197,
+   "end": 204
+  },
+  {
+   "w": "vervaldatums.",
+   "start": 205,
+   "end": 222
+  },
+  {
+   "w": "Allemaal",
+   "start": 229,
+   "end": 241
+  },
+  {
+   "w": "van",
+   "start": 242,
+   "end": 248
+  },
+  {
+   "w": "jou.",
+   "start": 249,
+   "end": 255
+  },
+  {
+   "w": "Stuur",
+   "start": 261,
+   "end": 270
+  },
+  {
+   "w": "ze",
+   "start": 271,
+   "end": 275
+  },
+  {
+   "w": "door",
+   "start": 276,
+   "end": 283
+  },
+  {
+   "w": "naar",
+   "start": 284,
+   "end": 291
+  },
+  {
+   "w": "Buddy.",
+   "start": 292,
+   "end": 301
+  },
+  {
+   "w": "Hij",
+   "start": 307,
+   "end": 313
+  },
+  {
+   "w": "zet",
+   "start": 314,
+   "end": 320
+  },
+  {
+   "w": "ze",
+   "start": 321,
+   "end": 325
+  },
+  {
+   "w": "in",
+   "start": 326,
+   "end": 331
+  },
+  {
+   "w": "je",
+   "start": 332,
+   "end": 337
+  },
+  {
+   "w": "agenda.",
+   "start": 337,
+   "end": 347
+  },
+  {
+   "w": "Activeer",
+   "start": 354,
+   "end": 366
+  },
+  {
+   "w": "Buddy.",
+   "start": 367,
+   "end": 375
+  }
+ ]
+}

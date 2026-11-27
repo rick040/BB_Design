@@ -1,0 +1,9 @@
+{
+  "text": "Net op jezelf? Dan komen de rekeningen. Huur. Energie. Internet. Zorgverzekering. Gemeente. Vijf rekeningen. Vijf vervaldatums. Allemaal van jou. Stuur ze door naar Buddy. Hij zet ze in je agenda. Activeer Buddy.",
+  "model_id": "eleven_v4",
+  "language_code": "nl",
+  "voice_settings": {
+    "stability": 0.5,
+    "similarity_boost": 0.75
+  }
+}

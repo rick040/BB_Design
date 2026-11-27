@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { DeurmatAd } from "./deurmat/DeurmatAd";
+import { deurmatSchema, defaultDeurmatProps, TOTAL_FRAMES as DEURMAT_TOTAL } from "./deurmat/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -114,6 +116,19 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    {/* Concept 125 · "Net op jezelf. Niet alleen." (CONCEPT-125.md) · Reel */}
+    <Folder name="Concept-125-Deurmat">
+      <Composition
+        id="BB-Deurmat-Reel"
+        component={DeurmatAd}
+        schema={deurmatSchema}
+        defaultProps={defaultDeurmatProps}
+        durationInFrames={DEURMAT_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}
