@@ -10,6 +10,8 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 126 · "Geen app. Gewoon rechtdoor." ([`CONCEPT-126.md`](./CONCEPT-126.md)) | `BB-Doolhof-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.0 s (volgt `public/vo/doolhof/timing.json`) |
+| | `BB-Doolhof-Feed` | 1080 × 1350 (4:5) | Feed | 13.0 s |
 
 All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
@@ -55,10 +57,14 @@ npm run render:countdown       # concept 2 → out/BB-Countdown-Reel.mp4  (9:16)
 npm run render:countdown:feed  # concept 2 → out/BB-Countdown-Feed.mp4  (4:5)
 npm run render:privacy         # concept 3 → out/BB-Privacy-Reel.mp4    (9:16)
 npm run render:privacy:feed    # concept 3 → out/BB-Privacy-Feed.mp4    (4:5)
+npm run render:doolhof         # concept 126 → out/doolhof-reel-stil.mp4 (9:16, zonder stem)
+npm run render:doolhof:feed    # concept 126 → out/doolhof-feed-stil.mp4 (4:5, zonder stem)
+npm run render:doolhof:vo      # concept 126 met stem (na python3 scripts/vo_timing.py doolhof)
 npm run render:all             # all six
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
 npm run still:privacy          # concept 3 cover → out/BB-Privacy-Reel-cover.png
+npm run still:doolhof          # concept 126 cover → out/doolhof-cover.png
 ```
 
 Renders use H.264, yuv420p and BT.709 (see `remotion.config.ts`), which Instagram, WhatsApp and QuickTime all play correctly.

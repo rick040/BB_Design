@@ -2,6 +2,8 @@ import React from "react";
 import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
+import { DoolhofAd } from "./doolhof/DoolhofAd";
+import { defaultDoolhofProps, doolhofSchema, TOTAL_FRAMES as DOOLHOF_TOTAL } from "./doolhof/schema";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 126 · "Geen app. Gewoon rechtdoor." (CONCEPT-126.md) · timing uit public/vo/doolhof/timing.json */}
+    <Folder name="Concept-126-Doolhof">
+      <Composition
+        id="BB-Doolhof-Reel"
+        component={DoolhofAd}
+        schema={doolhofSchema}
+        defaultProps={defaultDoolhofProps}
+        durationInFrames={DOOLHOF_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Doolhof-Feed"
+        component={DoolhofAd}
+        schema={doolhofSchema}
+        defaultProps={defaultDoolhofProps}
+        durationInFrames={DOOLHOF_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>

@@ -1,0 +1,182 @@
+{
+ "fps": 30,
+ "source": "estimate (~5 syllables/s); replace by re-running after generating the voice",
+ "estimated": true,
+ "text": "Nog een app voor je rekeningen, met een account, een wachtwoord en updates? Hoeft niet, want met Buddy ga je rechtdoor. Stuur hem door en hij staat in je agenda. Activeer Buddy.",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4"
+ ],
+ "sceneStarts": [
+  0,
+  157,
+  242,
+  330
+ ],
+ "voiceEnd": 361,
+ "durationInFrames": 391,
+ "words": [
+  {
+   "w": "Nog",
+   "start": 0,
+   "end": 6
+  },
+  {
+   "w": "een",
+   "start": 7,
+   "end": 13
+  },
+  {
+   "w": "app",
+   "start": 14,
+   "end": 20
+  },
+  {
+   "w": "voor",
+   "start": 22,
+   "end": 28
+  },
+  {
+   "w": "je",
+   "start": 29,
+   "end": 35
+  },
+  {
+   "w": "rekeningen,",
+   "start": 36,
+   "end": 60
+  },
+  {
+   "w": "met",
+   "start": 67,
+   "end": 73
+  },
+  {
+   "w": "een",
+   "start": 74,
+   "end": 80
+  },
+  {
+   "w": "account,",
+   "start": 81,
+   "end": 93
+  },
+  {
+   "w": "een",
+   "start": 100,
+   "end": 106
+  },
+  {
+   "w": "wachtwoord",
+   "start": 107,
+   "end": 119
+  },
+  {
+   "w": "en",
+   "start": 120,
+   "end": 126
+  },
+  {
+   "w": "updates?",
+   "start": 127,
+   "end": 145
+  },
+  {
+   "w": "Hoeft",
+   "start": 157,
+   "end": 163
+  },
+  {
+   "w": "niet,",
+   "start": 164,
+   "end": 170
+  },
+  {
+   "w": "want",
+   "start": 177,
+   "end": 183
+  },
+  {
+   "w": "met",
+   "start": 184,
+   "end": 190
+  },
+  {
+   "w": "Buddy",
+   "start": 191,
+   "end": 203
+  },
+  {
+   "w": "ga",
+   "start": 204,
+   "end": 210
+  },
+  {
+   "w": "je",
+   "start": 212,
+   "end": 218
+  },
+  {
+   "w": "rechtdoor.",
+   "start": 219,
+   "end": 231
+  },
+  {
+   "w": "Stuur",
+   "start": 242,
+   "end": 248
+  },
+  {
+   "w": "hem",
+   "start": 250,
+   "end": 256
+  },
+  {
+   "w": "door",
+   "start": 257,
+   "end": 263
+  },
+  {
+   "w": "en",
+   "start": 264,
+   "end": 270
+  },
+  {
+   "w": "hij",
+   "start": 271,
+   "end": 277
+  },
+  {
+   "w": "staat",
+   "start": 278,
+   "end": 284
+  },
+  {
+   "w": "in",
+   "start": 286,
+   "end": 292
+  },
+  {
+   "w": "je",
+   "start": 293,
+   "end": 299
+  },
+  {
+   "w": "agenda.",
+   "start": 300,
+   "end": 318
+  },
+  {
+   "w": "Activeer",
+   "start": 330,
+   "end": 348
+  },
+  {
+   "w": "Buddy.",
+   "start": 349,
+   "end": 361
+  }
+ ]
+}
