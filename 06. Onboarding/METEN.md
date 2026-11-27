@@ -1,6 +1,6 @@
 # Onboarding v5.3 meetbaar maken
 
-Bestand: `betaalbuddy-onboarding_v5.3.html` (één abonnement, Buddy €3,49; de pakketvraag is weg, het gesprek begint bij het mailadres). Zet in WordPress alleen Mollie-formulier 141 aan; 36 (Basic) en 143 (Pro) staan niet meer op de pagina. Vervang het blok tussen `START KOPIEREN` en `EINDE KOPIEREN` in Oxygen. Verder verandert er niets aan de pagina, de Mollie-formulieren of de doorverwijzingen.
+Bestand: `betaalbuddy-onboarding_v5.3.html` (gebouwd op de live versie v5 van 31 oktober; één abonnement, Buddy €3,49; de pakketvraag is weg, het gesprek begint bij het mailadres). Zet in WordPress alleen Mollie-formulier 141 aan; 36 (Basic) en 143 (Pro) staan niet meer op de pagina. Vervang het blok tussen `START KOPIEREN` en `EINDE KOPIEREN` in Oxygen. Verder verandert er niets aan de pagina, de Mollie-formulieren of de doorverwijzingen.
 
 ## 1. Welke events er zijn
 

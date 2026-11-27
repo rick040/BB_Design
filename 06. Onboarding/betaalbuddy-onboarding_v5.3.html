@@ -11,20 +11,17 @@
 
 <!-- ===================== START KOPIEREN VANAF HIER ===================== -->
 <!--
-  BETAALBUDDY ONBOARDING v5.3 (26 nov 2026)
-  v5.3: één abonnement. Buddy, €3,49 per maand, met herinnering per mail én in je agenda: precies wat de
-        backend voor elke betaler doet. Basic en Buddy pro zijn weg (pro komt terug als sms/WhatsApp live is).
-        De pakketvraag valt weg (CONFIG.singlePlan): het gesprek begint bij het mailadres, met daarboven wat je
-        krijgt en de prijs. Twee vragen in plaats van drie. Alleen het Mollie-formulier 141 staat nog op de pagina.
-  BETAALBUDDY ONBOARDING v5.2 (26 nov 2026)
-  v5.2: meetbaar. Elk event krijgt dezelfde context mee (versie, scherm, vraag, pakket, in-app, apparaat).
+  BETAALBUDDY ONBOARDING v5.3 (27 nov 2026), gebouwd op de live versie v5
+  v5.3: één abonnement. Buddy, €3,49 per maand, met een seintje per mail (7 en 2 dagen vooraf) en alles in je
+        agenda: precies wat de backend voor elke betaler doet. Basic en Buddy pro zijn weg (een tweede pakket komt
+        pas als sms/WhatsApp live is). De pakketvraag valt weg (CONFIG.singlePlan): het gesprek begint bij het
+        mailadres, met daaronder wat je krijgt en de prijs. Twee vragen in plaats van drie. Alleen Mollie-formulier
+        141 staat nog op de pagina.
+        Meetbaar: elk event krijgt dezelfde context mee (versie, scherm, vraag, pakket, in-app, apparaat).
         Nieuw: ob_engaged (eerste echte handeling), email_valid, email_typo_shown, checkout_error (met type),
-        retry_start en ob_exit (waar iemand de pagina verlaat: laatste event, vraag, seconden, wel/niet aangeraakt).
-        purchase krijgt transaction_id en plan_known. Geen mailadres of ander persoonsgegeven in events.
-        Optioneel ook direct naar gtag (CONFIG.analytics.gtag) als GA4 niet via Google Tag Manager loopt.
-  BETAALBUDDY ONBOARDING v5.1 (4 nov 2026)
-  v5.1: pakketten bouwen logisch op. Basic = overzicht + CSV, Buddy = + herinnering in je agenda,
-        Buddy pro = + herinnering per mail (sms/WhatsApp binnenkort). Elke regel staat in CONFIG.plans.
+        retry_start en ob_exit (waar iemand de pagina verlaat). purchase krijgt transaction_id en plan_known.
+        Geen mailadres of ander persoonsgegeven in events. Optioneel ook direct naar gtag (CONFIG.analytics.gtag).
+  v5 (31 okt 2026)
   v5:   omgedraaid. De checkout staat meteen open op de pagina (drie korte vragen) en de knop om verder te
         gaan blijft altijd in beeld. "Eerst gratis uitproberen?" is nu de balk onderin: omhoog vegen of
         tikken opent de proefherinnering (.ics). Daarna schuift hij vanzelf terug naar de checkout, die dan
@@ -427,7 +424,7 @@
     <section class="bb-screen" data-bb-screen="checkout" style="gap:16px" aria-labelledby="bb-t-start">
       <div class="bb-co-head">
         <h1 class="bb-h" id="bb-t-start">Nooit meer een rekening vergeten.</h1>
-        <p class="bb-muted">Stuur je rekeningen door. Buddy houdt bij wat eraan komt en herinnert je op tijd.</p>
+        <p class="bb-muted">Buddy geeft je op tijd een seintje, 7 en 2 dagen vooraf.</p>
       </div>
 
       <div class="bb-co" data-bb-co>
@@ -457,8 +454,8 @@
           <div class="bb-say">
             <span class="bb-say-ava" aria-hidden="true"><svg width="22" height="24"><use href="#bb-buddy"/></svg></span>
             <div class="bb-say-txt">
-              <h2 class="bb-h bb-say-q" tabindex="-1">Wat is je mailadres?</h2>
-              <p class="bb-say-sub" data-bb-out="q2sub"></p>
+              <h2 class="bb-h bb-say-q" tabindex="-1">Naar welk mailadres mag ik je seintjes sturen?</h2>
+              <p class="bb-say-sub">Je factuur komt daar ook. Verder niks.</p>
             </div>
           </div>
           <div class="bb-field">
@@ -492,7 +489,7 @@
             </div>
             <div class="bb-sum-row">
               <span class="bb-sum-ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-              <span class="bb-sum-t"><b>Je mailadres</b><span data-bb-out="email"></span></span>
+              <span class="bb-sum-t"><b>Seintjes naar</b><span data-bb-out="email"></span></span>
               <button type="button" class="bb-sum-edit" data-bb-tostep="2">Wijzig</button>
             </div>
             <div class="bb-sum-row" data-bb-sumbill hidden>
@@ -530,7 +527,7 @@
         <ol class="bb-how" aria-label="Zo werkt het">
           <li><span class="bb-how-n">1</span><span><b>Stuur je rekening door</b>naar je eigen Buddy-adres</span></li>
           <li><span class="bb-how-n">2</span><span><b>Buddy leest bedrag en datum</b>de rest van je mail bewaart hij niet</span></li>
-          <li><span class="bb-how-n">3</span><span><b>Jij weet wat eraan komt</b>in je overzicht, je agenda of je mail</span></li>
+          <li><span class="bb-how-n">3</span><span><b>Jij krijgt op tijd een seintje</b>7 en 2 dagen vooraf, ook in je agenda</span></li>
         </ol>
       </div>
     </section>
@@ -684,16 +681,16 @@ function bbStart() {
        tag   = één regel onder de naam (de belofte in gewone taal)
        feats = wat je ziet als het pakket gekozen is. no:true = staat er niet in (grijs kruisje),
                soon:true = krijgt het label "binnenkort", hi:true = vetgedrukt,
-               tb = tekst als iemand net een rekening heeft uitgeprobeerd ({rekening} = van wie).
-       De pakketten bouwen op: Basic = overzicht + CSV, Buddy = + agenda, Buddy pro = + mail (sms/WhatsApp volgt).
+               bill:true = wordt persoonlijk gemaakt met de rekening die iemand net invulde.
        Zet alleen dingen neer die echt werken op de dag dat dit live staat. */
     plans: {
       buddy: { name: 'Buddy', price: 3.49, form: 141,
-        tag: 'Herinnering per mail én in je agenda',
+        tag: 'Ik seintje je vooraf en zet alles in je agenda',
         feats: [
-          { t: 'Een mail vóór elke vervaldatum, op de dagen die jij kiest', tb: 'Een mail voordat je {rekening} betaald moet zijn', hi: true },
-          { t: 'Elke rekening ook in je eigen agenda' },
-          { t: 'Overzicht van al je rekeningen, te downloaden als CSV' }
+          { t: 'Seintje per mail, 7 en 2 dagen vooraf', hi: true, bill: true },
+          { t: 'Elke rekening vanzelf in je agenda' },
+          { t: 'Eén tik op "al betaald" en hij is weg' },
+          { t: 'Overzicht van alles wat openstaat, ook als download' }
         ] }
       /* Later een tweede pakket? Zet het hier terug (bijv. pro: { name: 'Buddy pro', price: 4.99, form: 143, ... }),
          voeg het toe aan order, zet singlePlan op false en zet het Mollie-formulier weer op de pagina. */
@@ -704,7 +701,7 @@ function bbStart() {
     defaultPlan: 'buddy',
     singlePlan: true,                                 // true = geen pakketvraag; het gesprek begint bij het mailadres
     upsellFrom: 'lite', upsellTo: 'buddy',            // duwtje als iemand Basic kiest
-    nudge: 'Voor {verschil} per maand meer staat elke rekening met een herinnering in je agenda.',
+    nudge: 'Voor {verschil} per maand meer krijg je seintjes vooraf, ook in je agenda.',
     // Prijsanker onder de pakketten. {prijs} = maandprijs. Leeg laten om te verbergen.
     anchor: 'Eén vergeten rekening kost al snel €40 aan incassokosten. {naam} kost {weekprijs} per week.',
     switchNote: 'Later wisselen of opzeggen kan altijd.', // CHECK: wisselen gaat nu met de hand
@@ -773,7 +770,7 @@ function bbStart() {
   var M = { t0: Date.now(), last: '', engaged: false, exitSent: false, tryOpened: false, paying: false, once: {} };
   function ctx() {
     var c = { funnel: CONFIG.analytics.version, inapp: IS_INAPP ? 1 : 0, device: isDesk() ? 'desktop' : 'mobile' };
-    if (typeof S === 'object' && S) { c.screen = S.screen; c.step = S.cstep || 0; if (!('plan' in c)) c.plan = S.plan; }
+    if (typeof S === 'object' && S) { c.screen = S.screen; c.step = S.cstep || 0; c.plan = S.plan; }
     return c;
   }
   function trackOnce(name, data) { if (M.once[name]) return; M.once[name] = 1; track(name, data); }
@@ -1037,8 +1034,12 @@ function bbStart() {
   function perWeek(p) { return euro(Math.round(p * 12 / 52 * 100) / 100); }
   // Maakt een regel persoonlijk met de rekening die iemand net invulde
   function billText(f) {
-    if (!f.tb || !S.bill) return f.t;
-    return f.tb.replace(/\{rekening\}/g, S.bill.from);
+    var b = S.bill; if (!f.bill || !b) return f.t;
+    if (f.no) return 'Je ' + b.from + '-rekening krijgt geen seintje';
+    var due = fromIso(b.due), t = today(), d7 = addDays(due, -7), d2 = addDays(due, -2);
+    if (d7 >= t) return 'Seintje op ' + fShort.format(d7) + ' en ' + fShort.format(d2) + ' voor je ' + b.from;
+    if (d2 >= t) return 'Seintje op ' + fShort.format(d2) + ' voor je ' + b.from + ', en daarna voor elke rekening';
+    return f.t;
   }
   var planSig = '';
   function renderPlans() {
@@ -1072,7 +1073,6 @@ function bbStart() {
     out('q1', hasBill ? 'Zal ik dit voor al je rekeningen doen?' : 'Hoe zal ik je helpen?');
     out('q1sub', (hasBill ? 'Je ' + S.bill.from + ' staat er al in. ' : 'Kies wat bij je past. ') + (CONFIG.switchNote || ''));
     out('allplans', CONFIG.allPlans || '');
-    out('q2sub', 'Daar stuur ik je herinneringen, je doorstuuradres en je factuur naartoe. Verder niks.');
     var pi = $('[data-bb-planinfo]');
     pi.hidden = !CONFIG.singlePlan;
     if (CONFIG.singlePlan) {
@@ -1099,7 +1099,7 @@ function bbStart() {
     var up = CONFIG.plans[CONFIG.upsellTo], isUp = S.plan === CONFIG.upsellFrom && up;
     $('[data-bb-nudge]').hidden = !isUp;
     if (isUp) {
-      out('nudge', (S.bill ? 'Je ' + S.bill.from + '-rekening krijgt dan geen herinnering. ' : 'Zonder herinnering moet je het zelf onthouden. ') +
+      out('nudge', (S.bill ? 'Je ' + S.bill.from + '-rekening krijgt dan geen seintje. ' : 'Zonder seintjes moet je het zelf onthouden. ') +
         CONFIG.nudge.replace(/\{verschil\}/g, euro(up.price - p.price)));
       $('[data-bb-upsell]').textContent = 'Neem ' + up.name;
     }
@@ -1415,7 +1415,7 @@ function bbStart() {
     S.emailOk = false;
     if (S.cstep !== 2) goStep(2, { keepErr: true, noField: true }); else renderSheet();
     var em = $('#bb-email'); em.setAttribute('aria-invalid', 'true');
-    $('[data-bb-payerr]').textContent = 'Vul je mailadres in, daar komen je doorstuuradres en je factuur.';
+    $('[data-bb-payerr]').textContent = 'Vul je mailadres in, daar komen je seintjes en je factuur.';
     track('checkout_error', { type: 'email' });
     em.focus();
   }

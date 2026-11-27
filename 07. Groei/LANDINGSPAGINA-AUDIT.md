@@ -22,7 +22,7 @@ Bekeken: de homepage, `/start-met-betaalbuddy/` en `/betaalbuddy-referral-progra
 | 10 | FAQ "Werkt het met Outlook…?" | "Er is geen koppeling met Gmail of Google meer nodig; die oude versie bestaat niet meer." | Interne geschiedenis. Een nieuwe bezoeker gaat juist twijfelen. | "Ja, met elk mailprogramma dat kan doorsturen." |
 | 11 | Hele site | Google Tag Manager (`GTM-WGGW9722`) laadt, maar in de HTML en op het eerste scherm staat geen cookiemelding. | Laadt Tag Manager GA4 of de Meta Pixel zonder toestemming, dan is dat in strijd met de cookieregels. En het botst met je privacybelofte. | Controleren in Tag Manager. Is er geen toestemmingsbanner, voeg er een toe (of stap over op cookieloze analytics). |
 
-**Let op bij de startpagina:** de live versie van `/start-met-betaalbuddy/` is nieuwer dan het bestand dat je me stuurde. Buddy heeft daar al "Seintje per mail, 7 en 2 dagen vooraf", en Pro heeft de tekst "ook op de dag zelf". v5.3 is gebouwd op het bestand dat je stuurde. Neem bij het plaatsen de teksten over die je live later nog hebt aangepast, of stuur me de live code, dan voeg ik het samen.
+**Let op bij de startpagina:** live draait onboarding v5 (31 oktober). Het bestand v5.1 (4 november) was nooit geplaatst. De nieuwe v5.3 is gebouwd op de live versie v5, met de live teksten ("seintje", "Naar welk mailadres mag ik je seintjes sturen?") en daarbovenop één abonnement en de extra meetpunten.
 
 ---
 
