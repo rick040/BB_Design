@@ -89,7 +89,7 @@ export const defaultZoWerktProps: ZoWerktProps = {
     sender: "Zorgverzekeraar",
     subject: "Factuur",
     amount: "€12,00",
-    dueLong: "11 december 2026",
+    dueLong: "11 december",
     dueShort: "vr 11 dec",
     dueDay: 11,
   },
@@ -171,5 +171,8 @@ export const zoWerktTotal = (t: ZoWerktProps["timing"]) => {
   return s.phone + s.agenda + s.notify + s.cta - 3 * s.transition;
 };
 
-/** Phone size and place on the 1080 × 900 stage (same in every scene). */
-export const PHONE = { x: 290, y: 0, w: 500, h: 840 };
+/** Phone size and place on the 1080 × 900 stage. */
+// Modern phone proportions (about 19.5:9). Scenes with a two-line headline
+// draw it scaled down from the top centre (see PHONE_SCALE).
+export const PHONE = { x: 335, y: 0, w: 410, h: 890 };
+export const PHONE_SCALE = { agenda: 0.92, notify: 0.82 };

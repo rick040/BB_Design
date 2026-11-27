@@ -8,7 +8,7 @@ import { Headline } from "../../components/Text";
 import { blinkScale, clamp, pop, springs } from "../../lib/anim";
 import { usePalette } from "../../lib/palette";
 import { fonts } from "../../theme";
-import { PHONE, type ZoWerktProps } from "../schema";
+import { PHONE, PHONE_SCALE, type ZoWerktProps } from "../schema";
 
 // Timeline (frames, scene-local).
 export const AGENDA_T = {
@@ -41,7 +41,16 @@ export const AgendaScene: React.FC<{ props: ZoWerktProps["agenda"]; bill: ZoWerk
     <SceneBg color={p.blue}>
       <Headline text={props.headline} color={p.white} delay={2} stagger={3} />
       <Stage>
-        <Phone width={PHONE.w} height={PHONE.h - 60} style={{ position: "absolute", left: PHONE.x, top: PHONE.y + 60 }}>
+        <div
+          style={{
+            position: "absolute",
+            left: PHONE.x,
+            top: PHONE.y + 60,
+            transform: `scale(${PHONE_SCALE.agenda})`,
+            transformOrigin: "50% 0%",
+          }}
+        >
+        <Phone width={PHONE.w} height={PHONE.h}>
           <div style={{ position: "absolute", inset: 0, fontFamily: fonts.ui, padding: "66px 20px 0" }}>
             <div style={{ fontSize: 34, fontWeight: 650, color: p.ink, paddingLeft: 8 }}>{props.month}</div>
             <div style={{ display: "flex", marginTop: 20, opacity: week }}>
@@ -53,12 +62,12 @@ export const AgendaScene: React.FC<{ props: ZoWerktProps["agenda"]; bill: ZoWerk
                     <div
                       style={{
                         margin: "8px auto 0",
-                        width: 52,
-                        height: 52,
+                        width: 44,
+                        height: 44,
                         borderRadius: "50%",
                         background: isDue ? p.blue : "transparent",
                         color: isDue ? p.white : p.ink,
-                        fontSize: 26,
+                        fontSize: 22,
                         fontWeight: 600,
                         display: "flex",
                         alignItems: "center",
@@ -98,7 +107,7 @@ export const AgendaScene: React.FC<{ props: ZoWerktProps["agenda"]; bill: ZoWerk
                   boxShadow: "0 14px 30px rgba(1, 40, 160, 0.3)",
                 }}
               >
-                <div style={{ fontSize: 26, fontWeight: 650 }}>{props.eventTitle}</div>
+                <div style={{ fontSize: 22, fontWeight: 650 }}>{props.eventTitle}</div>
                 <div style={{ fontSize: 34, fontWeight: 650, marginTop: 6 }}>{bill.amount}</div>
                 <div
                   style={{
@@ -128,6 +137,7 @@ export const AgendaScene: React.FC<{ props: ZoWerktProps["agenda"]; bill: ZoWerk
             </div>
           </div>
         </Phone>
+        </div>
 
         <Buddy
           size={BUDDY}
@@ -138,7 +148,7 @@ export const AgendaScene: React.FC<{ props: ZoWerktProps["agenda"]; bill: ZoWerk
           squash={0.8 + 0.2 * buddy}
           style={{
             position: "absolute",
-            left: PHONE.x + PHONE.w + 10,
+            left: 540 + (PHONE.w / 2) * PHONE_SCALE.agenda + 20,
             top: 620 - BUDDY * BUDDY_RATIO,
             opacity: Math.min(1, buddy * 3),
             transform: `translateX(${(1 - buddy) * 80}px)`,

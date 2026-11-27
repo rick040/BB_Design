@@ -74,7 +74,7 @@ export const PhoneScene: React.FC<{
         >
           {/* Mail view */}
           <div style={{ position: "absolute", inset: 0, fontFamily: fonts.ui, padding: "64px 30px 0" }}>
-            <div style={{ fontSize: 26, color: p.blueMid, fontWeight: 500 }}>‹ {mail.inbox}</div>
+            <div style={{ fontSize: 24, color: p.blueMid, fontWeight: 500 }}>‹ {mail.inbox}</div>
             <div style={{ marginTop: 30, fontSize: 38, fontWeight: 650, color: p.ink, lineHeight: 1.15 }}>
               {bill.subject} · {bill.amount}
             </div>
@@ -102,8 +102,8 @@ export const PhoneScene: React.FC<{
             </div>
             <div style={{ marginTop: 34, fontSize: 26, color: "#4a4a55" }}>{mail.greeting}</div>
             <div style={{ marginTop: 18, display: "flex", flexDirection: "column", gap: 14 }}>
-              <div style={{ width: 360, height: 14, borderRadius: 7, background: p.grey }} />
               <div style={{ width: 300, height: 14, borderRadius: 7, background: p.grey }} />
+              <div style={{ width: 240, height: 14, borderRadius: 7, background: p.grey }} />
             </div>
             <div
               style={{
@@ -116,7 +116,7 @@ export const PhoneScene: React.FC<{
                 gap: 14,
               }}
             >
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22 }}>
                 <span style={{ color: "#4a4a55" }}>{mail.amountLabel}</span>
                 <span
                   style={{
@@ -130,7 +130,7 @@ export const PhoneScene: React.FC<{
                   {bill.amount}
                 </span>
               </div>
-              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 26 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: 22 }}>
                 <span style={{ color: "#4a4a55" }}>{mail.dueLabel}</span>
                 <span
                   style={{
@@ -146,8 +146,8 @@ export const PhoneScene: React.FC<{
               </div>
             </div>
             <div style={{ marginTop: 18, display: "flex", flexDirection: "column", gap: 14 }}>
-              <div style={{ width: 380, height: 14, borderRadius: 7, background: p.grey }} />
-              <div style={{ width: 250, height: 14, borderRadius: 7, background: p.grey }} />
+              <div style={{ width: 300, height: 14, borderRadius: 7, background: p.grey }} />
+              <div style={{ width: 210, height: 14, borderRadius: 7, background: p.grey }} />
             </div>
           </div>
           {/* Bottom toolbar */}
@@ -160,7 +160,7 @@ export const PhoneScene: React.FC<{
               display: "flex",
               gap: 16,
               fontFamily: fonts.ui,
-              fontSize: 26,
+              fontSize: 21,
               fontWeight: 600,
             }}
           >
@@ -194,7 +194,7 @@ export const PhoneScene: React.FC<{
               }}
             >
               {mail.forward}
-              <Arrow size={26} />
+              <Arrow size={22} />
               <div
                 style={{
                   position: "absolute",
@@ -233,7 +233,7 @@ export const PhoneScene: React.FC<{
               }}
             >
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-                <div style={{ fontSize: 34, fontWeight: 650, color: p.ink }}>{forward.title}</div>
+                <div style={{ fontSize: 32, fontWeight: 650, color: p.ink }}>{forward.title}</div>
                 <div
                   style={{
                     width: 72,
@@ -264,7 +264,7 @@ export const PhoneScene: React.FC<{
                 style={{
                   marginTop: 14,
                   minHeight: 44,
-                  fontSize: 28,
+                  fontSize: 22,
                   fontWeight: 600,
                   color: p.blue,
                   whiteSpace: "nowrap",
@@ -281,7 +281,7 @@ export const PhoneScene: React.FC<{
                   {bill.sender} · {bill.subject} · {bill.amount}
                 </div>
                 <div style={{ marginTop: 14, display: "flex", flexDirection: "column", gap: 12 }}>
-                  <div style={{ width: 330, height: 12, borderRadius: 6, background: p.grey }} />
+                  <div style={{ width: 200, height: 12, borderRadius: 6, background: p.grey }} />
                   <div style={{ width: 260, height: 12, borderRadius: 6, background: p.grey }} />
                 </div>
               </div>
@@ -306,17 +306,17 @@ export const PhoneScene: React.FC<{
                   display: "flex",
                   alignItems: "center",
                   gap: 14,
-                  padding: "20px 30px",
+                  padding: "14px 20px",
                   borderRadius: 40,
                   background: p.blue,
                   color: p.white,
                   fontFamily: fonts.ui,
-                  fontSize: 28,
+                  fontSize: 20,
                   fontWeight: 600,
                   whiteSpace: "nowrap",
                 }}
               >
-                <svg width={32} height={32} viewBox="0 0 32 32">
+                <svg width={26} height={26} viewBox="0 0 32 32">
                   <path d="M6 17l7 7L26 9" fill="none" stroke="#fff" strokeWidth={4} strokeLinecap="round" strokeLinejoin="round" />
                 </svg>
                 {forward.sent}

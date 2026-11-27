@@ -58,6 +58,7 @@ Hergebruik-check: concept 1 ("Stuur door. Buddy onthoudt.") vertelt ook doorstur
 - De melding komt van "Agenda" met een generiek agenda-icoon, niet van een BetaalBuddy-app: Buddy heeft geen app en zet het seintje in je eigen agenda. Een BetaalBuddy-app-icoon zou "geen app" tegenspreken.
 - Scène 3 heeft één belletje-chip "Seintje vooraf" in plaats van twee meldingsbelletjes, om dezelfde reden.
 - Scène 1 en 2 zijn één doorlopend shot op dezelfde telefoon, met een kopwissel op 2,5 s.
+- De telefoon heeft een moderne verhouding (410 × 890, ongeveer 19,5:9). In scène 3 en 4 staat hij iets kleiner (`PHONE_SCALE` in het schema), zodat de tweeregelige kop en de subregel vrij blijven. De vervaldatum op de mail is "11 december" (zonder jaartal) zodat de regel op het smallere scherm past.
 
 ---
 
