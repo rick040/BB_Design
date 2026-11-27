@@ -1,14 +1,23 @@
-<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Betaalbuddy homepage preview</title><style>@font-face{font-family:"Space Grotesk";src:url("../../../04.%20Animation/public/fonts/SpaceGrotesk-Variable.woff2") format("woff2");font-weight:300 700}body{margin:0}</style></head><body>
-<!-- ===================== BETAALBUDDY HOMEPAGE v1 (28 nov 2026) =====================
+<!DOCTYPE html><html lang="nl"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Betaalbuddy homepage preview</title>
+<style>@font-face{font-family:"Space Grotesk";src:url("../../../04.%20Animation/public/fonts/SpaceGrotesk-Variable.woff2") format("woff2");font-weight:300 700}body{margin:0;font-family:"Space Grotesk",system-ui,sans-serif}
+.tpl{background:#013bff;padding:10px 10px 0}.tpl div{max-width:1120px;margin:0 auto;height:60px;background:#fff;border-radius:18px;display:flex;align-items:center;justify-content:center;color:#9aa1ad;font-size:13px}
+.tplf{background:#0026a8;color:#b6c7ff;text-align:center;padding:40px 16px;font-size:13px}</style></head><body>
+<div class="tpl"><div>Header van je Oxygen-template</div></div>
+<!-- ===================== BETAALBUDDY HOMEPAGE v2 (28 nov 2026) =====================
   Eén Code Block (HTML-tab) voor de hele homepage, in dezelfde stijl als de checkout (onboarding v5.3)
   en de blokken in 07. Groei/website. Alles staat onder #bb-home; het raakt de rest van de site niet.
 
+  v2: zonder menubalk en footer (die komen uit je Oxygen-template), met scroll- en micro-animaties:
+      secties schuiven zacht in beeld, bedragen tellen op, Buddy knippert, de kaartjes zweven,
+      "al betaald" is in het eerste scherm echt aan te tikken, knoppen reageren op hover en tik,
+      vragen klappen zacht open, en op mobiel verschijnt na het eerste scherm een vaste knop onderin.
+      Wie in zijn telefoon "minder beweging" aan heeft staan, krijgt alles zonder animatie.
+
   Plaatsen
-  - Zet dit in een leeg Code Block op de homepage en haal de oude secties weg.
-  - Heeft je Oxygen-template al een eigen menubalk en footer? Verwijder dan de delen tussen de
-    commentaarregels MENU en /MENU, en tussen FOOTER en /FOOTER. Of andersom: zet de
-    template-header en -footer voor deze pagina uit en gebruik deze.
-  - Ankers blijven werken: #hoehetwerkt, #privacy, #prijzen, #faq.
+  - Zet dit in een leeg Code Block op de homepage, tussen de header en footer van je template,
+    en haal de oude secties weg.
+  - Ankers blijven werken: #hoehetwerkt, #privacy, #prijzen, #faq. Staat je template-header vast
+    (sticky)? Pas dan scroll-margin-top hieronder aan op de hoogte van die header.
 
   Inhoud
   - Alleen beloftes die het product waarmaakt (één abonnement €3,49, mail 7 en 2 dagen vooraf, agenda,
@@ -17,7 +26,8 @@
     door ons geverifieerd. Controleer ze bij CJIB.nl en BKR.nl of haal de kaart weg.
 
   Meten (Google Tag Manager)
-  - site_cta  bij elke knop: cta = try of direct, where = menu, hero, stappen, prijs, slot
+  - site_cta  bij elke knop: cta = try of direct, where = hero, stappen, prijs, slot, sticky
+  - demo_paid bij een tik op "al betaald" in het voorbeeld in het eerste scherm
   - faq_open  bij het openen van een vraag: q = korte naam van de vraag
 ================================================================================ -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,16 +67,6 @@
 #bb-home .btn--blue:hover{background:var(--blue-d)}
 #bb-home .link{font-weight:500;color:var(--blue)!important;text-decoration:underline!important;text-underline-offset:3px}
 
-/* MENU */
-#bb-home .nav{position:sticky;top:0;z-index:50;background:var(--blue);padding:10px 10px 0}
-#bb-home .nav-in{max-width:1120px;margin:0 auto;height:60px;background:#fff;border-radius:18px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 10px 0 14px;box-shadow:0 6px 20px rgba(0,16,90,.18)}
-#bb-home .logo{display:flex;align-items:center;gap:8px;text-decoration:none!important;color:var(--ink)!important;font-weight:700;font-size:18px;letter-spacing:-.05em;line-height:.95}
-#bb-home .logo svg{width:28px;height:30px}
-#bb-home .logo small{display:block;font-size:inherit;font-weight:700;color:var(--blue)}
-#bb-home .nav-links{display:none;gap:22px;font-size:15px;font-weight:500}
-#bb-home .nav-links a{text-decoration:none!important;color:var(--ink)!important}
-#bb-home .nav-links a:hover{color:var(--blue)!important}
-#bb-home .nav-cta{min-height:42px;padding:0 18px;border-radius:999px;font-size:15px}
 
 /* HERO */
 #bb-home .hero{background:var(--blue);color:#fff;padding:32px 0 48px;overflow:hidden}
@@ -170,21 +170,10 @@
 #bb-home .end p{font-size:17px;color:var(--onblue)}
 #bb-home .end .ctas{width:100%;max-width:420px}
 
-/* FOOTER */
-#bb-home .foot{background:var(--blue-d);color:var(--onblue);padding:44px 0 32px;font-size:14.5px}
-#bb-home .foot-in{display:grid;grid-template-columns:1fr;gap:28px}
-#bb-home .foot .logo{color:#fff!important}
-#bb-home .foot .logo small{color:var(--soft)}
-#bb-home .foot-links{display:grid;grid-template-columns:1fr 1fr;gap:10px 24px}
-#bb-home .foot-links a{text-decoration:none!important;color:var(--onblue)!important}
-#bb-home .foot-links a:hover{color:#fff!important}
-#bb-home .foot-legal{border-top:1px solid rgba(255,255,255,.18);margin-top:28px;padding-top:18px;display:flex;flex-direction:column;gap:8px;font-size:13px;color:var(--soft)}
-#bb-home .foot-legal a{color:var(--soft)!important}
 
 @media (min-width:900px){
   #bb-home .w{padding:0 32px}
   #bb-home .sec{padding:96px 0}
-  #bb-home .nav-links{display:flex}
   #bb-home .hero{padding:64px 0 80px}
   #bb-home .hero-in{grid-template-columns:1.15fr .85fr;gap:56px}
   #bb-home .ctas{flex-direction:row;flex-wrap:wrap}
@@ -200,13 +189,68 @@
   #bb-home .plan{padding:28px 28px 24px}
   #bb-home .end .ctas{max-width:680px;justify-content:center}
   #bb-home .end .btn{flex:1 1 auto;white-space:nowrap}
-  #bb-home .foot-in{grid-template-columns:1.2fr 1fr}
-  #bb-home .foot-legal{flex-direction:row;justify-content:space-between}
+}
+@keyframes bbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* ANIMATIES EN INTERACTIES */
+#bb-home .btn{transition:background-color .15s,transform .2s cubic-bezier(.32,.72,0,1),box-shadow .2s,border-color .15s}
+#bb-home .btn svg{transition:transform .2s cubic-bezier(.32,.72,0,1)}
+#bb-home .btn:hover svg{transform:translateX(4px)}
+#bb-home .btn--white,#bb-home .btn--blue{position:relative;overflow:hidden}
+#bb-home .btn--white::after,#bb-home .btn--blue::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 30%,rgba(255,255,255,.35) 50%,transparent 70%);transform:translateX(-120%);pointer-events:none}
+#bb-home .btn--white:hover::after,#bb-home .btn--blue:hover::after{transition:transform .7s ease;transform:translateX(120%)}
+@media (hover:hover){
+  #bb-home .btn--white:hover,#bb-home .btn--blue:hover{transform:translateY(-2px)}
+  #bb-home .tile,#bb-home .pc,#bb-home .step,#bb-home .plan{transition:transform .25s cubic-bezier(.32,.72,0,1),box-shadow .25s,opacity .6s ease}
+  #bb-home .tile:hover,#bb-home .pc:hover,#bb-home .step:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(16,24,40,.08)}
+  #bb-home .plan:hover{transform:translateY(-4px);box-shadow:0 24px 54px rgba(1,59,255,.18)}
+}
+#bb-home .pulse{display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);margin:0 6px 1px 0;vertical-align:middle;box-shadow:0 0 0 0 rgba(194,24,91,.5)}
+#bb-home .paidbtn{flex:none;align-self:center;border:0;border-radius:999px;background:var(--tint);color:var(--blue);font:inherit;font-size:12.5px;font-weight:600;padding:7px 11px;cursor:pointer;transition:background-color .15s,transform .15s}
+#bb-home .paidbtn:hover{background:#dbe4ff}
+#bb-home .paidbtn:active{transform:scale(.94)}
+#bb-home .card--mail{min-height:66px}
+#bb-home .paidmsg{position:absolute;inset:0;display:flex;align-items:center;gap:10px;padding:0 16px;border-radius:18px;background:#fff;font-size:14.5px;font-weight:600;color:var(--ink);opacity:0;pointer-events:none;transition:opacity .25s}
+#bb-home .paidmsg .ok{flex:none;width:28px;height:28px;border-radius:50%;background:#1f9d55;color:#fff;display:flex;align-items:center;justify-content:center;transform:scale(.4);transition:transform .35s cubic-bezier(.3,1.6,.5,1)}
+#bb-home .card--mail.is-paid .paidmsg{opacity:1}
+#bb-home .card--mail.is-paid .paidmsg .ok{transform:scale(1)}
+#bb-home .card--in{transition:opacity .35s,transform .35s cubic-bezier(.32,.72,0,1)}
+#bb-home .visual.is-paid .card--in{opacity:.25;transform:translateX(16px) scale(.97)}
+#bb-home details p{transform-origin:top}
+#bb-home summary{transition:color .15s}
+#bb-home summary:hover{color:var(--blue)}
+#bb-home .sticky{display:none}
+@media (max-width:899px){
+  #bb-home .sticky{display:block;position:fixed;left:12px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom));z-index:60;transform:translateY(140%);transition:transform .4s cubic-bezier(.32,.72,0,1)}
+  #bb-home .sticky .btn{width:100%;box-shadow:0 10px 30px rgba(1,59,255,.35)}
+  #bb-home .sticky.show{transform:none}
 }
 @media (prefers-reduced-motion:no-preference){
-  #bb-home .card{animation:bbIn .6s cubic-bezier(.32,.72,0,1) both}
-  #bb-home .card--in{animation-delay:.25s}
-  @keyframes bbIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+  #bb-home.bb-js .rv{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s cubic-bezier(.32,.72,0,1);transition-delay:var(--d,0s)}
+  #bb-home.bb-js .rv.in{opacity:1;transform:none}
+  #bb-home.bb-js .rv.done{transition:transform .25s cubic-bezier(.32,.72,0,1),box-shadow .25s}
+  #bb-home .card--mail{animation:bbIn .6s cubic-bezier(.32,.72,0,1) both,bbFloat 6s 1s ease-in-out infinite}
+  #bb-home .card--in{animation:bbIn .6s .25s cubic-bezier(.32,.72,0,1) both,bbFloat 6s 1.8s ease-in-out infinite}
+  @keyframes bbFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+  #bb-home .mascot{animation:bbPeek .8s .5s cubic-bezier(.3,1.5,.5,1) both}
+  @keyframes bbPeek{from{transform:translateY(40px) rotate(6deg);opacity:0}to{transform:rotate(6deg);opacity:1}}
+  #bb-home .eyes{transform-box:fill-box;transform-origin:center;animation:bbBlink 5s 2s infinite}
+  @keyframes bbBlink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.1)}}
+  #bb-home .pulse{animation:bbPulse 1.8s ease-out infinite}
+  @keyframes bbPulse{0%{box-shadow:0 0 0 0 rgba(194,24,91,.5)}80%,100%{box-shadow:0 0 0 7px rgba(194,24,91,0)}}
+  #bb-home .step.in .si{animation:bbPop .5s .15s cubic-bezier(.3,1.6,.5,1) both}
+  @keyframes bbPop{from{transform:scale(.4)}to{transform:scale(1)}}
+  #bb-home .cmp-us li{opacity:0;transform:translateX(-8px);transition:opacity .4s,transform .4s}
+  #bb-home .cmp-us.in li{opacity:1;transform:none}
+  #bb-home .cmp-us.in li:nth-child(2){transition-delay:.15s}
+  #bb-home .cmp-us.in li:nth-child(3){transition-delay:.3s}
+  #bb-home details[open] p{animation:bbFaq .3s ease both}
+  @keyframes bbFaq{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+  #bb-home .endbuddy{animation:bbBob 3.2s ease-in-out infinite}
+  @keyframes bbBob{0%,100%{transform:translateY(0) rotate(-4deg)}50%{transform:translateY(-6px) rotate(4deg)}}
+}
+@media (prefers-reduced-motion:reduce){
+  #bb-home *{animation:none!important;transition:none!important}
 }
 </style>
 
@@ -219,18 +263,8 @@
 </svg>
 
 <div id="bb-home">
+<script>document.getElementById('bb-home').classList.add('bb-js');</script>
 
-<!-- MENU -->
-<header class="nav">
-  <div class="nav-in">
-    <a class="logo" href="/" aria-label="Betaalbuddy, naar de homepage"><svg aria-hidden="true" fill="#013bff"><use href="#bbh-buddy"/></svg><span>betaal<small>buddy</small></span></a>
-    <nav class="nav-links" aria-label="Hoofdmenu">
-      <a href="#hoehetwerkt">Hoe het werkt</a><a href="#privacy">Privacy</a><a href="#prijzen">Prijs</a><a href="#faq">Vragen</a>
-    </nav>
-    <a class="btn btn--blue nav-cta" data-bb-cta="try" data-where="menu" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=menu&amp;utm_content=try">Probeer gratis</a>
-  </div>
-</header>
-<!-- /MENU -->
 
 <main>
 <!-- HERO -->
@@ -252,10 +286,15 @@
         <li><svg width="16" height="16" aria-hidden="true"><use href="#bbh-ck"/></svg>30 dagen geld terug</li>
       </ul>
     </div>
-    <div class="visual" aria-hidden="true">
-      <div class="card"><span class="ic"><svg width="20" height="20"><use href="#bbh-mail"/></svg></span><span class="ct"><b>Buddy · Verhuurder</b><span><em>Nog 2 dagen</em> · €64,50 · vervalt 27 nov</span></span><span class="time">nu</span></div>
-      <div class="card card--in"><span class="ic ic--cal"><small>nov</small><span>27</span></span><span class="ct"><b>Verhuurder betalen</b><span>€64,50 · staat in je agenda</span></span></div>
-      <svg class="mascot" viewBox="0 0 79.31 86.43"><use href="#bbh-buddy" fill="#fff"/><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></svg>
+    <div class="visual">
+      <div class="card card--mail" data-demo>
+        <span class="ic"><svg width="20" height="20"><use href="#bbh-mail"/></svg></span>
+        <span class="ct"><b>Buddy · Verhuurder</b><span><em><i class="pulse"></i>Nog 2 dagen</em> · €64,50</span></span>
+        <button type="button" class="paidbtn" data-demo-btn>Al betaald</button>
+        <span class="paidmsg" aria-live="polite"><span class="ok"><svg width="14" height="14"><use href="#bbh-ck"/></svg></span>Betaald. Hij is weg uit je agenda.</span>
+      </div>
+      <div class="card card--in" aria-hidden="true"><span class="ic ic--cal"><small>nov</small><span>27</span></span><span class="ct"><b>Verhuurder betalen</b><span>€64,50 · staat in je agenda</span></span></div>
+      <svg class="mascot" viewBox="0 0 79.31 86.43" aria-hidden="true"><use href="#bbh-buddy" fill="#fff"/><g class="eyes"><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></g></svg>
     </div>
   </div>
 </section>
@@ -263,36 +302,36 @@
 <!-- WAT HET KOST -->
 <section class="sec cost" id="oplost" aria-labelledby="bbh-cost">
   <div class="w">
-    <div class="head">
+    <div class="head rv">
       <span class="eyebrow">Waarom</span>
       <h2 class="h2" id="bbh-cost">Een gemiste rekening is een gemiste mail. <span>Maar wel een dure.</span></h2>
       <p class="lead">Rekeningen komen tussen nieuwsbrieven en bestelmails binnen, met de vervaldatum ergens onderaan. Vergeten is geen karakterfout. Het kost alleen snel geld.</p>
     </div>
     <div class="grid3">
-      <div class="tile"><b class="big">€40</b><h3>Incassokosten</h3><p>Zoveel komt er minimaal bij als een vergeten rekening naar een incassobureau gaat, ook als het om €12 ging.</p></div>
+      <div class="tile rv"><b class="big" data-count="40" data-pre="€">€40</b><h3>Incassokosten</h3><p>Zoveel komt er minimaal bij als een vergeten rekening naar een incassobureau gaat, ook als het om €12 ging.</p></div>
       <!-- CHECK: verifieer bij CJIB.nl voor livegang -->
-      <div class="tile"><b class="big">+50%</b><h3>Verkeersboete</h3><p>Een boete van het CJIB wordt na de eerste herinnering met de helft verhoogd.</p></div>
+      <div class="tile rv"><b class="big" data-count="50" data-pre="+" data-post="%">+50%</b><h3>Verkeersboete</h3><p>Een boete van het CJIB wordt na de eerste herinnering met de helft verhoogd.</p></div>
       <!-- CHECK: verifieer bij BKR.nl voor livegang -->
-      <div class="tile"><b class="big">BKR</b><h3>Achteraf betalen</h3><p>Een achterstand bij Klarna, Riverty of in3 kost extra en kan bij het BKR terechtkomen.</p></div>
+      <div class="tile rv"><b class="big">BKR</b><h3>Achteraf betalen</h3><p>Een achterstand bij Klarna, Riverty of in3 kost extra en kan bij het BKR terechtkomen.</p></div>
     </div>
-    <p class="note"><b>Een heel jaar Buddy kost €41,88.</b> Ongeveer evenveel als één keer incassokosten.</p>
+    <p class="note rv"><b>Een heel jaar Buddy kost €41,88.</b> Ongeveer evenveel als één keer incassokosten.</p>
   </div>
 </section>
 
 <!-- HOE HET WERKT -->
 <section class="sec" id="hoehetwerkt" aria-labelledby="bbh-how">
   <div class="w">
-    <div class="head">
+    <div class="head rv">
       <span class="eyebrow">Hoe het werkt</span>
       <h2 class="h2" id="bbh-how">Doorsturen. <span>De rest doet Buddy.</span></h2>
       <p class="lead">Je stelt het één keer in. Geen app, geen inlog, geen bankkoppeling.</p>
     </div>
     <ol class="steps">
-      <li class="step"><span class="n" aria-hidden="true">1</span><span class="si"><svg width="22" height="22" aria-hidden="true" fill="#fff"><use href="#bbh-buddy"/></svg></span><h3>Meld je aan</h3><p>Betaal op deze site. Je krijgt meteen je eigen doorstuuradres en een agendalink.</p><span class="addr">a8f3k@in.betaalbuddy.nl</span></li>
-      <li class="step"><span class="n" aria-hidden="true">2</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-mail"/></svg></span><h3>Stuur je rekening door</h3><p>Met de hand, drie tikken. Of automatisch: één filter in je mail voor je vaste afzenders.</p></li>
-      <li class="step"><span class="n" aria-hidden="true">3</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-ck"/></svg></span><h3>Krijg op tijd een seintje</h3><p>Een mail 7 en 2 dagen voor de vervaldatum, en de datum in je agenda. Betaald? Eén tik op "al betaald" en hij is weg.</p></li>
+      <li class="step rv"><span class="n" aria-hidden="true">1</span><span class="si"><svg width="22" height="22" aria-hidden="true" fill="#fff"><use href="#bbh-buddy"/></svg></span><h3>Meld je aan</h3><p>Betaal op deze site. Je krijgt meteen je eigen doorstuuradres en een agendalink.</p><span class="addr">a8f3k@in.betaalbuddy.nl</span></li>
+      <li class="step rv"><span class="n" aria-hidden="true">2</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-mail"/></svg></span><h3>Stuur je rekening door</h3><p>Met de hand, drie tikken. Of automatisch: één filter in je mail voor je vaste afzenders.</p></li>
+      <li class="step rv"><span class="n" aria-hidden="true">3</span><span class="si"><svg width="22" height="22" aria-hidden="true"><use href="#bbh-ck"/></svg></span><h3>Krijg op tijd een seintje</h3><p>Een mail 7 en 2 dagen voor de vervaldatum, en de datum in je agenda. Betaald? Eén tik op "al betaald" en hij is weg.</p></li>
     </ol>
-    <div class="steps-cta">
+    <div class="steps-cta rv">
       <a class="btn btn--blue" data-bb-cta="try" data-where="stappen" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=stappen&amp;utm_content=try"><span>Probeer het met je eigen rekening</span><svg width="18" height="18" aria-hidden="true"><use href="#bbh-arrow"/></svg></a>
     </div>
   </div>
@@ -301,13 +340,13 @@
 <!-- PRIVACY -->
 <section class="sec priv" id="privacy" aria-labelledby="bbh-priv">
   <div class="w">
-    <div class="head">
+    <div class="head rv">
       <span class="eyebrow">Onder de motorkap</span>
       <h2 class="h2" id="bbh-priv">We kunnen niet lekken <span>wat we nooit bewaren.</span></h2>
       <p class="lead">Dit doet Buddy met je rekening. En wat hij níet doet.</p>
     </div>
     <div class="cmp">
-      <div class="cmp-c cmp-them">
+      <div class="cmp-c cmp-them rv">
         <h3>Een AI-inboxassistent</h3>
         <ul>
           <li><span class="x"><svg width="10" height="10" aria-hidden="true"><use href="#bbh-x"/></svg></span>Wil toegang tot al je mail</li>
@@ -315,7 +354,7 @@
           <li><span class="x"><svg width="10" height="10" aria-hidden="true"><use href="#bbh-x"/></svg></span>Bewaart wat hij nodig denkt te hebben</li>
         </ul>
       </div>
-      <div class="cmp-c cmp-us">
+      <div class="cmp-c cmp-us rv">
         <h3>Betaalbuddy</h3>
         <ul>
           <li><span class="ck"><svg width="11" height="11" aria-hidden="true"><use href="#bbh-ck"/></svg></span>Ziet alleen wat jij doorstuurt</li>
@@ -325,10 +364,10 @@
       </div>
     </div>
     <div class="grid4">
-      <div class="pc"><span class="num">01 · Doorsturen</span><h3>Geen koppeling met je mail</h3><p>Je krijgt een eigen adres en stuurt zelf door. Stuur je niets, dan ziet Buddy niets.</p><ul><li>Geen inlog</li><li>Geen inbox-toegang</li></ul></div>
-      <div class="pc"><span class="num">02 · Uitlezen</span><h3>Vaste regels, geen AI</h3><p>Onze eigen code zoekt het bedrag, de vervaldatum, de betaallink en het rekeningnummer. Je mail gaat niet langs een AI-dienst.</p><ul><li>Geen AI</li><li>Eigen code</li></ul></div>
-      <div class="pc"><span class="num">03 · Controleren</span><h3>Twijfelt hij? Dan vraagt hij het</h3><p>Is het bedrag of de datum niet zeker, dan zet Buddy niets in je agenda en vraagt hij het je per mail. Een verkeerde datum is erger dan geen datum.</p><ul><li>Geen gokwerk</li></ul></div>
-      <div class="pc"><span class="num">04 · Bewaren</span><h3>Je mail bewaren we niet</h3><p>Geen tekst, geen onderwerp, geen bijlagen. Wat overblijft ruimen we 14 dagen na de vervaldatum op, of meteen als je op "al betaald" tikt. Je ziet altijd wat er bewaard is.</p><ul><li>Na 14 dagen weg</li><li>Altijd in te zien</li></ul></div>
+      <div class="pc rv"><span class="num">01 · Doorsturen</span><h3>Geen koppeling met je mail</h3><p>Je krijgt een eigen adres en stuurt zelf door. Stuur je niets, dan ziet Buddy niets.</p><ul><li>Geen inlog</li><li>Geen inbox-toegang</li></ul></div>
+      <div class="pc rv"><span class="num">02 · Uitlezen</span><h3>Vaste regels, geen AI</h3><p>Onze eigen code zoekt het bedrag, de vervaldatum, de betaallink en het rekeningnummer. Je mail gaat niet langs een AI-dienst.</p><ul><li>Geen AI</li><li>Eigen code</li></ul></div>
+      <div class="pc rv"><span class="num">03 · Controleren</span><h3>Twijfelt hij? Dan vraagt hij het</h3><p>Is het bedrag of de datum niet zeker, dan zet Buddy niets in je agenda en vraagt hij het je per mail. Een verkeerde datum is erger dan geen datum.</p><ul><li>Geen gokwerk</li></ul></div>
+      <div class="pc rv"><span class="num">04 · Bewaren</span><h3>Je mail bewaren we niet</h3><p>Geen tekst, geen onderwerp, geen bijlagen. Wat overblijft ruimen we 14 dagen na de vervaldatum op, of meteen als je op "al betaald" tikt. Je ziet altijd wat er bewaard is.</p><ul><li>Na 14 dagen weg</li><li>Altijd in te zien</li></ul></div>
     </div>
   </div>
 </section>
@@ -336,13 +375,13 @@
 <!-- PRIJS -->
 <section class="sec price" id="prijzen" aria-labelledby="bbh-price">
   <div class="w price-in">
-    <div class="head" style="margin-bottom:0">
+    <div class="head rv" style="margin-bottom:0">
       <span class="eyebrow">Prijs</span>
       <h2 class="h2" id="bbh-price">Eén abonnement. <span>Alles erin.</span></h2>
       <p class="lead">Geen pakketten om uit te kiezen en geen kleine lettertjes. Je krijgt alles wat Buddy kan, voor één prijs.</p>
       <p class="sum"><i aria-hidden="true">€</i><span>Eén vergeten rekening kost al snel <b>€40</b> aan incassokosten. Een heel jaar Buddy kost <b>€41,88</b>.</span></p>
     </div>
-    <div class="plan">
+    <div class="plan rv">
       <div class="plan-top">
         <div><b>Buddy</b><br><span>Per maand opzegbaar</span></div>
         <div class="pp"><b>€3,49</b><span>per maand · €0,81 per week</span></div>
@@ -366,28 +405,28 @@
 <!-- VRAGEN -->
 <section class="sec" id="faq" aria-labelledby="bbh-faq">
   <div class="w">
-    <div class="head">
+    <div class="head rv">
       <span class="eyebrow">Vragen</span>
       <h2 class="h2" id="bbh-faq">Wat mensen <span>meestal vragen.</span></h2>
     </div>
     <div class="faq-list">
-      <details data-q="delen"><summary>Moet ik mijn bankgegevens of inlog delen?</summary><p>Nee. Betaalbuddy koppelt niet met je bank en vraagt geen inlog of PSD2-toestemming. Je stuurt zelf een mail door naar je eigen Buddy-adres. Dat is het enige wat wij zien.</p></details>
-      <details data-q="mailprogramma"><summary>Werkt het met Gmail, Outlook, iCloud of Proton?</summary><p>Ja, met elk mailprogramma dat kan doorsturen.</p></details>
-      <details data-q="fout_lezen"><summary>Wat als Buddy mijn rekening niet goed leest?</summary><p>Dan zetten we niets in je agenda, maar krijg je een korte mail met de vraag of je het bedrag of de datum zelf wilt doorgeven. Je antwoordt gewoon op die mail. We raden nooit.</p></details>
-      <details data-q="app"><summary>Moet ik een app installeren of een account maken?</summary><p>Nee. Er is geen app, geen inlogscherm en geen wachtwoord. Alles gaat per mail.</p></details>
-      <details data-q="agenda"><summary>Hoe komt het in mijn agenda?</summary><p>Bij je aanmelding krijg je een agendalink. Die voeg je één keer toe in Google Agenda, Apple Agenda of Outlook. Daarna verschijnen de vervaldatums er vanzelf in, ook op je telefoon.</p></details>
-      <details data-q="automatisch"><summary>Moet ik elke rekening met de hand doorsturen?</summary><p>Dat kan, het zijn drie tikken. Wil je het automatisch, zet dan in je mailprogramma één filter die mails van je vaste afzenders doorstuurt naar je Buddy-adres.</p></details>
-      <details data-q="ai"><summary>Leest er een AI mee?</summary><p>Nee. Een vast regelsysteem zoekt naar het bedrag en de vervaldatum. Het doet elke dag hetzelfde en verzint niets. Je mail gaat nooit naar een externe AI- of OCR-dienst.</p></details>
-      <details data-q="opzeggen"><summary>Wat kost het, en hoe zeg ik op?</summary><p>€3,49 per maand. Je betaalt de eerste maand bij het aanmelden, daarna krijg je elke maand een factuur per mail. Opzeggen doe je met één mailtje. Ben je binnen 30 dagen niet tevreden, dan krijg je je geld terug.</p></details>
-      <details data-q="bewaren"><summary>Wat bewaren jullie van mij?</summary><p>Van een rekening alleen wat nodig is voor de herinnering: afzender, bedrag, vervaldatum, betaallink, rekeningnummer en betalingskenmerk, tot 14 dagen na de vervaldatum. Van jou alleen je mailadres en je voorkeuren, geen naam of adres. In elke mail staat een link naar een pagina met alles wat er bewaard is.</p></details>
+      <details class="rv" data-q="delen"><summary>Moet ik mijn bankgegevens of inlog delen?</summary><p>Nee. Betaalbuddy koppelt niet met je bank en vraagt geen inlog of PSD2-toestemming. Je stuurt zelf een mail door naar je eigen Buddy-adres. Dat is het enige wat wij zien.</p></details>
+      <details class="rv" data-q="mailprogramma"><summary>Werkt het met Gmail, Outlook, iCloud of Proton?</summary><p>Ja, met elk mailprogramma dat kan doorsturen.</p></details>
+      <details class="rv" data-q="fout_lezen"><summary>Wat als Buddy mijn rekening niet goed leest?</summary><p>Dan zetten we niets in je agenda, maar krijg je een korte mail met de vraag of je het bedrag of de datum zelf wilt doorgeven. Je antwoordt gewoon op die mail. We raden nooit.</p></details>
+      <details class="rv" data-q="app"><summary>Moet ik een app installeren of een account maken?</summary><p>Nee. Er is geen app, geen inlogscherm en geen wachtwoord. Alles gaat per mail.</p></details>
+      <details class="rv" data-q="agenda"><summary>Hoe komt het in mijn agenda?</summary><p>Bij je aanmelding krijg je een agendalink. Die voeg je één keer toe in Google Agenda, Apple Agenda of Outlook. Daarna verschijnen de vervaldatums er vanzelf in, ook op je telefoon.</p></details>
+      <details class="rv" data-q="automatisch"><summary>Moet ik elke rekening met de hand doorsturen?</summary><p>Dat kan, het zijn drie tikken. Wil je het automatisch, zet dan in je mailprogramma één filter die mails van je vaste afzenders doorstuurt naar je Buddy-adres.</p></details>
+      <details class="rv" data-q="ai"><summary>Leest er een AI mee?</summary><p>Nee. Een vast regelsysteem zoekt naar het bedrag en de vervaldatum. Het doet elke dag hetzelfde en verzint niets. Je mail gaat nooit naar een externe AI- of OCR-dienst.</p></details>
+      <details class="rv" data-q="opzeggen"><summary>Wat kost het, en hoe zeg ik op?</summary><p>€3,49 per maand. Je betaalt de eerste maand bij het aanmelden, daarna krijg je elke maand een factuur per mail. Opzeggen doe je met één mailtje. Ben je binnen 30 dagen niet tevreden, dan krijg je je geld terug.</p></details>
+      <details class="rv" data-q="bewaren"><summary>Wat bewaren jullie van mij?</summary><p>Van een rekening alleen wat nodig is voor de herinnering: afzender, bedrag, vervaldatum, betaallink, rekeningnummer en betalingskenmerk, tot 14 dagen na de vervaldatum. Van jou alleen je mailadres en je voorkeuren, geen naam of adres. In elke mail staat een link naar een pagina met alles wat er bewaard is.</p></details>
     </div>
   </div>
 </section>
 
 <!-- SLOT -->
 <section class="sec end" aria-labelledby="bbh-end">
-  <div class="w end-in">
-    <svg width="64" height="70" viewBox="0 0 79.31 86.43" aria-hidden="true"><use href="#bbh-buddy" fill="#fff"/><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></svg>
+  <div class="w end-in rv">
+    <svg class="endbuddy" width="64" height="70" viewBox="0 0 79.31 86.43" aria-hidden="true"><use href="#bbh-buddy" fill="#fff"/><g class="eyes"><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></g></svg>
     <h2 id="bbh-end">Klaar met aanmaningen? <span>Stuur je eerste rekening door.</span></h2>
     <p>Probeer het met een rekening die je nu hebt openstaan. Binnen 30 seconden zie je hoe Buddy je herinnert. Gratis, zonder aanmelden.</p>
     <div class="ctas">
@@ -399,35 +438,20 @@
 </section>
 </main>
 
-<!-- FOOTER -->
-<footer class="foot">
-  <div class="w">
-    <div class="foot-in">
-      <div style="display:flex;flex-direction:column;gap:12px">
-        <a class="logo" href="/" aria-label="Betaalbuddy"><svg aria-hidden="true" fill="#fff"><use href="#bbh-buddy"/></svg><span>betaal<small>buddy</small></span></a>
-        <p>Nooit meer een rekening vergeten. Zonder dat iemand je inbox leest.</p>
-      </div>
-      <nav class="foot-links" aria-label="Footer">
-        <a href="#hoehetwerkt">Hoe het werkt</a><a href="#privacy">Privacy</a>
-        <a href="#prijzen">Prijs</a><a href="#faq">Vragen</a>
-        <a href="/docs/">Documentatie</a><a href="/changelog">Changelog</a>
-        <a href="https://www.instagram.com/betaalbuddy/" rel="noopener" target="_blank">Instagram</a><a href="https://www.linkedin.com/company/betaal-buddy/" rel="noopener" target="_blank">LinkedIn</a>
-      </nav>
-    </div>
-    <div class="foot-legal">
-      <span>© 2026 Betaalbuddy · een product van PRJCT Agency, Geldrop · KvK 89078802 · betalen via Mollie</span>
-      <span><a href="/privacy-policy/">Privacybeleid</a> · <a href="/terms-of-service/">Algemene voorwaarden</a></span>
-    </div>
-  </div>
-</footer>
-<!-- /FOOTER -->
+<div class="sticky" aria-hidden="true">
+  <a class="btn btn--blue" tabindex="-1" data-bb-cta="try" data-where="sticky" href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=sticky&amp;utm_content=try"><span>Probeer gratis met je rekening</span><svg width="18" height="18" aria-hidden="true"><use href="#bbh-arrow"/></svg></a>
+</div>
+
 
 </div>
 
 <script>
 (function () {
   var root = document.getElementById('bb-home'); if (!root) return;
+  var REDUCED = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   function push(o) { try { (window.dataLayer = window.dataLayer || []).push(o); } catch (e) {} }
+
+  /* Meten */
   root.addEventListener('click', function (e) {
     var a = e.target.closest('[data-bb-cta]'); if (!a) return;
     push({ event: 'site_cta', cta: a.getAttribute('data-bb-cta'), where: a.getAttribute('data-where') || '' });
@@ -435,8 +459,63 @@
   Array.prototype.forEach.call(root.querySelectorAll('details[data-q]'), function (d) {
     d.addEventListener('toggle', function () { if (d.open) push({ event: 'faq_open', q: d.getAttribute('data-q') }); });
   });
+
+  /* Tellers: €0 -> €40, +0% -> +50% */
+  function countUp(el) {
+    var to = +el.getAttribute('data-count'), pre = el.getAttribute('data-pre') || '', post = el.getAttribute('data-post') || '';
+    if (REDUCED) return;
+    var t0 = null, dur = 900;
+    function step(t) {
+      if (!t0) t0 = t;
+      var p = Math.min(1, (t - t0) / dur), v = Math.round(to * (1 - Math.pow(1 - p, 3)));
+      el.textContent = pre + v + post;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    el.textContent = pre + '0' + post;
+    requestAnimationFrame(step);
+  }
+
+  /* Secties zacht in beeld, met een kleine vertraging per kaart in dezelfde rij */
+  var items = Array.prototype.slice.call(root.querySelectorAll('.rv'));
+  items.forEach(function (el) {
+    var sib = Array.prototype.filter.call(el.parentNode.children, function (c) { return c.classList.contains('rv'); });
+    el.style.setProperty('--d', (Math.min(sib.indexOf(el), 5) * 0.08) + 's');
+  });
+  function reveal(el) {
+    if (el.classList.contains('in')) return;
+    el.classList.add('in');
+    setTimeout(function () { el.classList.add('done'); }, 1400);
+    Array.prototype.forEach.call(el.querySelectorAll('[data-count]'), countUp);
+  }
+  if ('IntersectionObserver' in window && !REDUCED) {
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (en) { if (en.isIntersecting) { reveal(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+    items.forEach(function (el) { io.observe(el); });
+  } else {
+    items.forEach(reveal);
+  }
+
+  /* "Al betaald" in het voorbeeld: tik en hij verdwijnt, daarna komt het voorbeeld terug */
+  var demo = root.querySelector('[data-demo]'), btn = root.querySelector('[data-demo-btn]'), vis = root.querySelector('.visual'), timer;
+  if (demo && btn) btn.addEventListener('click', function () {
+    demo.classList.add('is-paid'); if (vis) vis.classList.add('is-paid');
+    push({ event: 'demo_paid' });
+    clearTimeout(timer);
+    timer = setTimeout(function () { demo.classList.remove('is-paid'); if (vis) vis.classList.remove('is-paid'); }, 2600);
+  });
+
+  /* Vaste knop onderin op mobiel: na het eerste scherm, weg bij het slotblok */
+  var sticky = root.querySelector('.sticky'), hero = root.querySelector('.hero'), end = root.querySelector('.end');
+  if (sticky && hero && end && 'IntersectionObserver' in window) {
+    var heroIn = true, endIn = false;
+    var sync = function () { var on = !heroIn && !endIn; sticky.classList.toggle('show', on); sticky.setAttribute('aria-hidden', String(!on)); var a = sticky.querySelector('a'); if (a) a.tabIndex = on ? 0 : -1; };
+    new IntersectionObserver(function (es) { heroIn = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(hero);
+    new IntersectionObserver(function (es) { endIn = es[0].isIntersecting; sync(); }, { threshold: 0.05 }).observe(end);
+  }
 })();
 </script>
 <!-- ===================== EINDE HOMEPAGE ===================== -->
 
+<div class="tplf">Footer van je Oxygen-template</div>
 </body></html>
