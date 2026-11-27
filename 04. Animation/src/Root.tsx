@@ -19,6 +19,13 @@ import {
 } from "./countdown/schema";
 import { TwaalfAd } from "./twaalf-52/TwaalfAd";
 import { defaultTwaalfProps, type TwaalfProps, twaalfSchema, twaalfTotal } from "./twaalf-52/schema";
+import { EigenHuisAd } from "./eigen-huis/EigenHuisAd";
+import {
+  defaultEigenHuisProps,
+  type EigenHuisProps,
+  eigenHuisSchema,
+  eigenHuisTotal,
+} from "./eigen-huis/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -41,6 +48,10 @@ const achterafMetadata: CalculateMetadataFunction<AchterafProps> = ({ props }) =
 
 const twaalfMetadata: CalculateMetadataFunction<TwaalfProps> = ({ props }) => ({
   durationInFrames: twaalfTotal(props.timing),
+});
+
+const eigenHuisMetadata: CalculateMetadataFunction<EigenHuisProps> = ({ props }) => ({
+  durationInFrames: eigenHuisTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -183,6 +194,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultTwaalfProps}
         calculateMetadata={twaalfMetadata}
         durationInFrames={twaalfTotal(defaultTwaalfProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Meta-campagne 2612 · K3 "Eén huurcontract, zeven rekeningen" (CONCEPT-K3.md) */}
+    <Folder name="Campagne2612-K3-EigenHuis">
+      <Composition
+        id="BB-K3EigenHuis-Reel"
+        component={EigenHuisAd}
+        schema={eigenHuisSchema}
+        defaultProps={defaultEigenHuisProps}
+        calculateMetadata={eigenHuisMetadata}
+        durationInFrames={eigenHuisTotal(defaultEigenHuisProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-K3EigenHuis-Feed"
+        component={EigenHuisAd}
+        schema={eigenHuisSchema}
+        defaultProps={defaultEigenHuisProps}
+        calculateMetadata={eigenHuisMetadata}
+        durationInFrames={eigenHuisTotal(defaultEigenHuisProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

@@ -19,6 +19,7 @@ Advertentienamen voor Ads Manager staan tussen haakjes; de MP4's en covers in `r
 |---|---|---|---|---|
 | K1 · koud | "Eén dag gekocht, negen dagen betalen" ([`CONCEPT-K1.md`](./CONCEPT-K1.md)) (`BB_K1_Achteraf`) | `BB-K1Achteraf-Reel` / `BB-K1Achteraf-Feed` | 9:16 / 4:5 | 11.0 s |
 | K2 · koud | "Twaalf wordt tweeënvijftig" ([`CONCEPT-K2.md`](./CONCEPT-K2.md)) (`BB_K2_Twaalf`) | `BB-K2Twaalf-Reel` / `BB-K2Twaalf-Feed` | 9:16 / 4:5 | 11.0 s |
+| K3 · koud | "Eén huurcontract, zeven rekeningen" ([`CONCEPT-K3.md`](./CONCEPT-K3.md)) (`BB_K3_EigenHuis`) | `BB-K3EigenHuis-Reel` / `BB-K3EigenHuis-Feed` | 9:16 / 4:5 | 12.0 s |
 <!-- campagne2612-rows -->
 
 **adSafeZone** (prop in deze concepten, default aan): in een betaalde Reel legt Meta de CTA-knop en de advertentietekst over de onderkant van het beeld. Met `adSafeZone` aan blijven koppen, bedragen en de knop in 9:16 tussen y=280 en y=1250. Zet hem uit voor een organische Reel. De Feed-versie verandert niet.
@@ -73,6 +74,9 @@ npm run still:achteraf-bf        # K1 cover → out/BB-K1Achteraf-Reel-cover.png
 npm run render:twaalf-52         # K2 → out/BB-K2Twaalf-Reel.mp4    (9:16)
 npm run render:twaalf-52:feed    # K2 → out/BB-K2Twaalf-Feed.mp4    (4:5)
 npm run still:twaalf-52          # K2 cover → out/BB-K2Twaalf-Reel-cover.png
+npm run render:eigen-huis        # K3 → out/BB-K3EigenHuis-Reel.mp4 (9:16)
+npm run render:eigen-huis:feed   # K3 → out/BB-K3EigenHuis-Feed.mp4 (4:5)
+npm run still:eigen-huis         # K3 cover → out/BB-K3EigenHuis-Reel-cover.png
 npm run render:all             # everything
 npm run still                  # concept 1 cover → out/BB-Ad-Reel-cover.png
 npm run still:countdown        # concept 2 cover → out/BB-Countdown-Reel-cover.png
