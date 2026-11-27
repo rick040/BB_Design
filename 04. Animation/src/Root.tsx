@@ -17,6 +17,8 @@ import {
   countdownTotal,
   defaultCountdownProps,
 } from "./countdown/schema";
+import { TwaalfAd } from "./twaalf-52/TwaalfAd";
+import { defaultTwaalfProps, type TwaalfProps, twaalfSchema, twaalfTotal } from "./twaalf-52/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -35,6 +37,10 @@ const privacyMetadata: CalculateMetadataFunction<PrivacyProps> = ({ props }) => 
 
 const achterafMetadata: CalculateMetadataFunction<AchterafProps> = ({ props }) => ({
   durationInFrames: achterafTotal(props.timing),
+});
+
+const twaalfMetadata: CalculateMetadataFunction<TwaalfProps> = ({ props }) => ({
+  durationInFrames: twaalfTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -151,6 +157,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultAchterafProps}
         calculateMetadata={achterafMetadata}
         durationInFrames={achterafTotal(defaultAchterafProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Meta-campagne 2612 · K2 "Twaalf wordt tweeënvijftig" (CONCEPT-K2.md) */}
+    <Folder name="Campagne2612-K2-Twaalf">
+      <Composition
+        id="BB-K2Twaalf-Reel"
+        component={TwaalfAd}
+        schema={twaalfSchema}
+        defaultProps={defaultTwaalfProps}
+        calculateMetadata={twaalfMetadata}
+        durationInFrames={twaalfTotal(defaultTwaalfProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-K2Twaalf-Feed"
+        component={TwaalfAd}
+        schema={twaalfSchema}
+        defaultProps={defaultTwaalfProps}
+        calculateMetadata={twaalfMetadata}
+        durationInFrames={twaalfTotal(defaultTwaalfProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

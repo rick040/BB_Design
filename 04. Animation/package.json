@@ -14,11 +14,14 @@
     "render:boemerang": "remotion render BB-Boemerang-Reel out/boemerang-reel-vo.mp4",
     "render:achteraf-bf": "remotion render BB-K1Achteraf-Reel out/BB-K1Achteraf-Reel.mp4",
     "render:achteraf-bf:feed": "remotion render BB-K1Achteraf-Feed out/BB-K1Achteraf-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:achteraf-bf && npm run render:achteraf-bf:feed",
+    "render:twaalf-52": "remotion render BB-K2Twaalf-Reel out/BB-K2Twaalf-Reel.mp4",
+    "render:twaalf-52:feed": "remotion render BB-K2Twaalf-Feed out/BB-K2Twaalf-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:achteraf-bf && npm run render:achteraf-bf:feed && npm run render:twaalf-52 && npm run render:twaalf-52:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
     "still:achteraf-bf": "remotion still BB-K1Achteraf-Reel out/BB-K1Achteraf-Reel-cover.png --frame=170",
+    "still:twaalf-52": "remotion still BB-K2Twaalf-Reel out/BB-K2Twaalf-Reel-cover.png --frame=200",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
