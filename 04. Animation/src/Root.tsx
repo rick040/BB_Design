@@ -28,6 +28,8 @@ import {
 } from "./eigen-huis/schema";
 import { ZoWerktAd } from "./zo-werkt-het/ZoWerktAd";
 import { defaultZoWerktProps, type ZoWerktProps, zoWerktSchema, zoWerktTotal } from "./zo-werkt-het/schema";
+import { BriefAd } from "./brief-maker/BriefAd";
+import { type BriefProps, briefSchema, briefTotal, defaultBriefProps } from "./brief-maker/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
@@ -58,6 +60,10 @@ const eigenHuisMetadata: CalculateMetadataFunction<EigenHuisProps> = ({ props })
 
 const zoWerktMetadata: CalculateMetadataFunction<ZoWerktProps> = ({ props }) => ({
   durationInFrames: zoWerktTotal(props.timing),
+});
+
+const briefMetadata: CalculateMetadataFunction<BriefProps> = ({ props }) => ({
+  durationInFrames: briefTotal(props.timing),
 });
 
 export const RemotionRoot: React.FC = () => (
@@ -252,6 +258,32 @@ export const RemotionRoot: React.FC = () => (
         defaultProps={defaultZoWerktProps}
         calculateMetadata={zoWerktMetadata}
         durationInFrames={zoWerktTotal(defaultZoWerktProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1350}
+      />
+    </Folder>
+
+    {/* Meta-campagne 2612 · W2 "Brief van de maker" (CONCEPT-W2.md) */}
+    <Folder name="Campagne2612-W2-Brief">
+      <Composition
+        id="BB-W2Brief-Reel"
+        component={BriefAd}
+        schema={briefSchema}
+        defaultProps={defaultBriefProps}
+        calculateMetadata={briefMetadata}
+        durationInFrames={briefTotal(defaultBriefProps.timing)}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-W2Brief-Feed"
+        component={BriefAd}
+        schema={briefSchema}
+        defaultProps={defaultBriefProps}
+        calculateMetadata={briefMetadata}
+        durationInFrames={briefTotal(defaultBriefProps.timing)}
         fps={FPS}
         width={1080}
         height={1350}

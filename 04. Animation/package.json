@@ -20,7 +20,9 @@
     "render:eigen-huis:feed": "remotion render BB-K3EigenHuis-Feed out/BB-K3EigenHuis-Feed.mp4",
     "render:zo-werkt-het": "remotion render BB-W1ZoWerkt-Reel out/BB-W1ZoWerkt-Reel.mp4",
     "render:zo-werkt-het:feed": "remotion render BB-W1ZoWerkt-Feed out/BB-W1ZoWerkt-Feed.mp4",
-    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:achteraf-bf && npm run render:achteraf-bf:feed && npm run render:twaalf-52 && npm run render:twaalf-52:feed && npm run render:eigen-huis && npm run render:eigen-huis:feed && npm run render:zo-werkt-het && npm run render:zo-werkt-het:feed",
+    "render:brief-maker": "remotion render BB-W2Brief-Reel out/BB-W2Brief-Reel.mp4",
+    "render:brief-maker:feed": "remotion render BB-W2Brief-Feed out/BB-W2Brief-Feed.mp4",
+    "render:all": "npm run render && npm run render:feed && npm run render:countdown && npm run render:countdown:feed && npm run render:privacy && npm run render:privacy:feed && npm run render:boemerang && npm run render:achteraf-bf && npm run render:achteraf-bf:feed && npm run render:twaalf-52 && npm run render:twaalf-52:feed && npm run render:eigen-huis && npm run render:eigen-huis:feed && npm run render:zo-werkt-het && npm run render:zo-werkt-het:feed && npm run render:brief-maker && npm run render:brief-maker:feed",
     "still": "remotion still BB-Ad-Reel out/BB-Ad-Reel-cover.png --frame=72",
     "still:countdown": "remotion still BB-Countdown-Reel out/BB-Countdown-Reel-cover.png --frame=66",
     "still:privacy": "remotion still BB-Privacy-Reel out/BB-Privacy-Reel-cover.png --frame=78",
@@ -28,6 +30,8 @@
     "still:twaalf-52": "remotion still BB-K2Twaalf-Reel out/BB-K2Twaalf-Reel-cover.png --frame=200",
     "still:eigen-huis": "remotion still BB-K3EigenHuis-Reel out/BB-K3EigenHuis-Reel-cover.png --frame=150",
     "still:zo-werkt-het": "remotion still BB-W1ZoWerkt-Reel out/BB-W1ZoWerkt-Reel-cover.png --frame=250",
+    "still:brief-maker": "remotion still BB-W2Brief-Reel out/BB-W2Brief-Reel-cover.png --frame=0",
+    "still:brief-maker:static": "remotion still BB-W2Brief-Feed out/BB-W2Brief-Static.png --frame=384",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
