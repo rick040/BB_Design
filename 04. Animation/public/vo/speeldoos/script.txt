@@ -1,0 +1,1 @@
+[S1] Denk je dat er AI over je rekening gaat? [S2] Nee, Buddy werkt als een speeldoos [S3] en leest met vaste regels je bedrag, vervaldatum en betaallink, elke keer hetzelfde. [S4] Activeer Buddy.

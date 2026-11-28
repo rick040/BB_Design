@@ -10,8 +10,10 @@ Editable animated ads, built in [Remotion](https://www.remotion.dev) (React → 
 | | `BB-Countdown-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 | 3 · "Jij kiest wat Buddy ziet." ([`CONCEPT-3.md`](./CONCEPT-3.md)) | `BB-Privacy-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 13.6 s |
 | | `BB-Privacy-Feed` | 1080 × 1350 (4:5) | Feed | 13.6 s |
+| 129 · "Geen AI. Gewoon vaste regels." ([`CONCEPT-129.md`](./CONCEPT-129.md)) | `BB-Speeldoos-Reel` | 1080 × 1920 (9:16) | Reels + Stories | 14.0 s (geschat, volgt de stem) |
+| | `BB-Speeldoos-Feed` | 1080 × 1350 (4:5) | Feed | 14.0 s |
 
-All run at 30 fps. Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
+All run at 30 fps. Concept 129 reads its scene timing from `public/vo/speeldoos/timing.json`; `npm run render:speeldoos` / `render:speeldoos:feed` render the silent versions, `render:speeldoos:vo` the voice versions (needs `voice-over.mp3`, see CONCEPT-129.md). Finished preview renders are in [`renders/`](./renders). Each concept file also has its voice-over script (ElevenLabs) and Instagram caption.
 
 **New concept?** In Claude Code, type `/instagram-reel-ad` followed by your idea, or by "bedenk er een". The skill lives in [`.claude/skills/instagram-reel-ad`](../.claude/skills/instagram-reel-ad/SKILL.md). It writes the concept, builds both formats here, renders and checks them, and delivers the MP4s, an ElevenLabs voice-over script and the Instagram caption.
 

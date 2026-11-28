@@ -11,6 +11,8 @@ import {
   defaultCountdownProps,
 } from "./countdown/schema";
 import { PrivacyAd } from "./privacy/PrivacyAd";
+import { SpeeldoosAd } from "./speeldoos/SpeeldoosAd";
+import { defaultSpeeldoosProps, speeldoosSchema, TOTAL_FRAMES as SPEELDOOS_TOTAL } from "./speeldoos/schema";
 import { defaultPrivacyProps, type PrivacyProps, privacySchema, privacyTotal } from "./privacy/schema";
 import { type AdProps, adSchema, defaultAdProps, FPS, totalFrames } from "./schema";
 
@@ -117,6 +119,29 @@ export const RemotionRoot: React.FC = () => (
         fps={FPS}
         width={1080}
         height={1920}
+      />
+    </Folder>
+    {/* Concept 129 · "Geen AI. Gewoon vaste regels." (CONCEPT-129.md) · stem via withVoice */}
+    <Folder name="Concept-129-Speeldoos">
+      <Composition
+        id="BB-Speeldoos-Reel"
+        component={SpeeldoosAd}
+        schema={speeldoosSchema}
+        defaultProps={defaultSpeeldoosProps}
+        durationInFrames={SPEELDOOS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+      <Composition
+        id="BB-Speeldoos-Feed"
+        component={SpeeldoosAd}
+        schema={speeldoosSchema}
+        defaultProps={defaultSpeeldoosProps}
+        durationInFrames={SPEELDOOS_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1350}
       />
     </Folder>
   </>
