@@ -3,6 +3,8 @@ import { type CalculateMetadataFunction, Composition, Folder } from "remotion";
 import { Ad } from "./Ad";
 import { BoemerangAd } from "./boemerang/BoemerangAd";
 import { boemerangSchema, defaultBoemerangProps, TOTAL_FRAMES as BOEMERANG_TOTAL } from "./boemerang/schema";
+import { BuizenpostAd } from "./buizenpost/BuizenpostAd";
+import { buizenpostSchema, defaultBuizenpostProps, TOTAL_FRAMES as BUIZENPOST_TOTAL } from "./buizenpost/schema";
 import { CountdownAd } from "./countdown/CountdownAd";
 import {
   type CountdownProps,
@@ -114,6 +116,18 @@ export const RemotionRoot: React.FC = () => (
         schema={boemerangSchema}
         defaultProps={defaultBoemerangProps}
         durationInFrames={BOEMERANG_TOTAL}
+        fps={FPS}
+        width={1080}
+        height={1920}
+      />
+    </Folder>
+    <Folder name="Concept-128-Buizenpost">
+      <Composition
+        id="BB-Buizenpost-Reel"
+        component={BuizenpostAd}
+        schema={buizenpostSchema}
+        defaultProps={defaultBuizenpostProps}
+        durationInFrames={BUIZENPOST_TOTAL}
         fps={FPS}
         width={1080}
         height={1920}

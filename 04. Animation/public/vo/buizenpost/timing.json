@@ -1,0 +1,188 @@
+{
+ "fps": 30,
+ "source": "estimate (5.0 syllables/s); replace with --alignment once the voice exists",
+ "markers": [
+  "S1",
+  "S2",
+  "S3",
+  "S4",
+  "S5"
+ ],
+ "sceneStarts": [
+  0,
+  78,
+  135,
+  195,
+  258
+ ],
+ "voiceEnd": 339,
+ "durationInFrames": 369,
+ "maxGapSeconds": 0.3,
+ "words": [
+  {
+   "w": "Toegang",
+   "start": 0,
+   "end": 12
+  },
+  {
+   "w": "tot",
+   "start": 12,
+   "end": 18
+  },
+  {
+   "w": "je",
+   "start": 18,
+   "end": 24
+  },
+  {
+   "w": "hele",
+   "start": 24,
+   "end": 36
+  },
+  {
+   "w": "mailbox?",
+   "start": 36,
+   "end": 48
+  },
+  {
+   "w": "Hoeft",
+   "start": 57,
+   "end": 63
+  },
+  {
+   "w": "niet.",
+   "start": 63,
+   "end": 69
+  },
+  {
+   "w": "Jij",
+   "start": 78,
+   "end": 84
+  },
+  {
+   "w": "stopt",
+   "start": 84,
+   "end": 90
+  },
+  {
+   "w": "er",
+   "start": 90,
+   "end": 96
+  },
+  {
+   "w": "één",
+   "start": 96,
+   "end": 102
+  },
+  {
+   "w": "rekening",
+   "start": 102,
+   "end": 120
+  },
+  {
+   "w": "in.",
+   "start": 120,
+   "end": 126
+  },
+  {
+   "w": "Die",
+   "start": 135,
+   "end": 141
+  },
+  {
+   "w": "gaat",
+   "start": 141,
+   "end": 147
+  },
+  {
+   "w": "door",
+   "start": 147,
+   "end": 153
+  },
+  {
+   "w": "de",
+   "start": 153,
+   "end": 159
+  },
+  {
+   "w": "buis.",
+   "start": 159,
+   "end": 165
+  },
+  {
+   "w": "Meer",
+   "start": 174,
+   "end": 180
+  },
+  {
+   "w": "niet.",
+   "start": 180,
+   "end": 186
+  },
+  {
+   "w": "Buddy",
+   "start": 195,
+   "end": 207
+  },
+  {
+   "w": "leest",
+   "start": 207,
+   "end": 213
+  },
+  {
+   "w": "alleen",
+   "start": 213,
+   "end": 225
+  },
+  {
+   "w": "wat",
+   "start": 225,
+   "end": 231
+  },
+  {
+   "w": "er",
+   "start": 231,
+   "end": 237
+  },
+  {
+   "w": "aankomt.",
+   "start": 237,
+   "end": 249
+  },
+  {
+   "w": "Alleen",
+   "start": 258,
+   "end": 270
+  },
+  {
+   "w": "wat",
+   "start": 270,
+   "end": 276
+  },
+  {
+   "w": "jij",
+   "start": 276,
+   "end": 282
+  },
+  {
+   "w": "erin",
+   "start": 282,
+   "end": 294
+  },
+  {
+   "w": "stopt.",
+   "start": 294,
+   "end": 300
+  },
+  {
+   "w": "Activeer",
+   "start": 309,
+   "end": 327
+  },
+  {
+   "w": "Buddy.",
+   "start": 327,
+   "end": 339
+  }
+ ]
+}
