@@ -1,0 +1,144 @@
+<!-- ===================== BETAALBUDDY HERO v1 (27 nov 2026) =====================
+  Plak dit in Oxygen in een Code Block (HTML-tab), op de plek van het huidige eerste scherm.
+  Alles staat onder #bb-hero; het raakt de rest van de pagina niet.
+
+  Wat het doet
+  - Kop zegt wat je krijgt én haalt het grootste bezwaar weg (niemand leest je inbox).
+  - Hoofdknop = de echte gratis route (proefherinnering met je eigen rekening), geen betaling.
+  - Tweede knop = direct starten voor wie al overtuigd is, met prijs.
+  - €40-incasso als prijsanker, vier vertrouwensregels die kloppen.
+  - Klikken gaan als 'site_cta' naar de dataLayer (Tag Manager), met cta (try/direct) en where (hero).
+
+  Andere koppen om te testen (vervang de tekst in <h1>):
+  - "Stuur je rekening door. Buddy mailt je voordat hij verloopt."
+  - "Eén vergeten rekening kost €40. Buddy kost €3,49 per maand."
+================================================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+#bb-hero{
+  --bbh-blue:#013bff;--bbh-blue-d:#0026a8;--bbh-soft:#b6c7ff;--bbh-text:#dfe6ff;--bbh-ink:#111114;--bbh-yellow:#ffce31;
+  position:relative;overflow:hidden;background:var(--bbh-blue);color:#fff;
+  font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;-webkit-font-smoothing:antialiased;
+  padding:28px 20px 40px;box-sizing:border-box
+}
+#bb-hero *,#bb-hero *::before,#bb-hero *::after{box-sizing:border-box}
+#bb-hero .bbh-wrap{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:32px;align-items:center}
+#bb-hero .bbh-copy{display:flex;flex-direction:column;gap:18px;max-width:560px}
+
+#bb-hero h1{margin:0;font-size:clamp(34px,8.6vw,60px);line-height:1.04;font-weight:600;letter-spacing:-.045em;color:#fff}
+#bb-hero h1 span{display:block;color:var(--bbh-soft)}
+#bb-hero .bbh-lead{margin:0;font-size:clamp(16px,4.2vw,19px);line-height:1.45;color:var(--bbh-text);max-width:30em}
+#bb-hero .bbh-lead b{color:#fff;font-weight:600}
+
+#bb-hero .bbh-ctas{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+#bb-hero .bbh-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 22px;border-radius:16px;
+  font-size:16px;font-weight:600;letter-spacing:-.01em;text-align:center;text-decoration:none!important;transition:transform .15s,background-color .15s,box-shadow .15s}
+#bb-hero .bbh-btn:active{transform:scale(.985)}
+#bb-hero .bbh-btn--main{background:#fff;color:var(--bbh-blue)!important;box-shadow:0 10px 28px rgba(0,16,90,.28)}
+#bb-hero .bbh-btn--main:hover{background:#f1f4ff}
+#bb-hero .bbh-btn--main svg{flex:none}
+#bb-hero .bbh-btn--alt{background:transparent;color:#fff!important;border:1.5px solid rgba(255,255,255,.45);min-height:52px;font-weight:500}
+#bb-hero .bbh-btn--alt:hover{background:rgba(255,255,255,.08);border-color:#fff}
+#bb-hero .bbh-btn--alt b{font-weight:700}
+#bb-hero .bbh-micro{margin:-2px 0 0;font-size:13px;color:var(--bbh-text);text-align:center}
+
+#bb-hero .bbh-anchor{display:flex;align-items:flex-start;gap:10px;margin:2px 0 0;padding:11px 14px;border-radius:14px;background:rgba(0,16,90,.22);font-size:14px;line-height:1.4;color:#fff}
+#bb-hero .bbh-anchor i{flex:none;width:22px;height:22px;border-radius:50%;background:var(--bbh-yellow);color:var(--bbh-ink);display:flex;align-items:center;justify-content:center;font-style:normal;font-weight:700;font-size:13px}
+
+#bb-hero .bbh-trust{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:8px 14px}
+#bb-hero .bbh-trust li{display:flex;align-items:center;gap:8px;font-size:13.5px;color:var(--bbh-text)}
+#bb-hero .bbh-trust svg{flex:none;color:#fff}
+
+/* Beeld: herinnering + agenda, met Buddy */
+#bb-hero .bbh-visual{position:relative;max-width:420px;width:100%;margin:0 auto;padding:62px 0 4px}
+#bb-hero .bbh-card{position:relative;z-index:2;background:#fff;color:var(--bbh-ink);border-radius:18px;padding:13px 14px;display:flex;gap:12px;align-items:center;
+  box-shadow:0 14px 36px rgba(0,16,90,.30)}
+#bb-hero .bbh-card + .bbh-card{margin-top:10px}
+#bb-hero .bbh-ic{flex:none;width:40px;height:40px;border-radius:12px;background:#e8eeff;color:var(--bbh-blue);display:flex;align-items:center;justify-content:center}
+#bb-hero .bbh-ic--cal{background:var(--bbh-blue);color:#fff;flex-direction:column;line-height:1;font-weight:700}
+#bb-hero .bbh-ic--cal small{font-size:9px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;opacity:.85}
+#bb-hero .bbh-ic--cal span{font-size:16px}
+#bb-hero .bbh-ct{flex:1;min-width:0;display:flex;flex-direction:column;gap:2px}
+#bb-hero .bbh-ct b{font-size:14.5px;font-weight:600;letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#bb-hero .bbh-ct span{font-size:13px;color:#646b78}
+#bb-hero .bbh-ct em{font-style:normal;color:#c2185b;font-weight:600}
+#bb-hero .bbh-time{flex:none;align-self:flex-start;font-size:12px;color:#9aa1ad}
+#bb-hero .bbh-card--cal{margin-left:22px}
+#bb-hero .bbh-mascot{position:absolute;z-index:1;right:22px;top:0;width:82px;transform:rotate(6deg)}
+
+@media (min-width:900px){
+  #bb-hero{padding:64px 32px 72px}
+  #bb-hero .bbh-wrap{grid-template-columns:1.15fr .85fr;gap:56px}
+  #bb-hero .bbh-ctas{flex-direction:row;flex-wrap:wrap}
+  #bb-hero .bbh-btn--main{flex:1 1 300px}
+  #bb-hero .bbh-btn--alt{flex:0 1 auto;min-height:56px}
+  #bb-hero .bbh-micro{text-align:left}
+  #bb-hero .bbh-trust{grid-template-columns:repeat(2,max-content);gap:10px 28px}
+  #bb-hero .bbh-visual{max-width:440px}
+  #bb-hero .bbh-visual{padding-top:84px}
+  #bb-hero .bbh-mascot{width:110px;right:30px}
+}
+@media (prefers-reduced-motion:no-preference){
+  #bb-hero .bbh-card{animation:bbhIn .6s cubic-bezier(.32,.72,0,1) both}
+  #bb-hero .bbh-card--cal{animation-delay:.25s}
+  @keyframes bbhIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+}
+</style>
+
+<section id="bb-hero" aria-labelledby="bbh-title">
+  <div class="bbh-wrap">
+    <div class="bbh-copy">
+      <h1 id="bbh-title">Je rekeningen op tijd betaald. <span>Zonder dat iemand je inbox leest.</span></h1>
+      <p class="bbh-lead">Stuur je rekening door naar je eigen Buddy-adres. Je krijgt <b>7 en 2 dagen vooraf een mail</b>, en de datum staat in je agenda.</p>
+
+      <div class="bbh-ctas">
+        <a class="bbh-btn bbh-btn--main" data-bbh-cta="try"
+           href="/start-met-betaalbuddy/?try=1&amp;utm_source=site&amp;utm_medium=hero&amp;utm_content=try">
+          <span>Probeer gratis met je rekening</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a class="bbh-btn bbh-btn--alt" data-bbh-cta="direct"
+           href="/start-met-betaalbuddy/?utm_source=site&amp;utm_medium=hero&amp;utm_content=direct">
+          <span>Direct starten · <b>€3,49</b> per maand</span>
+        </a>
+      </div>
+      <p class="bbh-micro">Gratis proberen duurt 30 seconden en kost niets.</p>
+
+      <p class="bbh-anchor"><i aria-hidden="true">!</i><span>Eén vergeten rekening kost al snel <b>€40</b> aan incassokosten.</span></p>
+
+      <ul class="bbh-trust" aria-label="Wat Buddy niet doet">
+        <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen app of account</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen toegang tot je inbox</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>Geen AI die meeleest</li>
+        <li><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.2 4L19 7" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg>30 dagen geld terug</li>
+      </ul>
+    </div>
+
+    <div class="bbh-visual" aria-hidden="true">
+      <div class="bbh-card">
+        <span class="bbh-ic"><svg width="20" height="20" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2"/></svg></span>
+        <span class="bbh-ct"><b>Buddy · Zorgverzekering</b><span><em>Nog 2 dagen</em> · €142,50 · vervalt 27 nov</span></span>
+        <span class="bbh-time">nu</span>
+      </div>
+      <div class="bbh-card bbh-card--cal">
+        <span class="bbh-ic bbh-ic--cal"><small>nov</small><span>27</span></span>
+        <span class="bbh-ct"><b>Zorgverzekering betalen</b><span>€142,50 · staat in je agenda</span></span>
+      </div>
+      <svg class="bbh-mascot" viewBox="0 0 79.31 86.43"><path fill="#fff" d="M33.57,49.27c11.39-2.07,17.36-9.46,20.14-19.93,12.46-2.24,24.74,8.68,25.54,22.51,1.14,19.63-12.1,34.1-31.77,34.46-11.47.21-22.96.11-34.43.02-7.69-.06-12.78-4.81-12.86-12.47C-.02,55.16-.07,36.47.12,17.78.2,9.47,4.79,4.17,12.93,1.96c9.39-2.550,18.73-3.07,27.81,1.24,9.72,4.61,11.44,13.31,11,22.72-.36,7.81-6.4,10.87-12.69,13.31-6.69,2.59-6.71,2.53-5.49,10.05Z"/><ellipse fill="#013bff" cx="16.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="16" cy="24.94" r="3"/><ellipse fill="#013bff" cx="36.5" cy="17.94" rx="6.5" ry="9"/><circle fill="#fff" cx="37" cy="24.94" r="3"/></svg>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var el = document.getElementById('bb-hero'); if (!el) return;
+  el.addEventListener('click', function (e) {
+    var a = e.target.closest('[data-bbh-cta]'); if (!a) return;
+    try { (window.dataLayer = window.dataLayer || []).push({ event: 'site_cta', cta: a.getAttribute('data-bbh-cta'), where: 'hero' }); } catch (x) {}
+  });
+})();
+</script>
+<!-- ===================== EINDE HERO ===================== -->

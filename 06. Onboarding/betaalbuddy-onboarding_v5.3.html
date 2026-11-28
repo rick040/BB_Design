@@ -1,0 +1,1527 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Start met Betaalbuddy</title>
+<style>body{margin:0;background:#F6F7F9}#bb-ob button,#bb-ob input,#bb-ob select,#bb-ob textarea,#bb-ob .mollie-form *{font-family:inherit}
+</style>
+</head>
+<body>
+
+<!-- ===================== START KOPIEREN VANAF HIER ===================== -->
+<!--
+  BETAALBUDDY ONBOARDING v5.3 (27 nov 2026), gebouwd op de live versie v5
+  v5.3: één abonnement. Buddy, €3,49 per maand, met een seintje per mail (7 en 2 dagen vooraf) en alles in je
+        agenda: precies wat de backend voor elke betaler doet. Basic en Buddy pro zijn weg (een tweede pakket komt
+        pas als sms/WhatsApp live is). De pakketvraag valt weg (CONFIG.singlePlan): het gesprek begint bij het
+        mailadres, met daaronder wat je krijgt en de prijs. Twee vragen in plaats van drie. Alleen Mollie-formulier
+        141 staat nog op de pagina.
+        Meetbaar: elk event krijgt dezelfde context mee (versie, scherm, vraag, pakket, in-app, apparaat).
+        Nieuw: ob_engaged (eerste echte handeling), email_valid, email_typo_shown, checkout_error (met type),
+        retry_start en ob_exit (waar iemand de pagina verlaat). purchase krijgt transaction_id en plan_known.
+        Geen mailadres of ander persoonsgegeven in events. Optioneel ook direct naar gtag (CONFIG.analytics.gtag).
+  v5 (31 okt 2026)
+  v5:   omgedraaid. De checkout staat meteen open op de pagina (drie korte vragen) en de knop om verder te
+        gaan blijft altijd in beeld. "Eerst gratis uitproberen?" is nu de balk onderin: omhoog vegen of
+        tikken opent de proefherinnering (.ics). Daarna schuift hij vanzelf terug naar de checkout, die dan
+        persoonlijk is gemaakt met de eigen rekening. Minder tikken tot betalen.
+  v4.5: desktop is één rustige kolom; de checkout opent als venster in het midden (zelfde gesprek als op mobiel).
+        De blauwe "Start direct"-balk staat ook op desktop onderaan.
+  v4.4: "zo werkt het" op het startscherm, snelkeuze voor de betaaldatum, knop op "Staat erin!",
+        weekprijs in de balk, compactere eerste vraag op mobiel, geen voortgangsbalk op desktop.
+  v4.3: zelf je betaalmethode kiezen (iDEAL | Wero, Apple Pay, kaart: alleen wat het Mollie-formulier aanbiedt),
+        tikfoutcheck op het mailadres, vertrouwensregels bij de laatste vraag, geruststelling bij het doorsturen.
+  v4.2: de checkout is een kort gesprek met Buddy in drie vragen (hoe zal ik je helpen, waar mag ik je
+        seintjes naartoe sturen, samenvatting met betaalknop). Betaalknop en kleine lettertjes pas bij vraag 3.
+  v4.1: drie pakketten naast elkaar met eigen USP's, aanrader in het midden, prijs per week,
+        persoonlijke seintjes op basis van de eerste rekening, duwtje van Basic naar Buddy,
+        prijsanker (incassokosten) en een totaalregel boven de betaalknop.
+        Alle teksten per pakket staan in CONFIG.plans.
+  Vervangt de oude onboardingmodule (Tailwind, 11 stappen). Geen Tailwind meer nodig.
+
+  Flow: checkout (pakket -> mailadres -> betalen) -> Mollie -> /stel-je-buddy-in/.
+  Zijpad: balk "Eerst gratis uitproberen?" -> rekening invullen -> herinnering + agendabestand (.ics)
+          -> terug naar de checkout ("Zal ik dit voor al je rekeningen doen?").
+
+  MOLLIE FORMS
+  - De drie shortcodes staan onderaan in de checkout: 36 = Basic (lite), 141 = Buddy, 143 = Buddy pro.
+  - Het script vult het mailadres in, kiest iDEAL en maand als die opties bestaan, verbergt die velden
+    en de knop van de plugin, en verstuurt het formulier met de eigen knop
+    "Betaal {prijs} en start" (CONFIG.payLabel). Velden die het niet kent (bijv. naam) blijven zichtbaar.
+  - Zet in Mollie Forms per formulier de doorverwijzing na betaling:
+        betaald     -> /stel-je-buddy-in/?bb_status=paid
+        geannuleerd -> /betaling-geannuleerd/
+        mislukt     -> /betaling-mislukt/
+    (?bb_status=canceled of failed op deze pagina werkt ook nog, als terugval.)
+  - Staan er geen Mollie-formulieren op de pagina (bijv. lokaal testen), dan draait de module in testmodus.
+
+  LINKS
+  ?plan=buddy|pro|lite   pakket voorselecteren
+  ?retry=1               meteen de laatste vraag (betalen) als mailadres en pakket nog bekend zijn
+  ?try=1 of #proberen    meteen het uitproberen open
+  (?direct=1 hoeft niet meer: de checkout staat altijd open)
+
+  Alles staat onder #bb-ob; klikken gaan via data-bb-* attributen, geen inline onclick.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+#bb-ob{
+  --bb-blue:#013bff;--bb-blue-d:#0026a8;--bb-ink:#111827;--bb-muted:#646B78;--bb-faint:#9AA1AD;
+  --bb-bg:#F6F7F9;--bb-card:#ffffff;--bb-line:#E6E8EE;--bb-line2:#EEF0F4;--bb-field:#E1E4EA;--bb-tint:#E8EEFF;--bb-tint2:#F1F4FF;
+  --bb-ease:cubic-bezier(.32,.72,0,1);
+  position:relative;box-sizing:border-box;max-width:480px;margin:0 auto;min-height:100vh;min-height:100dvh;
+  background:var(--bb-bg);color:var(--bb-ink);
+  font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-size:15px;line-height:1.45;
+  -webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%;text-align:left
+}
+#bb-ob *,#bb-ob *::before,#bb-ob *::after{box-sizing:border-box}
+#bb-ob [hidden]{display:none!important}
+#bb-ob h1,#bb-ob h2,#bb-ob p{margin:0}
+#bb-ob button,#bb-ob input,#bb-ob select{font:inherit;color:inherit;letter-spacing:normal;text-transform:none}
+#bb-ob button{cursor:pointer;-webkit-tap-highlight-color:transparent}
+#bb-ob button:active{transform:scale(.985)}
+#bb-ob a{color:var(--bb-blue)}
+#bb-ob :is(button,a,input,select):focus-visible{outline:2px solid var(--bb-blue);outline-offset:2px}
+#bb-ob [tabindex="-1"]:focus{outline:none}
+#bb-ob .bb-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+#bb-ob .bb-h{font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:600;letter-spacing:-.02em;line-height:1.18}
+#bb-ob .bb-num{font-variant-numeric:tabular-nums}
+
+/* Nav */
+#bb-ob .bb-nav{position:sticky;top:0;z-index:5;display:grid;grid-template-columns:56px 1fr 56px;align-items:center;height:60px;padding:0 8px;background:var(--bb-bg)}
+#bb-ob .bb-back{width:44px;height:44px;border:0;background:transparent;border-radius:12px;display:flex;align-items:center;justify-content:center;color:var(--bb-ink);padding:0}
+#bb-ob .bb-logo{display:flex;align-items:center;justify-content:center;gap:6px;font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;font-weight:600;font-size:15px;letter-spacing:-.01em}
+#bb-ob .bb-logo svg{color:var(--bb-blue)}
+#bb-ob .bb-brand{display:flex;flex-direction:column;align-items:center;gap:1px;line-height:1}
+#bb-ob .bb-by{font-size:10.5px;font-weight:500;letter-spacing:.02em;color:var(--bb-faint)}
+#bb-ob .bb-progress{position:absolute;left:16px;right:16px;bottom:0;height:3px;border-radius:2px;background:var(--bb-line);overflow:hidden}
+#bb-ob .bb-progress i{display:block;height:100%;width:0;background:var(--bb-blue);border-radius:2px;transition:width .45s var(--bb-ease)}
+#bb-ob .bb-testmode{display:block;margin:4px 16px 0;text-align:center;font-size:11px;font-weight:600;color:var(--bb-blue-d);background:var(--bb-tint);border-radius:999px;padding:3px 10px}
+
+/* Schermen */
+#bb-ob .bb-main{padding:8px 16px 110px}
+#bb-ob.no-sheet .bb-main{padding-bottom:64px}
+#bb-ob .bb-screen{display:flex;flex-direction:column;animation:bbIn .28s var(--bb-ease) both}
+@keyframes bbIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+#bb-ob .bb-card{background:var(--bb-card);border:1px solid var(--bb-line);border-radius:20px}
+#bb-ob .bb-muted{color:var(--bb-muted)}
+#bb-ob .bb-small{font-size:13px;color:var(--bb-muted)}
+#bb-ob .bb-tiny{font-size:12px;color:var(--bb-muted)}
+#bb-ob .bb-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;height:54px;border:0;border-radius:14px;background:var(--bb-ink);color:#fff;font-size:16px;font-weight:600;text-decoration:none;padding:0 16px}
+#bb-ob .bb-btn:hover{background:#000;color:#fff}
+#bb-ob .bb-btn--blue{background:var(--bb-blue);box-shadow:0 6px 16px rgba(1,59,255,.28)}
+#bb-ob .bb-btn--blue:hover{background:var(--bb-blue-d)}
+#bb-ob .bb-btn--ghost{background:var(--bb-card);color:var(--bb-ink);border:1px solid var(--bb-field);font-weight:500;box-shadow:none}
+#bb-ob .bb-btn--ghost:hover{background:var(--bb-tint2);color:var(--bb-ink)}
+#bb-ob .bb-btn[aria-busy="true"]{opacity:.7;pointer-events:none}
+#bb-ob .bb-linkbtn{border:0;background:none;color:var(--bb-muted);font-size:13px;padding:8px;text-decoration:underline;text-underline-offset:3px}
+
+/* Tijdlijn */
+#bb-ob .bb-tl{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));text-align:center}
+#bb-ob .bb-tl::before{content:"";position:absolute;left:16.6%;right:16.6%;top:10px;height:2px;background:#C9D3FF;transform-origin:left;animation:bbLine .8s .2s ease-out both}
+#bb-ob .bb-tl>div{position:relative;display:flex;flex-direction:column;align-items:center;gap:4px}
+#bb-ob .bb-dot{width:22px;height:22px;border-radius:50%;background:#fff;border:2px solid var(--bb-blue);display:flex;align-items:center;justify-content:center;animation:bbDot .3s cubic-bezier(.3,1.6,.5,1) both}
+#bb-ob .bb-dot--end{background:var(--bb-blue)}
+#bb-ob .bb-tl>div:nth-child(1) .bb-dot{animation-delay:.25s}
+#bb-ob .bb-tl>div:nth-child(2) .bb-dot{animation-delay:.55s}
+#bb-ob .bb-tl>div:nth-child(3) .bb-dot{animation-delay:.85s}
+#bb-ob .bb-tl b{font-size:13px;font-weight:600;margin-top:2px}
+#bb-ob .bb-tl .bb-end{color:var(--bb-blue)}
+@keyframes bbLine{from{transform:scaleX(0)}to{transform:scaleX(1)}}
+@keyframes bbDot{from{transform:scale(0)}to{transform:scale(1)}}
+
+/* Formulier */
+#bb-ob .bb-field{display:flex;flex-direction:column;gap:6px}
+#bb-ob .bb-label{font-size:13px;font-weight:600;color:#3B4250}
+/* Invulvelden: gevuld en met een duidelijke rand, ook als het thema eigen veldstijlen heeft */
+#bb-ob .bb-input,
+#bb-ob .bb-mollie input[type="text"],#bb-ob .bb-mollie input[type="email"],#bb-ob .bb-mollie input[type="tel"],
+#bb-ob .bb-mollie input[type="number"],#bb-ob .bb-mollie select,#bb-ob .bb-mollie textarea{
+  display:block!important;width:100%!important;height:52px!important;min-height:0!important;max-width:none!important;
+  border:1.5px solid #D3D8E2!important;background-color:#F7F8FA!important;border-radius:14px!important;padding:0 14px!important;
+  font-size:16px!important;line-height:1.3!important;color:var(--bb-ink)!important;margin:0!important;-webkit-appearance:none;appearance:none;
+  box-shadow:none!important;outline:none;transition:border-color .15s,box-shadow .15s,background-color .15s
+}
+#bb-ob .bb-mollie textarea{height:auto!important;min-height:96px!important;padding:12px 14px!important}
+#bb-ob .bb-input:hover,#bb-ob .bb-mollie input:hover,#bb-ob .bb-mollie select:hover{border-color:#B9C0CD!important}
+#bb-ob .bb-input::placeholder,#bb-ob .bb-mollie input::placeholder{color:#8F96A3;opacity:1}
+#bb-ob .bb-input:focus,#bb-ob .bb-mollie input:focus,#bb-ob .bb-mollie select:focus,#bb-ob .bb-mollie textarea:focus{
+  background-color:#fff!important;border-color:var(--bb-blue)!important;box-shadow:0 0 0 4px rgba(1,59,255,.12)!important}
+#bb-ob .bb-input[aria-invalid="true"],#bb-ob .bb-mollie :invalid.bb-touched{border-color:var(--bb-ink)!important;background-color:#fff!important}
+#bb-ob .bb-coupon{align-self:flex-start;border:0;background:none;padding:2px 0;color:var(--bb-blue);font-size:14px;font-weight:500;text-decoration:underline;text-underline-offset:3px}
+#bb-ob input[type="date"].bb-input{padding:0 10px;font-size:15px}
+#bb-ob .bb-euro{position:relative}
+#bb-ob .bb-euro span{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--bb-muted);font-size:16px;pointer-events:none}
+#bb-ob .bb-euro .bb-input{padding-left:32px!important}
+#bb-ob .bb-euro span{z-index:1}
+#bb-ob .bb-chips{display:flex;gap:6px;overflow-x:auto;padding:2px 0 4px;scrollbar-width:none}
+#bb-ob .bb-chips::-webkit-scrollbar{display:none}
+#bb-ob .bb-chip{flex:none;height:32px;border:1px solid var(--bb-field);background:#fff;color:var(--bb-ink);border-radius:999px;padding:0 12px;font-size:13px}
+#bb-ob .bb-chip[aria-pressed="true"]{background:var(--bb-ink);border-color:var(--bb-ink);color:#fff}
+#bb-ob .bb-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+#bb-ob .bb-grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+#bb-ob .bb-err{font-size:13px;color:var(--bb-ink);background:var(--bb-tint2);border-radius:10px;padding:8px 10px}
+#bb-ob .bb-err:empty{display:none}
+
+/* Lijstcellen */
+#bb-ob .bb-list{overflow:hidden;border-radius:16px}
+#bb-ob .bb-cell{width:100%;min-height:54px;border:0;border-top:1px solid var(--bb-line2);background:#fff;display:flex;align-items:center;gap:12px;padding:8px 14px;font-size:15px;color:var(--bb-ink);text-align:left;text-decoration:none}
+#bb-ob .bb-cell:first-child{border-top:0}
+#bb-ob .bb-cell:hover{background:#FAFBFC;color:var(--bb-ink)}
+#bb-ob .bb-cell .bb-ic{flex:none;width:30px;height:30px;border-radius:8px;background:var(--bb-tint2);display:flex;align-items:center;justify-content:center;color:var(--bb-blue)}
+#bb-ob .bb-cell .bb-grow{flex:1;display:flex;flex-direction:column}
+#bb-ob .bb-chev{color:var(--bb-faint);flex:none}
+
+/* Overlay en sheet */
+#bb-ob .bb-overlay{position:fixed;inset:0;z-index:9998;background:rgba(17,24,39,.36);opacity:0;pointer-events:none;transition:opacity .35s var(--bb-ease)}
+#bb-ob.is-open .bb-overlay{opacity:1;pointer-events:auto}
+#bb-ob .bb-sheet{position:fixed;z-index:9999;left:50%;transform:translateX(-50%);bottom:calc(14px + env(safe-area-inset-bottom));
+  width:calc(100% - 24px);max-width:456px;height:68px;border-radius:20px;background:#fff;color:var(--bb-ink);border:1px solid var(--bb-line);
+  box-shadow:0 10px 30px rgba(16,24,40,.16);overflow:hidden;display:flex;flex-direction:column;
+  transition:height .45s var(--bb-ease),width .45s var(--bb-ease),max-width .45s var(--bb-ease),bottom .45s var(--bb-ease),border-radius .45s var(--bb-ease),background-color .3s,box-shadow .3s}
+#bb-ob.is-open .bb-sheet{bottom:0;width:100%;max-width:480px;height:min(660px,90vh);height:min(660px,90dvh);border:0;border-radius:22px 22px 0 0;background:#fff;color:var(--bb-ink);box-shadow:0 -8px 30px rgba(16,24,40,.14)}
+#bb-ob.no-sheet .bb-sheet,#bb-ob.no-sheet .bb-overlay{display:none}
+#bb-ob.no-try:not(.is-open) .bb-sheet{display:none}
+#bb-ob .bb-bar{position:relative;flex:none;width:100%;height:68px;border:0;background:transparent;color:var(--bb-ink);display:flex;align-items:center;gap:12px;padding:0 12px;text-align:left;touch-action:none}
+#bb-ob.is-open .bb-bar{display:none}
+#bb-ob .bb-bar.bb-peek{animation:bbPeek 1.1s 1.2s ease-out both}
+@keyframes bbPeek{0%,100%{transform:translateY(0)}20%{transform:translateY(-10px)}40%{transform:translateY(0)}55%{transform:translateY(-5px)}70%{transform:translateY(0)}}
+#bb-ob .bb-grab{position:absolute;top:6px;left:50%;transform:translateX(-50%);width:32px;height:4px;border-radius:2px;background:#D9DCE3}
+#bb-ob .bb-bar-ava{flex:none;width:42px;height:42px;border-radius:13px;background:var(--bb-tint);display:flex;align-items:center;justify-content:center;color:var(--bb-blue)}
+#bb-ob .bb-bar-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px;padding-top:4px}
+#bb-ob .bb-bar-sub{font-size:13px;color:var(--bb-muted)}
+#bb-ob .bb-bar-title{display:flex;align-items:baseline;gap:8px}
+#bb-ob .bb-bar-title b{font-size:16px;font-weight:600;letter-spacing:-.01em}
+#bb-ob .bb-bar-title span{font-size:13px;opacity:.85}
+#bb-ob .bb-pills{display:flex;gap:4px;flex-wrap:wrap}
+#bb-ob .bb-pill{font-size:10px;font-weight:600;color:var(--bb-ink);background:#fff;border-radius:4px;padding:2px 5px;line-height:1.3}
+#bb-ob .bb-pills--line .bb-pill{border:1px solid var(--bb-field)}
+#bb-ob .bb-bar-go{flex:none;width:38px;height:38px;border-radius:50%;background:var(--bb-tint);display:flex;align-items:center;justify-content:center;color:var(--bb-blue)}
+#bb-ob .bb-panel{display:none;flex:1;min-height:0;flex-direction:column}
+#bb-ob.is-open .bb-panel{display:flex}
+#bb-ob .bb-panel-head{position:relative;flex:none;display:flex;justify-content:flex-end;align-items:center;height:44px;padding:8px 12px 0;touch-action:none}
+#bb-ob .bb-panel-head .bb-grab{background:#D9DCE3;width:36px;height:5px;top:7px}
+#bb-ob .bb-close{width:32px;height:32px;border-radius:50%;border:0;background:var(--bb-line2);color:var(--bb-muted);display:flex;align-items:center;justify-content:center;padding:0}
+#bb-ob .bb-panel-body{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 20px 16px;display:flex;flex-direction:column;gap:16px}
+#bb-ob .bb-panel-foot{flex:none;padding:12px 20px calc(18px + env(safe-area-inset-bottom));border-top:1px solid var(--bb-line2);background:#fff;display:flex;flex-direction:column;gap:10px}
+/* Checkout op de pagina */
+@keyframes bbPulse{0%{box-shadow:0 0 0 0 rgba(1,59,255,.40)}70%{box-shadow:0 0 0 12px rgba(1,59,255,0)}100%{box-shadow:0 0 0 0 rgba(1,59,255,0)}}
+#bb-ob .bb-co-head{display:flex;flex-direction:column;gap:4px;padding:6px 2px 0}
+#bb-ob .bb-co-head h1{font-size:24px}
+#bb-ob .bb-co-head p{font-size:15px}
+#bb-ob .bb-co{position:relative;background:#fff;border:1px solid var(--bb-line);border-radius:22px;padding:14px 16px 0;display:flex;flex-direction:column;gap:14px;box-shadow:0 1px 2px rgba(16,24,40,.04)}
+#bb-ob .bb-co.is-pulse{animation:bbPulse 1.3s ease-out 2}
+#bb-ob .bb-co-foot{margin:0 -16px;padding:12px 16px 16px;border-top:1px solid var(--bb-line2);background:#fff;border-radius:0 0 22px 22px;display:flex;flex-direction:column;gap:10px}
+/* De knop blijft in beeld; het witte vlak loopt door tot onder de uitprobeer-balk, zodat er niets tussendoor schemert */
+#bb-ob .bb-co-foot.is-sticky{position:sticky;bottom:0;z-index:3;padding-bottom:calc(98px + env(safe-area-inset-bottom));border-radius:0}
+#bb-ob.no-try .bb-co-foot.is-sticky{padding-bottom:calc(16px + env(safe-area-inset-bottom));border-radius:0 0 22px 22px}
+#bb-ob .bb-how-wrap{padding:6px 4px 0}
+#bb-ob .bb-how-title{font-size:13px;font-weight:600;color:var(--bb-muted);margin:0 0 12px}
+#bb-ob .bb-tview{display:flex;flex-direction:column;gap:16px;padding-top:2px;animation:bbIn .3s var(--bb-ease) both}
+#bb-ob .bb-tview h2{font-size:22px}
+#bb-ob .bb-tview .bb-tsub{font-size:14px;color:var(--bb-muted);margin-top:4px}
+/* Pakketten */
+#bb-ob .bb-plans{display:flex;flex-direction:column;gap:8px}
+#bb-ob .bb-pl{position:relative;display:flex;flex-direction:column;gap:10px;width:100%;text-align:left;border:1.5px solid var(--bb-line);background:#fff;border-radius:16px;padding:12px 14px;color:var(--bb-ink);transition:border-color .2s,background-color .2s,box-shadow .2s}
+#bb-ob .bb-pl:hover{border-color:#C9CFDA}
+#bb-ob .bb-pl[aria-checked="true"]{border:2px solid var(--bb-blue);padding:11.5px 13.5px;background:#F7F9FF;box-shadow:0 6px 18px rgba(1,59,255,.10)}
+#bb-ob .bb-pl-top{display:flex;align-items:center;gap:12px;width:100%}
+#bb-ob .bb-radio{flex:none;width:20px;height:20px;border-radius:50%;border:2px solid #C3C9D4;background:#fff;position:relative;transition:border-color .2s}
+#bb-ob .bb-pl[aria-checked="true"] .bb-radio{border-color:var(--bb-blue)}
+#bb-ob .bb-pl[aria-checked="true"] .bb-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--bb-blue)}
+#bb-ob .bb-pl-name{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+#bb-ob .bb-pl-name b{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:15px;font-weight:600}
+#bb-ob .bb-pl-tag{font-size:12.5px;line-height:1.35;color:var(--bb-muted)}
+#bb-ob .bb-badge{font-size:10px;font-weight:700;letter-spacing:.03em;text-transform:uppercase;color:#fff;background:var(--bb-blue);border-radius:999px;padding:2px 7px;line-height:1.4}
+#bb-ob .bb-pl-price{flex:none;display:flex;flex-direction:column;align-items:flex-end;gap:0;text-align:right}
+#bb-ob .bb-pl-price b{font-size:17px;font-weight:700;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+#bb-ob .bb-pl-price b small{font-size:11px;font-weight:500;color:var(--bb-muted);margin-left:2px}
+#bb-ob .bb-pl-price em{font-style:normal;font-size:11.5px;color:var(--bb-muted);font-variant-numeric:tabular-nums}
+#bb-ob .bb-pl[aria-checked="true"] .bb-pl-price b{color:var(--bb-blue)}
+#bb-ob .bb-pl-feats{display:none;flex-direction:column;gap:7px;padding:10px 0 2px 32px;border-top:1px solid #E3E8F7;width:100%}
+#bb-ob .bb-pl[aria-checked="true"] .bb-pl-feats{display:flex}
+#bb-ob .bb-ft{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;line-height:1.4}
+#bb-ob .bb-ft i{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--bb-tint);color:var(--bb-blue);display:flex;align-items:center;justify-content:center}
+#bb-ob .bb-ft--no{color:var(--bb-muted)}
+#bb-ob .bb-ft--no i{background:#EEF0F4;color:#8F96A3}
+#bb-ob .bb-ft--hi{font-weight:600}
+#bb-ob .bb-soon{display:inline-block;margin-left:4px;font-size:10.5px;font-weight:600;color:var(--bb-blue-d);background:var(--bb-tint);border-radius:4px;padding:1px 5px;vertical-align:1px}
+#bb-ob .bb-switch{font-size:12px;color:var(--bb-muted);text-align:center;margin-top:2px}
+#bb-ob .bb-nudge{display:flex;align-items:center;gap:12px;border-radius:14px;background:var(--bb-tint2);border:1px solid #DCE4FF;padding:12px 12px 12px 14px;font-size:13.5px;line-height:1.4}
+#bb-ob .bb-nudge span{flex:1}
+#bb-ob .bb-nudge button{flex:none;height:38px;border:0;border-radius:10px;background:var(--bb-blue);color:#fff;font-size:13.5px;font-weight:600;padding:0 12px}
+#bb-ob .bb-anchor{display:flex;align-items:flex-start;gap:8px;font-size:13px;line-height:1.45;color:#3B4250;background:#F7F8FA;border-radius:12px;padding:10px 12px}
+#bb-ob .bb-anchor svg{flex:none;margin-top:2px;color:var(--bb-blue)}
+/* Gesprek in de sheet */
+#bb-ob .bb-stepsrow{display:flex;align-items:center;justify-content:space-between;min-height:32px;margin-bottom:-4px}
+#bb-ob .bb-cback{display:inline-flex;align-items:center;gap:4px;height:32px;border:0;background:none;padding:0 6px 0 0;color:var(--bb-muted);font-size:14px;font-weight:500}
+#bb-ob .bb-cback[data-off]{visibility:hidden}
+#bb-ob .bb-dots{display:flex;gap:5px}
+#bb-ob .bb-dots i{display:block;width:18px;height:4px;border-radius:2px;background:var(--bb-line);transition:background .3s,width .3s}
+#bb-ob .bb-dots i.is-on{background:var(--bb-blue)}
+#bb-ob .bb-dots i.is-cur{width:28px}
+#bb-ob .bb-cstep{display:flex;flex-direction:column;gap:16px;animation:bbIn .3s var(--bb-ease) both}
+#bb-ob .bb-say{display:flex;align-items:flex-start;gap:12px}
+#bb-ob .bb-say-ava{flex:none;width:40px;height:40px;border-radius:13px;background:var(--bb-blue);color:#fff;display:flex;align-items:center;justify-content:center}
+#bb-ob .bb-say-txt{flex:1;min-width:0;display:flex;flex-direction:column;gap:4px;padding-top:1px}
+#bb-ob .bb-say-q{font-size:21px}
+#bb-ob .bb-say-sub{font-size:14px;color:var(--bb-muted)}
+#bb-ob .bb-sum{display:flex;flex-direction:column;border:1px solid var(--bb-line);border-radius:16px;overflow:hidden}
+#bb-ob .bb-sum-row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--bb-line2);background:#fff}
+#bb-ob .bb-sum-row:first-child{border-top:0}
+#bb-ob .bb-sum-ic{flex:none;width:32px;height:32px;border-radius:10px;background:var(--bb-tint);color:var(--bb-blue);display:flex;align-items:center;justify-content:center}
+#bb-ob .bb-sum-t{flex:1;min-width:0;display:flex;flex-direction:column;font-size:13px;color:var(--bb-muted)}
+#bb-ob .bb-sum-t b{font-size:15px;font-weight:600;color:var(--bb-ink)}
+#bb-ob .bb-sum-t [data-bb-out="email"]{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bb-ob .bb-sum-edit{flex:none;border:0;background:none;color:var(--bb-blue);font-size:14px;font-weight:500;padding:8px 2px}
+#bb-ob .bb-payarea{display:flex;flex-direction:column;gap:10px}
+#bb-ob .bb-how{list-style:none;margin:4px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
+#bb-ob .bb-how li{display:flex;align-items:flex-start;gap:12px;font-size:13px;color:var(--bb-muted);line-height:1.35}
+#bb-ob .bb-how li b{display:block;font-size:14.5px;font-weight:600;color:var(--bb-ink);margin-bottom:1px}
+#bb-ob .bb-how-n{flex:none;width:26px;height:26px;border-radius:50%;background:var(--bb-tint);color:var(--bb-blue);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center}
+#bb-ob .bb-allplans{font-size:12.5px;color:var(--bb-muted);text-align:center;margin-top:-6px}
+#bb-ob .bb-allplans:empty{display:none}
+#bb-ob .bb-typo{font-size:14px;color:var(--bb-ink);margin-top:2px}
+#bb-ob .bb-typo button{border:0;background:var(--bb-tint);color:var(--bb-blue-d);font-weight:600;font-size:14px;border-radius:8px;padding:4px 8px}
+#bb-ob .bb-methods{display:flex;flex-direction:column;gap:8px}
+#bb-ob .bb-mchips{display:flex;flex-wrap:wrap;gap:8px}
+#bb-ob .bb-mchip{flex:1 1 0;min-width:96px;height:46px;border:1.5px solid var(--bb-line);background:#fff;border-radius:12px;font-size:14px;font-weight:600;color:var(--bb-ink);padding:0 10px;transition:border-color .2s,background-color .2s}
+#bb-ob .bb-mchip[aria-checked="true"]{border:2px solid var(--bb-blue);background:#F7F9FF;color:var(--bb-blue-d)}
+#bb-ob .bb-trust{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+#bb-ob .bb-planinfo{display:flex;flex-direction:column;gap:10px;background:#F7F9FF;border:1.5px solid #DDE5FF;border-radius:16px;padding:12px 14px}
+#bb-ob .bb-pi-top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+#bb-ob .bb-pi-top b{font-size:15px;font-weight:600}
+#bb-ob .bb-pi-top span{font-size:13px;color:var(--bb-muted);font-variant-numeric:tabular-nums;text-align:right}
+#bb-ob .bb-pi-top span strong{font-size:17px;font-weight:700;color:var(--bb-blue)}
+#bb-ob .bb-planinfo .bb-anchor{background:#fff}
+#bb-ob .bb-trust li{display:flex;align-items:flex-start;gap:8px;font-size:13.5px;line-height:1.4;color:#3B4250}
+#bb-ob .bb-trust li i{flex:none;width:18px;height:18px;margin-top:1px;border-radius:50%;background:var(--bb-tint);color:var(--bb-blue);display:flex;align-items:center;justify-content:center}
+#bb-ob .bb-payee{font-size:12.5px;line-height:1.45;color:#3B4250;text-align:center}
+#bb-ob .bb-payee:empty{display:none}
+#bb-ob .bb-busynote{font-size:13px;color:var(--bb-muted);text-align:center}
+#bb-ob .bb-total{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font-size:14px}
+#bb-ob .bb-total span{color:var(--bb-muted)}
+#bb-ob .bb-total b{font-size:18px;font-weight:700;font-variant-numeric:tabular-nums}
+#bb-ob .bb-guarantee{display:flex;align-items:center;justify-content:center;gap:6px;font-size:13px;font-weight:500}
+#bb-ob .bb-fine{font-size:11px;line-height:1.45;color:var(--bb-muted);text-align:center}
+#bb-ob .bb-emailchip{display:flex;justify-content:space-between;align-items:center;gap:10px;background:var(--bb-bg);border-radius:14px;padding:0 6px 0 14px;height:50px;font-size:15px}
+#bb-ob .bb-emailchip span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#bb-ob .bb-emailchip button{flex:none;height:36px;border:0;background:none;color:var(--bb-blue);font-size:14px;font-weight:500;padding:0 10px}
+
+/* Mollie Forms binnen de checkout */
+#bb-ob .bb-mollie{display:flex;flex-direction:column;gap:12px}
+#bb-ob .bb-mollie .mollie-form-wrapper.bb-weg,#bb-ob .bb-mollie .bb-weg,
+#bb-ob .bb-mollie input.bb-weg,#bb-ob .bb-mollie select.bb-weg,#bb-ob .bb-mollie textarea.bb-weg,#bb-ob .bb-mollie button.bb-weg{display:none!important}
+#bb-ob .bb-mollie form{margin:0;display:flex;flex-direction:column;gap:12px}
+#bb-ob .bb-mollie form *{margin-top:0;margin-bottom:0}
+#bb-ob .bb-mollie form p,#bb-ob .bb-mollie form div{padding-top:0;padding-bottom:0;min-height:0}
+#bb-ob .bb-mollie br,#bb-ob .bb-mollie form>div:empty,#bb-ob .bb-mollie form>p:empty{display:none}
+#bb-ob .bb-mollie label,#bb-ob .bb-mollie .bb-mlabel{display:block;font-size:13px;font-weight:600;color:#3B4250;margin:0 0 6px!important}
+#bb-ob .bb-mollie .bb-mlabel b{color:var(--bb-blue);font-weight:500;margin-left:2px}
+#bb-ob .bb-mollie select{background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23646B78' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;background-size:16px;padding-right:40px}
+#bb-ob .bb-mollie input[type="checkbox"],#bb-ob .bb-mollie input[type="radio"]{width:18px;height:18px;accent-color:var(--bb-blue);margin:0 8px 0 0;vertical-align:middle}
+#bb-ob .bb-mollie hr{border:0;border-top:1px solid var(--bb-line2);margin:4px 0}
+
+/* Toast */
+#bb-ob .bb-toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:10000;background:var(--bb-ink);color:#fff;padding:10px 16px;border-radius:999px;font-size:14px;font-weight:500;box-shadow:0 6px 20px rgba(17,24,39,.2)}
+
+/* ---------- Tablet (600 tot 959px): bredere kolom, grotere sheet ---------- */
+@media (min-width:600px){
+  #bb-ob{max-width:640px}
+  #bb-ob .bb-main{padding:24px 32px 132px}
+  #bb-ob .bb-nav{padding:0 24px;height:64px}
+  #bb-ob .bb-progress{left:32px;right:32px}
+  #bb-ob .bb-co-head h1{font-size:30px}
+  #bb-ob .bb-co{padding:18px 24px 0}
+  #bb-ob .bb-co-foot{margin:0 -24px;padding:14px 24px 20px}
+  #bb-ob .bb-tview h2{font-size:24px}
+  #bb-ob .bb-sheet{max-width:560px;bottom:20px}
+  #bb-ob .bb-co-foot.is-sticky{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  #bb-ob.no-try .bb-co-foot.is-sticky{padding-bottom:20px}
+  #bb-ob.is-open .bb-sheet{max-width:600px;height:min(680px,86vh);bottom:0}
+  #bb-ob .bb-panel-body{padding:0 28px 16px}
+  #bb-ob .bb-panel-foot{padding:14px 28px 22px}
+}
+
+/* ---------- Desktop (960px en breder): één rustige kolom, checkout als venster in het midden ---------- */
+@keyframes bbModal{from{opacity:0;transform:translate(-50%,-48%) scale(.98)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@media (min-width:960px){
+  #bb-ob{max-width:none;padding:0 40px 64px}
+  #bb-ob .bb-nav{max-width:1120px;margin:0 auto;position:relative;height:72px;padding:0;grid-template-columns:56px 1fr 56px}
+  #bb-ob .bb-progress{display:none!important}
+  #bb-ob .bb-testmode{max-width:1120px;margin:8px auto 0}
+  #bb-ob .bb-main{max-width:560px;margin:0 auto;padding:24px 0 140px}
+  #bb-ob .bb-co-head{text-align:center;align-items:center;padding-top:8px}
+  #bb-ob .bb-co-head h1{font-size:34px}
+  #bb-ob .bb-co-head p{font-size:17px}
+  #bb-ob .bb-co{padding:20px 28px 0}
+  #bb-ob .bb-co-foot{margin:0 -28px;padding:16px 28px 24px;border-radius:0 0 22px 22px}
+  #bb-ob .bb-co-foot.is-sticky{padding-bottom:112px}
+  #bb-ob.no-try .bb-co-foot.is-sticky{padding-bottom:24px}
+  #bb-ob .bb-btn{height:56px}
+  #bb-ob .bb-panel-head .bb-grab{display:none!important}
+  #bb-ob .bb-sheet{width:456px;bottom:24px}
+  #bb-ob .bb-bar{cursor:pointer}
+  #bb-ob:not(.is-open) .bb-sheet:hover{box-shadow:0 14px 34px rgba(16,24,40,.22)}
+  #bb-ob.is-open .bb-sheet{display:flex;position:fixed;top:50%;left:50%;bottom:auto;transform:translate(-50%,-50%);
+    width:480px;max-width:calc(100vw - 48px);height:auto;max-height:min(760px,calc(100vh - 48px));border-radius:24px;
+    background:#fff;color:var(--bb-ink);box-shadow:0 24px 64px rgba(16,24,40,.22);transition:none;animation:bbModal .28s var(--bb-ease) both}
+  #bb-ob .bb-panel-head{height:48px;padding:12px 14px 0}
+  #bb-ob .bb-panel-body{padding:0 28px 16px;min-height:0}
+  #bb-ob .bb-say-q{font-size:22px}
+  #bb-ob .bb-panel-body{padding:0 28px 28px}
+  #bb-ob .bb-how-wrap{text-align:center}
+}
+
+@media (max-width:599px){
+  #bb-ob .bb-cstep{gap:12px}
+  #bb-ob .bb-pl{padding:10px 12px;gap:8px}
+  #bb-ob .bb-pl[aria-checked="true"]{padding:9.5px 11.5px}
+  #bb-ob .bb-pl-feats{gap:6px;padding-top:8px}
+  #bb-ob .bb-say-q{font-size:20px}
+  #bb-ob .bb-panel-head{height:36px}
+}
+@media (min-width:960px){
+  #bb-ob .bb-how{flex-direction:row;gap:24px;margin-top:0}
+  #bb-ob .bb-how li{flex:1;flex-direction:column;align-items:center;text-align:center;gap:8px}
+}
+@media (prefers-reduced-motion:reduce){
+  #bb-ob .bb-screen,#bb-ob .bb-dot,#bb-ob .bb-tl::before,#bb-ob .bb-bar.bb-peek,#bb-ob .bb-co.is-pulse,#bb-ob .bb-tview,#bb-ob .bb-cstep{animation:none}
+  #bb-ob .bb-sheet,#bb-ob .bb-overlay{transition:none}
+}
+</style>
+
+<div id="bb-ob" class="no-sheet">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="bb-buddy" viewBox="0 0 3873 4220">
+      <g transform="matrix(1,0,0,1,9186.987051,-25072.455291)">
+        <g transform="matrix(8.333333,0,0,8.333333,-7548.125173,26836.679167)">
+          <path fill="currentColor" fill-rule="evenodd" d="M0,76.937C66.71,64.831 101.712,21.523 117.981,-39.823C191.008,-52.964 262.925,11.028 267.628,92.048C274.306,207.082 196.76,291.851 81.472,293.93C14.247,295.143 -53.02,294.591 -120.262,294.057C-165.33,293.7 -195.15,265.9 -195.627,220.979C-196.791,111.474 -197.064,1.943 -195.984,-107.561C-195.504,-156.236 -168.585,-187.292 -120.885,-200.235C-65.876,-215.163 -11.166,-218.206 42.023,-192.979C98.947,-165.981 109.042,-114.992 106.5,-59.889C104.39,-14.153 69.023,3.8 32.175,18.078C-7.016,33.263 -7.159,32.894 0,76.937ZM-61.909,-106.605C-61.909,-135.727 -78.959,-159.335 -99.992,-159.335C-121.024,-159.335 -138.075,-135.727 -138.075,-106.605C-138.075,-77.483 -121.024,-53.875 -99.992,-53.875C-78.959,-53.875 -61.909,-77.483 -61.909,-106.605ZM55.269,-106.605C55.269,-135.727 38.219,-159.335 17.186,-159.335C-3.846,-159.335 -20.897,-135.727 -20.897,-106.605C-20.897,-77.483 -3.846,-53.875 17.186,-53.875C38.219,-53.875 55.269,-77.483 55.269,-106.605Z"/>
+        </g>
+        <g transform="matrix(0,8.333333,8.333333,0,-8405.803506,26143.601667)"><path fill="currentColor" d="M17.576,-17.576C27.283,-17.576 35.154,-9.707 35.154,0.001C35.154,9.707 27.283,17.576 17.576,17.576C7.87,17.576 -0.001,9.707 -0.001,0.001C-0.001,-9.707 7.87,-17.576 17.576,-17.576"/></g>
+        <g transform="matrix(0,8.333333,8.333333,0,-7380.49684,26143.601667)"><path fill="currentColor" d="M17.576,-17.576C27.283,-17.576 35.154,-9.707 35.154,0.001C35.154,9.707 27.283,17.576 17.576,17.576C7.87,17.576 -0.001,9.707 -0.001,0.001C-0.001,-9.707 7.87,-17.576 17.576,-17.576"/></g>
+      </g>
+    </symbol>
+    <symbol id="bb-i-check" viewBox="0 0 24 24"><path d="M5 12l4 4 10-10" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="bb-i-chev" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <!-- Navigatie -->
+  <div class="bb-nav">
+    <div></div>
+    <div class="bb-brand"><div class="bb-logo"><svg width="16" height="17" aria-hidden="true"><use href="#bb-buddy"/></svg>Betaalbuddy</div><span class="bb-by">by PRJCT Agency</span></div>
+    <div></div>
+  </div>
+  <p class="bb-testmode" data-bb-testmode hidden>Testmodus · Mollie-formulieren niet gevonden, er wordt niets afgeschreven</p>
+
+  <main class="bb-main">
+
+    <!-- CHECKOUT: staat meteen open, drie korte vragen -->
+    <section class="bb-screen" data-bb-screen="checkout" style="gap:16px" aria-labelledby="bb-t-start">
+      <div class="bb-co-head">
+        <h1 class="bb-h" id="bb-t-start">Nooit meer een rekening vergeten.</h1>
+        <p class="bb-muted">Buddy geeft je op tijd een seintje, 7 en 2 dagen vooraf.</p>
+      </div>
+
+      <div class="bb-co" data-bb-co>
+        <div class="bb-stepsrow">
+          <button type="button" class="bb-cback" data-bb-cback aria-label="Vorige vraag"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>Terug</button>
+          <span class="bb-dots" aria-hidden="true"><i data-bb-dot="1"></i><i data-bb-dot="2"></i><i data-bb-dot="3"></i></span>
+          <span class="bb-sr" data-bb-out="stepsr"></span>
+        </div>
+
+        <!-- VRAAG 1: hoe zal ik je helpen -->
+        <section class="bb-cstep" data-bb-cstep="1">
+          <div class="bb-say">
+            <span class="bb-say-ava" aria-hidden="true"><svg width="22" height="24"><use href="#bb-buddy"/></svg></span>
+            <div class="bb-say-txt">
+              <h2 class="bb-h bb-say-q" tabindex="-1" data-bb-out="q1">Hoe zal ik je helpen?</h2>
+              <p class="bb-say-sub" data-bb-out="q1sub"></p>
+            </div>
+          </div>
+          <div class="bb-plans" role="radiogroup" aria-label="Kies hoe Buddy je helpt" data-bb-plans></div>
+          <p class="bb-allplans" data-bb-out="allplans"></p>
+          <div class="bb-nudge" data-bb-nudge hidden><span data-bb-out="nudge"></span><button type="button" data-bb-upsell>Neem Buddy</button></div>
+          <p class="bb-anchor" data-bb-anchor hidden><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/></svg><span data-bb-out="anchor"></span></p>
+        </section>
+
+        <!-- VRAAG 2: waar mogen de seintjes heen -->
+        <section class="bb-cstep" data-bb-cstep="2" hidden>
+          <div class="bb-say">
+            <span class="bb-say-ava" aria-hidden="true"><svg width="22" height="24"><use href="#bb-buddy"/></svg></span>
+            <div class="bb-say-txt">
+              <h2 class="bb-h bb-say-q" tabindex="-1">Naar welk mailadres mag ik je seintjes sturen?</h2>
+              <p class="bb-say-sub">Je factuur komt daar ook. Verder niks.</p>
+            </div>
+          </div>
+          <div class="bb-field">
+            <label class="bb-label" for="bb-email">Je mailadres</label>
+            <input class="bb-input" id="bb-email" type="email" autocomplete="email" inputmode="email" autocapitalize="off" spellcheck="false" placeholder="jij@gmail.com" enterkeyhint="next">
+            <p class="bb-typo" data-bb-typo hidden>Bedoel je <button type="button" data-bb-typofix></button>?</p>
+          </div>
+          <div class="bb-planinfo" data-bb-planinfo hidden></div>
+          <!-- MOLLIE FORMS: laat de id staan; sinds v5.3 alleen Buddy (formulier 141) -->
+          <div class="bb-mollie" data-bb-mollie>
+            <div id="form-buddy" class="mollie-form-wrapper" data-bb-form="buddy">
+              [mollie-forms id="141"]
+            </div>
+          </div>
+        </section>
+
+        <!-- VRAAG 3: samenvatting -->
+        <section class="bb-cstep" data-bb-cstep="3" hidden>
+          <div class="bb-say">
+            <span class="bb-say-ava" aria-hidden="true"><svg width="22" height="24"><use href="#bb-buddy"/></svg></span>
+            <div class="bb-say-txt">
+              <h2 class="bb-h bb-say-q" tabindex="-1">Dan zijn we maatjes.</h2>
+              <p class="bb-say-sub">Nog één tik en ik begin.</p>
+            </div>
+          </div>
+          <div class="bb-sum">
+            <div class="bb-sum-row">
+              <span class="bb-sum-ic"><svg width="16" height="17" aria-hidden="true"><use href="#bb-buddy"/></svg></span>
+              <span class="bb-sum-t"><b data-bb-out="sumplan"></b><span data-bb-out="sumprice"></span></span>
+              <button type="button" class="bb-sum-edit" data-bb-tostep="1">Wijzig</button>
+            </div>
+            <div class="bb-sum-row">
+              <span class="bb-sum-ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="3" fill="none" stroke="currentColor" stroke-width="2"/><path d="M4 7l8 6 8-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="bb-sum-t"><b>Seintjes naar</b><span data-bb-out="email"></span></span>
+              <button type="button" class="bb-sum-edit" data-bb-tostep="2">Wijzig</button>
+            </div>
+            <div class="bb-sum-row" data-bb-sumbill hidden>
+              <span class="bb-sum-ic"><svg width="14" height="14" aria-hidden="true"><use href="#bb-i-check"/></svg></span>
+              <span class="bb-sum-t"><b data-bb-out="sumbill"></b><span>Staat er al in, de rest volgt als je doorstuurt</span></span>
+            </div>
+          </div>
+          <div class="bb-methods" data-bb-methodsbox hidden>
+            <span class="bb-label">Betalen met</span>
+            <div class="bb-mchips" role="radiogroup" aria-label="Betaalmethode" data-bb-methods></div>
+          </div>
+          <ul class="bb-trust" data-bb-trust></ul>
+          <div class="bb-guarantee" data-bb-guarantee>
+            <svg width="15" height="15" viewBox="0 0 24 24" aria-hidden="true" style="flex:none"><path d="M12 3l7 3v5c0 4.5-3 8.2-7 10-4-1.8-7-5.5-7-10V6l7-3z" fill="none" stroke="#013bff" stroke-width="2" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" fill="none" stroke="#013bff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <span data-bb-out="guarantee"></span>
+          </div>
+        </section>
+
+        <p class="bb-err" data-bb-payerr role="alert"></p>
+
+        <div class="bb-co-foot is-sticky" data-bb-cofoot>
+          <button type="button" class="bb-btn bb-btn--blue" data-bb-next>Zo wil ik het</button>
+          <div class="bb-payarea" data-bb-payarea hidden>
+            <p class="bb-payee" data-bb-out="payee"></p>
+            <button type="button" class="bb-btn bb-btn--blue" data-bb-pay>Betaal en start</button>
+            <p class="bb-busynote" data-bb-busynote hidden>Je gaat zo naar je bank of betaalapp. Na het betalen kom je vanzelf hier terug.</p>
+            <p class="bb-fine" data-bb-out="fine"></p>
+            <div data-bb-staticpills class="bb-pills bb-pills--line" style="justify-content:center" data-bb-pills></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bb-how-wrap">
+        <p class="bb-how-title">Zo werkt het</p>
+        <ol class="bb-how" aria-label="Zo werkt het">
+          <li><span class="bb-how-n">1</span><span><b>Stuur je rekening door</b>naar je eigen Buddy-adres</span></li>
+          <li><span class="bb-how-n">2</span><span><b>Buddy leest bedrag en datum</b>de rest van je mail bewaart hij niet</span></li>
+          <li><span class="bb-how-n">3</span><span><b>Jij krijgt op tijd een seintje</b>7 en 2 dagen vooraf, ook in je agenda</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- WELKOM (na betaling) -->
+    <section class="bb-screen" data-bb-screen="welkom" style="gap:22px;padding-top:24px" aria-labelledby="bb-t-welkom" hidden>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:10px;text-align:center">
+        <span style="width:64px;height:64px;border-radius:20px;background:var(--bb-blue);display:flex;align-items:center;justify-content:center;color:#fff"><svg width="34" height="37" aria-hidden="true"><use href="#bb-buddy"/></svg></span>
+        <h1 class="bb-h" id="bb-t-welkom" tabindex="-1" style="font-size:26px">We zijn maatjes!</h1>
+        <p class="bb-muted">Nog één ding, dan sta je aan.</p>
+      </div>
+      <div class="bb-card" style="padding:16px;display:flex;flex-direction:column;gap:12px">
+        <p style="font-weight:600">Haal je eigen doorstuuradres op</p>
+        <p class="bb-small">Stuur een mailtje naar <b style="color:var(--bb-ink)">start@in.betaalbuddy.nl</b>. Je krijgt meteen je adres terug.</p>
+        <a class="bb-btn bb-btn--blue" data-bb-startmail href="mailto:start@in.betaalbuddy.nl?subject=Start">Stuur het mailtje</a>
+      </div>
+      <div class="bb-card bb-list">
+        <a class="bb-cell" href="/vrienden/">
+          <span class="bb-ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6M17 8v6M14 11h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+          <span class="bb-grow">Vriend mee = maand gratis</span>
+          <svg class="bb-chev" width="16" height="16" aria-hidden="true"><use href="#bb-i-chev"/></svg>
+        </a>
+        <a class="bb-cell" href="/docs/">
+          <span class="bb-ic"><svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 11v6M12 7.5v.5" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg></span>
+          <span class="bb-grow">Hoe werkt doorsturen?</span>
+          <svg class="bb-chev" width="16" height="16" aria-hidden="true"><use href="#bb-i-chev"/></svg>
+        </a>
+      </div>
+      <p class="bb-tiny" data-bb-welkombill style="text-align:center" hidden></p>
+    </section>
+
+    <!-- MISLUKT -->
+    <section class="bb-screen" data-bb-screen="mislukt" style="align-items:center;gap:10px;padding-top:64px;text-align:center" aria-labelledby="bb-t-mis" hidden>
+      <span style="width:56px;height:56px;border-radius:18px;background:var(--bb-tint);display:flex;align-items:center;justify-content:center;color:var(--bb-blue)"><svg width="30" height="33" aria-hidden="true"><use href="#bb-buddy"/></svg></span>
+      <h1 class="bb-h" id="bb-t-mis" tabindex="-1" style="font-size:22px">Niks afgeschreven</h1>
+      <p class="bb-muted">Alles staat nog klaar.</p>
+      <button type="button" class="bb-btn bb-btn--blue" data-bb-retry style="margin-top:8px">Probeer opnieuw</button>
+    </section>
+
+  </main>
+
+  <div class="bb-overlay" data-bb-overlay aria-hidden="true"></div>
+
+  <!-- EERST UITPROBEREN: balk die een sheet wordt -->
+  <div class="bb-sheet" data-bb-sheet role="dialog" aria-modal="false" aria-label="Eerst gratis uitproberen">
+    <button type="button" class="bb-bar bb-peek" data-bb-bar aria-expanded="false" aria-label="Eerst gratis uitproberen met je eigen rekening">
+      <span class="bb-grab" aria-hidden="true"></span>
+      <span class="bb-bar-ava" aria-hidden="true"><svg width="22" height="24"><use href="#bb-buddy"/></svg></span>
+      <span class="bb-bar-txt">
+        <span class="bb-bar-title"><b>Eerst gratis uitproberen?</b></span>
+        <span class="bb-bar-sub">Eerste herinnering in 30 seconden</span>
+      </span>
+      <span class="bb-bar-go" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24"><path d="M6 15l6-6 6 6" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+    </button>
+
+    <div class="bb-panel">
+      <div class="bb-panel-head" data-bb-drag>
+        <span class="bb-grab" aria-hidden="true"></span>
+        <button type="button" class="bb-close" data-bb-close aria-label="Sluiten"><svg width="14" height="14" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg></button>
+      </div>
+
+      <div class="bb-panel-body" data-bb-pbody>
+        <!-- UITPROBEREN 1: rekening invullen -->
+        <section class="bb-tview" data-bb-tview="rekening" aria-labelledby="bb-t-rek">
+          <div>
+            <h2 class="bb-h" id="bb-t-rek" tabindex="-1">Welke rekening komt eraan?</h2>
+            <p class="bb-tsub">Gratis en zonder account. Je krijgt meteen een herinnering voor je agenda.</p>
+          </div>
+          <form data-bb-billform novalidate style="display:flex;flex-direction:column;gap:14px;margin:0">
+            <div class="bb-field">
+              <label class="bb-label" for="bb-from">Van wie</label>
+              <input class="bb-input" id="bb-from" type="text" autocomplete="off" maxlength="60" placeholder="bijv. Vattenfall">
+              <div class="bb-chips" data-bb-chips role="group" aria-label="Snel kiezen"></div>
+            </div>
+            <div class="bb-grid2">
+              <div class="bb-field">
+                <label class="bb-label" for="bb-amount">Bedrag</label>
+                <div class="bb-euro"><span aria-hidden="true">€</span><input class="bb-input bb-num" id="bb-amount" type="text" inputmode="decimal" autocomplete="off" maxlength="12" placeholder="0,00"></div>
+              </div>
+              <div class="bb-field">
+                <label class="bb-label" for="bb-due">Betaaldatum</label>
+                <input class="bb-input" id="bb-due" type="date">
+              </div>
+            </div>
+            <div class="bb-chips" data-bb-datechips role="group" aria-label="Snel een betaaldatum kiezen" style="margin-top:-6px">
+              <button type="button" class="bb-chip" data-bb-days="7" aria-pressed="false">Over 1 week</button>
+              <button type="button" class="bb-chip" data-bb-days="14" aria-pressed="false">Over 2 weken</button>
+              <button type="button" class="bb-chip" data-bb-days="30" aria-pressed="false">Over een maand</button>
+            </div>
+            <p class="bb-err" data-bb-billerr role="alert"></p>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px">
+              <button type="submit" class="bb-btn">Maak mijn herinnering</button>
+              <p class="bb-tiny" style="display:flex;gap:6px;align-items:center;justify-content:center">
+                <svg width="12" height="12" viewBox="0 0 24 24" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2.5" fill="none" stroke="currentColor" stroke-width="2.2"/><path d="M8 11V8a4 4 0 018 0v3" fill="none" stroke="currentColor" stroke-width="2.2"/></svg>
+                Blijft op je telefoon
+              </p>
+            </div>
+          </form>
+        </section>
+
+        <!-- UITPROBEREN 2: staat erin -->
+        <section class="bb-tview" data-bb-tview="klaar" aria-labelledby="bb-t-klaar" hidden>
+          <div style="display:flex;align-items:center;gap:12px">
+            <span style="flex:none;width:44px;height:44px;border-radius:14px;background:var(--bb-blue);display:flex;align-items:center;justify-content:center;color:#fff"><svg width="24" height="26" aria-hidden="true"><use href="#bb-buddy"/></svg></span>
+            <h2 class="bb-h" id="bb-t-klaar" tabindex="-1">Staat erin!</h2>
+          </div>
+          <div class="bb-card" style="padding:18px 16px 16px;display:flex;flex-direction:column;gap:18px">
+            <div style="display:flex;justify-content:space-between;align-items:baseline;gap:12px">
+              <span style="font-weight:600;font-size:16px;overflow-wrap:anywhere" data-bb-out="from"></span>
+              <span class="bb-num" style="font-weight:600;font-size:16px" data-bb-out="amount"></span>
+            </div>
+            <div class="bb-tl">
+              <div><span class="bb-dot"></span><b>7 dagen</b><span class="bb-tiny" data-bb-out="d7"></span></div>
+              <div><span class="bb-dot"></span><b>2 dagen</b><span class="bb-tiny" data-bb-out="d2"></span></div>
+              <div><span class="bb-dot bb-dot--end"><svg width="12" height="12" style="color:#fff" aria-hidden="true"><use href="#bb-i-check"/></svg></span><b class="bb-end">Betalen</b><span class="bb-tiny" data-bb-out="d0"></span></div>
+            </div>
+          </div>
+
+          <p class="bb-small" data-bb-delivered style="text-align:center"></p>
+
+          <button type="button" class="bb-btn bb-btn--blue" data-bb-return>Doe dit voor al mijn rekeningen</button>
+
+          <div style="display:flex;flex-direction:column;gap:8px" data-bb-calbox>
+            <p class="bb-small" data-bb-caltitle style="margin:0 4px">Andere agenda?</p>
+            <div class="bb-grid3">
+              <a class="bb-btn bb-btn--ghost" style="height:46px;font-size:14px" data-bb-cal="google" href="#" target="_blank" rel="noopener">Google</a>
+              <a class="bb-btn bb-btn--ghost" style="height:46px;font-size:14px" data-bb-cal="outlook" href="#" target="_blank" rel="noopener">Outlook</a>
+              <button type="button" class="bb-btn bb-btn--ghost" style="height:46px;font-size:14px" data-bb-cal="file">Bestand</button>
+            </div>
+            <p class="bb-tiny" data-bb-inapptip style="margin:0 4px" hidden>Downloaden werkt niet in deze app. Wil je het bestand, open de pagina dan in Safari of Chrome.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+
+  <div class="bb-sr" aria-live="polite" data-bb-live></div>
+</div>
+
+<script>
+(function () {
+'use strict';
+function bbStart() {
+  var root = document.getElementById('bb-ob');
+  if (!root || root.getAttribute('data-bb-init')) return;
+  root.setAttribute('data-bb-init', '1');
+
+  /* ============================== INSTELLINGEN ============================== */
+  var CONFIG = {
+    /* PAKKETTEN
+       tag   = één regel onder de naam (de belofte in gewone taal)
+       feats = wat je ziet als het pakket gekozen is. no:true = staat er niet in (grijs kruisje),
+               soon:true = krijgt het label "binnenkort", hi:true = vetgedrukt,
+               bill:true = wordt persoonlijk gemaakt met de rekening die iemand net invulde.
+       Zet alleen dingen neer die echt werken op de dag dat dit live staat. */
+    plans: {
+      buddy: { name: 'Buddy', price: 3.49, form: 141,
+        tag: 'Ik seintje je vooraf en zet alles in je agenda',
+        feats: [
+          { t: 'Seintje per mail, 7 en 2 dagen vooraf', hi: true, bill: true },
+          { t: 'Elke rekening vanzelf in je agenda' },
+          { t: 'Eén tik op "al betaald" en hij is weg' },
+          { t: 'Overzicht van alles wat openstaat, ook als download' }
+        ] }
+      /* Later een tweede pakket? Zet het hier terug (bijv. pro: { name: 'Buddy pro', price: 4.99, form: 143, ... }),
+         voeg het toe aan order, zet singlePlan op false en zet het Mollie-formulier weer op de pagina. */
+    },
+    // Wat in elk pakket zit. Staat één keer onder de pakketten, niet bij één pakket.
+    allPlans: 'Bij elk pakket: je eigen doorstuuradres, geen bankkoppeling en ik lees je inbox niet.',
+    order: ['buddy'],
+    defaultPlan: 'buddy',
+    singlePlan: true,                                 // true = geen pakketvraag; het gesprek begint bij het mailadres
+    upsellFrom: 'lite', upsellTo: 'buddy',            // duwtje als iemand Basic kiest
+    nudge: 'Voor {verschil} per maand meer krijg je seintjes vooraf, ook in je agenda.',
+    // Prijsanker onder de pakketten. {prijs} = maandprijs. Leeg laten om te verbergen.
+    anchor: 'Eén vergeten rekening kost al snel €40 aan incassokosten. {naam} kost {weekprijs} per week.',
+    switchNote: 'Later wisselen of opzeggen kan altijd.', // CHECK: wisselen gaat nu met de hand
+    nextLabels: { 1: 'Zo wil ik het', 2: 'Verder' },
+    // Kop boven de prijs en de voordelen als er maar één pakket is
+    planIntro: 'Dit krijg je',
+    // Tekst op de betaalknop. Moet duidelijk zeggen dat je betaalt (art. 6:230v BW). {prijs} = maandprijs.
+    payLabel: 'Betaal {prijs} en start',
+    // Regel boven de betaalknop, omdat Mollie PRJCT Agency als ontvanger toont.
+    payee: 'In je bank of betaalapp zie je PRJCT Agency als ontvanger, het bedrijf achter Betaalbuddy.',
+    // Betaalmethodes: alleen getoond als het Mollie-formulier ze echt aanbiedt. Apple Pay alleen op Apple-apparaten.
+    methods: [
+      { key: 'ideal', label: 'iDEAL | Wero', words: ['ideal', 'wero'] },
+      { key: 'paypal', label: 'PayPal', words: ['paypal'] },
+      { key: 'bancontact', label: 'Bancontact', words: ['bancontact'] },
+      { key: 'applepay', label: 'Apple Pay', words: ['apple'] },
+      { key: 'card', label: 'Kaart', words: ['creditcard', 'credit card', 'kaart', 'card'] }
+    ],
+    // Betaallogo's onder de betaalknop (als het formulier zelf geen keuze laat zien)
+    payPills: ['iDEAL | Wero', 'PayPal', 'Bancontact'],
+    // Vertrouwensregels bij de laatste vraag. Alleen dingen die kloppen.
+    trust: [
+      'Geen bankkoppeling en ik lees je inbox niet',
+      'Opzeggen met één mailtje, zonder gedoe',
+      'Een product van PRJCT Agency uit Geldrop, KvK 89078802'
+    ],
+    // Veelgebruikte maildomeinen voor de tikfoutcheck
+    domains: ['gmail.com', 'hotmail.com', 'hotmail.nl', 'outlook.com', 'outlook.nl', 'live.nl', 'live.com', 'icloud.com', 'me.com', 'yahoo.com', 'ziggo.nl', 'kpnmail.nl', 'planet.nl', 'home.nl', 'xs4all.nl', 'upcmail.nl', 'proton.me', 'protonmail.com'],
+    guarantee: '30 dagen niet blij? Geld terug.',     // leeg laten om te verbergen
+    // Kleine lettertjes onder de knop. {prijs} wordt de maandprijs.
+    fine: 'Nu {prijs} voor je eerste maand. Daarna elke maand een factuur per mail, geen automatische incasso. Altijd opzegbaar, 14 dagen bedenktijd. <a href="/voorwaarden/">Voorwaarden</a>',
+    autoReturnMs: 3000,                               // na de proefherinnering schuift het uitproberen vanzelf weg, terug naar de checkout
+    icsEndpoint: '',                                  // optioneel: https://api.betaalbuddy.nl/ics (POST, text/calendar). Beter voor iPhone.
+    chips: ['Vattenfall', 'Zorgverzekering', 'Ziggo', 'Huur', 'Tandarts'],
+    words: { ideal: ['ideal', 'wero'], month: ['maand', 'month', 'mnd'], email: ['mail'] },
+    /* METEN
+       version = staat bij elk event, zodat je versies kunt vergelijken.
+       gtag    = false: events gaan alleen naar window.dataLayer (Google Tag Manager stuurt ze door naar GA4).
+                 true:  ook direct gtag('event', ...). Alleen aanzetten als GA4 met gtag/Site Kit is ingebouwd
+                 ZONDER Tag Manager, anders tel je alles dubbel. */
+    analytics: { version: 'ob_v5_3', gtag: false }
+  };
+
+  /* ============================== HELPERS ============================== */
+  function $(s) { return root.querySelector(s); }
+  function $$(s) { return Array.prototype.slice.call(root.querySelectorAll(s)); }
+  function out(key, val, html) { $$('[data-bb-out="' + key + '"]').forEach(function (el) { if (html) el.innerHTML = val; else el.textContent = val; }); }
+  function euro(n) { return '\u20AC' + n.toFixed(2).replace('.', ','); }
+  function euroC(c) { return '\u20AC' + (c / 100).toFixed(2).replace('.', ',').replace(/\B(?=(\d{3})+(?!\d))/g, '.'); }
+  function pad(n) { return String(n).padStart(2, '0'); }
+  function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function ymd(d) { return d.getFullYear() + pad(d.getMonth() + 1) + pad(d.getDate()); }
+  function fromIso(s) { var p = s.split('-'); return new Date(+p[0], +p[1] - 1, +p[2], 12); }
+  function addDays(d, n) { var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+  function today() { var d = new Date(); d.setHours(12, 0, 0, 0); return d; }
+  var fShort = new Intl.DateTimeFormat('nl-NL', { day: 'numeric', month: 'short' });
+  function live(t) { var l = $('[data-bb-live]'); l.textContent = ''; setTimeout(function () { l.textContent = t; }, 40); }
+  function validEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(String(v || '').trim()); }
+  function parseAmount(v) {
+    var s = String(v || '').replace(/[\u20AC\s]/g, '');
+    if (!s) return NaN;
+    if (s.indexOf(',') > -1) s = s.replace(/\./g, '').replace(',', '.');
+    if (!/^\d+(\.\d{1,2})?$/.test(s)) return NaN;
+    return Math.round(parseFloat(s) * 100);
+  }
+  var M = { t0: Date.now(), last: '', engaged: false, exitSent: false, tryOpened: false, paying: false, once: {} };
+  function ctx() {
+    var c = { funnel: CONFIG.analytics.version, inapp: IS_INAPP ? 1 : 0, device: isDesk() ? 'desktop' : 'mobile' };
+    if (typeof S === 'object' && S) { c.screen = S.screen; c.step = S.cstep || 0; c.plan = S.plan; }
+    return c;
+  }
+  function trackOnce(name, data) { if (M.once[name]) return; M.once[name] = 1; track(name, data); }
+  function track(name, data) {
+    data = Object.assign(ctx(), data || {});
+    M.last = name;
+    if (name === 'tryout_open') M.tryOpened = true;
+    try { (window.dataLayer = window.dataLayer || []).push(Object.assign({ event: name }, data)); } catch (e) {}
+    try { if (CONFIG.analytics.gtag && typeof window.gtag === 'function') window.gtag('event', name, data); } catch (e) {}
+    try {
+      if (typeof window.fbq === 'function') {
+        var m = { begin_checkout: 'InitiateCheckout', add_payment_info: 'AddPaymentInfo', purchase: 'Purchase', bill_form_complete: 'Lead' };
+        if (m[name]) window.fbq('track', m[name], data); else window.fbq('trackCustom', name, data);
+      }
+    } catch (e) {}
+  }
+  function toast(t) { var el = document.createElement('div'); el.className = 'bb-toast'; el.setAttribute('role', 'status'); el.textContent = t; root.appendChild(el); setTimeout(function () { el.remove(); }, 2200); }
+
+  var MQ_DESK = window.matchMedia ? window.matchMedia('(min-width: 960px)') : { matches: false };
+  function isDesk() { return !!MQ_DESK.matches; }
+  var UA = navigator.userAgent || '';
+  var IS_INAPP = /Instagram|FBAN|FBAV|FB_IAB|FBIOS|FB4A|BytedanceWebview|musical_ly|TikTok|Snapchat|LinkedInApp|; wv\)/i.test(UA);
+  var IS_IOS = /iP(hone|ad|od)/.test(UA) || (/Macintosh/.test(UA) && navigator.maxTouchPoints > 1);
+
+  /* ============================== STATE ============================== */
+  var KEY = 'bb_ob_v4';
+  var S = { screen: 'start', path: '', bill: null, email: '', emailOk: false, plan: CONFIG.defaultPlan, open: false };
+  var RESTORED = false;
+  try { var saved = JSON.parse(sessionStorage.getItem(KEY) || 'null'); if (saved) RESTORED = true; if (saved) ['bill', 'email', 'emailOk', 'plan', 'path'].forEach(function (k) { if (k in saved) S[k] = saved[k]; }); } catch (e) {}
+  function save() { try { sessionStorage.setItem(KEY, JSON.stringify({ bill: S.bill, email: S.email, emailOk: S.emailOk, plan: S.plan, path: S.path })); } catch (e) {} }
+  if (!CONFIG.plans[S.plan]) S.plan = CONFIG.defaultPlan;
+
+  /* ============================== SCHERMEN ============================== */
+  function show(screen, opts) {
+    opts = opts || {};
+    S.screen = screen;
+    $$('[data-bb-screen]').forEach(function (s) { s.hidden = s.getAttribute('data-bb-screen') !== screen; });
+    root.classList.toggle('no-sheet', screen !== 'checkout');
+    syncTry();
+    if (!opts.noFocus) {
+      var h = $('[data-bb-screen="' + screen + '"] [tabindex="-1"]');
+      if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+      var top = root.getBoundingClientRect().top + window.pageYOffset;
+      if (window.pageYOffset > top) window.scrollTo({ top: top, behavior: 'smooth' });
+    }
+  }
+  // De uitprobeer-balk verdwijnt bij de betaalstap en als iemand al een rekening heeft geprobeerd
+  function syncTry() { root.classList.toggle('no-try', S.screen !== 'checkout' || S.cstep === 3 || !!S.bill); }
+  // Wisselen tussen de twee schermen van het uitproberen
+  S.tview = 'rekening';
+  function showTry(v) {
+    S.tview = v;
+    $$('[data-bb-tview]').forEach(function (s) { s.hidden = s.getAttribute('data-bb-tview') !== v; });
+    var b = $('[data-bb-pbody]'); if (b) b.scrollTop = 0;
+    var h = $('[data-bb-tview="' + v + '"] [tabindex="-1"]');
+    if (h && S.open) setTimeout(function () { try { h.focus({ preventScroll: true }); } catch (e) {} }, 60);
+  }
+
+  /* ============================== REKENING ============================== */
+  var fFrom = $('#bb-from'), fAmt = $('#bb-amount'), fDue = $('#bb-due'), billErr = $('[data-bb-billerr]');
+  fDue.min = iso(today());
+  fDue.max = iso(addDays(today(), 730));
+  // Snelkeuze voor de betaaldatum: scheelt een datumkiezer op je telefoon
+  function syncDateChips() { $$('[data-bb-days]').forEach(function (b) { b.setAttribute('aria-pressed', String(fDue.value === iso(addDays(today(), +b.getAttribute('data-bb-days'))))); }); }
+  $$('[data-bb-days]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      fDue.value = iso(addDays(today(), +b.getAttribute('data-bb-days')));
+      fDue.removeAttribute('aria-invalid'); billErr.textContent = ''; syncDateChips();
+      track('due_chip', { days: +b.getAttribute('data-bb-days') });
+    });
+  });
+  fDue.addEventListener('change', syncDateChips);
+  $('[data-bb-chips]').innerHTML = CONFIG.chips.map(function (c) {
+    return '<button type="button" class="bb-chip" data-bb-chip aria-pressed="false">' + c.replace(/[<>&"]/g, '') + '</button>';
+  }).join('');
+  function syncChips() { $$('[data-bb-chip]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.textContent === fFrom.value)); }); }
+  root.addEventListener('click', function (e) {
+    var c = e.target.closest('[data-bb-chip]'); if (!c) return;
+    fFrom.value = c.textContent; syncChips(); billErr.textContent = '';
+    (fAmt.value ? fDue : fAmt).focus();
+  });
+  fFrom.addEventListener('input', function () { syncChips(); billErr.textContent = ''; fFrom.removeAttribute('aria-invalid'); });
+  [fAmt, fDue].forEach(function (i) { i.addEventListener('input', function () { billErr.textContent = ''; i.removeAttribute('aria-invalid'); }); });
+  fAmt.addEventListener('blur', function () { var c = parseAmount(fAmt.value); if (!isNaN(c) && c > 0) fAmt.value = euroC(c).replace('\u20AC', ''); });
+  var formStarted = false;
+  [fFrom, fAmt, fDue].forEach(function (i) { i.addEventListener('focus', function () { if (!formStarted) { formStarted = true; track('bill_form_start'); } }); });
+
+  function bad(input, msg) { input.setAttribute('aria-invalid', 'true'); billErr.textContent = msg; input.focus(); }
+
+  $('[data-bb-billform]').addEventListener('submit', function (e) {
+    e.preventDefault();
+    var from = fFrom.value.trim(), cents = parseAmount(fAmt.value), due = fDue.value;
+    if (from.length < 2) return bad(fFrom, 'Van wie is hij? Typ een naam of tik er een aan.');
+    if (isNaN(cents) || cents <= 0) return bad(fAmt, 'Vul het bedrag in, bijvoorbeeld 84,00.');
+    if (cents > 10000000) return bad(fAmt, 'Dat bedrag klopt vast niet helemaal.');
+    if (!due) return bad(fDue, 'Kies de betaaldatum.');
+    if (due < iso(today())) return bad(fDue, 'Die datum is al geweest. Kies een datum in de toekomst.');
+    S.bill = { from: from.slice(0, 60), cents: cents, due: due };
+    S.path = 'b';
+    save();
+    track('bill_form_complete', { days_until_due: Math.round((fromIso(due) - today()) / 864e5) });
+    renderKlaar();
+    showTry('klaar');
+    renderSheet();
+    deliverAuto();
+  });
+
+  /* ============================== AGENDA (.ics) ============================== */
+  function moments(bill) {
+    var due = fromIso(bill.due), t = today(), list = [];
+    [[7, 'Over 7 dagen'], [2, 'Over 2 dagen'], [0, 'Vandaag betalen']].forEach(function (x) {
+      var d = addDays(due, -x[0]);
+      if (d >= t || x[0] === 0) list.push({ n: x[0], date: d, title: x[1] + ': ' + bill.from + ' ' + euroC(bill.cents) });
+    });
+    return list;
+  }
+  function icsEsc(s) { return String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n'); }
+  function fold(line) {
+    var enc = window.TextEncoder ? new TextEncoder() : null, outL = [], cur = '', len = 0;
+    for (var i = 0; i < line.length; i++) {
+      var ch = line[i], b = enc ? enc.encode(ch).length : 1;
+      if (len + b > 75) { outL.push(cur); cur = ' ' + ch; len = 1 + b; } else { cur += ch; len += b; }
+    }
+    outL.push(cur);
+    return outL.join('\r\n');
+  }
+  function buildIcs(bill) {
+    var now = new Date(), stamp = now.getUTCFullYear() + pad(now.getUTCMonth() + 1) + pad(now.getUTCDate()) + 'T' + pad(now.getUTCHours()) + pad(now.getUTCMinutes()) + pad(now.getUTCSeconds()) + 'Z';
+    var rnd = Math.random().toString(36).slice(2, 10);
+    var lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Betaalbuddy//Herinnering//NL', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH', 'X-WR-CALNAME:Betaalbuddy'];
+    moments(bill).forEach(function (m) {
+      lines.push('BEGIN:VEVENT', 'UID:bb-' + rnd + '-' + m.n + '@betaalbuddy.nl', 'DTSTAMP:' + stamp,
+        'DTSTART;VALUE=DATE:' + ymd(m.date), 'DTEND;VALUE=DATE:' + ymd(addDays(m.date, 1)),
+        'SUMMARY:' + icsEsc(m.title),
+        'DESCRIPTION:' + icsEsc('Gemaakt door Buddy. Wil je dit automatisch voor al je rekeningen? betaalbuddy.nl'),
+        'TRANSP:TRANSPARENT',
+        'BEGIN:VALARM', 'ACTION:DISPLAY', 'DESCRIPTION:' + icsEsc(m.title), 'TRIGGER:PT9H', 'END:VALARM',
+        'END:VEVENT');
+    });
+    lines.push('END:VCALENDAR');
+    return lines.map(fold).join('\r\n') + '\r\n';
+  }
+  function firstMoment(bill) { return moments(bill)[0]; }
+  function calLinks(bill) {
+    var m = firstMoment(bill), start = ymd(m.date), end = ymd(addDays(m.date, 1));
+    var body = 'Betaal ' + euroC(bill.cents) + ' aan ' + bill.from + ' voor ' + fShort.format(fromIso(bill.due)) + '. Gemaakt door Buddy, betaalbuddy.nl';
+    var g = 'https://calendar.google.com/calendar/render?action=TEMPLATE&text=' + encodeURIComponent(m.title) + '&dates=' + start + '/' + end + '&details=' + encodeURIComponent(body);
+    var o = 'https://outlook.live.com/calendar/deeplink/compose?path=/calendar/action/compose&rru=addevent&subject=' + encodeURIComponent(m.title) +
+      '&startdt=' + iso(m.date) + '&enddt=' + iso(addDays(m.date, 1)) + '&allday=true&body=' + encodeURIComponent(body);
+    return { google: g, outlook: o };
+  }
+  function downloadIcs(method) {
+    var ics = buildIcs(S.bill);
+    if (IS_IOS && CONFIG.icsEndpoint) {
+      var f = document.createElement('form'); f.method = 'POST'; f.action = CONFIG.icsEndpoint; f.target = '_blank'; f.style.display = 'none';
+      var i = document.createElement('input'); i.type = 'hidden'; i.name = 'ics'; i.value = ics; f.appendChild(i);
+      document.body.appendChild(f); f.submit(); f.remove();
+    } else if (IS_IOS) {
+      window.open('data:text/calendar;charset=utf-8,' + encodeURIComponent(ics), '_blank');
+    } else {
+      var blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' }), url = URL.createObjectURL(blob);
+      var a = document.createElement('a'); a.href = url; a.download = 'betaalbuddy-herinnering.ics'; a.rel = 'noopener';
+      document.body.appendChild(a); a.click(); a.remove();
+      setTimeout(function () { URL.revokeObjectURL(url); }, 2000);
+    }
+    track('ics_delivered', { method: method || (IS_IOS ? 'ios' : 'blob') });
+  }
+  var autoTimer = null;
+  function autoReturn(ms) {
+    clearTimeout(autoTimer);
+    autoTimer = setTimeout(function () { if (S.open && S.tview === 'klaar') backToCheckout('auto'); }, ms);
+  }
+  function deliverAuto() {
+    var msg = $('[data-bb-delivered]');
+    if (IS_INAPP) {
+      msg.textContent = '';
+      return; // downloads werken niet in Instagram/TikTok: de knoppen eronder doen het werk
+    }
+    downloadIcs();
+    msg.textContent = IS_IOS ? 'Tik op "Voeg toe" om hem in je agenda te zetten.' : 'Gedownload. Tik erop voor je agenda.';
+    autoReturn(CONFIG.autoReturnMs);
+  }
+  function renderKlaar() {
+    var b = S.bill; if (!b) return;
+    var due = fromIso(b.due), t = today();
+    function at(n) { var d = addDays(due, -n); return d < t ? 'vandaag' : fShort.format(d); }
+    out('from', b.from); out('amount', euroC(b.cents));
+    out('d7', at(7)); out('d2', at(2)); out('d0', fShort.format(due));
+    var links = calLinks(b);
+    $('[data-bb-cal="google"]').href = links.google;
+    $('[data-bb-cal="outlook"]').href = links.outlook;
+    $('[data-bb-caltitle]').textContent = IS_INAPP ? 'Zet hem in je agenda' : 'Andere agenda?';
+    $('[data-bb-inapptip]').hidden = !IS_INAPP;
+    $('[data-bb-cal="file"]').hidden = IS_INAPP;
+    $('[data-bb-delivered]').textContent = '';
+  }
+  $$('[data-bb-cal]').forEach(function (el) {
+    el.addEventListener('click', function (e) {
+      var kind = el.getAttribute('data-bb-cal');
+      if (kind === 'file') { e.preventDefault(); downloadIcs('file'); toast('Gedownload'); }
+      else track('ics_delivered', { method: kind });
+      $('[data-bb-delivered]').textContent = kind === 'file' ? 'Gedownload. Tik erop voor je agenda.' : (kind === 'google' ? 'Google Agenda staat open.' : 'Outlook staat open.');
+      autoReturn(1800);
+    });
+  });
+
+  /* ============================== UITPROBEREN (sheet) ============================== */
+  var sheet = $('[data-bb-sheet]'), bar = $('[data-bb-bar]');
+  function openSheet(source) {
+    clearTimeout(autoTimer);
+    if (S.open) return;
+    showTry('rekening');
+    S.open = true; root.classList.add('is-open');
+    bar.setAttribute('aria-expanded', 'true'); sheet.setAttribute('aria-modal', 'true');
+    document.documentElement.style.overflow = 'hidden';
+    setTimeout(function () { var h = $('#bb-t-rek'); try { h.focus({ preventScroll: true }); } catch (e) {} }, 80);
+    document.addEventListener('keydown', onKey);
+    track('tryout_open', { source: source || 'bar' });
+  }
+  function closeSheet() {
+    if (!S.open) return;
+    clearTimeout(autoTimer);
+    S.open = false; root.classList.remove('is-open');
+    bar.setAttribute('aria-expanded', 'false'); sheet.setAttribute('aria-modal', 'false');
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    syncTry();
+    if (!root.classList.contains('no-try')) { try { bar.focus({ preventScroll: true }); } catch (e) {} }
+  }
+  function onKey(e) { if (e.key === 'Escape') closeSheet(); }
+  // Na het uitproberen terug naar de checkout, nu persoonlijk met de eigen rekening
+  function backToCheckout(source) {
+    closeSheet();
+    goStep(1, { silent: true });
+    var co = $('[data-bb-co]'), r = co.getBoundingClientRect();
+    if (r.top < 70 || r.top > window.innerHeight * 0.5) window.scrollTo({ top: r.top + window.pageYOffset - 76, behavior: 'smooth' });
+    co.classList.remove('is-pulse'); void co.offsetWidth; co.classList.add('is-pulse');
+    setTimeout(function () { co.classList.remove('is-pulse'); }, 2800);
+    focusStep();
+    track('tryout_to_checkout', { source: source || 'button' });
+  }
+
+  // Tik of veeg omhoog/omlaag
+  var dragY = null, swiped = false;
+  function down(e) { dragY = e.clientY; }
+  function up(e) {
+    if (dragY == null) return;
+    var dy = e.clientY - dragY; dragY = null;
+    if (dy < -30 && !S.open) { swiped = true; openSheet('swipe'); }
+    else if (dy > 30 && S.open) { swiped = true; closeSheet(); }
+    setTimeout(function () { swiped = false; }, 350);
+  }
+  [bar, $('[data-bb-drag]')].forEach(function (el) { el.addEventListener('pointerdown', down); el.addEventListener('pointerup', up); });
+  bar.addEventListener('click', function () { if (swiped) { swiped = false; return; } openSheet('bar'); });
+  $('[data-bb-close]').addEventListener('click', closeSheet);
+  $('[data-bb-overlay]').addEventListener('click', closeSheet);
+  $$('[data-bb-return]').forEach(function (b) { b.addEventListener('click', function () { backToCheckout('button'); }); });
+  $$('[data-bb-retry]').forEach(function (b) { b.addEventListener('click', function () { show('checkout'); goStep(S.emailOk ? 3 : 1); }); });
+
+  function esc(t) { return String(t).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+  function perWeek(p) { return euro(Math.round(p * 12 / 52 * 100) / 100); }
+  // Maakt een regel persoonlijk met de rekening die iemand net invulde
+  function billText(f) {
+    var b = S.bill; if (!f.bill || !b) return f.t;
+    if (f.no) return 'Je ' + b.from + '-rekening krijgt geen seintje';
+    var due = fromIso(b.due), t = today(), d7 = addDays(due, -7), d2 = addDays(due, -2);
+    if (d7 >= t) return 'Seintje op ' + fShort.format(d7) + ' en ' + fShort.format(d2) + ' voor je ' + b.from;
+    if (d2 >= t) return 'Seintje op ' + fShort.format(d2) + ' voor je ' + b.from + ', en daarna voor elke rekening';
+    return f.t;
+  }
+  var planSig = '';
+  function renderPlans() {
+    var sig = S.bill ? S.bill.from + S.bill.due : '-';
+    if (sig === planSig && $('[data-bb-plans]').children.length) return;
+    planSig = sig;
+    var ICON_OK = '<svg width="10" height="10"><use href="#bb-i-check"/></svg>';
+    var ICON_NO = '<svg width="9" height="9" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round"/></svg>';
+    $('[data-bb-plans]').innerHTML = CONFIG.order.filter(function (k) { return CONFIG.plans[k]; }).map(function (k) {
+      var p = CONFIG.plans[k];
+      var feats = (p.feats || []).map(function (f) {
+        return '<span class="bb-ft' + (f.no ? ' bb-ft--no' : '') + (f.hi && !f.no ? ' bb-ft--hi' : '') + '"><i aria-hidden="true">' + (f.no ? ICON_NO : ICON_OK) + '</i><span>' +
+          esc(billText(f)) + (f.soon ? '<span class="bb-soon">binnenkort</span>' : '') + (f.no ? '<span class="bb-sr"> (zit er niet in)</span>' : '') + '</span></span>';
+      }).join('');
+      return '<button type="button" class="bb-pl" role="radio" aria-checked="false" data-bb-plan="' + k + '">' +
+        '<span class="bb-pl-top"><span class="bb-radio" aria-hidden="true"></span>' +
+        '<span class="bb-pl-name"><b>' + esc(p.name) + (p.badge ? '<span class="bb-badge">' + esc(p.badge) + '</span>' : '') + '</b>' +
+        '<span class="bb-pl-tag">' + esc(p.tag || '') + '</span></span>' +
+        '<span class="bb-pl-price"><b class="bb-num">' + perWeek(p.price) + '<small> per week</small></b><em>' + euro(p.price) + ' per maand</em></span></span>' +
+        '<span class="bb-pl-feats">' + feats + '</span></button>';
+    }).join('');
+  }
+  function renderSheet() {
+    var p = CONFIG.plans[S.plan], price = euro(p.price);
+    out('pricepm', perWeek(p.price) + ' per week');
+    out('guarantee', CONFIG.guarantee);
+    $('[data-bb-guarantee]').hidden = !CONFIG.guarantee;
+    out('fine', CONFIG.fine.replace(/\{prijs\}/g, price), true);
+    var pills = $('[data-bb-pills]'); if (pills && !pills.children.length) { pills.innerHTML = (CONFIG.payPills || []).map(function (t) { return '<span class="bb-pill">' + esc(t) + '</span>'; }).join(''); pills.setAttribute('aria-label', 'Betaalmethodes: ' + (CONFIG.payPills || []).join(', ')); }
+    var hasBill = !!S.bill;
+    out('q1', hasBill ? 'Zal ik dit voor al je rekeningen doen?' : 'Hoe zal ik je helpen?');
+    out('q1sub', (hasBill ? 'Je ' + S.bill.from + ' staat er al in. ' : 'Kies wat bij je past. ') + (CONFIG.switchNote || ''));
+    out('allplans', CONFIG.allPlans || '');
+    var pi = $('[data-bb-planinfo]');
+    pi.hidden = !CONFIG.singlePlan;
+    if (CONFIG.singlePlan) {
+      pi.innerHTML = '<div class="bb-pi-top"><b>' + esc(CONFIG.planIntro || p.name) + '</b><span><strong>' + price + '</strong> per maand</span></div>' +
+        '<ul class="bb-trust">' + (p.feats || []).filter(function (f) { return !f.no; }).map(function (f) {
+          return '<li><i aria-hidden="true"><svg width="10" height="10"><use href="#bb-i-check"/></svg></i><span>' + esc(billText(f)) + '</span></li>';
+        }).join('') + '</ul>' +
+        (CONFIG.anchor ? '<p class="bb-anchor">' + esc(CONFIG.anchor.replace(/\{prijs\}/g, price).replace(/\{weekprijs\}/g, perWeek(p.price)).replace(/\{naam\}/g, p.name)) + '</p>' : '');
+    }
+    out('sumplan', p.name);
+    out('payee', CONFIG.payee || '');
+    if (payBtn && payBtn.getAttribute('aria-busy') !== 'true') payBtn.textContent = payLabel();
+    $('[data-bb-trust]').innerHTML = (CONFIG.trust || []).map(function (t) {
+      return '<li><i aria-hidden="true"><svg width="10" height="10"><use href="#bb-i-check"/></svg></i><span>' + esc(t) + '</span></li>';
+    }).join('');
+    out('sumprice', price + ' per maand (' + perWeek(p.price) + ' per week)');
+    $('[data-bb-sumbill]').hidden = !hasBill;
+    if (hasBill) out('sumbill', S.bill.from);
+    renderPlans();
+    $$('[data-bb-plan]').forEach(function (b) {
+      var on = b.getAttribute('data-bb-plan') === S.plan;
+      b.setAttribute('aria-checked', String(on)); b.tabIndex = on ? 0 : -1;
+    });
+    var up = CONFIG.plans[CONFIG.upsellTo], isUp = S.plan === CONFIG.upsellFrom && up;
+    $('[data-bb-nudge]').hidden = !isUp;
+    if (isUp) {
+      out('nudge', (S.bill ? 'Je ' + S.bill.from + '-rekening krijgt dan geen seintje. ' : 'Zonder seintjes moet je het zelf onthouden. ') +
+        CONFIG.nudge.replace(/\{verschil\}/g, euro(up.price - p.price)));
+      $('[data-bb-upsell]').textContent = 'Neem ' + up.name;
+    }
+    $('[data-bb-anchor]').hidden = !!isUp || !CONFIG.anchor;
+    if (!isUp && CONFIG.anchor) out('anchor', CONFIG.anchor.replace(/\{prijs\}/g, price).replace(/\{weekprijs\}/g, perWeek(p.price)).replace(/\{naam\}/g, p.name));
+    out('email', S.email);
+    var em = $('#bb-email'); if (!em.value && S.email) em.value = S.email;
+  }
+  // begin_checkout (Meta: InitiateCheckout) pas bij de eerste echte handeling, niet bij het laden
+  var coStarted = false;
+  function beginCheckout(src) {
+    if (coStarted) return; coStarted = true;
+    if (!S.path) { S.path = 'a'; save(); }
+    track('begin_checkout', { plan: S.plan, value: CONFIG.plans[S.plan].price, currency: 'EUR', path: S.path, source: src });
+  }
+  function pickPlan(k, how) {
+    if (!CONFIG.plans[k]) return;
+    beginCheckout('plan');
+    var was = S.plan; S.plan = k; save(); renderSheet(); mollieSync();
+    if (was !== k) { track('select_plan', { plan: k, from: was, via: how || 'tap' }); live(CONFIG.plans[k].name + ' gekozen, ' + euro(CONFIG.plans[k].price) + ' per maand'); }
+  }
+  $('[data-bb-plans]').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-bb-plan]'); if (b) pickPlan(b.getAttribute('data-bb-plan'));
+  });
+  $('[data-bb-upsell]').addEventListener('click', function () {
+    track('upsell_click', { from: S.plan, to: CONFIG.upsellTo });
+    pickPlan(CONFIG.upsellTo, 'nudge');
+    var t = $('[data-bb-plan="' + CONFIG.upsellTo + '"]'); if (t) { try { t.focus({ preventScroll: true }); } catch (e) {} }
+  });
+  root.addEventListener('keydown', function (e) {
+    var r = e.target.closest && e.target.closest('[data-bb-plan]'); if (!r) return;
+    var k = { ArrowRight: 1, ArrowDown: 1, ArrowLeft: -1, ArrowUp: -1 }[e.key]; if (!k) return;
+    e.preventDefault(); var g = $$('[data-bb-plan]'), n = g[(g.indexOf(r) + k + g.length) % g.length]; n.focus(); n.click();
+  });
+  $('#bb-email').addEventListener('input', function () { S.email = this.value.trim(); S.emailOk = false; $('[data-bb-typo]').hidden = true; $('[data-bb-payerr]').textContent = ''; this.removeAttribute('aria-invalid'); mollieSync(); });
+  $('#bb-email').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); nextStep(); } });
+
+  /* ---------- Betaalmethode ---------- */
+  S.method = 'ideal';
+  var HAS_APPLEPAY = !!window.ApplePaySession;
+  function methodDef(k) { return (CONFIG.methods || []).filter(function (m) { return m.key === k; })[0]; }
+  function methodList() {
+    var w = activeWrap(), ref = w && w._bb; if (!ref || !ref.method) return [];
+    var all = choices(ref.method);
+    return (CONFIG.methods || []).filter(function (m) {
+      if (m.key === 'applepay' && !HAS_APPLEPAY) return false;
+      return all.some(function (c) { return hasWord(c.text, m.words); });
+    });
+  }
+  function renderMethods() {
+    var list = methodList(), box = $('[data-bb-methodsbox]');
+    box.hidden = list.length < 2;
+    $('[data-bb-staticpills]').hidden = list.length >= 2;
+    if (!list.length) return;
+    if (!list.some(function (m) { return m.key === S.method; })) S.method = list[0].key;
+    $('[data-bb-methods]').innerHTML = list.map(function (m) {
+      var on = m.key === S.method;
+      return '<button type="button" class="bb-mchip" role="radio" aria-checked="' + on + '" tabindex="' + (on ? 0 : -1) + '" data-bb-method="' + m.key + '">' + esc(m.label) + '</button>';
+    }).join('');
+  }
+  $('[data-bb-methods]').addEventListener('click', function (e) {
+    var b = e.target.closest('[data-bb-method]'); if (!b) return;
+    S.method = b.getAttribute('data-bb-method'); renderMethods();
+    var w = activeWrap(), ref = w && w._bb; if (ref) syncInto(ref, currentEmail());
+    var nb = $('[data-bb-method="' + S.method + '"]'); if (nb) { try { nb.focus({ preventScroll: true }); } catch (x) {} }
+    track('select_method', { method: S.method });
+  });
+
+  /* ---------- Tikfoutcheck mailadres ---------- */
+  function dist(a, b) {
+    var d = [], i, j; for (i = 0; i <= a.length; i++) { d[i] = [i]; } for (j = 1; j <= b.length; j++) d[0][j] = j;
+    for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++) d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    return d[a.length][b.length];
+  }
+  function suggestEmail(v) {
+    v = String(v || '').trim().toLowerCase(); var at = v.lastIndexOf('@'); if (at < 1) return '';
+    var dom = v.slice(at + 1); if (dom.length < 4 || (CONFIG.domains || []).indexOf(dom) > -1) return '';
+    var best = '', bd = 3;
+    (CONFIG.domains || []).forEach(function (d) { var x = dist(dom, d); if (x < bd) { bd = x; best = d; } });
+    return best && bd <= 2 ? v.slice(0, at + 1) + best : '';
+  }
+  function checkTypo() {
+    var sug = suggestEmail($('#bb-email').value), row = $('[data-bb-typo]');
+    row.hidden = !sug; if (sug) $('[data-bb-typofix]').textContent = sug;
+    if (sug && row.getAttribute('data-bb-tracked') !== sug) { row.setAttribute('data-bb-tracked', sug); track('email_typo_shown'); }
+    return !!sug;
+  }
+  $('#bb-email').addEventListener('blur', function () { checkTypo(); if (validEmail(this.value)) trackOnce('email_valid', { via: 'blur' }); });
+  $('#bb-email').addEventListener('focus', function () { beginCheckout('email'); });
+  $('[data-bb-typofix]').addEventListener('click', function () {
+    var em = $('#bb-email'); em.value = this.textContent; S.email = em.value; S.emailOk = false;
+    $('[data-bb-typo]').hidden = true; mollieSync(); track('email_typo_fixed');
+    try { em.focus({ preventScroll: true }); } catch (x) {}
+  });
+
+  /* ---------- Gesprek: drie vragen ---------- */
+  S.cstep = 1;
+  function focusStep() {
+    var h = $('[data-bb-cstep="' + S.cstep + '"] [tabindex="-1"]');
+    if (h) { try { h.focus({ preventScroll: true }); } catch (e) { h.focus(); } }
+  }
+  function goStep(n, opts) {
+    opts = opts || {};
+    var first = CONFIG.singlePlan ? 2 : 1;
+    n = Math.max(first, Math.min(3, n));
+    var changed = n !== S.cstep;
+    S.cstep = n;
+    $$('[data-bb-cstep]').forEach(function (sec) { sec.hidden = +sec.getAttribute('data-bb-cstep') !== n; });
+    $$('[data-bb-dot]').forEach(function (d) { var k = +d.getAttribute('data-bb-dot'); d.hidden = k < first; d.classList.toggle('is-on', k <= n); d.classList.toggle('is-cur', k === n); });
+    out('stepsr', 'Vraag ' + (n - first + 1) + ' van ' + (4 - first));
+    var back = $('[data-bb-cback]'); if (n === first) back.setAttribute('data-off', ''); else back.removeAttribute('data-off');
+    $$('[data-bb-tostep="1"]').forEach(function (b) { b.hidden = first > 1; });
+    $('[data-bb-next]').hidden = n === 3;
+    $('[data-bb-payarea]').hidden = n !== 3;
+    if (n < 3) $('[data-bb-next]').textContent = CONFIG.nextLabels[n];
+    if (!opts.keepErr) $('[data-bb-payerr]').textContent = '';
+    renderSheet();
+    if (n === 3) renderMethods();
+    $('[data-bb-cofoot]').classList.toggle('is-sticky', n < 3);
+    syncTry();
+    if (changed && !opts.silent) {
+      var co = $('[data-bb-co]'), r = co.getBoundingClientRect();
+      if (r.top < 60 || r.top > window.innerHeight * 0.5) window.scrollTo({ top: r.top + window.pageYOffset - 76, behavior: 'smooth' });
+      focusStep(); track('checkout_step', { step: n, plan: S.plan });
+    }
+    if (n === 2 && !opts.noField) { var em = $('#bb-email'); if (!validEmail(em.value)) setTimeout(function () { try { em.focus({ preventScroll: true }); } catch (e) {} }, 320); }
+  }
+  // Controleert vraag 2: mailadres en eventuele extra velden van het Mollie-formulier
+  function checkDetails() {
+    var mail = ($('#bb-email').value || '').trim();
+    if (!validEmail(mail)) { emailError(); return false; }
+    S.email = mail; S.emailOk = true; save();
+    trackOnce('email_valid', { via: 'next' });
+    if (!hasForms()) return true;
+    var w = activeWrap(), ref = w && enhance(w);
+    if (!ref) return true;
+    mollieSync(); syncInto(ref, mail);
+    if (ref.form.checkValidity && !ref.form.checkValidity()) {
+      if (S.cstep !== 2) goStep(2, { keepErr: true, noField: true });
+      Array.prototype.forEach.call(ref.form.querySelectorAll(':invalid'), function (f) {
+        f.classList.add('bb-touched');
+        var el = f; while (el && el !== ref.form) { el.classList.remove('bb-weg'); el.removeAttribute('data-bb-empty'); el = el.parentElement; }
+        var cb = ref.form.querySelector('[data-bb-coupon]'); if (cb && couponField(ref.form) === f) cb.hidden = true;
+      });
+      $('[data-bb-payerr]').textContent = 'Vul hierboven nog even aan wat er mist.';
+      track('checkout_error', { type: 'details_missing', fields: ref.form.querySelectorAll(':invalid').length });
+      if (ref.form.reportValidity) ref.form.reportValidity();
+      return false;
+    }
+    return true;
+  }
+  function nextStep() {
+    beginCheckout('next');
+    if (S.cstep === 1) return goStep(2);
+    if (S.cstep === 2) {
+      // Eén keer stilstaan bij een mogelijke tikfout, daarna mag iemand gewoon door
+      var em = $('#bb-email');
+      if (checkTypo() && em.getAttribute('data-bb-typoseen') !== em.value) { em.setAttribute('data-bb-typoseen', em.value); return; }
+      if (checkDetails()) return goStep(3);
+    }
+  }
+  $('[data-bb-next]').addEventListener('click', nextStep);
+  $('[data-bb-cback]').addEventListener('click', function () { goStep(S.cstep - 1); });
+  $$('[data-bb-tostep]').forEach(function (b) { b.addEventListener('click', function () { goStep(+b.getAttribute('data-bb-tostep')); }); });
+
+  /* ============================== MOLLIE FORMS ============================== */
+  var W = CONFIG.words;
+  function wrappers() { return $$('[data-bb-form]'); }
+  function activeWrap() { return $('[data-bb-form="' + S.plan + '"]'); }
+  function hasForms() { return wrappers().some(function (w) { return !!w.querySelector('form'); }); }
+  function hasWord(t, list) { t = String(t || '').toLowerCase(); return (list || []).some(function (w) { return t.indexOf(w) > -1; }); }
+  function fire(el) { ['input', 'change'].forEach(function (t) { try { el.dispatchEvent(new Event(t, { bubbles: true })); } catch (e) {} }); }
+  function fieldsIn(node) { return Array.prototype.slice.call(node.querySelectorAll('input:not([type="hidden"]),select,textarea,button')); }
+  function choices(ctrl) {
+    if (!ctrl) return [];
+    if (ctrl.tagName === 'SELECT') return Array.prototype.map.call(ctrl.options, function (o) {
+      return { text: o.textContent + ' ' + o.value, pick: function () { if (ctrl.value !== o.value) { ctrl.value = o.value; fire(ctrl); } } };
+    });
+    return ctrl.radios.map(function (r) {
+      var lab = r.closest('label') || (r.id ? ctrl.form.querySelector('label[for="' + r.id + '"]') : null);
+      return { text: ((lab && lab.textContent) || '') + ' ' + r.value, pick: function () { if (!r.checked) { r.checked = true; fire(r); } } };
+    });
+  }
+  function findControl(form, words) {
+    var sel = Array.prototype.filter.call(form.querySelectorAll('select'), function (x) { return hasWord(x.textContent + ' ' + x.name, words); })[0];
+    if (sel) return sel;
+    var groups = {};
+    Array.prototype.forEach.call(form.querySelectorAll('input[type="radio"]'), function (r) { (groups[r.name] = groups[r.name] || []).push(r); });
+    for (var n in groups) { var g = { radios: groups[n], form: form }; if (choices(g).some(function (c) { return hasWord(c.text, words); })) return g; }
+    return null;
+  }
+  function rowOf(ctrl, form) {
+    var own = ctrl.radios ? ctrl.radios : [ctrl], el = own[0];
+    while (el.parentElement && el.parentElement !== form && fieldsIn(el.parentElement).every(function (f) { return own.indexOf(f) > -1; })) el = el.parentElement;
+    return el;
+  }
+  function hideCtrl(ctrl, form) {
+    if (!ctrl) return;
+    var row = rowOf(ctrl, form); row.classList.add('bb-weg'); row.setAttribute('data-bb-hid', '1');
+    var prev = row.previousElementSibling;
+    if (prev && (prev.tagName === 'LABEL' || prev.classList.contains('bb-mlabel')) && !fieldsIn(prev).length) { prev.classList.add('bb-weg'); prev.setAttribute('data-bb-hid', '1'); }
+  }
+  function labelFields(form) {
+    Array.prototype.forEach.call(form.querySelectorAll('input[type="text"],input[type="email"],input[type="tel"],input[type="number"],textarea'), function (f) {
+      if (f.hasAttribute('data-bb-lab')) return; f.setAttribute('data-bb-lab', '1');
+      if ((f.id && form.querySelector('label[for="' + f.id + '"]')) || f.closest('label') || f.parentNode.querySelector('label')) return;
+      var txt = f.getAttribute('placeholder') || ''; if (!txt) return;
+      var req = /\*\s*$/.test(txt), clean = txt.replace(/\s*\*\s*$/, '').trim(); if (!clean) return;
+      if (!f.id) f.id = 'bb-m-' + Math.random().toString(36).slice(2, 9);
+      var l = document.createElement('label'); l.className = 'bb-mlabel'; l.setAttribute('for', f.id); l.textContent = clean;
+      if (req) { var b = document.createElement('b'); b.textContent = '*'; l.appendChild(b); }
+      f.parentNode.insertBefore(l, f);
+      f.setAttribute('placeholder', '');
+    });
+  }
+  function hideTotal(w) {
+    Array.prototype.forEach.call(w.querySelectorAll('div,p,strong,span'), function (el) {
+      if (fieldsIn(el).length) return;
+      var t = (el.textContent || '').trim();
+      if (/^totaal\b/i.test(t) && t.length < 40) el.classList.add('bb-weg');
+    });
+  }
+  function hasVisibleText(el) {
+    var tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null), n;
+    while ((n = tw.nextNode())) {
+      if (n.textContent.trim() && n.parentElement && !n.parentElement.closest('.bb-weg,script,style')) return true;
+    }
+    return false;
+  }
+  // Blokken van de plugin die na het verbergen leeg zijn, nemen geen ruimte meer in.
+  function collapseEmpty(form) {
+    Array.prototype.forEach.call(form.querySelectorAll('div,p,span,section,fieldset,li,ul'), function (el) {
+      if (el.classList.contains('bb-weg') && !el.hasAttribute('data-bb-empty')) return;
+      var vis = fieldsIn(el).some(function (f) { return !f.closest('.bb-weg'); });
+      var empty = !vis && !hasVisibleText(el) && !el.querySelector('img,svg,iframe,canvas');
+      if (empty) { el.classList.add('bb-weg'); el.setAttribute('data-bb-empty', '1'); }
+      else if (el.hasAttribute('data-bb-empty')) { el.classList.remove('bb-weg'); el.removeAttribute('data-bb-empty'); }
+    });
+  }
+  function couponField(form) {
+    return Array.prototype.filter.call(form.querySelectorAll('input[type="text"]'), function (i) {
+      var lab = i.id ? form.querySelector('label[for="' + i.id + '"]') : null;
+      var t = (i.name + ' ' + i.id + ' ' + (i.getAttribute('placeholder') || '') + ' ' + (lab ? lab.textContent : '')).toLowerCase();
+      return /korting|coupon|discount|voucher|actiecode/.test(t);
+    })[0] || null;
+  }
+  function tuckCoupon(form) {
+    if (form.querySelector('[data-bb-coupon]')) return;
+    var cp = couponField(form); if (!cp || cp.value) return;
+    var row = rowOf(cp, form), prev = row.previousElementSibling;
+    var lab = prev && (prev.tagName === 'LABEL' || prev.classList.contains('bb-mlabel')) && !fieldsIn(prev).length ? prev : null;
+    row.classList.add('bb-weg'); if (lab) lab.classList.add('bb-weg');
+    var btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'bb-coupon'; btn.setAttribute('data-bb-coupon', '1'); btn.textContent = 'Kortingscode?';
+    row.parentNode.insertBefore(btn, lab || row);
+    btn.addEventListener('click', function () {
+      row.classList.remove('bb-weg'); if (lab) lab.classList.remove('bb-weg');
+      btn.hidden = true; collapseEmpty(form); cp.focus();
+    });
+  }
+  function enhance(w) {
+    var form = w.querySelector('form'); if (!form) return null;
+    if (w._bb && w._bb.form === form && w.contains(form)) return w._bb;
+    labelFields(form);
+    var ref = {
+      form: form,
+      email: form.querySelector('input[type="email"]') || Array.prototype.filter.call(form.querySelectorAll('input[type="text"]'), function (i) { return hasWord(i.name + ' ' + i.placeholder, W.email); })[0] || null,
+      method: findControl(form, W.ideal.concat(['bancontact', 'paypal', 'creditcard', 'betaalmethode', 'applepay', 'apple pay'])),
+      period: findControl(form, W.month.concat(['jaar', 'year'])),
+      submit: form.querySelector('button[type="submit"],input[type="submit"]') || form.querySelector('button:not([type])')
+    };
+    hideCtrl(ref.email, form);
+    if (ref.method && choices(ref.method).some(function (c) { return hasWord(c.text, W.ideal); })) hideCtrl(ref.method, form);
+    if (ref.period && choices(ref.period).some(function (c) { return hasWord(c.text, W.month); })) hideCtrl(ref.period, form);
+    if (ref.submit) { ref.submit.classList.add('bb-weg'); ref.submit.setAttribute('data-bb-hid', '1'); }
+    hideTotal(w);
+    tuckCoupon(form);
+    collapseEmpty(form);
+    if (!form.getAttribute('data-bb-guard')) {
+      form.setAttribute('data-bb-guard', '1');
+      form.addEventListener('submit', function (e) {
+        // Vangnet: ook Enter in een plugin-veld gaat via dezelfde controle.
+        var mail = currentEmail();
+        if (!validEmail(mail)) { e.preventDefault(); e.stopImmediatePropagation(); emailError(); payBusy(false); return; }
+        syncInto(ref, mail);
+        S.email = mail; S.emailOk = true; save();
+        track('add_payment_info', { plan: S.plan, value: CONFIG.plans[S.plan].price, currency: 'EUR', via: 'mollie_forms' });
+      }, true);
+    }
+    w._bb = ref;
+    return ref;
+  }
+  function syncInto(ref, mail) {
+    if (ref.email && mail && ref.email.value !== mail) { ref.email.value = mail; fire(ref.email); }
+    if (ref.method) {
+      var want = methodDef(S.method), all = choices(ref.method);
+      var m = (want && all.filter(function (c) { return hasWord(c.text, want.words); })[0]) || all.filter(function (c) { return hasWord(c.text, W.ideal); })[0];
+      if (m) m.pick();
+    }
+    if (ref.period) { var p = choices(ref.period).filter(function (c) { return hasWord(c.text, W.month); })[0]; if (p) p.pick(); }
+  }
+  function currentEmail() { return S.emailOk ? S.email : ($('#bb-email').value || '').trim(); }
+  function mollieSync() {
+    wrappers().forEach(function (w) {
+      var on = w.getAttribute('data-bb-form') === S.plan && !!w.querySelector('form');
+      w.classList.toggle('bb-weg', !on);
+      if (w.querySelector('form')) enhance(w);
+    });
+    var ref = activeWrap() && activeWrap()._bb;
+    if (ref) syncInto(ref, currentEmail());
+  }
+  function emailError() {
+    S.emailOk = false;
+    if (S.cstep !== 2) goStep(2, { keepErr: true, noField: true }); else renderSheet();
+    var em = $('#bb-email'); em.setAttribute('aria-invalid', 'true');
+    $('[data-bb-payerr]').textContent = 'Vul je mailadres in, daar komen je seintjes en je factuur.';
+    track('checkout_error', { type: 'email' });
+    em.focus();
+  }
+  var payBtn = $('[data-bb-pay]'), busyTimer = null;
+  function payLabel() { return CONFIG.payLabel.replace(/\{prijs\}/g, euro(CONFIG.plans[S.plan].price)); }
+  function payBusy(on) {
+    payBtn.setAttribute('aria-busy', String(on));
+    payBtn.textContent = on ? 'Even geduld…' : payLabel();
+    $('[data-bb-busynote]').hidden = !on;
+    M.paying = !!on;
+    clearTimeout(busyTimer); if (on) busyTimer = setTimeout(function () {
+      payBusy(false);
+      var w = activeWrap(), msg = '';
+      if (w) { var el = w.querySelector('.error, .errors, .notice, .alert, [role="alert"], .mollie-forms-error'); if (el) msg = (el.textContent || '').trim().slice(0, 80); }
+      track('checkout_error', { type: 'pay_timeout', message: msg });
+    }, 10000);
+  }
+  payBtn.addEventListener('click', function () {
+    $('[data-bb-payerr]').textContent = '';
+    if (!checkDetails()) return;
+    var mail = S.email;
+    beginCheckout('pay');
+    track('pay_click', { plan: S.plan, value: CONFIG.plans[S.plan].price, currency: 'EUR', path: S.path });
+    if (!hasForms()) {   // testmodus
+      payBusy(true);
+      setTimeout(function () { payBusy(false); location.href = location.pathname + '?bb_status=paid'; }, 900);
+      return;
+    }
+    var w = activeWrap(), ref = w && enhance(w);
+    if (!ref) { $('[data-bb-payerr]').textContent = 'Dit pakket kan nu niet worden afgerekend. Kies een ander pakket of probeer het zo nog eens.'; track('checkout_error', { type: 'form_unavailable' }); return; }
+    syncInto(ref, mail);
+    payBusy(true);
+    if (ref.form.requestSubmit) ref.form.requestSubmit(ref.submit && ref.submit.type === 'submit' ? ref.submit : undefined);
+    else if (ref.submit) ref.submit.click();
+    else ref.form.submit();
+  });
+
+  /* ============================== WELKOM ============================== */
+  function renderWelkom() {
+    var subj = 'Start', body = '';
+    $('[data-bb-startmail]').href = 'mailto:start@in.betaalbuddy.nl?subject=' + encodeURIComponent(subj) + (body ? '&body=' + encodeURIComponent(body) : '');
+    var wb = $('[data-bb-welkombill]');
+    if (S.bill) { wb.hidden = false; wb.textContent = 'Stuur je ' + S.bill.from + '-rekening ook even door, dan neemt Buddy hem over.'; }
+  }
+
+  /* ============================== START ============================== */
+  var q; try { q = new URLSearchParams(location.search); } catch (e) { q = { get: function () { return null; } }; }
+  if (CONFIG.plans[q.get('plan')]) { S.plan = q.get('plan'); save(); }
+  $('[data-bb-testmode]').hidden = hasForms();
+  if (S.bill) { fFrom.value = S.bill.from; fAmt.value = euroC(S.bill.cents).replace('\u20AC', ''); fDue.value = S.bill.due; syncChips(); syncDateChips(); renderKlaar(); }
+  if (S.email) $('#bb-email').value = S.email;
+  renderSheet();
+  goStep(1, { silent: true });
+  mollieSync();
+
+  var status = q.get('bb_status');
+  if (status === 'paid') {
+    var k = 'bb_ob_paid_' + (q.get('payment_id') || q.get('id') || 'x'), seen = false;
+    try { seen = !!sessionStorage.getItem(k); sessionStorage.setItem(k, '1'); } catch (e) {}
+    if (!seen) track('purchase', { plan: RESTORED ? S.plan : 'unknown', plan_known: RESTORED ? 1 : 0, value: CONFIG.plans[S.plan].price, currency: 'EUR', path: S.path || 'a', transaction_id: q.get('payment_id') || q.get('id') || '', source: 'return_page' });
+    renderWelkom(); show('welkom', { noFocus: true });
+  } else if (status === 'canceled' || status === 'failed' || status === 'expired') {
+    track('payment_failed', { status: status });
+    show('mislukt', { noFocus: true });
+  } else {
+    show('checkout', { noFocus: true });
+    track('onboarding_start', { inapp: IS_INAPP });
+    // terug van /betaling-mislukt/ of /betaling-geannuleerd/: meteen naar de betaalstap
+    if (q.get('retry') === '1') track('retry_start', { email_known: S.emailOk ? 1 : 0 });
+    if (q.get('retry') === '1' && S.emailOk) setTimeout(function () { goStep(3); }, 150);
+
+    // Eerste echte handeling op de pagina: tikken, typen of een flink stuk scrollen
+    var engage = function (how) { if (M.engaged) return; M.engaged = true; track('ob_engaged', { how: how, seconds: Math.round((Date.now() - M.t0) / 1000) }); };
+    root.addEventListener('pointerdown', function () { engage('tap'); }, { passive: true });
+    root.addEventListener('keydown', function () { engage('key'); });
+    window.addEventListener('scroll', function () { if (window.pageYOffset > 120) engage('scroll'); }, { passive: true });
+
+    // Waar strandt het? Eén event als iemand de pagina verlaat of wegklikt, met de laatste stand.
+    var exit = function () {
+      if (M.exitSent || S.screen !== 'checkout') return;
+      M.exitSent = true;
+      track('ob_exit', {
+        last_event: M.last, engaged: M.engaged ? 1 : 0, seconds: Math.round((Date.now() - M.t0) / 1000),
+        email_typed: S.email ? 1 : 0, email_ok: S.emailOk ? 1 : 0, try_opened: M.tryOpened ? 1 : 0, paying: M.paying ? 1 : 0
+      });
+    };
+    window.addEventListener('pagehide', exit);
+    document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'hidden') exit(); });
+    if (q.get('try') === '1' || /^#(proberen|uitproberen)$/i.test(location.hash)) setTimeout(function () { openSheet('link'); }, 150);
+  }
+
+  // Wisselen tussen telefoon/tablet en desktop (bijv. scherm draaien of venster breder maken)
+  function onMQ() { renderSheet(); mollieSync(); }
+  if (MQ_DESK.addEventListener) MQ_DESK.addEventListener('change', onMQ); else if (MQ_DESK.addListener) MQ_DESK.addListener(onMQ);
+
+  // De plugin kan het formulier later opnieuw opbouwen; dan opnieuw koppelen.
+  if (window.MutationObserver) {
+    var t, mo = new MutationObserver(function () { clearTimeout(t); t = setTimeout(mollieSync, 120); });
+    wrappers().forEach(function (w) { mo.observe(w, { childList: true, subtree: true }); });
+  }
+}
+if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', bbStart); else bbStart();
+window.addEventListener('load', bbStart);
+})();
+</script>
+<!-- ===================== EINDE KOPIEREN ===================== -->
+
+</body>
+</html>
